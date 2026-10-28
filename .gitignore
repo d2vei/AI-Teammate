@@ -99,3 +99,8 @@ Thumbs.db
 /prompts/BRIEF_SCAFFOLD.md
 /prompts/PARTICIPATION_SHADOW.md
 /prompts/RESPONSE_SCAFFOLD.md
+# Local project links/Infisical session/cache files never contain public runtime material.
+/.infisical.yaml
+/.infisical.json
+/.infisical/
+/secrets-backup/

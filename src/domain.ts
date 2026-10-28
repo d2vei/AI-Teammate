@@ -20,7 +20,7 @@ export type ContextItem = { id: string; kind: string; label: string; text: strin
 export type ModelInput = { event: Pick<RequestEvent, 'id' | 'version' | 'actor' | 'replyTo'>; question: string; reply: RequestEvent['replyContext']; context: ContextItem[] };
 export const DecisionBodySchema = z.object({ kind: z.literal('decision'), statement: z.string().min(3).max(800), sourceIds: z.array(id).max(12) }).strict();
 export const BriefBodySchema = z.object({ kind: z.literal('brief'), objective: z.string().min(3).max(300), decisionIds: z.array(id).max(6), sourceIds: z.array(id).max(12), hypothesis: z.string().min(1).max(400), nextCheck: z.string().min(3).max(500), exclusions: z.array(z.string().min(1).max(200)).min(1).max(4) }).strict();
-export const ProposalBodySchema = z.discriminatedUnion('kind', [DecisionBodySchema, BriefBodySchema]);
+export const ProposalBodySchema = z.discriminatedUnion('kind', [DecisionBodySchema, BriefBodySchema]).refine(body => JSON.stringify(body).length <= 2400, 'Narrow the proposal to fit one reviewable card');
 export type ProposalBody = z.infer<typeof ProposalBodySchema>;
 export type Proposal = {
   id: string; projectId: string; platform: ProjectConfig['platform']; workspaceId: string; roomId: string;

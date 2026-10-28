@@ -1,29 +1,26 @@
 # Implementation status
 
-Package prepared: 28 October 2026. This file is a starting record, not a claim about the current repository. Update after inspection.
+Updated 2026-10-28. Evidence is software/mock unless explicitly marked live.
 
-| Area | Status |
+| Area | Observed status |
 |---|---|
-| Reviewed product scope | Available: master v0.6 + accepted addendum consolidated. |
-| Actual repository / remote | NOT INSPECTED in this handoff assembly. |
-| Initial preparation commit / push | NOT PERFORMED in this handoff assembly. |
-| Runtime implementation | NOT IMPLEMENTED by this package; inspect existing workspace. |
-| Deterministic product tests | NOT_RUN. |
-| Actual Meta / Discord integration | NOT_RUN. |
-| Live decision / brief demo | NOT_RUN. |
-| Naturalness / baseline comparison | NOT_RUN. |
-| Deployment / public submission | NOT PERFORMED. |
+| Baseline/provenance | PASS: workspace held handoff only, no old Git/source imported; references/private context ignored. |
+| Local core and SQLite | Implemented: explicit invocation, scope/dedup/pause/budget, traces, immutable sources, approved decisions and transactionally saved briefs. No execution capability. |
+| Typecheck/build | PASS on Node 24.21.0/npm 11.19.0. |
+| Deterministic tests | PASS: 63 offline tests; includes HTTP mocks, fake adapters, real temporary SQLite and launcher checks. |
+| Approval negative control | PASS: removing the role gate in an expendable copy caused exactly the intended test failure. |
+| Offline complete flow/CLI | PASS: newly approved synthetic decision, source/log analysis with MOCK provider, confirmed saved brief, wrong actor, duplicate, restart, lock and temporary-data deletion checks. |
+| Discord adapter | Implemented/compiled; real bot interactions NOT_RUN. |
+| Meta adapter | Official Standard model/Responses protocol implemented; mocked HTTP tested; actual entitlement/requests/usage BLOCKED. |
+| Infisical Windows CLI | PASS: official 0.44.10 winget install/hash check, auto vault metadata and synthetic native credential-store probe. |
+| Infisical account/2FA/project/injection | BLOCKED pending owner's browser account/login, project link and manually entered rotated secrets/IDs/allowance. Browser login launched; no secret values read/displayed/exported. |
+| Jev/OpenAI | Disabled: no integrations; live child forwards only the Meta/Discord app allowlist. |
+| Plaintext migration | No known plaintext credential files found in workspace; no files/keys deleted. Actual vault migration NOT completed yet. |
+| GitHub publication | Exact target initially 404; local d2vei authentication is now verified. No push at this update; scan/commit/publication pending. |
+| Frozen model evaluation/baseline | NOT_RUN. No quality, naturalness, proactive timing or advantage claim. |
+| Live decision + brief demonstration | BLOCKED on real Discord/Meta setup; mock checks do not pass this gate. |
+| Deployment/video/final submission | NOT_RUN; not release complete. |
 
-## Inspection update - 2026-10-28
+Commits so far: `ba85d6c` preparation; `fe6f30d` scoped core/Meta; `dd69f38` decisions; `e3c5ee5` evidence/briefs. Later commits and exact push results are in WORKLOG.
 
-Workspace contained only the extracted handoff; no existing repository or application. A new local main branch is being prepared. Reference files remain ignored. Node v24.21.0 and Git 2.55.0 are installed. Use `npm.cmd` on this Windows host because the PowerShell npm shim is blocked by execution policy. Git requires a process-only safe.directory option for the sandbox identity; no global trust setting is changed.
-
-GitHub connector login: d2vei. Exact target search returned 422 (missing or inaccessible); gh and gitleaks are not installed on PATH. No push performed. No root .env or configured META_/DISCORD_ environment variables were found. Live provider/Discord/evaluation/release gates remain BLOCKED/NOT_RUN.
-
-Next: preparation commit, offline first slice, then live checks if privately configured access and allowance become available.
-
-M0 preparation commit: `ba85d6c`. M1 local core/provider slice passes typecheck, build and 20 deterministic/mock-HTTP tests. This does not pass the live Discord/Meta exit gate. No real inference, Discord send, deployment or model-quality evaluation has run. Next: persistent proposals and confirmation gates, selected evidence and real adapter wiring.
-
-M1 commit: `fe6f30d`. M2 local decision flow passes 32 deterministic tests and a role-gate mutation negative control. Decisions can be proposed, approved through a bound token, recalled, revised/cancelled while pending and withdrawn with text removal. Live M1/M2 gates remain BLOCKED. Next: sources, briefs and Discord adapter/CLI.
-
-M2 commit: `dd69f38`. M3 local source/brief slice passes typecheck/build, 48 deterministic tests and the mutation control. Saved briefs persist across restart, citations are bound to selected evidence and acceptance never executes work. Live M1-M3 remain BLOCKED. Evaluation, public repository, deployment and captioned demo are NOT_RUN. Next: wire Discord and runnable operator/offline commands.
+Next offline check: `npm.cmd run demo:offline`. Manual secret setup and fixed live commands: [SECRETS.md](SECRETS.md). After account setup: `npm.cmd run vault:status`, `npm.cmd run vault:link -- PROJECT-UUID`, `npm.cmd run vault:check`, then the documented bot setup/smoke sequence. No .env file is needed or auto-loaded.

@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { ProjectConfigSchema, ProposalBodySchema, approver, eligible, digest, type ContextItem, type ProjectConfig, type Proposal, type ProposalBody, type ProposalCard, type RequestEvent, type SavedDecision, type SavedBrief, type SavedRecord, type Usage } from './domain.js';
 import { sourceContext, type Source } from './sources.js';
 
-export type Trace = { eventKey: string; at: number; result: string; model: string; mode: string; prompt: string; config: string; sources: string[]; requestId?: string | null; usage?: Usage | null };
+export type Trace = { eventKey: string; at: number; result: string; model: string; mode: string; prompt: string; config: string; sources: string[]; requestId?: string | null; usage?: Usage | null; reservationId?: string; outcome?: 'response' | 'busy' | 'context_too_large' | 'budget_blocked' | 'invalid_or_unavailable' };
 export class Store {
   readonly db: DatabaseSync;
   constructor(path: string) {
@@ -136,5 +136,27 @@ export class Store {
       if (id.startsWith('proposal:')) { const p = this.proposal(id.slice('proposal:'.length)); return !!p && p.projectId === projectId && p.state === 'awaiting_approval' && p.expiresAt > now && digest(p) === identity; }
       return sourceContext(this.sources(projectId), config, '', now, 100).some(c => c.kind !== 'missing_evidence' && c.id === id && c.identity === identity);
     });
+  }
+  invalidateOrigin(projectId: string, roomId: string, messageId: string) {
+    const config = this.config(projectId); if (!config || config.roomId !== roomId) return;
+    this.transaction(() => {
+      const rows = this.db.prepare('SELECT json FROM proposals WHERE project=?').all(projectId);
+      for (const row of rows) {
+        const p = JSON.parse(row.json as string) as Proposal; if (p.origin.messageId !== messageId) continue;
+        if (p.body.kind === 'decision') {
+          const tombstone = { id: p.id, status: 'withdrawn', priorHash: digest(p), reason: 'origin_changed_or_deleted', version: p.version + 1 };
+          this.db.prepare('UPDATE decisions SET status=?, json=? WHERE id=? AND project=?').run('withdrawn', JSON.stringify(tombstone), p.id, projectId);
+        } else this.db.prepare('DELETE FROM briefs WHERE id=? AND project=?').run(p.id, projectId);
+        this.db.prepare('DELETE FROM proposals WHERE id=? AND project=?').run(p.id, projectId);
+      }
+    });
+  }
+  purgeProject(projectId: string) {
+    this.transaction(() => {
+      for (const table of ['sources', 'proposals', 'decisions', 'briefs']) this.db.prepare(`DELETE FROM ${table} WHERE project=?`).run(projectId);
+      const config = this.config(projectId); if (config) this.putConfig({ ...config, paused: true, selectedSnapshot: null });
+    });
+    // Keep the content-free charge ledger so data deletion never resets the spending cap.
+    this.db.exec('PRAGMA wal_checkpoint(TRUNCATE); VACUUM; PRAGMA wal_checkpoint(TRUNCATE);');
   }
 }

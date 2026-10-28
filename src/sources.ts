@@ -12,7 +12,7 @@ export function ingestBundle(store: Store, projectId: string, raw: unknown, now:
     if (/(?:^|[\\/])\.|(?:^|[\\/])(?:credentials|secrets|node_modules)(?:[\\/]|$)|\.(?:env|key|pem|sqlite|db)$/i.test(file.path) || file.path.includes('..') || /[:\\]/.test(file.path)) throw new Error('Source path not permitted');
     if (/(?:api[_-]?key|password|secret|token)\s*[:=]\s*["'][^"']{8,}["']|-----BEGIN .*PRIVATE KEY-----/i.test(file.text)) throw new Error('Secret-shaped code field; provide a sanitized snapshot');
     const lines = file.text.split(/\r?\n/); if (lines.length > 150) throw new Error('Select at most 150 lines per file');
-    result.push({ id: `code:${bundle.snapshot}:${file.path}`, projectId, roomId: config.roomId, snapshot: bundle.snapshot, kind: 'code', label: `${file.path}@${bundle.snapshot}:L1-L${lines.length} (${bundle.synthetic ? 'seeded synthetic' : 'supplied snapshot'}; inspected, not executed)`, text: lines.map((s, i) => `${i + 1}: ${s}`).join('\n'), contentHash: digest(file.text), synthetic: bundle.synthetic, state: 'available', observedAt: null });
+    result.push({ id: `code:${bundle.snapshot}:${digest(file.path).slice(0, 16)}`, projectId, roomId: config.roomId, snapshot: bundle.snapshot, kind: 'code', label: `${file.path}@${bundle.snapshot}:L1-L${lines.length} (${bundle.synthetic ? 'seeded synthetic' : 'supplied snapshot'}; inspected, not executed)`, text: lines.map((s, i) => `${i + 1}: ${s}`).join('\n'), contentHash: digest(file.text), synthetic: bundle.synthetic, state: 'available', observedAt: null });
   }
   for (const event of bundle.logs.filter(e => Date.parse(e.at) >= now - 60 * 60_000 && Date.parse(e.at) <= now).slice(-12)) {
     // The schema strips unknown fields before hashing, storing or prompting; raw log text is never accepted.
@@ -27,7 +27,7 @@ export function sourceContext(sources: Source[], config: ProjectConfig, query: s
   const words = query.toLowerCase().split(/\W+/).filter(w => w.length >= 3);
   const score = (s: Source) => words.reduce((n, w) => n + Number((s.label + s.text).toLowerCase().includes(w)), 0);
   return selected.sort((a, b) => score(b) - score(a)).slice(0, limit).map(s => {
-    const available = s.state === 'available' && (s.observedAt === null || s.observedAt >= now - 60 * 60_000);
+    const available = s.state === 'available' && (s.observedAt === null || (s.observedAt >= now - 60 * 60_000 && s.observedAt <= now));
     return { id: s.id, kind: available ? s.kind : 'missing_evidence', label: available ? s.label : `Source ${s.id} unavailable (${s.state === 'available' ? 'outside log window' : s.state})`, text: available ? s.text : 'Content unavailable. No current support may be inferred.', identity: digest({ source: s, available }) };
   });
 }

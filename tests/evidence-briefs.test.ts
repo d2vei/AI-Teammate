@@ -63,4 +63,15 @@ describe('selected source and confirmed saved brief', () => {
     load(); vi.advanceTimersByTime(61 * 60_000); const context = core.context(e);
     expect(context.filter(c => c.kind === 'log')).toHaveLength(0); expect(JSON.stringify(context)).not.toContain('party_split');
   });
+  it('invalidates an approved decision and duplicate proposal copy after origin deletion', () => {
+    const sourceEvent = { ...e, sourceMessageId: 'message-to-delete' };
+    const p = store.propose(sourceEvent, { kind: 'decision', statement: 'A removable private rule.', sourceIds: [] }, [], Date.now()); store.accept(e, p.buttonId, Date.now());
+    store.invalidateOrigin('p', 'r', 'message-to-delete'); expect(store.decisions('p')).toHaveLength(0); expect(store.proposal(p.proposal.id)).toBeUndefined();
+    expect(JSON.stringify(core.context(e))).not.toContain('removable private rule');
+  });
+  it('purges pilot content while keeping uncertain charged usage and stopping replies', () => {
+    load(); store.reserve(1, 5000); const p = store.propose(e, brief([]), core.context(e), Date.now()); store.accept(e, p.buttonId, Date.now());
+    store.purgeProject('p'); expect(store.briefs('p')).toHaveLength(0); expect(store.sources('p')).toHaveLength(0); expect(store.pending('p')).toHaveLength(0);
+    expect(store.budgetUsed()).toBe(0.005); expect(core.context(e)).toHaveLength(0);
+  });
 });

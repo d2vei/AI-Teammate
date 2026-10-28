@@ -3,17 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24.21.0 <25" },
+  "engines": {
+    "node": ">=24.21.0 <25"
+  },
   "packageManager": "npm@11.19.0",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:mutation": "node scripts/mutation-check.ts",
+    "test:cli": "npm run build && node scripts/check-cli.mjs",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node --env-file-if-exists=.env dist/main.js",
-    "dev": "node --env-file-if-exists=.env --import tsx src/main.ts",
-    "demo:offline": "tsx scripts/offline-demo.ts"
+    "start": "node dist/main.js",
+    "vault:native-check": "node scripts/infisical.mjs native-check",
+    "vault:login": "node scripts/infisical.mjs login",
+    "vault:status": "node scripts/infisical.mjs status",
+    "vault:link": "node scripts/infisical.mjs link",
+    "vault:check": "node scripts/infisical.mjs check",
+    "bot:init": "node scripts/infisical.mjs init",
+    "bot:seed": "node scripts/infisical.mjs seed",
+    "bot:register": "node scripts/infisical.mjs register",
+    "bot:live": "node scripts/infisical.mjs bot",
+    "smoke:live": "node scripts/infisical.mjs smoke",
+    "dev": "npm run build && npm start",
+    "demo:offline": "npm run build && node scripts/offline-demo.mjs"
   },
-  "dependencies": { "discord.js": "14.27.0", "zod": "4.6.7" },
-  "devDependencies": { "@types/node": "24.19.2", "tsx": "4.23.15", "typescript": "7.0.2", "vitest": "5.0.5" }
+  "dependencies": {
+    "discord.js": "14.27.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
 }

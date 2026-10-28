@@ -1,0 +1,9 @@
+{
+  "snapshot": "seeded-template-v1",
+  "synthetic": true,
+  "files": [{
+    "path": "party-route.ts",
+    "text": "// Newly authored synthetic demonstration fixture; deliberately may split parties.\nexport function routeParty(members: string[], rooms: string[]) {\n  return members.map((member, index) => ({ member, room: rooms[index % rooms.length] }));\n}\n"
+  }],
+  "logs": [{ "id": "seeded-split-1", "at": "2026-10-28T12:00:00Z", "event": "party_split", "partyId": "synthetic-party", "destinations": ["room-a", "room-b"] }]
+}
