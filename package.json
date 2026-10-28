@@ -23,7 +23,8 @@
     "eval:offline": "npm run build && node scripts/evaluate.mjs --gate-only",
     "eval:live": "node scripts/infisical.mjs eval",
     "dev": "npm run build && npm start",
-    "demo:offline": "npm run build && node scripts/offline-demo.mjs"
+    "demo:offline": "npm run build && node scripts/offline-demo.mjs",
+    "conversation:offline": "npm run build && node scripts/conversation.mjs"
   },
   "dependencies": {
     "discord.js": "14.27.0",
