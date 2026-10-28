@@ -1,0 +1,98 @@
+# Handoff references are for local development/review, not automatic public upload.
+/references/
+*.zip
+.DS_Store
+Thumbs.db
+# Proposed template: review/merge with the real repo; do not blindly overwrite.
+# Secret-bearing env files, including legacy data/bot.env
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+# Credential stores and private key formats
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials*.json
+service-account*.json
+.npmrc
+.netrc
+.aws/
+.ssh/
+# Runtime state and raw recordings/logs
+.local/
+.private/
+data/
+logs/
+raw-logs/
+raw-chats/
+recordings/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.log
+*.dmp
+config/*.local.*
+# Dependencies, builds and local tooling
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.vercel/
+.next/
+dist/
+build/
+coverage/
+.cache/
+.vite/
+*.tsbuildinfo
+playwright-report/
+test-results/
+tests/tmp/
+.worktrees/
+worktrees/
+# Graphs derived from private source; curated public evidence is explicitly exported
+.graphify/
+graphify-out/
+/graph.json
+/graph.html
+/GRAPH_REPORT.md
+# Do not upload raw old archives or a duplicate checkout/history
+/reference/**/*.zip
+/*.zip
+/discord-bot.zip
+/prototype-reference-cleaned/
+# Workstation artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+# Intentionally NOT ignored:
+# src/, prompts/, skills/, migrations/, tests/fixtures/, evals/development/
+# package-lock.json, docs/PRIOR_WORK.md, deliberately sanitized evidence/
+# Legacy source is not part of the active implementation handoff; review origin/permission before any inclusion.
+
+# Private handoff/reference library and source snapshots
+/.handoff/
+/AI_Teammate_Implementation_Handoff/
+/references/
+/snapshots/private/
+
+# Original handoff packet preserved locally
+/START_HERE.md
+/MAIN_PROMPT.md
+/MANIFEST.json
+/PACKAGE_VALIDATION.json
+/repo-config/
+/skills/
+/docs/PROJECT_CONTEXT.md
+/docs/PRIOR_WORK_TEMPLATE.md
+/docs/SOURCE_INDEX.md
+/docs/WORKFLOW_REFERENCE_MAP.md
