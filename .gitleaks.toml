@@ -1,0 +1,15 @@
+title = "AI Teammate publication scan"
+[extend]
+useDefault = true
+
+# Verified false positives: these two JSON values are SHA-256 digests of the
+# named source files, not Discord credentials. Keep the token rule enabled;
+# allow only the exact metadata shape in the single generated manifest.
+[[rules]]
+id = "discord-api-token"
+[[rules.allowlists]]
+description = "Two source-file SHA-256 metadata rows in the frozen runtime manifest"
+condition = "AND"
+paths = ['''^evals/frozen/manifest\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"src/discord(?:-view)?\.ts":\s*"[0-9a-f]{64}",?\s*$''']

@@ -14,9 +14,10 @@ export function childEnvironment(env) {
   return clean;
 }
 export function buildRunArgs(action, root = resolve('.'), node = process.execPath) {
-  const commands = { bot: 'start', smoke: 'smoke-meta', check: 'check', init: 'init', seed: 'seed-demo', register: 'register' };
+  if (['bot', 'init', 'seed', 'register'].includes(action)) throw new Error('Discord is deferred; use the platform-independent local harness');
+  const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate' };
   const command = commands[action]; if (!command) throw new Error('Only fixed bot/setup/live-check actions are allowed');
-  return ['run', '--env=dev', '--path=/ai-teammate', '--include-imports=false', '--recursive=false', '--expand=false', '--secret-overriding=false', '--project-config-dir', root, '--telemetry=false', '--silent', '--profile=ai-teammate', '--domain=https://eu.infisical.com', '--', node, join(root, 'scripts/vault-child.mjs'), command];
+  return ['run', '--env=dev', '--path=/', '--include-imports=false', '--recursive=false', '--expand=false', '--secret-overriding=false', '--project-config-dir', root, '--telemetry=false', '--silent', '--profile=ai-teammate', '--domain=https://eu.infisical.com', '--', node, join(root, 'scripts/vault-child.mjs'), command];
 }
 export function findCli(env = process.env) {
   if (process.platform !== 'win32') throw new Error('This launcher is configured for the verified official Windows CLI');

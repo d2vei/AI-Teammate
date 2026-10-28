@@ -1,5 +1,7 @@
 # Repository, first push and source provenance
 
+Current explicit owner instruction (2026-10-29): use the existing public `https://github.com/d2vei/AI-Teammate`, main. Do not create ai-teammate-hackathon or any other repository. Preserve remote history and all existing commits; no force push. This supersedes the proposed destination recorded in the original handoff below.
+
 ## Existing workspace first
 
 The actual local/remote repository state was not inspected while preparing this package. Before changes, inspect `git status`, branch, remotes, existing source/scripts and any previous commits. Preserve useful work and history. An old downloaded ZIP containing `.git` is not the origin history to import into a newly created event repository.

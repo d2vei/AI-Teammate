@@ -37,7 +37,7 @@ export const ReplySchema = z.object({ answer: z.string().min(1).max(1100), citat
 export type Reply = z.infer<typeof ReplySchema>;
 export type Usage = { inputTokens: number; outputTokens: number };
 export type ProviderResult = { output: unknown; usage: Usage | null; requestId: string | null };
-export interface Provider { readonly mode: 'mock' | 'meta'; readonly model: string; generate(input: ModelInput): Promise<ProviderResult> }
+export interface Provider { readonly mode: 'mock' | 'meta'; readonly model: string; readonly promptVersion?: string; generate(input: ModelInput): Promise<ProviderResult> }
 export type Delivery = { text: string; proposal?: ProposalCard };
 export interface Adapter {
   canDeliver(event: RequestEvent): Promise<boolean>;

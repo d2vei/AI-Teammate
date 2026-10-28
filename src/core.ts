@@ -20,7 +20,7 @@ export class Teammate {
     if (!eligible(config, e) || !await adapter.canDeliver(e) || !this.store.claim(e, this.now())) return;
     const context = this.context(e); const configIdentity = digest(config); const contextIdentity = digest(context);
     let ownProposalId: string | undefined;
-    const trace: Trace = { eventKey: this.store.eventKey(e), at: this.now(), result: 'started', mode: this.provider.mode, model: this.provider.model, prompt: promptVersion, config: configIdentity, sources: context.map(x => x.id) };
+    const trace: Trace = { eventKey: this.store.eventKey(e), at: this.now(), result: 'started', mode: this.provider.mode, model: this.provider.model, prompt: this.provider.promptVersion ?? promptVersion, config: configIdentity, sources: context.map(x => x.id) };
     const current = async () => eligible(this.store.config(e.projectId), e) && digest(this.store.config(e.projectId)) === configIdentity && digest(this.context(e).filter(c => c.id !== ownProposalId)) === contextIdentity && await adapter.canDeliver(e);
     const send = async (text: string, proposal?: import('./domain.js').ProposalCard) => {
       if (!await current()) { trace.result = 'suppressed'; return; }

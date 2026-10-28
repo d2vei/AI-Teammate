@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-28T22:55:33.203Z",
+  "commit": "c1b78c9adc780dbb53f07101dbd0eaba9eb8b856",
+  "frozenRuntimeIdentity": "b75f603a0c52308ab1ec6f183113a8e78a5ae5904e9f7d049dae02303727e2b4",
+  "casesHash": "6eb2478b59f3e57d6c7db6163f963b33dfbfa6a9b3098c80695eae35b2c0a551",
+  "mode": "standard",
+  "model": "muse-spark-1.3",
+  "quiet": [
+    {
+      "id": "F-Q1",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q2",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q3",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q4",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q5",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q6",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q7",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q8",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "deterministic invocation boundary, not social judgment"
+    }
+  ],
+  "liveDiscord": "NOT_RUN",
+  "humanRatings": "NOT_RUN",
+  "status": "INVALID_HARNESS_SUPERSEDED",
+  "evidenceKind": "configuration gate only; zero model calls",
+  "direct": [
+    {
+      "id": "F-D1",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D2",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D3",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D4",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D5",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D6",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D7",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D8",
+      "status": "NOT_RUN"
+    }
+  ],
+  "limitation": "Classified invocation mode without routing the eight cases through the core; replaced before any live trial."
+}

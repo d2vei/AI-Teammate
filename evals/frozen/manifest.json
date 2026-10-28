@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "frozenAt": "2026-10-28T22:54:21.905Z",
+  "candidateBaseCommit": "c1b78c9adc780dbb53f07101dbd0eaba9eb8b856",
+  "dirtyRuntimeIdentity": "eb22634de444dace96988ba60ffa7560a7b4c59d4436097d54632d6c16e9852c",
+  "hashes": {
+    "examples/party-queue.json": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d",
+    "prompts/baseline.md": "91606f59f5e06dbb1be7c380ceb1ffe7b34926cb9b78eb7a85ac4a9641c0d40e",
+    "prompts/response.md": "75bb4b10c7618cef5fcc19a0c7b4f3cf544bf893f503516b9a0d1c1dcb7b028f",
+    "scripts/eval-lib.mjs": "df731f1b9def3ee603182c8c0f9ea3de53401a561659f54be8396f9188558cba",
+    "scripts/evaluate.mjs": "7674e1aca5dd5aa33a8b3b2ac896307f7c00a97ef59f6073620a6272ba5c6833",
+    "src/core.ts": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c",
+    "src/discord-view.ts": "63427e97bd0ff70a256206636c24856b7f73b4f54ff133fa5456b54475e88671",
+    "src/discord.ts": "301c5fa0447bbb944ee4e80b4eba969c2ce434ff14b8510b4897d43fcc44278b",
+    "src/domain.ts": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88",
+    "src/fakes.ts": "6bfa8c17ee5b7bb4a1f0ea18b28988b531c0fc6a1ea1f3c864b2f2c887e6bc81",
+    "src/main.ts": "6327e5fdac92bd7fc4eb95439cebcece0674ec07aafe219a7f288903c5bf4e7f",
+    "src/meta.ts": "47b0f35c74bbf09f127f76da924b726fec05353d4246f35e59a24420a8b95840",
+    "src/prompt.ts": "7ff0e93ef1f5401678df9827c83da84c387621e3522388ea95b9ba1969503777",
+    "src/runtime-config.ts": "f786ca61fb2cd2c0103c4c7f831a223b95fe793e746c126944f7fc9509fc6ec1",
+    "src/sources.ts": "0197aee64c0aac3baada8cc0a33cb7b65c3071f73927ba045215af5e2bad13fd",
+    "src/store.ts": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+  },
+  "model": "muse-spark-1.3",
+  "mode": "standard",
+  "maxOutputTokens": 2048,
+  "freshCasesAuthored": false,
+  "status": "FROZEN_RUNTIME_NOT_EVALUATED",
+  "limits": "Quiet gate checks configuration silence only. Live paired responses require manual semantic ratings; no full Discord task superiority claim.",
+  "harnessCorrection": {
+    "at": "2026-10-28T22:56:47.007Z",
+    "priorEvaluatorHash": "d333019e167acde3f0117ffd13b8a373532923674f7e756bcad43d54c541ca2f",
+    "reason": "Route eight quiet cases through actual core and observe zero provider calls/deliveries; no runtime/provider/prompt/config/fixture change and no live trial occurred."
+  }
+}

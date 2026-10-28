@@ -19,11 +19,9 @@
     "vault:status": "node scripts/infisical.mjs status",
     "vault:link": "node scripts/infisical.mjs link",
     "vault:check": "node scripts/infisical.mjs check",
-    "bot:init": "node scripts/infisical.mjs init",
-    "bot:seed": "node scripts/infisical.mjs seed",
-    "bot:register": "node scripts/infisical.mjs register",
-    "bot:live": "node scripts/infisical.mjs bot",
     "smoke:live": "node scripts/infisical.mjs smoke",
+    "eval:offline": "npm run build && node scripts/evaluate.mjs --gate-only",
+    "eval:live": "node scripts/infisical.mjs eval",
     "dev": "npm run build && npm start",
     "demo:offline": "npm run build && node scripts/offline-demo.mjs"
   },

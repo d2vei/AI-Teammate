@@ -1,5 +1,11 @@
 # Local Infisical setup
 
+Current phase, 2026-10-29: the owner has placed `META_API_KEY` in the existing **Ai-Teammate** project, **Development** (`dev`) environment. Use that project; the current key-presence check and smoke need **only META_API_KEY**, not Discord credentials/IDs or a new account/project. The fixed launcher currently selects the project root folder `/` without imports or recursive fetching. Discord actions are deferred and rejected by the launcher. The earlier complete-bot setup below is a future reference, not a current requirement.
+
+Current sequence: `npm run vault:login`, `npm run vault:link -- EXISTING-PROJECT-UUID`, `npm run build`, `npm run vault:check`, then `npm run smoke:live`. The key-presence check prints a boolean/name result only and makes no provider call. The smoke uses one real Muse Spark request through the core and a fake local adapter, with synthetic evidence and a preserved one-attempt record. It does not require or contact Discord.
+
+The owner authorized **EUR 5 total** for Meta testing on 2026-10-29, requiring permission above that. Meta prices in USD. The local cumulative ceiling is USD 5, below EUR 5 using the [ECB 2026-10-28 EUR/USD reference rate of 1.1133](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html), with approximately 10 percent FX headroom. Reported/uncertain charges share the durable SQLite ledger. This does not assert a remaining provider credit balance or a provider-enforced billing cap.
+
 Secrets are injected by the official Windows CLI into fixed bot/setup/live-check processes. The coding agent is never a child of `infisical run`. Offline installation, typecheck, tests, mutation check, CLI checks and the scripted demo require no account, vault or real key.
 
 ## Verified installation and storage boundary
@@ -49,7 +55,7 @@ npm run build
 npm run vault:check
 ```
 
-`vault:check` prints only required-name/configuration status, never values. It is not a provider or Discord connectivity test. The launcher fetches only `dev` `/ai-teammate`, disables imports, recursion, expansion and personal secret overrides, and forwards only the app's allowlisted variables into Node. OpenAI/Jev keys, Infisical tokens and Node preload variables are not forwarded.
+`vault:check` prints only required-name/configuration status, never values. It is not a provider or Discord connectivity test. The launcher fetches only `dev` `/ai-teammate`, disables imports, recursion, expansion and personal secret overrides, and forwards only the app's allowlisted variables into Node. The injected child checks the native backend again before forwarding credentials to the app, so it does not wait for a long-running bot to exit before noticing an upstream fallback. OpenAI/Jev keys, Infisical tokens and Node preload variables are not forwarded.
 
 ```sh
 npm run bot:init
@@ -58,6 +64,8 @@ npm run bot:register
 npm run smoke:live
 npm run bot:live
 ```
+
+The frozen synthetic paired-response evaluation is a separate optional live command, `npm run eval:live`; it uses the same locked spending ledger and can make up to sixteen sequential Meta calls. Run only after the smoke gate and within the dashboard's authorized available allowance. See `evals/frozen/README.md`. Its local `npm run eval:offline` counterpart makes zero model calls.
 
 `bot:init` initializes the persistent configured project, once. `bot:seed` creates and selects a labelled synthetic code/log snapshot with no pre-approved decision. `bot:register` registers the named guild commands. `smoke:live` performs one budgeted synthetic Meta request without Discord delivery. `bot:live` starts the real bot. Each wrapper invokes `infisical run -- ... node scripts/vault-child.mjs FIXED-ACTION`; no arbitrary command, shell or coding agent is accepted. Run the service on the host where the OS login and durable state are available.
 

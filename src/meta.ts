@@ -1,11 +1,13 @@
 import { z } from 'zod';
-import type { ModelInput, Provider, ProviderResult } from './domain.js';
+import { digest, type ModelInput, type Provider, type ProviderResult } from './domain.js';
 import { instructions } from './prompt.js';
 
 const UsageSchema = z.object({ input_tokens: z.number().int().nonnegative().max(2_000_000), output_tokens: z.number().int().nonnegative().max(200_000) });
 export class MetaProvider implements Provider {
   readonly mode = 'meta' as const; readonly model = 'muse-spark-1.3';
-  constructor(private readonly key: string, private readonly http: typeof fetch = fetch) { if (!key) throw new Error('META_API_KEY is missing'); }
+  constructor(private readonly key: string, private readonly http: typeof fetch = fetch, private readonly prompt = instructions) { if (!key) throw new Error('META_API_KEY is missing'); }
+  get promptVersion() { return digest(this.prompt); }
+  withPrompt(prompt: string): MetaProvider { return new MetaProvider(this.key, this.http, prompt); }
   async checkAccess(): Promise<void> {
     const response = await this.http('https://api.meta.ai/v1/models', { headers: { Authorization: `Bearer ${this.key}` }, signal: AbortSignal.timeout(15000), redirect: 'error' });
     if (!response.ok) throw new Error('Meta model access check failed');
@@ -15,7 +17,7 @@ export class MetaProvider implements Provider {
   async generate(input: ModelInput): Promise<ProviderResult> {
     const response = await this.http('https://api.meta.ai/v1/responses', {
       method: 'POST', headers: { Authorization: `Bearer ${this.key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: this.model, instructions, input: JSON.stringify(input), store: false, max_output_tokens: 2048 }),
+      body: JSON.stringify({ model: this.model, instructions: this.prompt, input: JSON.stringify(input), store: false, max_output_tokens: 2048 }),
       signal: AbortSignal.timeout(45000), redirect: 'error',
     });
     if (!response.ok || !response.body) throw new Error('Meta request failed; charge unknown');

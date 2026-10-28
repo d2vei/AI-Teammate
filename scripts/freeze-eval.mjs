@@ -1,0 +1,12 @@
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { resolve } from 'node:path';
+const path = 'evals/frozen/manifest.json'; if (existsSync(path)) throw new Error('Freeze already exists; preserve it and create a separately versioned evaluation after a material prompt change');
+const files = [...readdirSync('src').filter(f => f.endsWith('.ts')).map(f => `src/${f}`), 'prompts/response.md', 'prompts/baseline.md', 'examples/party-queue.json', 'scripts/eval-lib.mjs', 'scripts/evaluate.mjs'].sort();
+const hash = data => createHash('sha256').update(data).digest('hex');
+const hashes = Object.fromEntries(files.map(f => [f, hash(readFileSync(f))]));
+const commit = execFileSync('git', ['-c', `safe.directory=${resolve('.').replaceAll('\\', '/')}`, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+mkdirSync('evals/frozen', { recursive: true });
+writeFileSync(path, JSON.stringify({ version: 1, frozenAt: new Date().toISOString(), candidateBaseCommit: commit, dirtyRuntimeIdentity: hash(JSON.stringify(hashes)), hashes, model: 'muse-spark-1.3', mode: 'standard', maxOutputTokens: 2048, freshCasesAuthored: false, status: 'FROZEN_RUNTIME_NOT_EVALUATED', limits: 'Quiet gate checks configuration silence only. Live paired responses require manual semantic ratings; no full Discord task superiority claim.' }, null, 2) + '\n');
+console.log('Runtime/prompts frozen before authoring fresh cases; no model calls made.');
