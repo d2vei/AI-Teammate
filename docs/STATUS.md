@@ -16,7 +16,7 @@ Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Cur
 | Infisical account/project/injection | PASS: browser login completed on EU Cloud with keyring session; linked existing Ai-Teammate / Development. META_API_KEY name is injected but its shared value is empty: credential availability BLOCKED pending owner correction. No value displayed/exported. No Discord prerequisite. |
 | Jev/OpenAI | Disabled: no integrations; live child forwards only the Meta/Discord app allowlist. |
 | Plaintext migration | No known plaintext credential files found in workspace; no files/keys deleted. Actual vault migration NOT completed yet. |
-| GitHub publication | PASS: reviewed commits and correction a06f969 pushed normally to existing public d2vei/AI-Teammate main after secret/history checks. No pre-existing remote refs, force push, rewrite or other repository creation. Hosted Linux CI for a06f969 PASS; first 1718e0f run failed on the omitted stale test and is retained. |
+| GitHub publication | PASS: local harness commit 38c8c8b pushed normally to existing public d2vei/AI-Teammate main after secret/history checks; remote SHA verified. No force push, rewrite or other repository creation. Hosted Linux CI for 38c8c8b PASS (71 tests + checks); first 1718e0f failure is retained alongside its ordinary fix. |
 | Frozen model evaluation/baseline | NOT_RUN. No quality, naturalness, proactive timing or advantage claim. |
 | Live decision + brief demonstration | BLOCKED on real Discord/Meta setup; mock checks do not pass this gate. |
 | Deployment/video/final submission | NOT_RUN; not release complete. |
