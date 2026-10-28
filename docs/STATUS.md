@@ -23,3 +23,5 @@ GitHub connector login: d2vei. Exact target search returned 422 (missing or inac
 Next: preparation commit, offline first slice, then live checks if privately configured access and allowance become available.
 
 M0 preparation commit: `ba85d6c`. M1 local core/provider slice passes typecheck, build and 20 deterministic/mock-HTTP tests. This does not pass the live Discord/Meta exit gate. No real inference, Discord send, deployment or model-quality evaluation has run. Next: persistent proposals and confirmation gates, selected evidence and real adapter wiring.
+
+M1 commit: `fe6f30d`. M2 local decision flow passes 32 deterministic tests and a role-gate mutation negative control. Decisions can be proposed, approved through a bound token, recalled, revised/cancelled while pending and withdrawn with text removal. Live M1/M2 gates remain BLOCKED. Next: sources, briefs and Discord adapter/CLI.

@@ -8,6 +8,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:mutation": "node scripts/mutation-check.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node --env-file-if-exists=.env dist/main.js",
     "dev": "node --env-file-if-exists=.env --import tsx src/main.ts",

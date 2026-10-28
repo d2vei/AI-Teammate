@@ -33,3 +33,12 @@ Record actual work in the target repository. Preparation of this packet is not a
 - `npm.cmd run typecheck`, `npm.cmd test -- --reporter=dot`, `npm.cmd run build`: PASS, 20 deterministic tests (including 4 mocked-HTTP provider cases). Config and uncertain charges survive a real SQLite file restart. Mock usage is zero because mocks are free; no assertion of zero live cost.
 - Downloaded official Gitleaks 8.30.1 into ignored .local/tools and verified archive SHA-256 against release checksums. No global install. History/publication scan to be recorded before commit/push.
 - Discord adapter not connected yet; live M1 remains BLOCKED. CLI start/demo scripts are not yet implemented or verified. Next: conversation proposals and version-bound acceptance, then complete Discord rendering.
+
+## 2026-10-28 - M2 local decisions
+
+- M1 commit: `fe6f30d`. Gitleaks 8.30.1 history and staged scans found no leaks; this is scanner evidence, not proof all secrets are absent. No push.
+- New approval tests first failed (12 cases: proposal methods absent / no card). Implemented persistent conversation drafts, cryptographically bound versioned buttons, current member+approver-ID+configured-role checks, project/platform/workspace/room/config/snapshot/expiry binding, atomic/idempotent acceptance, revision, cancellation and text-erasing withdrawal.
+- Tests caught two real implementation defects: acceptance state incorrectly changed the immutable token; creating a pending card invalidated its own send-time context check. Corrected both without relaxing expectations.
+- `npm.cmd run typecheck`, `npm.cmd test -- --reporter=dot`: PASS, 32 tests. `npm.cmd run build`: PASS before final harness-only changes.
+- `npm.cmd run test:mutation`: PASS negative control. In an ignored expendable copy only, removed the role authority check; exactly the wrong-role case failed. Authoritative application/tests unchanged. Initial runner attempts failed due sandbox tsx userInfo and Vitest 5 JSON output location; switched this development script to native Node and an explicit report file, then verified the actual failed assertion. These initial harness errors were not counted as a successful mutation.
+- Proposal/decision persistence is local SQLite; no real Discord interaction or Meta reasoning result. Live M2 remains BLOCKED. Next: selected source/log retrieval and saved briefs.

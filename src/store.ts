@@ -1,6 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
-import { ProjectConfigSchema, digest, type ProjectConfig, type RequestEvent, type Usage } from './domain.js';
+import { ProjectConfigSchema, ProposalBodySchema, approver, eligible, digest, type ContextItem, type ProjectConfig, type Proposal, type ProposalBody, type ProposalCard, type RequestEvent, type SavedDecision, type Usage } from './domain.js';
 
 export type Trace = { eventKey: string; at: number; result: string; model: string; mode: string; prompt: string; config: string; sources: string[]; requestId?: string | null; usage?: Usage | null };
 export class Store {
@@ -11,7 +11,9 @@ export class Store {
       CREATE TABLE IF NOT EXISTS events (id TEXT PRIMARY KEY, at INTEGER NOT NULL);
       CREATE TABLE IF NOT EXISTS charges (id TEXT PRIMARY KEY, micros INTEGER NOT NULL, state TEXT NOT NULL, usage TEXT);
       CREATE TABLE IF NOT EXISTS traces (id INTEGER PRIMARY KEY, json TEXT NOT NULL);
-      PRAGMA user_version=1;`);
+      CREATE TABLE IF NOT EXISTS proposals (id TEXT PRIMARY KEY, project TEXT NOT NULL, json TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS decisions (id TEXT PRIMARY KEY, project TEXT NOT NULL, status TEXT NOT NULL, json TEXT NOT NULL);
+      PRAGMA user_version=2;`);
   }
   close() { this.db.close(); }
   transaction<T>(fn: () => T): T {
@@ -46,4 +48,58 @@ export class Store {
   }
   trace(trace: Trace) { this.db.prepare('INSERT INTO traces(json) VALUES (?)').run(JSON.stringify(trace)); }
   traces(): Trace[] { return this.db.prepare('SELECT json FROM traces ORDER BY id').all().map(row => JSON.parse(row.json as string) as Trace); }
+  proposal(id: string): Proposal | undefined { const row = this.db.prepare('SELECT json FROM proposals WHERE id=?').get(id); return row ? JSON.parse(row.json as string) as Proposal : undefined; }
+  private putProposal(p: Proposal) { this.db.prepare('INSERT INTO proposals VALUES (?, ?, ?) ON CONFLICT(id) DO UPDATE SET json=excluded.json').run(p.id, p.projectId, JSON.stringify(p)); }
+  card(p: Proposal): ProposalCard { const { state: _state, ...binding } = p; return { proposal: p, buttonId: `accept:${p.id}:${p.version}:${digest(binding).slice(0, 20)}` }; }
+  propose(e: RequestEvent, body: ProposalBody, context: ContextItem[], now: number): ProposalCard {
+    const config = this.config(e.projectId); if (!eligible(config, e)) throw new Error('Not authorized');
+    const parsed = ProposalBodySchema.parse(body);
+    if (parsed.sourceIds.some(id => !context.some(c => c.id === id))) throw new Error('Invalid proposal source');
+    const sourceBindings = Object.fromEntries(parsed.sourceIds.map(id => [id, context.find(c => c.id === id)!.identity]));
+    const p: Proposal = { id: randomUUID(), projectId: e.projectId, platform: e.platform, workspaceId: e.workspaceId, roomId: e.roomId, proposerId: e.actor.id, approverIds: config.approverIds, origin: { id: e.id, version: e.version, messageId: e.sourceMessageId ?? null }, body: parsed, version: 1, createdAt: now, expiresAt: now + 15 * 60_000, state: 'awaiting_approval', configIdentity: digest(config), targetSnapshot: config.selectedSnapshot, sourceBindings };
+    this.putProposal(p); return this.card(p);
+  }
+  pending(projectId: string): Proposal[] { return this.db.prepare('SELECT json FROM proposals WHERE project=?').all(projectId).map(row => JSON.parse(row.json as string) as Proposal).filter(p => p.state === 'awaiting_approval'); }
+  accept(e: RequestEvent, buttonId: string, now: number): SavedDecision {
+    return this.transaction(() => {
+      const p = this.proposal(buttonId.split(':')[1] ?? ''); const c = this.config(e.projectId);
+      // APPROVAL_AUTHORITY_GATE: negative-control test mutates this single gate in an expendable copy.
+      if (!p || !eligible(c, e) || !approver(c, e.actor) || !p.approverIds.includes(e.actor.id) || p.projectId !== e.projectId || p.roomId !== e.roomId || p.workspaceId !== e.workspaceId || p.platform !== e.platform) throw new Error('Not authorized');
+      if (this.card(p).buttonId !== buttonId) throw new Error('Proposal changed; request a new card');
+      if (p.state === 'cancelled') throw new Error('Proposal cancelled');
+      if (p.state === 'accepted') {
+        const existing = this.decisions(p.projectId).find(d => d.id === p.id);
+        if (!existing) throw new Error('Record withdrawn or unavailable'); return existing;
+      }
+      if (p.expiresAt <= now) throw new Error('Proposal expired; request a new card');
+      if (digest(c) !== p.configIdentity || c.selectedSnapshot !== p.targetSnapshot) throw new Error('Configuration or source target changed');
+      const record: SavedDecision = { ...p.body, id: p.id, projectId: p.projectId, proposerId: p.proposerId, approverId: e.actor.id, origin: p.origin, status: 'approved', version: p.version, savedAt: now, snapshot: p.targetSnapshot, sourceBindings: p.sourceBindings };
+      this.db.prepare('INSERT INTO decisions VALUES (?, ?, ?, ?)').run(record.id, record.projectId, 'approved', JSON.stringify(record));
+      p.state = 'accepted'; this.putProposal(p); return record;
+    });
+  }
+  revise(e: RequestEvent, id: string, body: ProposalBody, now: number): ProposalCard {
+    const p = this.proposal(id); const c = this.config(e.projectId);
+    if (!p || !eligible(c, e) || p.projectId !== e.projectId || (p.proposerId !== e.actor.id && !approver(c, e.actor)) || p.state !== 'awaiting_approval') throw new Error('Not authorized');
+    if (body.sourceIds.length > 0) throw new Error('Source revision requires a new proposal');
+    p.body = ProposalBodySchema.parse(body); p.version++; p.expiresAt = now + 15 * 60_000; p.configIdentity = digest(c); p.targetSnapshot = c.selectedSnapshot; p.sourceBindings = {}; this.putProposal(p); return this.card(p);
+  }
+  cancel(e: RequestEvent, id: string) {
+    const p = this.proposal(id); const c = this.config(e.projectId);
+    if (!p || !eligible(c, e) || p.projectId !== e.projectId || (p.proposerId !== e.actor.id && !approver(c, e.actor)) || p.state !== 'awaiting_approval') throw new Error('Not authorized');
+    p.state = 'cancelled'; this.putProposal(p);
+  }
+  decisions(projectId: string): SavedDecision[] { return this.db.prepare("SELECT json FROM decisions WHERE project=? AND status='approved' ORDER BY rowid DESC LIMIT 20").all(projectId).map(row => JSON.parse(row.json as string) as SavedDecision); }
+  tombstones(projectId: string): { id: string; statement?: string }[] { return this.db.prepare("SELECT json FROM decisions WHERE project=? AND status='withdrawn'").all(projectId).map(row => JSON.parse(row.json as string)); }
+  withdraw(e: RequestEvent, id: string) {
+    const c = this.config(e.projectId); if (!eligible(c, e) || !approver(c, e.actor)) throw new Error('Not authorized');
+    this.transaction(() => {
+      const row = this.db.prepare('SELECT json FROM decisions WHERE id=? AND project=?').get(id, e.projectId); if (!row) throw new Error('Decision unavailable');
+      const original = JSON.parse(row.json as string) as SavedDecision;
+      const tombstone = { id, status: 'withdrawn', priorHash: digest(original), withdrawnBy: e.actor.id, version: original.version + 1 };
+      this.db.prepare('UPDATE decisions SET status=?, json=? WHERE id=?').run('withdrawn', JSON.stringify(tombstone), id);
+      // Erase duplicate retained proposal text along with the authoritative record.
+      this.db.prepare('DELETE FROM proposals WHERE id=?').run(id);
+    });
+  }
 }
