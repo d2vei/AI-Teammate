@@ -21,3 +21,5 @@ Workspace contained only the extracted handoff; no existing repository or applic
 GitHub connector login: d2vei. Exact target search returned 422 (missing or inaccessible); gh and gitleaks are not installed on PATH. No push performed. No root .env or configured META_/DISCORD_ environment variables were found. Live provider/Discord/evaluation/release gates remain BLOCKED/NOT_RUN.
 
 Next: preparation commit, offline first slice, then live checks if privately configured access and allowance become available.
+
+M0 preparation commit: `ba85d6c`. M1 local core/provider slice passes typecheck, build and 20 deterministic/mock-HTTP tests. This does not pass the live Discord/Meta exit gate. No real inference, Discord send, deployment or model-quality evaluation has run. Next: persistent proposals and confirmation gates, selected evidence and real adapter wiring.
