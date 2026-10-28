@@ -1,6 +1,7 @@
 import { ReplySchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
 import { promptVersion, instructions } from './prompt.js';
 import { Store, type Trace } from './store.js';
+import { sourceContext } from './sources.js';
 
 export class Teammate {
   private active = false;
@@ -8,8 +9,10 @@ export class Teammate {
   context(event: RequestEvent): ContextItem[] {
     const config = this.store.config(event.projectId); if (!eligible(config, event)) return [];
     return [
-      ...this.store.decisions(event.projectId).slice(0, 8).map(d => ({ id: `decision:${d.id}`, kind: 'approved_decision', label: `Approved v${d.version} by ${d.approverId}; source event ${d.origin.id}; snapshot ${d.snapshot ?? 'none'}`, text: d.statement, identity: digest(d) })),
-      ...this.store.pending(event.projectId).filter(p => p.expiresAt > this.now()).slice(0, 4).map(p => ({ id: `proposal:${p.id}`, kind: 'proposed_decision', label: `Unapproved v${p.version}; proposer ${p.proposerId}`, text: p.body.statement, identity: digest(p) })),
+      ...this.store.decisions(event.projectId).slice(0, 8).map(d => ({ id: `decision:${d.id}`, kind: this.store.bindingsValid(event.projectId, d.sourceBindings, this.now()) ? 'approved_decision' : 'missing_evidence', label: `Approved v${d.version} by ${d.approverId}; source event ${d.origin.id}; snapshot ${d.snapshot ?? 'none'}`, text: this.store.bindingsValid(event.projectId, d.sourceBindings, this.now()) ? d.statement : 'Decision evidence unavailable; statement withheld.', identity: digest(d) })),
+      ...this.store.briefs(event.projectId).slice(0, 3).map(b => ({ id: `brief:${b.id}`, kind: 'saved_brief', label: `Brief saved, not executed; approved by ${b.approverId}; snapshot ${b.snapshot ?? 'none'} (may be older than selection)`, text: this.store.bindingsValid(event.projectId, b.sourceBindings, this.now()) ? JSON.stringify({ objective: b.objective, decisionIds: b.decisionIds, sourceIds: b.sourceIds, hypothesis: b.hypothesis, nextCheck: b.nextCheck, exclusions: b.exclusions }) : 'Brief evidence unavailable; contents withheld.', identity: digest(b) })),
+      ...this.store.pending(event.projectId).filter(p => p.expiresAt > this.now()).slice(0, 4).map(p => ({ id: `proposal:${p.id}`, kind: `proposed_${p.body.kind}`, label: `Unapproved v${p.version}; proposer ${p.proposerId}`, text: p.body.kind === 'decision' ? p.body.statement : p.body.objective, identity: digest(p) })),
+      ...sourceContext(this.store.sources(event.projectId), config, event.text, this.now()),
     ];
   }
   async handle(e: RequestEvent, adapter: Adapter): Promise<void> {

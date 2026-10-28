@@ -18,7 +18,9 @@ export type RequestEvent = {
 };
 export type ContextItem = { id: string; kind: string; label: string; text: string; identity: string };
 export type ModelInput = { event: Pick<RequestEvent, 'id' | 'version' | 'actor' | 'replyTo'>; question: string; reply: RequestEvent['replyContext']; context: ContextItem[] };
-export const ProposalBodySchema = z.object({ kind: z.literal('decision'), statement: z.string().min(3).max(800), sourceIds: z.array(id).max(12) }).strict();
+export const DecisionBodySchema = z.object({ kind: z.literal('decision'), statement: z.string().min(3).max(800), sourceIds: z.array(id).max(12) }).strict();
+export const BriefBodySchema = z.object({ kind: z.literal('brief'), objective: z.string().min(3).max(300), decisionIds: z.array(id).max(6), sourceIds: z.array(id).max(12), hypothesis: z.string().min(1).max(400), nextCheck: z.string().min(3).max(500), exclusions: z.array(z.string().min(1).max(200)).min(1).max(4) }).strict();
+export const ProposalBodySchema = z.discriminatedUnion('kind', [DecisionBodySchema, BriefBodySchema]);
 export type ProposalBody = z.infer<typeof ProposalBodySchema>;
 export type Proposal = {
   id: string; projectId: string; platform: ProjectConfig['platform']; workspaceId: string; roomId: string;
@@ -26,7 +28,10 @@ export type Proposal = {
   body: ProposalBody; version: number; expiresAt: number; createdAt: number; state: 'awaiting_approval' | 'accepted' | 'cancelled';
   configIdentity: string; targetSnapshot: string | null; sourceBindings: Record<string, string>;
 };
-export type SavedDecision = ProposalBody & { id: string; projectId: string; proposerId: string; approverId: string; origin: Proposal['origin']; status: 'approved'; version: number; savedAt: number; snapshot: string | null; sourceBindings: Record<string, string> };
+type SavedMetadata = { id: string; projectId: string; proposerId: string; approverId: string; origin: Proposal['origin']; version: number; savedAt: number; snapshot: string | null; sourceBindings: Record<string, string> };
+export type SavedDecision = z.infer<typeof DecisionBodySchema> & SavedMetadata & { status: 'approved' };
+export type SavedBrief = z.infer<typeof BriefBodySchema> & SavedMetadata & { status: 'saved' };
+export type SavedRecord = SavedDecision | SavedBrief;
 export type ProposalCard = { proposal: Proposal; buttonId: string };
 export const ReplySchema = z.object({ answer: z.string().min(1).max(1100), citations: z.array(id).max(12), proposal: ProposalBodySchema.optional() }).strict();
 export type Reply = z.infer<typeof ReplySchema>;
