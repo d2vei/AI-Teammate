@@ -3,9 +3,9 @@ import { readFileSync } from 'node:fs';
 import { buildRunArgs, childEnvironment, appVariableNames } from '../scripts/vault-lib.mjs';
 describe('Infisical launcher - no vault access', () => {
   it('injects only into the fixed bot/live-check child, with no import/expansion/recursive fetch', () => {
-    const args = buildRunArgs('bot', '/synthetic/project', '/synthetic/node');
+    const args = buildRunArgs('smoke', '/synthetic/project', '/synthetic/node');
     expect(args[0]).toBe('run'); expect(args).toContain('--include-imports=false'); expect(args).toContain('--expand=false');
-    expect(args).toContain('--recursive=false'); expect(args.at(-1)).toBe('start');
+    expect(args).toContain('--recursive=false'); expect(args.at(-1)).toBe('meta-smoke');
     expect(args.join(' ')).not.toContain('codex'); expect(args).not.toContain('--plain'); expect(args).not.toContain('--command');
   });
   it.each(['codex', 'shell', 'export', 'npm test', 'jev', 'openai'])('rejects arbitrary command %s', action => { expect(() => buildRunArgs(action)).toThrow(); });
