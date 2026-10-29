@@ -27,17 +27,20 @@ export class MetaMediaProvider implements MediaProvider {
     if (payload.kind === 'video' && this.budget.db.prepare("SELECT 1 FROM media_uploads WHERE state <> 'deleted' LIMIT 1").get()) throw new Error('A previous temporary upload requires cleanup review');
     // Reserve the entire published Spark context capacity for visual calls;
     // do not estimate visual tokens from compressed file size.
+    // Real ASR receipt: a 4543.875-ms waveform was processed as 4560 ms.
+    // Bound the service's 20-ms frame rounding, still within ten minutes.
+    const audioCeilingMs = payload.kind === 'voice' ? Math.min(600_000, Math.ceil(info.durationMs! / 20) * 20) : null;
     // Documented audio guidance: reasoning shares the output budget, so clips
     // whose sound matters need at least 4000 tokens. Visible text stays bounded.
     const maxOutputTokens = payload.kind === 'video' && payload.audioMatters ? 4000 : 2048;
-    const micros = payload.kind === 'voice' ? Math.ceil(info.durationMs! / 1000) * 50 : Math.ceil(1_048_576 * 1.25 + maxOutputTokens * 4.25);
+    const micros = payload.kind === 'voice' ? Math.ceil(audioCeilingMs! / 1000) * 50 : Math.ceil(1_048_576 * 1.25 + maxOutputTokens * 4.25);
     const reservation = this.budget.reserve(this.capUsd, micros); if (!reservation) throw new Error('Authorized media budget unavailable');
     this.active = true; let upload: string | undefined; let operation: string | undefined;
     try {
       if (payload.kind === 'voice') {
         const form = new FormData(); form.set('request', new Blob([JSON.stringify({ model: 'muse-voice-transcribe-1.0', mode: 'ENDPOINTING', audioEncoding: 'WAV', languageBias: ['German', 'English'] })], { type: 'application/json' })); form.set('audio', new Blob([Uint8Array.from(payload.bytes)], { type: 'audio/wav' }), 'voice.wav');
         const raw = await this.json('https://api.meta.ai/v1/asr/transcribe', { method: 'POST', body: form });
-        const parsed = z.object({ sessionId: z.string(), transcript: z.string().min(1).max(1800), audioDurationMs: z.number().min(0).max(Math.ceil(info.durationMs!)) }).safeParse(raw);
+        const parsed = z.object({ sessionId: z.string(), transcript: z.string().min(1).max(1800), audioDurationMs: z.number().min(0).max(audioCeilingMs!) }).safeParse(raw);
         if (!parsed.success) {
           const reported = (raw as { audioDurationMs?: unknown })?.audioDurationMs;
           throw new MediaServiceError({ stage: 'transcribe', code: 'invalid_voice_response', sourceDurationMs: info.durationMs!, ...(typeof reported === 'number' && Number.isFinite(reported) && reported >= 0 && reported <= 3_600_000 ? { reportedDurationMs: reported } : {}) });

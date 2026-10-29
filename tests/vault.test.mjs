@@ -11,6 +11,7 @@ describe('Infisical launcher - no vault access', () => {
     expect(core.at(-1)).toBe('core-live'); expect(core.at(-2)).toMatch(/scripts[\\/]vault-child\.mjs$/);
     expect(buildRunArgs('media-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('media-live');
     expect(buildRunArgs('voice-diagnostic', '/synthetic/project', '/synthetic/node').at(-1)).toBe('voice-diagnostic');
+    expect(buildRunArgs('media-live-v2', '/synthetic/project', '/synthetic/node').at(-1)).toBe('media-live-v2');
   });
   it.each(['codex', 'shell', 'export', 'npm test', 'jev', 'openai'])('rejects arbitrary command %s', action => { expect(() => buildRunArgs(action)).toThrow(); });
   it('does not forward unrelated provider keys, vault tokens or Node preload options', () => {

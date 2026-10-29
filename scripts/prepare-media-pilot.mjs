@@ -4,14 +4,16 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { FfmpegNormalizer, codecProcessEnvironment, localCodecTools } from '../dist/media-codec.js';
 import { validateMedia } from '../dist/media.js';
-const root = resolve('.local/media-pilot-v1');
-if (existsSync(root) || existsSync('.local/evidence/media-pilot-v1.json')) throw new Error('Existing fixture/pilot attempt preserved; use a separately versioned trial');
+const purpose = process.argv[2] ?? 'media-pilot-v1';
+if (!['media-pilot-v1', 'media-pilot-v2'].includes(purpose)) throw new Error('Only fixed media pilot versions are allowed');
+const root = resolve(`.local/${purpose}`);
+if (existsSync(root) || existsSync(`.local/evidence/${purpose}.json`)) throw new Error('Existing fixture/pilot attempt preserved; use a separately versioned trial');
 const tools = localCodecTools(); const env = codecProcessEnvironment(process.env);
 // Windows speech/font services need OS profile locations, never provider keys.
 for (const name of ['USERPROFILE', 'LOCALAPPDATA', 'APPDATA']) if (process.env[name] !== undefined) env[name] = process.env[name];
 const run = (binary, args) => { const r = spawnSync(binary, args, { env, windowsHide: true, timeout: 60000, maxBuffer: 32768, encoding: 'utf8' }); if (r.status !== 0) throw new Error('Offline synthetic media generation failed; no model request'); };
 mkdirSync(root); // New fixed workspace fixture directory only; no existing data overwritten.
-run(join(process.env.SystemRoot ?? 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-File', resolve('scripts/generate-media-assets.ps1')]);
+run(join(process.env.SystemRoot ?? 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-File', resolve('scripts/generate-media-assets.ps1'), '-Purpose', purpose]);
 const encode = args => run(tools.ffmpeg, ['-hide_banner', '-v', 'error', '-nostdin', '-filter_threads', '1', '-threads', '1', ...args]);
 encode(['-i', join(root, 'party.wav'), '-ac', '2', '-ar', '48000', '-c:a', 'libopus', join(root, 'party.ogg')]);
 encode(['-i', join(root, 'split.png'), '-frames:v', '1', '-q:v', '2', join(root, 'split.jpg')]);
@@ -26,8 +28,9 @@ const cases = [
 ];
 const normalizer = new FfmpegNormalizer(tools, undefined, join(root, 'codec-jobs'));
 for (const c of cases) {
+  if (purpose === 'media-pilot-v2') c.id = c.id.replace('MV1-', 'MV2-');
   const bytes = readFileSync(join(root, c.file)); const prepared = await normalizer.normalize({ kind: c.kind, mime: c.mime, bytes, synthetic: true, ...(c.audioMatters !== undefined ? { audioMatters: c.audioMatters } : {}) });
   c.sha256 = createHash('sha256').update(bytes).digest('hex'); c.bytes = bytes.length; c.durationMs = validateMedia(prepared).durationMs; prepared.bytes.fill(0);
 }
-writeFileSync(join(root, 'manifest.json'), JSON.stringify({ preparedAt: new Date().toISOString(), kind: 'self-authored synthetic engineering fixtures; rubric is never model input', cases }, null, 2) + '\n', { flag: 'wx' });
-console.log(JSON.stringify({ status: 'PASS_CODEC_PREPARATION_ONLY', cases: cases.length, fixtureDirectory: '.local/media-pilot-v1', modelCalls: 0, mediaUnderstanding: 'NOT_RUN' }));
+writeFileSync(join(root, 'manifest.json'), JSON.stringify({ preparedAt: new Date().toISOString(), kind: `${purpose}: self-authored synthetic engineering fixtures; rubric is never model input; v2 is a same-recipe regression, not held out`, cases }, null, 2) + '\n', { flag: 'wx' });
+console.log(JSON.stringify({ status: 'PASS_CODEC_PREPARATION_ONLY', cases: cases.length, fixtureDirectory: `.local/${purpose}`, modelCalls: 0, mediaUnderstanding: 'NOT_RUN' }));

@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T19:21:20.662Z",
+  "exportedAt": "2026-10-29T19:25:07.894Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 0.158881,
+  "currentUsedOrReservedUsd": 0.159131,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -541,5 +541,94 @@
       "limitations": "No human usefulness, Discord interaction or general media-quality claim. The first pilot is preserved and not rerun."
     },
     "privateArtifactSha256": "5cc1f4835245dccd547c9dfc8382a4be7324fc8222fd4da25842eceddffb4d6a"
+  },
+  "voiceDiagnostic": {
+    "at": "2026-10-29T19:21:28.960Z",
+    "commit": "127c27e23b801fd65bf66f7f2f4ffacb5b1662c9",
+    "status": "COMPLETED_REQUIRES_SEMANTIC_REVIEW",
+    "kind": "voice-diagnostic-v1: self-authored synthetic attachments through real Meta derivation and scoped local context; no supplied transcripts",
+    "files": [
+      {
+        "path": "scripts/media-live.mjs",
+        "sha256": "73b9aaaf11c9424a0ea0310dd3dd6532ebf4d4c8935d840b3ef4cbe39617805d"
+      },
+      {
+        "path": "scripts/prepare-media-pilot.mjs",
+        "sha256": "78ac3a554b3e158fe13fc3f91a39865a62b9035e05642e5e6fefe9a02dc71a0d"
+      },
+      {
+        "path": "scripts/generate-media-assets.ps1",
+        "sha256": "da9b2f5e600f473384e16a8a29384ac9cda86e14611936e8d2b1d5dd92e663ab"
+      },
+      {
+        "path": "src/media.ts",
+        "sha256": "9f347dd99f9a59e924a053bff09a38d8ae83e4c45e21e3f2ea8496f32cb58915"
+      },
+      {
+        "path": "src/media-codec.ts",
+        "sha256": "a351f576100f634e28b816a5421e8ae49237984aa46008d8030f1647879631cb"
+      },
+      {
+        "path": "src/media-meta.ts",
+        "sha256": "1396054162e480cb73594733b17b3661657af220c615eec7edffb7bf539fc621"
+      },
+      {
+        "path": "src/meta-runtime.ts",
+        "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+      },
+      {
+        "path": "src/core.ts",
+        "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+      },
+      {
+        "path": "dist/media.js",
+        "sha256": "34126544b439e7b1d3d259bee22960a8fa4cae465a0f68db84146ec189c9676d"
+      },
+      {
+        "path": "dist/media-codec.js",
+        "sha256": "7c2ead6b65ddaa7a6dc2a69a37041a33aa8d1a97e965974de1020a6c78fd4e2a"
+      },
+      {
+        "path": "dist/media-meta.js",
+        "sha256": "a1b3a72e9125791da9f45b597e2b1772c15be0f5748ba11c7e1bffb0124f6a99"
+      },
+      {
+        "path": "dist/meta-runtime.js",
+        "sha256": "abacb47e8586b94e8774db0b0951299824f371ec74b7de852674524f20fdae50"
+      }
+    ],
+    "manifestSha256": "ab5a360ec6c8c2638bf864fb02e4a31568802f72f4613f333d13bab92be284f8",
+    "cases": [
+      {
+        "id": "VD1-voice",
+        "status": "FAIL",
+        "literalFactChecks": false,
+        "safeFailure": {
+          "stage": "transcribe",
+          "code": "invalid_voice_response",
+          "sourceDurationMs": 4543.875,
+          "reportedDurationMs": 4560
+        },
+        "charges": [
+          {
+            "micros": 250,
+            "state": "uncertain",
+            "usage": null
+          }
+        ],
+        "originRevocationVerified": false
+      }
+    ],
+    "mediaInferenceAttempts": 1,
+    "rawFixturesDeleted": true,
+    "ownProjectContentDeleted": true,
+    "chargeLedgerPreserved": true,
+    "budgetAfterUsd": 0.159131,
+    "privateArtifactSha256": "58a7aaac9344575b24bf1781e2ec17d4348a193f5db613d7eb9f6020360cd383",
+    "limitations": "Single distinct diagnostic; does not replace the failed v1 quality case."
   }
 }

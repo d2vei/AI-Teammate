@@ -1,4 +1,4 @@
-param([ValidateSet('media-pilot-v1','voice-diagnostic-v1')][string]$Purpose = 'media-pilot-v1')
+param([ValidateSet('media-pilot-v1','media-pilot-v2','voice-diagnostic-v1')][string]$Purpose = 'media-pilot-v1')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Speech
 Add-Type -AssemblyName System.Drawing
@@ -22,7 +22,7 @@ function New-FixtureCard([string]$Name, [string[]]$Lines) {
         $bitmap.Save($cardPath, [System.Drawing.Imaging.ImageFormat]::Png)
     } finally { $font.Dispose(); $graphics.Dispose(); $bitmap.Dispose() }
 }
-if ($Purpose -eq 'media-pilot-v1') {
+if ($Purpose -in @('media-pilot-v1','media-pilot-v2')) {
 New-FixtureCard 'together.png' @('SYNTHETIC QUEUE - Party Q7', 'Ada - Room Cedar', 'Bo - Room Cedar', 'Cy - Room Cedar', '3 players - one room')
 New-FixtureCard 'split.png' @('SYNTHETIC ERROR - QUEUE_SPLIT', 'Party Q8 - Count 5', 'Ada - Room Cedar', 'Bo - Room Maple')
 New-FixtureCard 'step-1.png' @('SYNTHETIC QUEUE 17', 'WAITING', 'No room assigned')

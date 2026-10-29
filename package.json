@@ -22,6 +22,8 @@
     "smoke:live": "node scripts/infisical.mjs smoke",
     "test:core-live": "node scripts/infisical.mjs core-live",
     "prepare:media-offline": "npm run build && node scripts/prepare-media-pilot.mjs",
+    "prepare:media-v2": "npm run build && node scripts/prepare-media-pilot.mjs media-pilot-v2",
+    "test:media-v2-live": "node scripts/infisical.mjs media-live-v2",
     "test:media-live": "node scripts/infisical.mjs media-live",
     "test:voice-diagnostic": "node scripts/infisical.mjs voice-diagnostic",
     "prepare:voice-diagnostic": "npm run build && node scripts/prepare-voice-diagnostic.mjs",

@@ -12,12 +12,13 @@ import { Store } from '../dist/store.js';
 import { spendCap } from '../dist/runtime-config.js';
 const hash = value => createHash('sha256').update(value).digest('hex');
 const purpose = process.argv[2] ?? 'media-pilot-v1';
-if (!['media-pilot-v1', 'voice-diagnostic-v1'].includes(purpose)) throw new Error('Only fixed media test variants are allowed');
+if (!['media-pilot-v1', 'media-pilot-v2', 'voice-diagnostic-v1'].includes(purpose)) throw new Error('Only fixed media test variants are allowed');
 const expected = purpose === 'voice-diagnostic-v1' ? [['VD1-voice', 'probe.wav', 'voice', 'audio/wav']] : [
   ['MV1-voice', 'party.ogg', 'voice', 'audio/ogg'], ['MV1-together', 'together.png', 'image', 'image/png'],
   ['MV1-split', 'split.jpg', 'image', 'image/jpeg'], ['MV1-transition', 'transition.mp4', 'video', 'video/mp4'],
   ['MV1-review-audio', 'review.mp4', 'video', 'video/mp4'],
 ];
+if (purpose === 'media-pilot-v2') for (const c of expected) c[0] = c[0].replace('MV1-', 'MV2-');
 async function run() {
   const cap = spendCap(process.env); if (!process.env.META_API_KEY || cap <= 0 || cap > 5 || process.env.META_DATA_MODE !== 'standard') throw new Error('Access/budget unavailable');
   const workspace = realpathSync('.'); const fixtureRoot = realpathSync(`.local/${purpose}`);
@@ -39,7 +40,7 @@ async function run() {
     report = { at: new Date().toISOString(), status: 'STARTED', kind: `${purpose}: self-authored synthetic attachments through real Meta derivation and scoped local context; no supplied transcripts`, commit, files: paths.map(path => ({ path, sha256: hash(readFileSync(path)) })), manifestSha256: hash(manifestBytes), fixtureManifest: manifest, localUsdCap: cap, budgetBeforeUsd: store.budgetUsed(), cases: [], humanRatings: 'NOT_RUN', mediaInferenceAttempts: 0, discordSends: 0, rawFixturesDeleted: false, ownProjectContentDeleted: false };
     writeFileSync(file, JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
     ownProject = `synthetic-media-pilot-${randomUUID()}`;
-    store.putConfig({ projectId: ownProject, platform: 'fake', workspaceId: 'synthetic-workspace', roomId: 'synthetic-room', memberIds: ['synthetic-owner'], approverIds: ['synthetic-owner'], approverRoleIds: [], paused: false, selectedSnapshot: 'media-pilot-v1', revision: 1 });
+    store.putConfig({ projectId: ownProject, platform: 'fake', workspaceId: 'synthetic-workspace', roomId: 'synthetic-room', memberIds: ['synthetic-owner'], approverIds: ['synthetic-owner'], approverRoleIds: [], paused: false, selectedSnapshot: purpose, revision: 1 });
     const pipeline = new MediaPipeline(store, runtime.media); const codec = new FfmpegNormalizer(tools, undefined, join(fixtureRoot, 'codec-jobs')); const core = new Teammate(store, runtime.provider, cap);
     for (const c of manifest.cases) {
       const result = { id: c.id, status: 'STARTED', literalFactChecks: false }; report.cases.push(result); save();

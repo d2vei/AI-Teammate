@@ -82,3 +82,11 @@ it('records bounded duration metadata on an invalid ASR response without exposin
   await expect(new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive(wav())).rejects.toMatchObject({ safeDetails: { stage: 'transcribe', code: 'invalid_voice_response', sourceDurationMs: 1000, reportedDurationMs: 1020 } });
   expect(s.budgetUsed()).toBe(0.00005);
 });
+it.each([{ reported: 4560, accept: true }, { reported: 4580, accept: false }])('bounds fractional-waveform ASR processing to its 20-ms frame: $reported', async ({ reported, accept }) => {
+  const s = store(); const payload = wav(); const bytes = Buffer.alloc(44 + 145404); Buffer.from(payload.bytes).copy(bytes, 0, 0, 44); bytes.writeUInt32LE(bytes.length - 8, 4); bytes.writeUInt32LE(bytes.length - 44, 40); payload.bytes = bytes;
+  expect(validateMedia(payload).durationMs).toBe(4543.875);
+  const http: typeof fetch = async () => new Response(JSON.stringify({ sessionId: 'synthetic', transcript: 'The review has not been approved.', audioDurationMs: reported }));
+  const request = new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive(payload);
+  if (accept) { expect((await request).text).toContain('not'); expect(s.budgetUsed()).toBe(0.0002); }
+  else { await expect(request).rejects.toBeInstanceOf(MediaServiceError); expect(s.budgetUsed()).toBe(0.00025); }
+});
