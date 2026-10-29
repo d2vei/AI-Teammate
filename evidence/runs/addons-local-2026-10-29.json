@@ -1,0 +1,83 @@
+{
+    "recordedAt":  "2026-10-29T11:27:17.0147763Z",
+    "candidateBase":  "a785708ec35303109e2edea71112fcbf4b01747a",
+    "dirty":  true,
+    "files":  [
+                  {
+                      "path":  "src/error-watch.ts",
+                      "sha256":  "c184c6afbf1e7245009b234b41e08a4bc7bcd4be4784259156a249017b45cf5c"
+                  },
+                  {
+                      "path":  "src/local-harness.ts",
+                      "sha256":  "3cc8baf933c9175358aa62a87e31138e730e9ae97d550dceb0414b800d3f1317"
+                  },
+                  {
+                      "path":  "scripts/conversation.mjs",
+                      "sha256":  "3e94819ab438abb89783c4899a8c2b6f3d14340b14cdf5c625fc94c4e5b71ee3"
+                  },
+                  {
+                      "path":  "src/media.ts",
+                      "sha256":  "0b4aba93fd22ba67d2d9ff2e97d04feed250d4e9987ff3cc198978f769a22d20"
+                  },
+                  {
+                      "path":  "src/media-meta.ts",
+                      "sha256":  "29491c1f33500c2a9a5de297fa9979b66d113be4ac812fc60d5cef86774d52cc"
+                  },
+                  {
+                      "path":  "src/participation-meta.ts",
+                      "sha256":  "f8591970b89fe4c38deafe9f9dfbcb776e2e7242e2a1ea00fbeb20e4524c4888"
+                  },
+                  {
+                      "path":  "prompts/participation-monitor.md",
+                      "sha256":  "e22baddf863a075013a346caabb83892d6f4bc13b84efd33443b6b4226dc8b9c"
+                  },
+                  {
+                      "path":  "prompts/participation-repair.md",
+                      "sha256":  "727d429e9d24418f95250bf27a8ba9f196cf4956c11776b08f4e04fdcb4f063b"
+                  },
+                  {
+                      "path":  "prompts/participation-generate.md",
+                      "sha256":  "73a926326d54d17863cf19da599c6b1ed9eca19829a45e3734df3ad0ebe2f079"
+                  },
+                  {
+                      "path":  "tests/error-watch.test.ts",
+                      "sha256":  "6a161d9981a32ef33999fda56eebbbd247e031d12582ff12da5a051331716a72"
+                  },
+                  {
+                      "path":  "tests/media.test.ts",
+                      "sha256":  "287c80756e3554f7fc0617bf0172ef85c7409c571a1883cd6baa4cb302dc146b"
+                  },
+                  {
+                      "path":  "tests/participation-meta.test.ts",
+                      "sha256":  "f45dd34da857e3048d20246197f3bad8abd8654171ce06085958bbbecb1ba3d1"
+                  }
+              ],
+    "kind":  "Recorded local software/mock results; not independent proof or live model evidence",
+    "tests":  {
+                  "command":  "npm.cmd test -- --reporter=dot",
+                  "files":  16,
+                  "passed":  115
+              },
+    "checks":  [
+                   "typecheck PASS",
+                   "build PASS",
+                   "approval mutation PASS",
+                   "participation persistence mutation PASS",
+                   "built CLI PASS",
+                   "offline complete demo PASS",
+                   "original eight quiet gates PASS"
+               ],
+    "terminalWatch":  {
+                          "newCount":  2,
+                          "source":  "party-route.ts@local-seeded-v1:L3",
+                          "stopped":  true,
+                          "increasedCount":  5,
+                          "unchangedAction":  "SILENT"
+                      },
+    "liveMeta":  "NOT_RUN",
+    "mediaQuality":  "NOT_RUN",
+    "liveRoblox":  "NOT_RUN",
+    "liveDiscord":  "NOT_RUN",
+    "humanRatings":  "NOT_RUN",
+    "actualSpentUsd":  0
+}

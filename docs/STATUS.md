@@ -7,8 +7,10 @@ Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Cur
 | Baseline/provenance | PASS: workspace held handoff only, no old Git/source imported; references/private context ignored. |
 | Local core and SQLite | Implemented: explicit invocation, scope/dedup/pause/budget, traces, immutable sources, approved decisions and transactionally saved briefs. No execution capability. |
 | Typecheck/build | PASS on Node 24.21.0/npm 11.19.0. |
-| Deterministic tests | PASS: 97 offline tests; includes HTTP mocks, fake adapters, real temporary SQLite, launcher, local conversation and shadow participation checks. |
+| Deterministic tests | PASS: 115 offline tests, including HTTP mocks, temporary SQLite, launcher, local conversation, participation, error-watch and media lifecycle/protocol checks. |
 | Participation add-on | Experimental shadow policy implemented; 40 self-made scripted moments across 180 turns PASS for code mechanics (15/15 fixture catches, 0/25 fixture interruptions, 15/15 fixture repairs silent). Actual model pilot NOT_RUN; no transport or live posts. See ADDONS.md. |
+| Local watch add-on | Implemented and terminal-tested: new count 2 → unchanged silence → increased count 5, with selected source line. Synthetic replay only; real Roblox/Meta/scheduling NOT_RUN. |
+| Media add-on | Derivation/source lifecycle and prepared Meta voice/image/MP4 adapters implemented and HTTP-mocked. Source removal invalidates saved evidence; failed upload cleanup retained. No real media request or attachment/converter integration; quality NOT_RUN. |
 | Approval negative control | PASS: removing the role gate in an expendable copy caused exactly the intended test failure. |
 | Offline complete flow/CLI | PASS: newly approved synthetic decision, source/log analysis with MOCK provider, confirmed saved brief, wrong actor, duplicate, restart, lock and temporary-data deletion checks. |
 | Discord adapter | Prior local code preserved, currently DEFERRED; fixed vault launch actions reject Discord. No live interactions. |
@@ -17,7 +19,7 @@ Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Cur
 | Infisical account/project/injection | PASS: browser login completed on EU Cloud with keyring session; linked existing Ai-Teammate / Development. META_API_KEY name is injected but its shared value is empty: credential availability BLOCKED pending owner correction. No value displayed/exported. No Discord prerequisite. |
 | Jev/OpenAI | Disabled: no integrations; live child forwards only the Meta/Discord app allowlist. |
 | Plaintext migration | No known plaintext credential files found in workspace; no files/keys deleted. Actual vault migration NOT completed yet. |
-| GitHub publication | PASS: local harness commit 38c8c8b pushed normally to existing public d2vei/AI-Teammate main after secret/history checks; remote SHA verified. No force push, rewrite or other repository creation. Hosted Linux CI for 38c8c8b PASS (71 tests + checks); first 1718e0f failure is retained alongside its ordinary fix. |
+| GitHub publication | Participation commit a785708 pushed normally to existing d2vei/AI-Teammate main; remote SHA verified. No force push, rewrite or other repository creation. Full 10-commit redacted scan PASS after correcting a zero-byte scanner invocation. Latest hosted CI/public metadata could not be verified (API/connector returned 404); earlier 38c8c8b CI PASS remains historical evidence only. |
 | Frozen model evaluation/baseline | NOT_RUN. No quality, naturalness, proactive timing or advantage claim. |
 | Live decision + brief demonstration | BLOCKED on real Discord/Meta setup; mock checks do not pass this gate. |
 | Deployment/video/final submission | NOT_RUN; not release complete. |

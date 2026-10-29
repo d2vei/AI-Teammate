@@ -50,3 +50,5 @@ The tested `Store.purgeProject` method deletes source, proposal, decision and br
 Trace metadata records hashed event/config/prompt identity, source IDs, provider/model, usage when reported, outcome and delivery status. Raw chats, prompts, code and provider error bodies are not logged. Timeouts/unknown charges retain their reservation across restarts. Local reservations bound dispatch but do not constitute a provider-enforced billing cap. Uncertain sends are not blindly retried; request status or ask again with a new event.
 
 See `STATUS.md` and `WORKLOG.md` for checks actually run and remaining live gates.
+
+The local terminal now includes a read-only synthetic error-watch replay; use `/watch start`, `/watch tick`, `/watch stop`. Prepared participation/media Meta adapters are exercised by HTTP mocks only and have no live launcher action. ADDONS.md records what is implemented, what remains disconnected, the primary provider/research sources and separate model-quality gates. Key setup is on hold at the owner's request while the API key page is unavailable; offline development does not depend on it.
