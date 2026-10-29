@@ -1,0 +1,108 @@
+{
+  "at": "2026-10-29T22:46:18.601Z",
+  "status": "PASS_FULL_OFFLINE_WORKFLOW_WINDOWS_ONLY",
+  "candidate": "71f56d83d144ab7163d9c666f1195d7e90499961",
+  "node": "v24.21.0",
+  "npm": "11.19.0",
+  "platform": "win32",
+  "arch": "x64",
+  "workflowSha256": "7988e87e5ee61c027ce5ccad274f9012eb5363cda6bea8442458126638332b10",
+  "lockSha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6",
+  "registry": "https://registry.npmjs.org",
+  "freshNodeModulesAndCache": true,
+  "installLifecycleScripts": "DISABLED",
+  "configurationIsolation": "Empty owned npm user/global configs, fresh isolated cache, OS-only child environment and process-scoped Git safe.directory. No credential or Node preload variables forwarded.",
+  "vaultAccess": false,
+  "modelCalls": 0,
+  "externalPosts": 0,
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "exitCode": 0,
+      "durationMs": 8008,
+      "timedOut": false,
+      "outputSha256": "a01e073b5ff44bc35606571fdd139c2390c3f7e75881cfceb8ab6196d35db82f"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationMs": 1722,
+      "timedOut": false,
+      "outputSha256": "0cec275afa5d3eb02315e671a855e48d6aab2e2f207caaeb744a220edbd463e3"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "durationMs": 9878,
+      "timedOut": false,
+      "outputSha256": "b1f4b7fc6392b8eae8b8a4e1f72ba460b4937be7f212877834ff57e2240c8bc0"
+    },
+    {
+      "command": "npm run test:mutation",
+      "exitCode": 0,
+      "durationMs": 1193,
+      "timedOut": false,
+      "outputSha256": "39ae73c89bca731a4373f6fb925cd0b79e2dea828ef793a1387ea803de47ddfa"
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "durationMs": 10700,
+      "timedOut": false,
+      "outputSha256": "de4cb6dd2ccdca69d4f0fb1a0f7f8d42336b85887c24e7c5ce96aeebffc0a1a9"
+    },
+    {
+      "command": "npm run demo:offline",
+      "exitCode": 0,
+      "durationMs": 1390,
+      "timedOut": false,
+      "outputSha256": "ffbf0fd25877a1196cbbc167acefd5e3c760e2e1014d1195d86075d7ca0940ed"
+    },
+    {
+      "command": "npm run eval:offline",
+      "exitCode": 0,
+      "durationMs": 1243,
+      "timedOut": false,
+      "outputSha256": "6f4bc8cf0d0e9e24015201381f4bb8d715017b5d0f62f6169022d8ddfb5a8265"
+    },
+    {
+      "command": "npm run replay:offline",
+      "exitCode": 0,
+      "durationMs": 1431,
+      "timedOut": false,
+      "outputSha256": "1cd4011901a61503db7ae8724a296bf739751c6258330d4f4caa5fb7ba8fe1d9"
+    },
+    {
+      "command": "npm run test:participation-mutation",
+      "exitCode": 0,
+      "durationMs": 1240,
+      "timedOut": false,
+      "outputSha256": "f67b7c0db38e5b2e754adb06f03ae2e9be6b2a9c5012dab72a50264b3631d6c1"
+    },
+    {
+      "command": "npm run test:conversation",
+      "exitCode": 0,
+      "durationMs": 1775,
+      "timedOut": false,
+      "outputSha256": "b262be0d14d1a608a5d2b39e928a29be2a0e6487b2a58c193fb15453c9ba151f"
+    },
+    {
+      "command": "npm run test:live-terminal",
+      "exitCode": 0,
+      "durationMs": 1397,
+      "timedOut": false,
+      "outputSha256": "58f83f4f404f298a8b5085e8701a07744b1715c818bf0e5e118602ced68cf029"
+    }
+  ],
+  "offlineTestsPassed": 194,
+  "offlineTestFilesPassed": 26,
+  "changedTrackedFilesInDisposableWorktree": [
+    "evidence/frozen-gates.json",
+    "evidence/local-conversation-v1.json",
+    "evidence/participation-mock-v1.json"
+  ],
+  "limitations": "All eleven committed offline-CI commands on one Windows host, not hosted GitHub Actions or another OS. No vault, actual model/Discord, human evaluation, deployment or release certification. Active checkout and live charge ledger untouched; only three regenerated synthetic evidence records changed in the disposable worktree.",
+  "finishedAt": "2026-10-29T22:46:58.679Z",
+  "privateArtifactSha256": "ffa5a408d7403f4fe3878487a2a8874a29dd230538c055e6b0e58c73c3f7848b",
+  "rawOutputsExported": false
+}
