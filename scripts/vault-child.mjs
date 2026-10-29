@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { childEnvironment, appVariableNames, findCli, requireNativeVault } from './vault-lib.mjs';
+import { childEnvironment, evaluationSettings, findCli, requireNativeVault } from './vault-lib.mjs';
 const action = process.argv[2];
 const allowed = new Set(['meta-smoke', 'meta-check', 'evaluate']);
 if (!allowed.has(action)) { console.error('BLOCKED: only fixed bot/live-check commands are allowed'); process.exit(1); }
@@ -20,6 +20,7 @@ if (action === 'meta-check') {
   }
   console.log(JSON.stringify({ status: 'PASS', gate: 'Vault-injected META_API_KEY presence only', allowedVariableNames: ['META_API_KEY'], valuesDisplayed: false, providerCalls: 0, discordSends: 0, Jev: 'disabled', OpenAI: 'disabled' }));
 } else {
+  if (action === 'evaluate') Object.assign(env, evaluationSettings(env));
   // Only the application process receives the allowlisted injected values; no shell or agent.
   const args = action === 'evaluate' ? ['scripts/evaluate.mjs'] : ['scripts/meta-smoke.mjs'];
   const result = spawnSync(process.execPath, args, { env, stdio: 'inherit', windowsHide: true }); process.exitCode = result.status ?? 1;

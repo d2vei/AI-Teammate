@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildRunArgs, childEnvironment, appVariableNames } from '../scripts/vault-lib.mjs';
+import { buildRunArgs, childEnvironment, appVariableNames, evaluationSettings } from '../scripts/vault-lib.mjs';
 describe('Infisical launcher - no vault access', () => {
   it('injects only into the fixed bot/live-check child, with no import/expansion/recursive fetch', () => {
     const args = buildRunArgs('smoke', '/synthetic/project', '/synthetic/node');
@@ -17,5 +17,16 @@ describe('Infisical launcher - no vault access', () => {
     const lines = readFileSync('.env.example', 'utf8').split(/\r?\n/).filter(s => s && !s.startsWith('#'));
     for (const line of lines) expect(line).toMatch(/^[A-Z_]+=$/);
     expect(lines.map(s => s.slice(0, -1)).sort()).toEqual([...appVariableNames].sort());
+  });
+  it('uses fixed Standard evaluation settings and the shared smoke ledger without vault configuration', () => {
+    expect(evaluationSettings({})).toEqual({ META_MODEL_ID: 'muse-spark-1.3', META_DATA_MODE: 'standard', APP_STATE_DIR: '.local/state', APP_MAX_SPEND_USD: '5', APP_AUTHORIZED_ALLOWANCE_USD: '5' });
+    expect(() => evaluationSettings({ APP_STATE_DIR: '.local/other-budget' })).toThrow('share');
+  });
+  it('never increases a stricter budget and clamps an excessive dashboard value to the authorized cap', () => {
+    expect(evaluationSettings({ APP_MAX_SPEND_USD: '0', APP_AUTHORIZED_ALLOWANCE_USD: '1' })).toMatchObject({ APP_MAX_SPEND_USD: '0', APP_AUTHORIZED_ALLOWANCE_USD: '1' });
+    expect(evaluationSettings({ APP_MAX_SPEND_USD: '120', APP_AUTHORIZED_ALLOWANCE_USD: '999' })).toMatchObject({ APP_MAX_SPEND_USD: '5', APP_AUTHORIZED_ALLOWANCE_USD: '5' });
+  });
+  it.each(['NaN', '-1', 'Infinity'])('rejects invalid evaluation budget %s before dispatch', value => {
+    expect(() => evaluationSettings({ APP_MAX_SPEND_USD: value })).toThrow('budget');
   });
 });

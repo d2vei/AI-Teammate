@@ -1,0 +1,37 @@
+{
+  "exportedAt": "2026-10-29T18:47:29.785Z",
+  "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
+  "credentialValuesExported": false,
+  "rawResponsesExported": false,
+  "authorizedBudget": {
+    "eur": 5,
+    "localUsdCap": 5
+  },
+  "smoke": {
+    "at": "2026-10-29T18:44:42.383Z",
+    "commit": "aae0d080a57dc9e33688d454df47226e2505c6c9",
+    "status": "PASS",
+    "model": "muse-spark-1.3",
+    "runtimeIdentity": "b5da7ae12dfc1dc91b3cbbcf2b522539ff794c24b1ea5d8a964c4e8173c0b62a",
+    "promptIdentity": "de4183408fa2b1000117d2fdf68dedae09ec898c3555965d7ddf84c218f1cc2d",
+    "fixtureIdentity": "ed26fa157008287683cea88be87b0194dbe5196cc0a4a8202268225c267fb234",
+    "accountModelAccess": "PASS",
+    "credentialPresence": "PASS",
+    "inferenceAttempts": 1,
+    "usage": {
+      "inputTokens": 974,
+      "outputTokens": 1066
+    },
+    "outcome": "response",
+    "delivery": "delivered",
+    "budgetBeforeUsd": 0,
+    "budgetAfterUsd": 0.005748,
+    "discordSends": 0,
+    "privateArtifactSha256": "25496669499ead43d9274d40516a06e5039c7d525c877fcb6811cae3cf9ffb9d"
+  },
+  "pairedEvaluation": {
+    "status": "NOT_RUN",
+    "humanRatings": "NOT_RUN"
+  },
+  "currentUsedOrReservedUsd": 0.005748
+}

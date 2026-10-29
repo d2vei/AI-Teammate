@@ -4,7 +4,7 @@ Current phase, 2026-10-29: the owner has placed `META_API_KEY` in the existing *
 
 Current sequence: `npm run vault:login`, `npm run vault:link -- EXISTING-PROJECT-UUID`, `npm run build`, `npm run vault:check`, then `npm run smoke:live`. The key-presence check prints a boolean/name result only and makes no provider call. The smoke uses one real Muse Spark request through the core and a fake local adapter, with synthetic evidence and a preserved one-attempt record. It does not require or contact Discord.
 
-The owner authorized **EUR 5 total** for Meta testing on 2026-10-29, requiring permission above that. Meta prices in USD. The local cumulative ceiling is USD 5, below EUR 5 using the [ECB 2026-10-28 EUR/USD reference rate of 1.1133](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html), with approximately 10 percent FX headroom. Reported/uncertain charges share the durable SQLite ledger. This does not assert a remaining provider credit balance or a provider-enforced billing cap.
+The owner authorized **EUR 5 total** for Meta testing on 2026-10-29, requiring permission above that. Meta prices in USD. The local cumulative ceiling is USD 5, below EUR 5 using the [ECB 2026-10-28 EUR/USD reference rate of 1.1133](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html), with approximately 10 percent FX headroom. Reported/uncertain charges share the durable `.local/state/teammate.sqlite` ledger. Evaluation supplies fixed Standard model/non-secret budget defaults from this authorization, clamps larger dashboard values to USD 5, preserves stricter/zero limits and rejects a different state directory. Only META_API_KEY must be supplied through the vault for this phase. This does not assert a remaining provider credit balance or a provider-enforced billing cap.
 
 Secrets are injected by the official Windows CLI into fixed bot/setup/live-check processes. The coding agent is never a child of `infisical run`. Offline installation, typecheck, tests, mutation check, CLI checks and the scripted demo require no account, vault or real key.
 
@@ -19,10 +19,10 @@ The official CLI also maintains encrypted offline secret backups under its user 
 ## Manual account and browser login
 
 1. Create a free account on **Infisical Cloud EU**, `https://eu.infisical.com`. Enable two-factor authentication in your account's security settings and keep recovery material privately. Account creation and 2FA are manual; this repository cannot certify them automatically.
-2. Create a **Secrets Management** project called AI Teammate. Use environment slug `dev` and create a folder `/ai-teammate`. Do not add Jev or OpenAI credentials.
+2. Use the existing **Secrets Management** project Ai-Teammate, environment slug `dev`, root folder `/`. It is already linked; do not create another project or move the working key to the older proposed folder. Do not add Jev or OpenAI credentials.
 3. From this workspace, run `npm run vault:login`. It opens the official browser flow on EU Cloud and saves the session as profile `ai-teammate`. Sign in and approve in the browser. No terminal password/token entry, `--plain`, service token or machine identity is used. Raw login output is suppressed. If the browser flow fails, stdin is closed so no terminal-password fallback is supplied.
 4. Run `npm run vault:status` to verify the login metadata, then copy the **non-secret project UUID** from Project Settings. Link it with `npm run vault:link -- YOUR-PROJECT-UUID`. The official CLI writes `.infisical.yaml`; this local link is ignored. Existing link files are preserved, never overwritten by the wrapper.
-5. Enter newly rotated values manually in the dashboard's `dev` `/ai-teammate` folder. Do not paste values into chat, command arguments, a file, a screenshot or Git. `.env.example` is a blank inventory of variable **names**, not a file to fill.
+5. Enter the rotated META_API_KEY manually in the dashboard's `dev` root folder `/`. Do not paste values into chat, command arguments, a file, a screenshot or Git. `.env.example` is a blank inventory of variable **names**, not a file to fill. Account creation/2FA and dashboard entry are manual owner actions; the application does not certify them.
 
 ## Dashboard entries
 
@@ -44,7 +44,7 @@ The official CLI also maintains encrypted offline secret backups under its user 
 | `APP_MAX_SPEND_USD` | Your chosen local spending ceiling, at most the authorized available allowance. |
 | `APP_AUTHORIZED_ALLOWANCE_USD` | Amount you actually authorize from currently available credit, never an assumed $150. |
 
-The effective cap is the smaller budget entry and at most $120. Missing/zero allowance blocks inference. Optional settings can be omitted to use app defaults; both budget values must be explicitly positive for live checks. No usage/pricing or account-entitlement PASS follows from saving a key.
+The table includes deferred full-bot configuration names for reference. The current fixed smoke/evaluation requires only META_API_KEY and uses the owner's conservative USD 5 ceiling; a stricter configured evaluation budget is preserved and zero blocks inference. No usage/pricing or account-entitlement PASS follows merely from saving a key.
 
 ## Fixed live commands
 
@@ -55,19 +55,17 @@ npm run build
 npm run vault:check
 ```
 
-`vault:check` prints only required-name/configuration status, never values. It is not a provider or Discord connectivity test. The launcher fetches only `dev` `/ai-teammate`, disables imports, recursion, expansion and personal secret overrides, and forwards only the app's allowlisted variables into Node. The injected child checks the native backend again before forwarding credentials to the app, so it does not wait for a long-running bot to exit before noticing an upstream fallback. OpenAI/Jev keys, Infisical tokens and Node preload variables are not forwarded.
+`vault:check` prints only required-name/configuration status, never values. It is not a provider or Discord connectivity test. The launcher fetches only `dev` root `/`, disables imports, recursion, expansion and personal secret overrides, and forwards only the app's allowlisted variables into Node. The injected child checks the native backend again before forwarding credentials to the app. OpenAI/Jev keys, Infisical tokens and Node preload variables are not forwarded.
 
 ```sh
-npm run bot:init
-npm run bot:seed
-npm run bot:register
 npm run smoke:live
-npm run bot:live
+npm run eval:live
+node scripts/export-meta-evidence.mjs
 ```
 
-The frozen synthetic paired-response evaluation is a separate optional live command, `npm run eval:live`; it uses the same locked spending ledger and can make up to sixteen sequential Meta calls. Run only after the smoke gate and within the dashboard's authorized available allowance. See `evals/frozen/README.md`. Its local `npm run eval:offline` counterpart makes zero model calls.
+The frozen synthetic paired-response evaluation is a separate live command, `npm run eval:live`; it uses the same locked spending ledger and can make up to sixteen sequential Meta calls. Run only after the smoke gate and within the authorized allowance. See `evals/frozen/README.md`. Its local `npm run eval:offline` counterpart makes zero model calls. The exporter publishes selected metadata/counts only, without raw responses or credentials.
 
-`bot:init` initializes the persistent configured project, once. `bot:seed` creates and selects a labelled synthetic code/log snapshot with no pre-approved decision. `bot:register` registers the named guild commands. `smoke:live` performs one budgeted synthetic Meta request without Discord delivery. `bot:live` starts the real bot. Each wrapper invokes `infisical run -- ... node scripts/vault-child.mjs FIXED-ACTION`; no arbitrary command, shell or coding agent is accepted. Run the service on the host where the OS login and durable state are available.
+`smoke:live` performs one budgeted synthetic Meta request without Discord delivery; an existing attempt is never overwritten or automatically retried. Each fixed live wrapper invokes `infisical run -- ... node scripts/vault-child.mjs FIXED-ACTION`; no arbitrary command, shell or coding agent is accepted. Discord command registration/startup actions remain rejected and are not exposed as npm commands. Keep the OS login and durable state on this host.
 
 Do not use `infisical export`, `secrets`, `printenv`, `process.env` dumps, `login --plain` or a coding-agent launch under the vault. Do not expose live keys to CI. All public/offline CI uses mock data only.
 

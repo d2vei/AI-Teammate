@@ -13,6 +13,17 @@ export function childEnvironment(env) {
   for (const name of ['PATH', 'Path', 'SystemRoot', 'WINDIR', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA', 'APPDATA', ...appVariableNames]) if (env[name] !== undefined) clean[name] = env[name];
   return clean;
 }
+export function evaluationSettings(env) {
+  // Owner-authorized EUR 5 total, conservatively USD 5. Non-secret defaults
+  // belong to this fixed launcher, not the vault. Preserve a stricter cap.
+  if (env.APP_STATE_DIR && resolve(env.APP_STATE_DIR) !== resolve('.local/state')) throw new Error('Live evaluation must share the smoke charge ledger');
+  const bounded = value => {
+    const amount = Number(value ?? 5);
+    if (!Number.isFinite(amount) || amount < 0) throw new Error('Invalid authorized evaluation budget');
+    return String(Math.min(amount, 5));
+  };
+  return { META_MODEL_ID: 'muse-spark-1.3', META_DATA_MODE: 'standard', APP_STATE_DIR: '.local/state', APP_MAX_SPEND_USD: bounded(env.APP_MAX_SPEND_USD), APP_AUTHORIZED_ALLOWANCE_USD: bounded(env.APP_AUTHORIZED_ALLOWANCE_USD) };
+}
 export function buildRunArgs(action, root = resolve('.'), node = process.execPath) {
   if (['bot', 'init', 'seed', 'register'].includes(action)) throw new Error('Discord is deferred; use the platform-independent local harness');
   const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate' };
