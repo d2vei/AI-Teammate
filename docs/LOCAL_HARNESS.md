@@ -17,9 +17,27 @@ Try the mechanics in order:
 4. `/brief Investigate the selected party split.` prepares a bounded brief with approved decision IDs, source/log IDs, a hypothesis, next check and exclusions. Confirm its exact token to save it. Saving does not reproduce, edit, test, push or deploy anything.
 5. `/ask What is recorded?` reports approved/saved state, with current source references. The offline response is a deterministic fixture explanation and is not model-quality evidence.
 
-Additional commands: `/status`, `/ambient ordinary human exchange`, `/pause`, `/resume`, `/withdraw SAVED-DECISION-ID`, and `/quit`. Ambient input routes through the actual core without a provider request/reply. Pause suppresses requests; only the configured simulated approver can resume. Withdrawing a decision removes its authoritative statement and duplicate proposal text. Permission/configuration/source changes invalidate old confirmations as in the core tests.
+Additional commands: `/status`, `/ambient ordinary human exchange`, `/pause`, `/resume`, `/withdraw SAVED-DECISION-ID`, and `/quit`. Ambient input now routes to the composed participation policy, default off. Ordinary talk does not invoke the direct-request provider. Pause suppresses requests; only the configured simulated approver can resume. Withdrawing a decision removes its authoritative statement and duplicate proposal text. Permission/configuration/source changes invalidate old confirmations as in the core tests.
 
-The terminal also supports `/watch start`, `/watch tick`, `/watch stop`. Each tick advances the synthetic clock by one minute and reads the next bounded error fixture: new count 2, unchanged count 2 (silent), then increased count 5. Reports cite the actual selected fixture's party-route.ts line 3 and mark the cause unverified. No Roblox service, autonomous scheduler, Meta diagnosis or external post is used. Start/stop require the simulated owner; pause/configuration changes block old tasks. Stop the old task before starting a fresh replay. Task/baseline state persists separately in watch-replay.sqlite; project content deletion must purge both stores. See ADDONS.md for the staged participation/media features and limitations.
+The terminal also supports `/watch start`, `/watch tick`, `/watch stop`. Each tick advances the synthetic clock by one minute and reads the next bounded error fixture: new count 2, unchanged count 2 (silent), then increased count 5. Reports cite the actual selected fixture's party-route.ts line 3 and mark the cause unverified. No Roblox service, autonomous scheduler, Meta diagnosis or external post is used. Start/stop require the simulated owner; pause/configuration changes block old tasks. Stop the old task before starting a fresh replay. Task/baseline state persists separately in watch-replay.sqlite.
+
+For the integrated shadow/media mechanics, start a fresh local session if the current one already contains demo claims:
+
+```sh
+npm run conversation:offline -- --state-dir .local/my-new-conversation
+```
+
+The selected state directory must be a subdirectory of .local. Then use:
+
+1. `/shadow on` as owner, then `/media voice`. This attaches a silent synthetic WAV with a separately supplied MOCK transcript, not real transcription. `/media image` similarly attaches one pixel with a supplied description. `/sources` shows the source labels, contents and original message IDs.
+2. `/say Let us book Saturday.` three times. This is an exact advertised fixture pattern, not general language understanding. The third observation displays a shadow hand raise and `/invite EXACT-TOKEN`.
+3. `/as peer`, then that exact `/invite ...` command. A member can invite this one intervention; this does not approve a decision or brief. Repeating it does not display a second response. `/why` shows scoped reason metadata.
+4. In a fresh scene, replace the third booking message with `/say We will book Sunday instead.` to exercise participant repair. `/shadow off` or the owner command `/steer only speak when tagged` restores configuration silence. `/steer do not break discussion loops` blocks that move. Quoted commands inside `/say` cannot change settings.
+5. `/media remove ORIGINAL-MESSAGE-ID` removes an own/permitted derivation, even while paused; saved briefs/decisions stop exposing unsupported contents. Ordinary `/decision`, `/brief`, `/accept` continue to use the existing confirmation gate. Invitation and approval tokens are separate.
+
+The local operator can explicitly delete this project's content with `/forget-local-data CONFIRM` as owner. It pauses first, clears in-memory conversation/offers, purges participation and watch ledgers, and purges project sources/decisions/briefs. Charges remain and deleted sources are not automatically restored. This command is not a general filesystem delete. The built terminal verifier performs its deletion only in a newly created temporary synthetic session; it does not delete your existing local session.
+
+`npm run test:conversation` drives the actual built terminal, extracts its displayed tokens, checks the wrong approver, one saved decision/brief, shadow/media/watch flow and durable state, and verifies deletion of its own temporary session. The sanitized report is evidence/local-conversation-v1.json. This is software integration evidence, not a human study or model-quality result.
 
 The local operator can select both simulated roles, so this is a software harness, not real-platform authentication, independent human evaluation or a consented group pilot. No Discord connection is made. The previously authored Discord adapter is deferred under current project sequencing.
 

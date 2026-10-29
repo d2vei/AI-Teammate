@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-29T11:45:46.817Z",
+  "commit": "8ea45a5848b771cd3b93ffc02ed6383b6a11e1d3",
+  "frozenRuntimeIdentity": "eb22634de444dace96988ba60ffa7560a7b4c59d4436097d54632d6c16e9852c",
+  "casesHash": "6eb2478b59f3e57d6c7db6163f963b33dfbfa6a9b3098c80695eae35b2c0a551",
+  "mode": "standard",
+  "model": "muse-spark-1.3",
+  "quiet": [
+    {
+      "id": "F-Q1",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q2",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q3",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q4",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q5",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q6",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q7",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    },
+    {
+      "id": "F-Q8",
+      "result": "SILENT_BY_CONFIGURATION",
+      "status": "PASS",
+      "meaning": "actual core invocation boundary, not social judgment"
+    }
+  ],
+  "liveDiscord": "NOT_RUN",
+  "humanRatings": "NOT_RUN",
+  "status": "PASS",
+  "evidenceKind": "actual core configuration gate only; zero model calls",
+  "direct": [
+    {
+      "id": "F-D1",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D2",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D3",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D4",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D5",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D6",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D7",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "F-D8",
+      "status": "NOT_RUN"
+    }
+  ]
+}

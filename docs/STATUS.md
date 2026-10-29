@@ -1,13 +1,15 @@
 # Implementation status
 
-Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Current sequencing: Meta credential check and one real small smoke, then platform-independent core/local harness; Discord deferred.
+Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Current sequencing: continue platform-independent local implementation while the owner-reported API key page is unavailable; resume the one small real smoke only after access returns. Discord remains deferred.
 
 | Area | Observed status |
 |---|---|
 | Baseline/provenance | PASS: workspace held handoff only, no old Git/source imported; references/private context ignored. |
 | Local core and SQLite | Implemented: explicit invocation, scope/dedup/pause/budget, traces, immutable sources, approved decisions and transactionally saved briefs. No execution capability. |
 | Typecheck/build | PASS on Node 24.21.0/npm 11.19.0. |
-| Deterministic tests | PASS: 115 offline tests, including HTTP mocks, temporary SQLite, launcher, local conversation, participation, error-watch and media lifecycle/protocol checks. |
+| Deterministic tests | PASS: 127 offline tests, including shared transport, composed conversation, HTTP mocks, temporary SQLite, launcher, participation, error-watch and media lifecycle/protocol checks. |
+| Composed local conversation | PASS: actual built terminal completed media → shadow hand raise → invited local display → newly approved decision → saved brief → watch replay, rejected the wrong approver, checked durable state and deleted only its new temporary session. Scripted/synthetic only; no model-quality or human-study claim. |
+| Shared Meta runtime | Implemented and HTTP-mocked: direct/participation/media share one transport held through the response body, common budget and no automatic retry. Initial one-call smoke is wired to it but NOT_RUN. |
 | Participation add-on | Experimental shadow policy implemented; 40 self-made scripted moments across 180 turns PASS for code mechanics (15/15 fixture catches, 0/25 fixture interruptions, 15/15 fixture repairs silent). Actual model pilot NOT_RUN; no transport or live posts. See ADDONS.md. |
 | Local watch add-on | Implemented and terminal-tested: new count 2 → unchanged silence → increased count 5, with selected source line. Synthetic replay only; real Roblox/Meta/scheduling NOT_RUN. |
 | Media add-on | Derivation/source lifecycle and prepared Meta voice/image/MP4 adapters implemented and HTTP-mocked. Source removal invalidates saved evidence; failed upload cleanup retained. No real media request or attachment/converter integration; quality NOT_RUN. |

@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-29T11:42:36.939Z",
+  "status": "PASS_SOFTWARE_ONLY",
+  "kind": "actual built terminal I/O with explicitly simulated participants and scripted providers",
+  "decisionCount": 1,
+  "savedBriefCount": 1,
+  "suppliedMediaSources": 1,
+  "boundInvitationDisplayed": true,
+  "wrongApproverRejected": true,
+  "stateDirectoryScopeEnforced": true,
+  "watchChanges": [
+    2,
+    "SILENT",
+    5
+  ],
+  "watchStopped": true,
+  "metaRequests": 0,
+  "externalPosts": 0,
+  "humanRatings": "NOT_RUN",
+  "mediaUnderstanding": "NOT_RUN",
+  "budgetUsedOrReservedUsd": 0,
+  "candidateBase": "8ea45a5848b771cd3b93ffc02ed6383b6a11e1d3",
+  "workingTreeDirty": true,
+  "files": [
+    {
+      "path": "src/local-conversation.ts",
+      "sha256": "45f91d76bf19f6cdc8d4eec944b3cfa125462f1a088dd3082f48f9a8428ccc4e"
+    },
+    {
+      "path": "src/local-harness.ts",
+      "sha256": "2c89ab6dbd644adb26c202483d0547d02cc19505e0dfea51777a663e77bd432b"
+    },
+    {
+      "path": "src/meta-runtime.ts",
+      "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+    },
+    {
+      "path": "scripts/conversation.mjs",
+      "sha256": "8245e51ab357c172abe5db5378f30d9f911fff61c5ca3b511b36afc490ff0dba"
+    },
+    {
+      "path": "scripts/check-conversation.mjs",
+      "sha256": "81503be1e05801c80025141eced97ea3828901985b84418fd8b29b63dd31dfff"
+    }
+  ],
+  "temporarySessionDeleted": true
+}

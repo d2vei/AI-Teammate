@@ -38,7 +38,7 @@ export class LocalHarness {
     // the scripted provider reports zero usage and has no network capability.
     this.core = new Teammate(store, provider, provider.mode === 'mock' ? 1 : capUsd, now);
   }
-  private event(text: string, invocation: RequestEvent['invocation'] = 'action'): RequestEvent {
+  protected event(text: string, invocation: RequestEvent['invocation'] = 'action'): RequestEvent {
     return { id: randomUUID(), platform: 'fake', projectId: this.projectId, workspaceId: 'local-synthetic', roomId: 'conversation-room', actor: this.actor, text, invocation, version: digest(text), replyTo: null, replyContext: null };
   }
   async line(line: string): Promise<HarnessOutput> {

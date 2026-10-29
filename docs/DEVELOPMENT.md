@@ -13,6 +13,7 @@ npm run test:cli
 npm run demo:offline
 npm run replay:offline
 npm run test:participation-mutation
+npm run test:conversation
 ```
 
 The demo uses a scripted **MOCK** provider, fake participant IDs/adapters and temporary SQLite. It proposes and approves a new decision, cites the newly authored synthetic source/log fixture, rejects a peer's confirmation, saves one brief, checks duplicate confirmation and reopens the database. It sends no Discord messages and makes no Meta request. It is a software check, not model-quality or live-product evidence. Temporary fixture data is deleted after the check.
@@ -51,4 +52,4 @@ Trace metadata records hashed event/config/prompt identity, source IDs, provider
 
 See `STATUS.md` and `WORKLOG.md` for checks actually run and remaining live gates.
 
-The local terminal now includes a read-only synthetic error-watch replay; use `/watch start`, `/watch tick`, `/watch stop`. Prepared participation/media Meta adapters are exercised by HTTP mocks only and have no live launcher action. ADDONS.md records what is implemented, what remains disconnected, the primary provider/research sources and separate model-quality gates. Key setup is on hold at the owner's request while the API key page is unavailable; offline development does not depend on it.
+The local terminal composes read-only watch replay, supplied media fixtures, shadow participation, separate invitations and normal saved decisions/briefs. See LOCAL_HARNESS.md for the exact fixture commands and scoped deletion. Prepared participation/media Meta adapters are exercised by HTTP mocks only and have no live launcher action; createMetaRuntime provides their shared serialized transport. ADDONS.md records what remains disconnected, primary sources and separate model-quality gates. Key setup is on hold at the owner's request while the API key page is unavailable; offline development does not depend on it.
