@@ -1,0 +1,47 @@
+{
+  "reviewedAt": "2026-10-29T19:29:06.142Z",
+  "reviewer": "coding agent; not an independent human rating",
+  "privateArtifactSha256": "760224668c5245a325fe07013ca5596fe5834bded97fa0de87a24e27f719a533",
+  "candidate": "632a37e9d49cfa21ed9f1df4a4ba7fd08c3075b3",
+  "scope": "same-recipe synthetic regression after two observed integration failures, not held out or real group media",
+  "target": {
+    "requiredCorrect": 4,
+    "total": 5,
+    "observedCorrect": 4,
+    "literalFactChecksPassed": 5,
+    "status": "PASS_SYNTHETIC_REGRESSION_ONLY"
+  },
+  "cases": [
+    {
+      "id": "MV2-voice",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Actual ASR recovered the intended party rule and three-person next check. Reported 5920-ms processing time fits the bounded frame ceiling and was accounted."
+    },
+    {
+      "id": "MV2-together",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered Q7 and all three Cedar assignments; did not verify fictional identities."
+    },
+    {
+      "id": "MV2-split",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered QUEUE_SPLIT, count 5 and Cedar/Maple destinations as displayed evidence."
+    },
+    {
+      "id": "MV2-transition",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered waiting then assignment to Cedar for queue 17 without invented speech."
+    },
+    {
+      "id": "MV2-review-audio",
+      "status": "PARTIAL_NOT_CREDITED",
+      "reason": "Recovered the exact spoken negative-approval and confirmation qualification, but inconsistently described an image-only/no-audio source before quoting a supplied transcript. The input was an MP4; no transcript was supplied by this app. Audio-provenance wording is not a clean pass."
+    }
+  ],
+  "literalChecksUnchanged": true,
+  "rawFixturesDeleted": true,
+  "uploadCleanupOutstanding": 0,
+  "ownProjectContentDeleted": true,
+  "budgetAfterUsd": 0.181175,
+  "limitations": "Four strict credited cases satisfy the predefined four-of-five synthetic target. Keep the original 3/5 failure and one-case diagnostic. No independent human, live group, Discord or general media-quality claim; clip-audio provenance remains limited."
+}

@@ -70,6 +70,8 @@ The frozen synthetic paired-response evaluation is a separate live command, `npm
 
 `test:core-live` permits at most two real generations using simulated owner/peer identities: draft a new decision, exercise the existing confirmation gate, draft a source-grounded brief, save it only through authorized bound confirmation, check restart and purge only the newly created synthetic project. Charges remain in the shared ledger. Its own first-attempt artifact is preserved; no automatic repeat. These three initial live runs have now completed; see LIVE_TESTS.md before attempting any command again.
 
+Media checks are separate fixed test routes: `test:media-live` (five-case v1), `test:voice-diagnostic` (one distinct integration diagnostic), and `test:media-v2-live` (five-case same-recipe regression). Offline preparation uses local speech/FFmpeg and no key. All paid routes use the same locked charge ledger and at-most-USD-5 cap; native codec/generation children receive OS settings only. Each completed attempt is preserved and its own fixture/project content removed; no arbitrary files or older account uploads are deleted. These checks have completed and must not be silently repeated. See LIVE_TESTS.md for the original failure, bounded fix, remaining partial audio behavior and current spending.
+
 Do not use `infisical export`, `secrets`, `printenv`, `process.env` dumps, `login --plain` or a coding-agent launch under the vault. Do not expose live keys to CI. All public/offline CI uses mock data only.
 
 ## Migration and removal status

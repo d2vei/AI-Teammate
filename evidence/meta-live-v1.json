@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T19:25:07.894Z",
+  "exportedAt": "2026-10-29T19:31:42.577Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 0.159131,
+  "currentUsedOrReservedUsd": 0.181175,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -630,5 +630,218 @@
     "budgetAfterUsd": 0.159131,
     "privateArtifactSha256": "58a7aaac9344575b24bf1781e2ec17d4348a193f5db613d7eb9f6020360cd383",
     "limitations": "Single distinct diagnostic; does not replace the failed v1 quality case."
+  },
+  "mediaRegressionV2": {
+    "at": "2026-10-29T19:25:20.277Z",
+    "commit": "632a37e9d49cfa21ed9f1df4a4ba7fd08c3075b3",
+    "status": "COMPLETED_REQUIRES_SEMANTIC_REVIEW",
+    "kind": "media-pilot-v2: self-authored synthetic attachments through real Meta derivation and scoped local context; no supplied transcripts",
+    "files": [
+      {
+        "path": "scripts/media-live.mjs",
+        "sha256": "0e307b0a16a6b52b27354ffc222d61b279b7356518fc6684cce03e39522023d5"
+      },
+      {
+        "path": "scripts/prepare-media-pilot.mjs",
+        "sha256": "acf704dee0799678ea6a72219bce5dcf739d5ee7791a0b20f6f8fa57e8c4d88e"
+      },
+      {
+        "path": "scripts/generate-media-assets.ps1",
+        "sha256": "0f4ae6d2a684333a72a26f73f622c5f4271cfbacd380c93bfad27568f01d4a1f"
+      },
+      {
+        "path": "src/media.ts",
+        "sha256": "9f347dd99f9a59e924a053bff09a38d8ae83e4c45e21e3f2ea8496f32cb58915"
+      },
+      {
+        "path": "src/media-codec.ts",
+        "sha256": "a351f576100f634e28b816a5421e8ae49237984aa46008d8030f1647879631cb"
+      },
+      {
+        "path": "src/media-meta.ts",
+        "sha256": "c34f44229b56689c7fb91cbf40db29c5e2c414b3184051b4cef7f78ad2d4d292"
+      },
+      {
+        "path": "src/meta-runtime.ts",
+        "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+      },
+      {
+        "path": "src/core.ts",
+        "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+      },
+      {
+        "path": "dist/media.js",
+        "sha256": "34126544b439e7b1d3d259bee22960a8fa4cae465a0f68db84146ec189c9676d"
+      },
+      {
+        "path": "dist/media-codec.js",
+        "sha256": "7c2ead6b65ddaa7a6dc2a69a37041a33aa8d1a97e965974de1020a6c78fd4e2a"
+      },
+      {
+        "path": "dist/media-meta.js",
+        "sha256": "905740ef60ac61858d88f77eb948d187969725ea56bc400184cd21746bbf391d"
+      },
+      {
+        "path": "dist/meta-runtime.js",
+        "sha256": "abacb47e8586b94e8774db0b0951299824f371ec74b7de852674524f20fdae50"
+      }
+    ],
+    "manifestSha256": "3e4e9555ec123a25ce217223bbcaab9f540a523d1e32577a97f4c3c249aa7a10",
+    "cases": [
+      {
+        "id": "MV2-voice",
+        "status": "DERIVED_REQUIRES_REVIEW",
+        "model": "muse-voice-transcribe-1.0",
+        "literalFactChecks": true,
+        "authorizedContextAvailable": true,
+        "noAuthorityCreated": true,
+        "originRevocationVerified": true,
+        "mediaInferenceAttempts": 1,
+        "charges": [
+          {
+            "micros": 250,
+            "state": "reported_audio",
+            "usage": {
+              "audioDurationMs": 5920,
+              "rateUsdPerHour": 0.18
+            }
+          }
+        ]
+      },
+      {
+        "id": "MV2-together",
+        "status": "DERIVED_REQUIRES_REVIEW",
+        "model": "muse-spark-1.3",
+        "literalFactChecks": true,
+        "authorizedContextAvailable": true,
+        "noAuthorityCreated": true,
+        "originRevocationVerified": true,
+        "mediaInferenceAttempts": 1,
+        "charges": [
+          {
+            "micros": 3784,
+            "state": "reported",
+            "usage": {
+              "inputTokens": 735,
+              "outputTokens": 674
+            }
+          }
+        ]
+      },
+      {
+        "id": "MV2-split",
+        "status": "DERIVED_REQUIRES_REVIEW",
+        "model": "muse-spark-1.3",
+        "literalFactChecks": true,
+        "authorizedContextAvailable": true,
+        "noAuthorityCreated": true,
+        "originRevocationVerified": true,
+        "mediaInferenceAttempts": 1,
+        "charges": [
+          {
+            "micros": 4523,
+            "state": "reported",
+            "usage": {
+              "inputTokens": 735,
+              "outputTokens": 848
+            }
+          }
+        ]
+      },
+      {
+        "id": "MV2-transition",
+        "status": "DERIVED_REQUIRES_REVIEW",
+        "model": "muse-spark-1.3",
+        "literalFactChecks": true,
+        "authorizedContextAvailable": true,
+        "noAuthorityCreated": true,
+        "originRevocationVerified": true,
+        "mediaInferenceAttempts": 1,
+        "charges": [
+          {
+            "micros": 6595,
+            "state": "reported",
+            "usage": {
+              "inputTokens": 1128,
+              "outputTokens": 1220
+            }
+          }
+        ]
+      },
+      {
+        "id": "MV2-review-audio",
+        "status": "DERIVED_REQUIRES_REVIEW",
+        "model": "muse-spark-1.2",
+        "literalFactChecks": true,
+        "authorizedContextAvailable": true,
+        "noAuthorityCreated": true,
+        "originRevocationVerified": true,
+        "mediaInferenceAttempts": 1,
+        "charges": [
+          {
+            "micros": 6892,
+            "state": "reported",
+            "usage": {
+              "inputTokens": 1097,
+              "outputTokens": 1299
+            }
+          }
+        ]
+      }
+    ],
+    "mediaInferenceAttempts": 5,
+    "literalFactCasesPassed": 5,
+    "uploadCleanupOutstanding": 0,
+    "rawFixturesDeleted": true,
+    "ownProjectContentDeleted": true,
+    "chargeLedgerPreserved": true,
+    "budgetBeforeUsd": 0.159131,
+    "budgetAfterUsd": 0.181175,
+    "humanRatings": "NOT_RUN",
+    "discordSends": 0,
+    "semanticReview": {
+      "reviewedAt": "2026-10-29T19:29:06.142Z",
+      "reviewer": "coding agent; not an independent human rating",
+      "target": {
+        "requiredCorrect": 4,
+        "total": 5,
+        "observedCorrect": 4,
+        "literalFactChecksPassed": 5,
+        "status": "PASS_SYNTHETIC_REGRESSION_ONLY"
+      },
+      "cases": [
+        {
+          "id": "MV2-voice",
+          "status": "PASS_SYNTHETIC_FACTS",
+          "reason": "Actual ASR recovered the intended party rule and three-person next check. Reported 5920-ms processing time fits the bounded frame ceiling and was accounted."
+        },
+        {
+          "id": "MV2-together",
+          "status": "PASS_SYNTHETIC_FACTS",
+          "reason": "Recovered Q7 and all three Cedar assignments; did not verify fictional identities."
+        },
+        {
+          "id": "MV2-split",
+          "status": "PASS_SYNTHETIC_FACTS",
+          "reason": "Recovered QUEUE_SPLIT, count 5 and Cedar/Maple destinations as displayed evidence."
+        },
+        {
+          "id": "MV2-transition",
+          "status": "PASS_SYNTHETIC_FACTS",
+          "reason": "Recovered waiting then assignment to Cedar for queue 17 without invented speech."
+        },
+        {
+          "id": "MV2-review-audio",
+          "status": "PARTIAL_NOT_CREDITED",
+          "reason": "Recovered the exact spoken negative-approval and confirmation qualification, but inconsistently described an image-only/no-audio source before quoting a supplied transcript. The input was an MP4; no transcript was supplied by this app. Audio-provenance wording is not a clean pass."
+        }
+      ],
+      "limitations": "Four strict credited cases satisfy the predefined four-of-five synthetic target. Keep the original 3/5 failure and one-case diagnostic. No independent human, live group, Discord or general media-quality claim; clip-audio provenance remains limited."
+    },
+    "privateArtifactSha256": "760224668c5245a325fe07013ca5596fe5834bded97fa0de87a24e27f719a533"
   }
 }
