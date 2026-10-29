@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "frozenAt": "2026-10-29T19:11:42.264Z",
+  "status": "FROZEN_BEFORE_FIRST_MEDIA_CALL",
+  "kind": "self-authored synthetic engineering fixtures; rubric is never model input",
+  "preparedManifestSha256": "945ee4e25a80650943d0aa928f56d319399f22c92e17b7c1d62ccfc9b6682fe6",
+  "cases": [
+    {
+      "id": "MV1-voice",
+      "kind": "voice",
+      "mime": "audio/ogg",
+      "audioMatters": false,
+      "inputSha256": "4be50d892e78a022a1cd1776b4961132a03f8813b8bfcbda8075ec3b8682f00b",
+      "inputBytes": 63571,
+      "durationMs": 5918.458333333334,
+      "rubric": "Recover party members together in one room and a three-person next check.",
+      "required": [
+        "party",
+        "one room",
+        "(three|3)"
+      ],
+      "forbidden": []
+    },
+    {
+      "id": "MV1-together",
+      "kind": "image",
+      "mime": "image/png",
+      "audioMatters": false,
+      "inputSha256": "2e3f9cf204ab566c59edb215f3643e8331a20412672d98600e9e1d8d11cdbee3",
+      "inputBytes": 17178,
+      "durationMs": null,
+      "rubric": "Recover Q7 and all three members assigned to Cedar; do not invent a split.",
+      "required": [
+        "Q7",
+        "Cedar",
+        "(three|3)"
+      ],
+      "forbidden": [
+        "assigned to different rooms"
+      ]
+    },
+    {
+      "id": "MV1-split",
+      "kind": "image",
+      "mime": "image/jpeg",
+      "audioMatters": false,
+      "inputSha256": "834294cb18fb38bfc94566ecaa1ee848452d34bc0f88d045d564f4b5ed117d4b",
+      "inputBytes": 41350,
+      "durationMs": null,
+      "rubric": "Recover QUEUE_SPLIT, count 5 and different Cedar/Maple destinations.",
+      "required": [
+        "QUEUE_SPLIT",
+        "5",
+        "Cedar",
+        "Maple"
+      ],
+      "forbidden": []
+    },
+    {
+      "id": "MV1-transition",
+      "kind": "video",
+      "mime": "video/mp4",
+      "audioMatters": false,
+      "inputSha256": "55b82827e08ff4eb65cb4b89d9449f8f8ad5b9a0c9c31b87d3ff867361ad6b71",
+      "inputBytes": 34844,
+      "durationMs": 4000,
+      "rubric": "Recover waiting then assigned to Cedar for queue 17; do not invent speech.",
+      "required": [
+        "17",
+        "waiting",
+        "assigned",
+        "Cedar"
+      ],
+      "forbidden": [
+        "someone says",
+        "a speaker says"
+      ]
+    },
+    {
+      "id": "MV1-review-audio",
+      "kind": "video",
+      "mime": "video/mp4",
+      "audioMatters": true,
+      "inputSha256": "e6f53027f4da16de69486b50ca18da17e95c578629c79c4c0b27f066cf2dfa67",
+      "inputBytes": 84820,
+      "durationMs": 6194,
+      "rubric": "Recover the negative approval statement and brief only after confirmation, including the spoken fix qualification.",
+      "required": [
+        "(not|no|without|hasn.t|haven.t|unapproved)",
+        "fix",
+        "brief",
+        "confirmation"
+      ],
+      "forbidden": []
+    }
+  ],
+  "runtime": [
+    {
+      "path": "src/media-meta.ts",
+      "sha256": "a15ff20ea957355775186f7765fd2d81e4d68bf737663dd6ba6b9d2bb6e12714"
+    },
+    {
+      "path": "src/media.ts",
+      "sha256": "9f347dd99f9a59e924a053bff09a38d8ae83e4c45e21e3f2ea8496f32cb58915"
+    },
+    {
+      "path": "src/media-codec.ts",
+      "sha256": "a351f576100f634e28b816a5421e8ae49237984aa46008d8030f1647879631cb"
+    },
+    {
+      "path": "src/meta-runtime.ts",
+      "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+    },
+    {
+      "path": "scripts/media-live.mjs",
+      "sha256": "35417a5f382cbf0ee5cc67c6c830354cf06a370ec4ecca58488b32273298c414"
+    },
+    {
+      "path": "scripts/prepare-media-pilot.mjs",
+      "sha256": "78ac3a554b3e158fe13fc3f91a39865a62b9035e05642e5e6fefe9a02dc71a0d"
+    },
+    {
+      "path": "scripts/generate-media-assets.ps1",
+      "sha256": "b2f85984845b629b1ad656123af75fdc3652bb39960e14792709ae13f938af90"
+    },
+    {
+      "path": "dist/media-meta.js",
+      "sha256": "100d3b8cb242542925a08ea1994e4df7155822e8fa1420db19a8cfa74890c209"
+    },
+    {
+      "path": "dist/media.js",
+      "sha256": "34126544b439e7b1d3d259bee22960a8fa4cae465a0f68db84146ec189c9676d"
+    },
+    {
+      "path": "dist/media-codec.js",
+      "sha256": "7c2ead6b65ddaa7a6dc2a69a37041a33aa8d1a97e965974de1020a6c78fd4e2a"
+    },
+    {
+      "path": "dist/meta-runtime.js",
+      "sha256": "abacb47e8586b94e8774db0b0951299824f371ec74b7de852674524f20fdae50"
+    }
+  ],
+  "limits": "Self-authored synthetic engineering cases. Literal checks need a separate semantic review; no independent human study or live group outcome."
+}

@@ -21,6 +21,8 @@
     "vault:check": "node scripts/infisical.mjs check",
     "smoke:live": "node scripts/infisical.mjs smoke",
     "test:core-live": "node scripts/infisical.mjs core-live",
+    "prepare:media-offline": "npm run build && node scripts/prepare-media-pilot.mjs",
+    "test:media-live": "node scripts/infisical.mjs media-live",
     "eval:offline": "npm run build && node scripts/evaluate.mjs --gate-only",
     "eval:live": "node scripts/infisical.mjs eval",
     "dev": "npm run build && npm start",

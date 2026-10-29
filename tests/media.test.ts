@@ -48,11 +48,18 @@ it('uploads only the supplied video, uses the explicit sound model and deletes t
   const s = store(); const requests: string[] = [];
   const http: typeof fetch = async (url, init) => {
     requests.push(`${init?.method} ${url}`);
-    if (url === 'https://api.meta.ai/v1/files') { expect((init!.body as FormData).get('purpose')).toBe('user_data'); return new Response(JSON.stringify({ id: 'file-12345' })); }
+    if (url === 'https://api.meta.ai/v1/files') { expect((init!.body as FormData).get('purpose')).toBe('user_data'); return new Response(JSON.stringify({ id: 'file-abc123' })); }
     if (init?.method === 'DELETE') return new Response('{}');
-    const body = JSON.parse(init!.body as string); expect(body.model).toBe('muse-spark-1.2'); expect(body.input[0].content[1]).toEqual({ type: 'input_file', file_id: 'file-12345' }); return new Response(JSON.stringify(envelope(body.model)));
+    const body = JSON.parse(init!.body as string); expect(body.model).toBe('muse-spark-1.2'); expect(body.max_output_tokens).toBe(4000); expect(body.input[0].content[1]).toEqual({ type: 'input_file', file_id: 'file-abc123' }); return new Response(JSON.stringify(envelope(body.model)));
   };
-  const result = await new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive({ ...video(), audioMatters: true }); expect(result.model).toBe('muse-spark-1.2'); expect(requests.at(-1)).toBe('DELETE https://api.meta.ai/v1/files/file-12345'); expect(s.db.prepare('SELECT state FROM media_uploads').get()?.state).toBe('deleted');
+  const result = await new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive({ ...video(), audioMatters: true }); expect(result.model).toBe('muse-spark-1.2'); expect(requests.at(-1)).toBe('DELETE https://api.meta.ai/v1/files/file-abc123'); expect(s.db.prepare('SELECT state FROM media_uploads').get()?.state).toBe('deleted');
+});
+it.each(['file-../other', 'file-a%2Fb', 'file-abc?other', 'https://example.invalid/file-123'])('withholds invalid file identity %s without attempting a guessed deletion', async id => {
+  const s = store(); let calls = 0;
+  const http: typeof fetch = async (url, init) => { calls++; expect(url).toBe('https://api.meta.ai/v1/files'); expect(init?.method).toBe('POST'); return new Response(JSON.stringify({ id })); };
+  const provider = new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http);
+  await expect(provider.derive(video())).rejects.toThrow(); expect(calls).toBe(1); expect(s.db.prepare('SELECT state FROM media_uploads').get()?.state).toBe('upload_uncertain');
+  await expect(provider.derive(video())).rejects.toThrow('cleanup'); expect(calls).toBe(1);
 });
 it('retains failed upload cleanup state, withholds its result and blocks a new upload', async () => {
   const s = store(); let uploads = 0;
