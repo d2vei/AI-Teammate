@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-10-29T19:20:26.866Z",
+  "reviewer": "coding agent; not an independent human rating",
+  "privateArtifactSha256": "5cc1f4835245dccd547c9dfc8382a4be7324fc8222fd4da25842eceddffb4d6a",
+  "candidate": "bd24b309d35f11ec0d0921c5ef75e2a114f0db74",
+  "scope": "self-authored synthetic engineering fixtures and authorized local context, not real group media",
+  "target": {
+    "requiredCorrect": 4,
+    "total": 5,
+    "observedCorrect": 3,
+    "status": "FAIL"
+  },
+  "cases": [
+    {
+      "id": "MV1-voice",
+      "status": "FAIL",
+      "reason": "No accepted transcript was retained; cause not captured by the v1 adapter. The 300-microdollar reservation stays uncertain."
+    },
+    {
+      "id": "MV1-together",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered Q7 and all three assignments to Cedar; labelled names as text rather than verified identities."
+    },
+    {
+      "id": "MV1-split",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered QUEUE_SPLIT, count 5 and Cedar/Maple destinations without treating a graphic as runtime proof."
+    },
+    {
+      "id": "MV1-transition",
+      "status": "PASS_SYNTHETIC_FACTS",
+      "reason": "Recovered waiting followed by assignment to Cedar, with approximate timing and no invented speech."
+    },
+    {
+      "id": "MV1-review-audio",
+      "status": "FAIL",
+      "reason": "Described the visible no-approval card but omitted the spoken fix/confirmation qualification."
+    }
+  ],
+  "literalChecksUnchanged": true,
+  "rawFixturesDeleted": true,
+  "uploadCleanupOutstanding": 0,
+  "ownProjectContentDeleted": true,
+  "budgetAfterUsd": 0.158881,
+  "limitations": "No human usefulness, Discord interaction or general media-quality claim. The first pilot is preserved and not rerun."
+}

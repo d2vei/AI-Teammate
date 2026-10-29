@@ -1,0 +1,17 @@
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { codecProcessEnvironment, FfmpegNormalizer, localCodecTools } from '../dist/media-codec.js';
+import { validateMedia } from '../dist/media.js';
+const root = resolve('.local/voice-diagnostic-v1');
+if (existsSync(root) || existsSync('.local/evidence/voice-diagnostic-v1.json')) throw new Error('Prior diagnostic preserved');
+const tools = localCodecTools(); const env = codecProcessEnvironment(process.env);
+for (const name of ['USERPROFILE', 'LOCALAPPDATA', 'APPDATA']) if (process.env[name] !== undefined) env[name] = process.env[name];
+mkdirSync(root);
+const r = spawnSync(join(process.env.SystemRoot ?? 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-File', resolve('scripts/generate-media-assets.ps1'), '-Purpose', 'voice-diagnostic-v1'], { env, windowsHide: true, timeout: 60000, maxBuffer: 32768, encoding: 'utf8' });
+if (r.status !== 0) throw new Error('Local speech diagnostic preparation failed; no model call');
+const bytes = readFileSync(join(root, 'probe.wav')); const prepared = await new FfmpegNormalizer(tools, undefined, join(root, 'codec-jobs')).normalize({ kind: 'voice', mime: 'audio/wav', bytes, synthetic: true });
+const durationMs = validateMedia(prepared).durationMs; prepared.bytes.fill(0);
+writeFileSync(join(root, 'manifest.json'), JSON.stringify({ preparedAt: new Date().toISOString(), kind: 'distinct single-case ASR integration diagnostic, not a repeat of the five-case quality pilot', cases: [{ id: 'VD1-voice', file: 'probe.wav', kind: 'voice', mime: 'audio/wav', sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length, durationMs, rubric: 'Recognize Tuesday and the explicit lack of approval.', required: ['Tuesday', 'not'] }] }, null, 2) + '\n', { flag: 'wx' });
+console.log(JSON.stringify({ status: 'PREPARED_CODEC_ONLY', cases: 1, durationMs, modelCalls: 0 }));

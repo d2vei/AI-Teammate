@@ -25,6 +25,21 @@ if (existsSync('.local/evidence/meta-core-flow-v1.json')) {
   report.coreFlow = { at: c.at, commit: c.commit, status: c.status, kind: c.kind, files: c.files, model: c.model, promptIdentity: c.promptIdentity, fixtureHash: c.fixtureHash, inferenceAttempts: c.inferenceAttempts, stages: c.stages, approvedDecisions: c.approvedDecisions ?? 0, savedBriefs: c.savedBriefs ?? 0, casualAgreementDidNotApprove: c.casualAgreementDidNotApprove ?? false, wrongDecisionApproverRejected: c.wrongDecisionApproverRejected ?? false, wrongBriefActorAndRoomRejected: c.wrongBriefActorAndRoomRejected ?? false, duplicateAcceptanceIdempotent: c.duplicateAcceptanceIdempotent ?? false, restartVerified: c.restartVerified ?? false, recallContextLabelsSavedNotExecuted: c.recallContextLabelsSavedNotExecuted ?? false, ownProjectContentDeleted: c.ownProjectContentDeleted, chargeLedgerPreserved: c.chargeLedgerPreserved ?? false, budgetBeforeUsd: c.budgetBeforeUsd, budgetAfterUsd: c.budgetAfterUsd ?? null, discordSends: c.discordSends, humanRatings: c.humanRatings, privateArtifactSha256: run.sha256 };
   report.currentUsedOrReservedUsd = c.budgetAfterUsd ?? null;
 }
+if (existsSync('.local/evidence/media-pilot-v1.json')) {
+  const run = load('.local/evidence/media-pilot-v1.json'); const m = run.data;
+  report.mediaPilot = { at: m.at, commit: m.commit, status: m.status, kind: m.kind, files: m.files, manifestSha256: m.manifestSha256, cases: m.cases.map(c => ({ id: c.id, status: c.status, model: c.model ?? null, literalFactChecks: c.literalFactChecks, authorizedContextAvailable: c.authorizedContextAvailable ?? false, noAuthorityCreated: c.noAuthorityCreated ?? false, originRevocationVerified: c.originRevocationVerified ?? false, mediaInferenceAttempts: c.mediaInferenceAttempts ?? 0, charges: c.charges ?? [] })), mediaInferenceAttempts: m.mediaInferenceAttempts, literalFactCasesPassed: m.literalFactCasesPassed ?? 0, uploadCleanupOutstanding: m.uploadCleanupOutstanding ?? 'NOT_COMPLETED', rawFixturesDeleted: m.rawFixturesDeleted, ownProjectContentDeleted: m.ownProjectContentDeleted, chargeLedgerPreserved: m.chargeLedgerPreserved ?? false, budgetBeforeUsd: m.budgetBeforeUsd, budgetAfterUsd: m.budgetAfterUsd ?? null, humanRatings: m.humanRatings, discordSends: m.discordSends, semanticReview: 'NOT_RUN', privateArtifactSha256: run.sha256 };
+  if (existsSync('evidence/media-v1-review.json')) {
+    const review = JSON.parse(readFileSync('evidence/media-v1-review.json'));
+    if (review.privateArtifactSha256 !== run.sha256) throw new Error('Media review does not match preserved capture');
+    report.mediaPilot.semanticReview = { reviewedAt: review.reviewedAt, reviewer: review.reviewer, target: review.target, cases: review.cases, limitations: review.limitations };
+  }
+  report.currentUsedOrReservedUsd = m.budgetAfterUsd ?? null;
+}
+if (existsSync('.local/evidence/voice-diagnostic-v1.json')) {
+  const run = load('.local/evidence/voice-diagnostic-v1.json'); const d = run.data;
+  report.voiceDiagnostic = { at: d.at, commit: d.commit, status: d.status, kind: d.kind, files: d.files, manifestSha256: d.manifestSha256, cases: d.cases.map(c => ({ id: c.id, status: c.status, literalFactChecks: c.literalFactChecks, safeFailure: c.safeFailure ?? null, charges: c.charges ?? [], originRevocationVerified: c.originRevocationVerified ?? false })), mediaInferenceAttempts: d.mediaInferenceAttempts, rawFixturesDeleted: d.rawFixturesDeleted, ownProjectContentDeleted: d.ownProjectContentDeleted, chargeLedgerPreserved: d.chargeLedgerPreserved, budgetAfterUsd: d.budgetAfterUsd ?? null, privateArtifactSha256: run.sha256, limitations: 'Single distinct diagnostic; does not replace the failed v1 quality case.' };
+  report.currentUsedOrReservedUsd = d.budgetAfterUsd ?? null;
+}
 mkdirSync('evidence', { recursive: true });
 writeFileSync('evidence/meta-live-v1.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ smoke: report.smoke.status, pairedEvaluation: report.pairedEvaluation.status, usedOrReservedUsd: report.currentUsedOrReservedUsd, rawResponsesExported: false, artifact: 'evidence/meta-live-v1.json' }));

@@ -1,7 +1,7 @@
 import { afterEach, expect, it } from 'vitest';
 import { Store } from '../src/store.js';
 import { MediaPipeline, validateMedia, type MediaPayload, type MediaProvider } from '../src/media.js';
-import { MetaMediaProvider } from '../src/media-meta.js';
+import { MetaMediaProvider, MediaServiceError } from '../src/media-meta.js';
 import { Teammate } from '../src/core.js';
 import { MockProvider } from '../src/fakes.js';
 import type { RequestEvent } from '../src/domain.js';
@@ -50,7 +50,7 @@ it('uploads only the supplied video, uses the explicit sound model and deletes t
     requests.push(`${init?.method} ${url}`);
     if (url === 'https://api.meta.ai/v1/files') { expect((init!.body as FormData).get('purpose')).toBe('user_data'); return new Response(JSON.stringify({ id: 'file-abc123' })); }
     if (init?.method === 'DELETE') return new Response('{}');
-    const body = JSON.parse(init!.body as string); expect(body.model).toBe('muse-spark-1.2'); expect(body.max_output_tokens).toBe(4000); expect(body.input[0].content[1]).toEqual({ type: 'input_file', file_id: 'file-abc123' }); return new Response(JSON.stringify(envelope(body.model)));
+    const body = JSON.parse(init!.body as string); expect(body.model).toBe('muse-spark-1.2'); expect(body.max_output_tokens).toBe(4000); expect(body.instructions).toContain('audible speech'); expect(body.input[0].content[0].text).toContain('transcribe'); expect(body.input[0].content[1]).toEqual({ type: 'input_file', file_id: 'file-abc123' }); return new Response(JSON.stringify(envelope(body.model)));
   };
   const result = await new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive({ ...video(), audioMatters: true }); expect(result.model).toBe('muse-spark-1.2'); expect(requests.at(-1)).toBe('DELETE https://api.meta.ai/v1/files/file-abc123'); expect(s.db.prepare('SELECT state FROM media_uploads').get()?.state).toBe('deleted');
 });
@@ -70,4 +70,15 @@ it('blocks absent budget and retains uncertain charges after a failed visual cal
   const s = store(); let calls = 0; const http: typeof fetch = async () => { calls++; throw new Error('synthetic timeout'); };
   await expect(new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 0, http).derive(png())).rejects.toThrow(); expect(calls).toBe(0);
   await expect(new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive(png())).rejects.toThrow(); expect(calls).toBe(1); expect(s.budgetUsed()).toBeGreaterThan(1);
+});
+it('exposes only safe HTTP metadata and retains unknown charges without printing the provider body', async () => {
+  const s = store(); const http: typeof fetch = async () => new Response('SYNTHETIC_PRIVATE_ERROR_BODY', { status: 400 });
+  try { await new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive(wav()); throw new Error('Expected failure'); }
+  catch (e) { expect(e).toBeInstanceOf(MediaServiceError); expect((e as MediaServiceError).safeDetails).toEqual({ stage: 'transcribe', code: 'http_error', httpStatus: 400 }); expect(JSON.stringify(e)).not.toContain('SYNTHETIC_PRIVATE'); }
+  expect(s.budgetUsed()).toBe(0.00005);
+});
+it('records bounded duration metadata on an invalid ASR response without exposing the transcript', async () => {
+  const s = store(); const http: typeof fetch = async () => new Response(JSON.stringify({ sessionId: 'synthetic', transcript: 'SYNTHETIC_PRIVATE_TRANSCRIPT', audioDurationMs: 1020 }));
+  await expect(new MetaMediaProvider('SYNTHETIC-HTTP-ONLY', s, 5, http).derive(wav())).rejects.toMatchObject({ safeDetails: { stage: 'transcribe', code: 'invalid_voice_response', sourceDurationMs: 1000, reportedDurationMs: 1020 } });
+  expect(s.budgetUsed()).toBe(0.00005);
 });
