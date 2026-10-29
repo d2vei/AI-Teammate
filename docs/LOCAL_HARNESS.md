@@ -1,5 +1,7 @@
 # Platform-independent local conversation
 
+This page documents the MOCK terminal. The separate optional real-Meta terminal is documented in [LIVE_TERMINAL.md](LIVE_TERMINAL.md); add-on fixtures below are not exposed by that live terminal.
+
 ```sh
 npm ci --ignore-scripts
 npm run conversation:offline

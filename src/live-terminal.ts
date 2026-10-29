@@ -24,5 +24,10 @@ export async function runLiveTerminal(harness: LiveConversation, input: Readable
       reader.once('close', () => { stop(); resolveClosed(); }); reader.once('error', reject);
     });
     await pending;
-  } finally { stop(); await pending; signals?.off('SIGINT', stop); signals?.off('SIGTERM', stop); }
+  } finally {
+    stop(); await pending; signals?.off('SIGINT', stop); signals?.off('SIGTERM', stop);
+    // This runner owns its input. readline.close() pauses a native stdin pipe
+    // but leaves the pipe handle open; close it after the paid work drains.
+    input.destroy();
+  }
 }

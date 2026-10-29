@@ -1,0 +1,98 @@
+{
+  "at": "2026-10-29T21:02:09.998Z",
+  "status": "PASS_NATIVE_START_STATUS_QUIT_ONLY",
+  "kind": "actual native Windows Infisical launcher and terminal start/status/quit twice; model entitlement GET only, no generation commands",
+  "candidateBase": "420307734e2a8a418ef22e92989406ee6b074d92",
+  "workingTreeDirty": true,
+  "files": [
+    {
+      "path": "src/live-terminal.ts",
+      "sha256": "d516033438d604ae77a046f10fe4cac82873da8f59c0f2234bfad628e83e1658"
+    },
+    {
+      "path": "src/live-conversation.ts",
+      "sha256": "d471d0d0d622b39e9430a3ab56a81e360353aff87c7d341fc5548afa914b8bcc"
+    },
+    {
+      "path": "scripts/conversation-live.mjs",
+      "sha256": "844fe62739cfdf9f8cc3e6119e0604586abdcbb4e989e972ce0ae186568004a7"
+    },
+    {
+      "path": "scripts/check-live-terminal-service.mjs",
+      "sha256": "d9dbfbae83c20f25f2cf4463f1bcbb1dfb4f2d1b8689c9a769f970a8f20c95e8"
+    },
+    {
+      "path": "scripts/infisical.mjs",
+      "sha256": "f0d4200b9c3a0d6b60e23c9030a56b56ae64efde6ac230a27849280d44699b97"
+    },
+    {
+      "path": "scripts/vault-child.mjs",
+      "sha256": "d5b044995ae37147433d282626ddb57012a1b1a6ac99bff8cd845d4403e37b77"
+    },
+    {
+      "path": "scripts/vault-lib.mjs",
+      "sha256": "0a9a08a27e40c5c824da0365de7414fb38bf789cb0b18e39b013c6c0b4c2fae6"
+    },
+    {
+      "path": "dist/live-terminal.js",
+      "sha256": "8f31b28567ee6b4b27104cb7281780ae1b378c120c4f58b3731c1d1f9c24d8e3"
+    },
+    {
+      "path": "dist/live-conversation.js",
+      "sha256": "5b447be1b7e0d6b871df52fb4ed5721f7759bb61608fb665ea451e3730284ab1"
+    }
+  ],
+  "modelCalls": 0,
+  "externalPosts": 0,
+  "cycles": [
+    {
+      "cycle": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4620,
+      "reachedStatus": true,
+      "status": {
+        "provider": "meta",
+        "paused": true,
+        "decisions": 0,
+        "briefs": 0,
+        "budgetUsedOrReservedUsd": 2.125445,
+        "execution": "unavailable"
+      },
+      "outputSha256": "70d1d59520dd27495555e18cf3aac40b6037b1f243a9b00f388eae25be7c5507"
+    },
+    {
+      "cycle": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 2396,
+      "reachedStatus": true,
+      "status": {
+        "provider": "meta",
+        "paused": true,
+        "decisions": 0,
+        "briefs": 0,
+        "budgetUsedOrReservedUsd": 2.125445,
+        "execution": "unavailable"
+      },
+      "outputSha256": "70d1d59520dd27495555e18cf3aac40b6037b1f243a9b00f388eae25be7c5507"
+    }
+  ],
+  "humanRatings": "NOT_RUN",
+  "limitations": "Restart of the already-purged synthetic scope only, not persistence of the real generated brief or the full failed first-attempt run. No raw output/key is exported.",
+  "before": {
+    "chargeRows": 393,
+    "budgetUsedOrReservedUsd": 2.125445,
+    "localSources": 0,
+    "localDecisions": 0,
+    "localBriefs": 0
+  },
+  "after": {
+    "chargeRows": 393,
+    "budgetUsedOrReservedUsd": 2.125445,
+    "localSources": 0,
+    "localDecisions": 0,
+    "localBriefs": 0
+  },
+  "finishedAt": "2026-10-29T21:02:17.081Z"
+}

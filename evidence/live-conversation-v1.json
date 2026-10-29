@@ -1,0 +1,129 @@
+{
+  "at": "2026-10-29T20:55:39.935Z",
+  "finishedAt": "2026-10-29T20:56:59.714Z",
+  "status": "FAIL",
+  "failure": "Native /quit completed application cleanup but stdin kept the child process alive; the integration driver timed out after 60 seconds. The first attempt remains failed.",
+  "candidate": "420307734e2a8a418ef22e92989406ee6b074d92",
+  "files": [
+    {
+      "path": "src/live-conversation.ts",
+      "sha256": "d471d0d0d622b39e9430a3ab56a81e360353aff87c7d341fc5548afa914b8bcc"
+    },
+    {
+      "path": "src/live-terminal.ts",
+      "sha256": "51e5b889042299ca05d7205943433cb3e4eba1926c2ab98d0df1f9597010a43d"
+    },
+    {
+      "path": "scripts/conversation-live.mjs",
+      "sha256": "844fe62739cfdf9f8cc3e6119e0604586abdcbb4e989e972ce0ae186568004a7"
+    },
+    {
+      "path": "scripts/check-live-conversation.mjs",
+      "sha256": "fd352f8941a8c2c50cdf1710730247dac679613c0b8beeaa7418242194f3a13d"
+    },
+    {
+      "path": "scripts/vault-child.mjs",
+      "sha256": "d5b044995ae37147433d282626ddb57012a1b1a6ac99bff8cd845d4403e37b77"
+    },
+    {
+      "path": "scripts/vault-lib.mjs",
+      "sha256": "0a9a08a27e40c5c824da0365de7414fb38bf789cb0b18e39b013c6c0b4c2fae6"
+    },
+    {
+      "path": "src/local-harness.ts",
+      "sha256": "c235b14e000a49b23d24bc7e52edd59c79351625f9e114316205a8a0187c9292"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+    },
+    {
+      "path": "src/meta.ts",
+      "sha256": "47b0f35c74bbf09f127f76da924b726fec05353d4246f35e59a24420a8b95840"
+    },
+    {
+      "path": "src/meta-runtime.ts",
+      "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+    },
+    {
+      "path": "prompts/response.md",
+      "sha256": "75bb4b10c7618cef5fcc19a0c7b4f3cf544bf893f503516b9a0d1c1dcb7b028f"
+    },
+    {
+      "path": "examples/party-queue.json",
+      "sha256": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d"
+    },
+    {
+      "path": "dist/live-conversation.js",
+      "sha256": "5b447be1b7e0d6b871df52fb4ed5721f7759bb61608fb665ea451e3730284ab1"
+    },
+    {
+      "path": "dist/live-terminal.js",
+      "sha256": "4281fcbb962f209aaa7b982e5fec725e51ecfb0e6756f0750a38aea3513db7cd"
+    }
+  ],
+  "kind": "actual built terminal stdin/stdout over three real Meta requests; synthetic actors/evidence/confirmations, not Discord or human evaluation",
+  "model": "muse-spark-1.3",
+  "actualInferenceAttempts": 3,
+  "observedSteps": [
+    "fresh_terminal_ready",
+    "new_decision_confirmed_wrong_actor_rejected",
+    "brief_saved_after_real_bound_followup"
+  ],
+  "coreTracesReconciledAfterRun": [
+    {
+      "stage": "decision",
+      "outcome": "response",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 844,
+        "outputTokens": 770
+      },
+      "contextItemCount": 2
+    },
+    {
+      "stage": "brief",
+      "outcome": "response",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 996,
+        "outputTokens": 2034
+      },
+      "contextItemCount": 3
+    },
+    {
+      "stage": "bound_followup",
+      "outcome": "response",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 1384,
+        "outputTokens": 1562
+      },
+      "contextItemCount": 4
+    }
+  ],
+  "reconciliationMethod": "Last three durable direct-core traces matched the native terminal inference counter and exact cumulative charge delta. Subsequent lifecycle checks sent no generation command.",
+  "freshScopeVerified": true,
+  "newDecisionAndBriefObserved": true,
+  "wrongActorRejectionObserved": true,
+  "duplicateAcceptanceObserved": true,
+  "casualAgreement": "Sent as ambient; no intermediate saved-count query was made. Authority prohibition is separately code/mock-tested.",
+  "restartOfRealGeneratedState": "NOT_RUN",
+  "ownContentPurged": true,
+  "chargeLedgerRetained": true,
+  "budgetBeforeUsd": 2.102858,
+  "originalCaptureBudgetBeforeUsd": null,
+  "budgetMetadataRecovery": "The original driver greedily consumed sentence punctuation, producing null. Recovered the exact six-decimal amount from the preserved native startup banner; original capture unchanged.",
+  "budgetAfterUsd": 2.125445,
+  "semanticQuality": "NOT_RATED",
+  "humanRatings": "NOT_RUN",
+  "externalPosts": 0,
+  "rawTerminalLinesExported": false,
+  "privateArtifactSha256": "ef4ed2b9c94b4482733be0f0bc08ccec0df05951369a0fb0b656209de4c1bd21",
+  "correctedLifecycleEvidence": "evidence/live-terminal-lifecycle-v1.json",
+  "limitations": "Three real accepted model outputs over synthetic evidence and simulated local participants. Bound local approval is not platform authentication. The corrected zero-generation lifecycle check does not replace or pass this failed first attempt. No repeated paid trial."
+}

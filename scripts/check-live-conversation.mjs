@@ -6,6 +6,7 @@ import { join, resolve } from 'node:path';
 import { createInterface } from 'node:readline';
 import { Store } from '../dist/store.js';
 import { conversationEnvironment } from './vault-lib.mjs';
+import { budgetFromBanner } from './live-terminal-evidence-lib.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const root = resolve('.'); const dir = join(root, '.local/state'); const file = join(root, '.local/evidence/live-conversation-v1.json');
 mkdirSync(join(root, '.local/evidence'), { recursive: true });
@@ -44,7 +45,7 @@ const inspect = fn => {
 const step = name => { record.steps.push(name); save(); console.log(JSON.stringify({ phase: name })); };
 try {
   session = start(true); await session.wait(line => line.startsWith('NEW_SYNTHETIC_CHECK_SESSION:')); record.ownedFreshProject = true;
-  const allowance = record.privateTerminalLines.find(l => l.startsWith('Shared allowance:')); record.budgetBeforeUsd = Number(/used\/reserved USD ([\d.]+)/.exec(allowance)[1]);
+  const allowance = record.privateTerminalLines.find(l => l.startsWith('Shared allowance:')); record.budgetBeforeUsd = budgetFromBanner(allowance).usedOrReservedUsd;
   const status = JSON.parse((await session.command('/status')).slice('[status] '.length)); assert.equal(status.decisions + status.briefs, 0);
   step('fresh_terminal_ready');
   const decisionLine = await session.command('/decision Party members must be assigned to the same room. Draft this for review; do not approve it.', l => /^\/accept accept:/.test(l)); const decisionToken = decisionLine.slice(8);

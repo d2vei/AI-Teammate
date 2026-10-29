@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T20:30:33.050Z",
+  "exportedAt": "2026-10-29T21:07:02.484Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 2.102858,
+  "currentUsedOrReservedUsd": 2.125445,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -902,6 +902,55 @@
     "artifact": "evidence/participation-live-v1.json",
     "artifactSha256": "6353dd932506bec94a0e4703e8fa9a6f09c36fc715006c9072011858517ccfc6"
   },
-  "cumulativeRequestAttempts": 390,
-  "uncertainReservedUsd": 0.00055
+  "cumulativeRequestAttempts": 393,
+  "uncertainReservedUsd": 0.00055,
+  "interactiveTerminal": {
+    "at": "2026-10-29T20:55:39.935Z",
+    "candidate": "420307734e2a8a418ef22e92989406ee6b074d92",
+    "status": "FAIL",
+    "failure": "Native /quit completed application cleanup but stdin kept the child process alive; the integration driver timed out after 60 seconds. The first attempt remains failed.",
+    "actualInferenceAttempts": 3,
+    "coreTracesReconciledAfterRun": [
+      {
+        "stage": "decision",
+        "outcome": "response",
+        "delivery": "delivered",
+        "usage": {
+          "inputTokens": 844,
+          "outputTokens": 770
+        },
+        "contextItemCount": 2
+      },
+      {
+        "stage": "brief",
+        "outcome": "response",
+        "delivery": "delivered",
+        "usage": {
+          "inputTokens": 996,
+          "outputTokens": 2034
+        },
+        "contextItemCount": 3
+      },
+      {
+        "stage": "bound_followup",
+        "outcome": "response",
+        "delivery": "delivered",
+        "usage": {
+          "inputTokens": 1384,
+          "outputTokens": 1562
+        },
+        "contextItemCount": 4
+      }
+    ],
+    "ownContentPurged": true,
+    "chargeLedgerRetained": true,
+    "budgetBeforeUsd": 2.102858,
+    "budgetAfterUsd": 2.125445,
+    "restartOfRealGeneratedState": "NOT_RUN",
+    "humanRatings": "NOT_RUN",
+    "externalPosts": 0,
+    "artifact": "evidence/live-conversation-v1.json",
+    "artifactSha256": "f57dc48266fd796e7bb2c87931269bb8954d09014916a6c963dff1c7a9d38cf0",
+    "correctedLifecycleEvidence": "evidence/live-terminal-lifecycle-v1.json"
+  }
 }

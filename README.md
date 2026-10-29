@@ -2,7 +2,7 @@
 
 A shared project assistant for direct questions, approved decisions, source-grounded answers and confirmed investigation briefs. The application checks who can see evidence and approve a proposal. A saved brief records a next step; it does not execute work.
 
-The current runnable interface is a platform-independent local terminal with **scripted MOCK responses and simulated participants**. Real Meta integration has separate, budgeted test routes. Discord connection and installation are deferred.
+The runnable interfaces are a platform-independent terminal with **scripted MOCK responses** and a separate **real Meta terminal** using the same approval core. Both use simulated local participants; Discord connection and installation are deferred.
 
 ## Try the local workflow
 
@@ -22,6 +22,8 @@ Dependency installation needs the public npm registry; the offline workflow itse
 
 The supplied party-routing code and structured event are synthetic. Terminal role switching demonstrates software checks, not authenticated group identities. See [the local harness guide](docs/LOCAL_HARNESS.md) for pause/resume, source withdrawal, data deletion, shadow invitations and error-watch replay.
 
+For real model responses, build offline, configure the native Infisical session, then run `npm run conversation:live`. It uses a shared persistent spending cap and supports explicit questions, bound follow-ups, decision approval and saved briefs. See [the live terminal guide](docs/LIVE_TERMINAL.md) for setup, the explicit demo reset after test-data deletion and the preserved first integration failure/separate exit fix.
+
 ## Verify the software
 
 ```sh
@@ -38,8 +40,9 @@ A fresh Windows dependency installation and the commands above passed on candida
 
 ## Current evidence
 
-- The offline suite passes 167 tests across 22 files. Scope, confirmation binding, source access, persistence, budget reservation and failure handling have deterministic checks.
+- The offline suite includes scope, confirmation binding, source access, persistence, budget reservation, live-terminal pause/follow-up and failure-handling checks. Exact current counts are in [STATUS.md](docs/STATUS.md).
 - Actual Meta tests generated a decision and brief saved through simulated bound confirmations. Eight same-context answer pairs remain inconclusive pending manual ratings.
+- The real terminal generated a decision, brief and bound follow-up. Its first integration check failed on process exit; the stdin fix passed separate zero-generation native lifecycle checks. The original failed attempt remains preserved.
 - The real participation shadow pilot **failed**: 0/15 intended interventions, 0/25 negative-case interruptions, all 180 turns silent. Mention-only remains the supported fallback; unsolicited participation is not enabled.
 - The five-case media regression met four strict synthetic cases. The audio-important clip still had inconsistent provenance wording and received no strict credit. The earlier failed media pilot is retained.
 - Real group interactions, human judgments, deployment and the final demonstration are incomplete.
@@ -50,4 +53,4 @@ Exact candidates, usage, failures and limitations are in [LIVE_TESTS.md](docs/LI
 
 Follow [SECRETS.md](docs/SECRETS.md) for the official Windows Infisical CLI, interactive browser login and native credential store. Keep `.env.example` blank; never export vault values into `.env`, print them, commit them or launch a coding agent with them. Offline tests do not require vault access.
 
-Live commands are fixed test routes with bounded requests, a persistent shared spending ledger and no automatic retry. Preserve completed attempts and uncertain charges. Review [LIVE_TESTS.md](docs/LIVE_TESTS.md) and configure an authorized allowance before any additional trial. The app has no shell, code-editing, Git-writing, deployment or worker-execution capability. Jev and OpenAI integrations are disabled.
+Live commands are fixed bot/test routes with bounded requests, a persistent shared spending ledger and no automatic retry. Preserve completed attempts and uncertain charges. Review [LIVE_TESTS.md](docs/LIVE_TESTS.md) and configure an authorized allowance before any additional trial. The app has no shell, code-editing, Git-writing, deployment or worker-execution capability. Jev and OpenAI integrations are disabled.

@@ -74,7 +74,11 @@ Media checks are separate fixed test routes: `test:media-live` (five-case v1), `
 
 Do not use `infisical export`, `secrets`, `printenv`, `process.env` dumps, `login --plain` or a coding-agent launch under the vault. Do not expose live keys to CI. All public/offline CI uses mock data only.
 
-`test:participation-live` is another fixed test-only route using the same ledger, native store and allowance. Its first frozen shadow pilot completed 360 requests and failed the participation target; do not rerun it or delete its capture/charges. Current cumulative accounting is USD 2.102858 across 390 request attempts, including USD 0.000550 uncertain. Keep mention-only. `review:prepare` and `review:check` operate on local captures without vault access, credentials or paid calls. See LIVE_TESTS.md and MANUAL_REVIEW.md.
+`conversation:live` is now a separate fixed local bot route for real explicit-request responses over the synthetic demo. Build offline first. It uses the same native session, locked charge ledger and authorized cap; its child receives Meta settings/key and OS locations, with Discord/private-source/project-ID controls stripped. The operator's roles are simulated. It never launches a coding agent. See LIVE_TERMINAL.md for pending-input, pause/quit, reply binding and explicit reset/deletion behavior.
+
+The first fixed `test:conversation-live` attempt made three real requests and failed on process exit; the original capture remains failed. The stdin fix passed separate zero-generation subprocess and real native launch/status/quit checks. No paid rerun. Current cumulative use/reserves are USD 2.125445 across 393 request attempts, including the earlier USD 0.000550 uncertain. The prior USD 2.102858 figure is the participation-stage total. Native lifecycle checks do not enter offline CI or automatically dispatch generation.
+
+`test:participation-live` is another fixed test-only route using the same ledger, native store and allowance. Its first frozen shadow pilot completed 360 requests and failed the participation target; do not rerun it or delete its capture/charges. At the end of that stage accounting was USD 2.102858 across 390 request attempts, including USD 0.000550 uncertain; the later terminal stage total is above. Keep mention-only. `review:prepare` and `review:check` operate on local captures without vault access, credentials or paid calls. See LIVE_TESTS.md and MANUAL_REVIEW.md.
 
 ## Migration and removal status
 
