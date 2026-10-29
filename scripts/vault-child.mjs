@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { childEnvironment, evaluationSettings, findCli, requireNativeVault } from './vault-lib.mjs';
 const action = process.argv[2];
-const allowed = new Set(['meta-smoke', 'meta-check', 'evaluate']);
+const allowed = new Set(['meta-smoke', 'meta-check', 'evaluate', 'core-live']);
 if (!allowed.has(action)) { console.error('BLOCKED: only fixed bot/live-check commands are allowed'); process.exit(1); }
 const env = childEnvironment(process.env);
 // Infisical may write its encrypted cache during run. Recheck here, before any
@@ -22,6 +22,6 @@ if (action === 'meta-check') {
 } else {
   if (action === 'evaluate') Object.assign(env, evaluationSettings(env));
   // Only the application process receives the allowlisted injected values; no shell or agent.
-  const args = action === 'evaluate' ? ['scripts/evaluate.mjs'] : ['scripts/meta-smoke.mjs'];
+  const args = [action === 'evaluate' ? 'scripts/evaluate.mjs' : action === 'core-live' ? 'scripts/core-live.mjs' : 'scripts/meta-smoke.mjs'];
   const result = spawnSync(process.execPath, args, { env, stdio: 'inherit', windowsHide: true }); process.exitCode = result.status ?? 1;
 }

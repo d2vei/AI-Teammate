@@ -22,14 +22,14 @@ Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. The
 | Jev/OpenAI | Disabled: no integrations; live child forwards only the Meta/Discord app allowlist. |
 | Plaintext migration | No known plaintext credential files found in workspace; no files/keys deleted. Actual vault migration NOT completed yet. |
 | GitHub publication | Codec commit 0219317 pushed normally to existing d2vei/AI-Teammate main; exact remote SHA verified, clean tree after push. No force push, rewrite or other repository creation. Reviewed 14 staged files; redacted staged (48,390 bytes) and full 17-commit history (727,731 bytes) scans PASS. Actions lookup for this candidate still returned 404; hosted CI/public metadata remain unverified. Earlier 38c8c8b CI PASS is historical evidence only. |
-| Frozen model evaluation/baseline | NOT_RUN. No quality, naturalness, proactive timing or advantage claim. |
+| Frozen model evaluation/baseline | INCONCLUSIVE: 16 real calls/eight pairs completed. Candidate 8/8 and baseline 7/8 schema/citation-ID checks passed; baseline F-D4 failed at 2048 output tokens, preserved without rerun. Eight quiet configuration checks PASS. Human usefulness/naturalness ratings and complete outcome study NOT_RUN; no advantage claim. |
 | Live decision + brief demonstration | BLOCKED on real Discord/Meta setup; mock checks do not pass this gate. |
 | Deployment/video/final submission | NOT_RUN; not release complete. |
 
 Commits so far: `ba85d6c` preparation; `fe6f30d` scoped core/Meta; `dd69f38` decisions; `e3c5ee5` evidence/briefs. Later commits and exact push results are in WORKLOG.
 
-Meta testing allowance: EUR 5 total authorized by owner; USD 5 cumulative local ceiling with FX headroom. One actual inference has run; USD 0.005748 used/accounted. Ask before exceeding the authorized amount; unknown charges remain reserved. Sanitized metadata only: evidence/meta-live-v1.json; raw responses remain ignored.
+Meta testing allowance: EUR 5 total authorized by owner; USD 5 cumulative local ceiling with FX headroom. Seventeen actual inferences have run; USD 0.121200 used/accounted. Ask before exceeding the authorized amount; unknown charges remain reserved. Sanitized metadata only: evidence/meta-live-v1.json; raw responses remain ignored.
 
-Next: the prepared frozen same-model evaluation, `npm.cmd run eval:live`, within the same charge ledger and ceiling. It can make at most 16 calls and cannot pass human usefulness/adoption gates. Preserve the successful initial smoke rather than rerunning it. Project is already linked; no .env file is needed or auto-loaded. See [SECRETS.md](SECRETS.md).
+Next: the fixed `npm.cmd run test:core-live` application-flow check (at most two real calls with simulated participants), within the same charge ledger and ceiling. Preserve initial smoke/evaluation results rather than rerunning them. Human ratings, actual participation/media quality and Discord remain separate. Project is already linked; no .env file is needed or auto-loaded. See [SECRETS.md](SECRETS.md).
 
 Interactive local workflow: `npm.cmd run conversation:offline`; see [LOCAL_HARNESS.md](LOCAL_HARNESS.md). It remains deliberately MOCK/scripted, tested with exact-token approval, wrong actor, casual agreement, saved briefs and pause/resume. The separate real smoke does not make this terminal model-powered or establish Discord support.

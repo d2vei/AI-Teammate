@@ -7,6 +7,8 @@ describe('Infisical launcher - no vault access', () => {
     expect(args[0]).toBe('run'); expect(args).toContain('--include-imports=false'); expect(args).toContain('--expand=false');
     expect(args).toContain('--recursive=false'); expect(args.at(-1)).toBe('meta-smoke');
     expect(args.join(' ')).not.toContain('codex'); expect(args).not.toContain('--plain'); expect(args).not.toContain('--command');
+    const core = buildRunArgs('core-live', '/synthetic/project', '/synthetic/node');
+    expect(core.at(-1)).toBe('core-live'); expect(core.at(-2)).toMatch(/scripts[\\/]vault-child\.mjs$/);
   });
   it.each(['codex', 'shell', 'export', 'npm test', 'jev', 'openai'])('rejects arbitrary command %s', action => { expect(() => buildRunArgs(action)).toThrow(); });
   it('does not forward unrelated provider keys, vault tokens or Node preload options', () => {

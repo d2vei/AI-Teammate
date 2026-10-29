@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T18:47:29.785Z",
+  "exportedAt": "2026-10-29T18:52:51.728Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -30,8 +30,236 @@
     "privateArtifactSha256": "25496669499ead43d9274d40516a06e5039c7d525c877fcb6811cae3cf9ffb9d"
   },
   "pairedEvaluation": {
-    "status": "NOT_RUN",
-    "humanRatings": "NOT_RUN"
+    "at": "2026-10-29T18:48:56.831Z",
+    "commit": "4d9aa82fcb60b863cc018fc5b210e66d09b7dbc3",
+    "status": "INCONCLUSIVE",
+    "kind": "synthetic same-model paired responses, not a Discord task study",
+    "model": "muse-spark-1.3",
+    "mode": "standard",
+    "casesHash": "6eb2478b59f3e57d6c7db6163f963b33dfbfa6a9b3098c80695eae35b2c0a551",
+    "promptHashes": {
+      "candidate": "de4183408fa2b1000117d2fdf68dedae09ec898c3555965d7ddf84c218f1cc2d",
+      "baseline": "8277a5039db672c74951710654bcb0d9839ea84cdb2c6a461db7abfd979c2072"
+    },
+    "frozenRuntimeIdentity": "eb22634de444dace96988ba60ffa7560a7b4c59d4436097d54632d6c16e9852c",
+    "fixtureHash": "935c26f3c058ec6fec236e69771219f525f763f8ca8420a9e7e3831b61ca6a8d",
+    "quiet": [
+      {
+        "id": "F-Q1",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q2",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q3",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q4",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q5",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q6",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q7",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      },
+      {
+        "id": "F-Q8",
+        "status": "PASS",
+        "meaning": "actual core invocation boundary, not social judgment"
+      }
+    ],
+    "pairs": [
+      {
+        "id": "F-D1",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 922,
+            "outputTokens": 1337
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 728,
+            "outputTokens": 1572
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D2",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 925,
+            "outputTokens": 1760
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 731,
+            "outputTokens": 1202
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D3",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 933,
+            "outputTokens": 1218
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 739,
+            "outputTokens": 1485
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D4",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 935,
+            "outputTokens": 1821
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "FAIL",
+          "usage": {
+            "inputTokens": 741,
+            "outputTokens": 2048
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D5",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 932,
+            "outputTokens": 1423
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 738,
+            "outputTokens": 1213
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D6",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 923,
+            "outputTokens": 1330
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 729,
+            "outputTokens": 1530
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D7",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 932,
+            "outputTokens": 1612
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 738,
+            "outputTokens": 1256
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      },
+      {
+        "id": "F-D8",
+        "candidate": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 965,
+            "outputTokens": 1080
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "baseline": {
+          "status": "PASS_SCHEMA_ONLY",
+          "usage": {
+            "inputTokens": 771,
+            "outputTokens": 1341
+          },
+          "semanticResult": "NOT_RATED"
+        },
+        "humanRating": "NOT_RUN",
+        "outcomeStudy": "NOT_RUN"
+      }
+    ],
+    "budgetBeforeUsd": 0.005748,
+    "budgetAfterUsd": 0.1212,
+    "humanRatings": "NOT_RUN",
+    "liveDiscord": "NOT_RUN",
+    "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 0.005748
+  "currentUsedOrReservedUsd": 0.1212
 }
