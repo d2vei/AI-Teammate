@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-29T12:23:49.987Z",
+  "at": "2026-10-29T13:03:18.220Z",
   "status": "PASS_SOFTWARE_ONLY",
   "kind": "actual built terminal I/O with explicitly simulated participants and scripted providers",
   "decisionCount": 1,
@@ -20,7 +20,7 @@
   "humanRatings": "NOT_RUN",
   "mediaUnderstanding": "NOT_RUN",
   "budgetUsedOrReservedUsd": 0,
-  "candidateBase": "c00f942eb949054fc4bb2163ee745fe2c4c24059",
+  "candidateBase": "6ad127427e28897faea7181a5165f85e2df61678",
   "workingTreeDirty": true,
   "files": [
     {
@@ -49,7 +49,7 @@
     },
     {
       "path": "src/media.ts",
-      "sha256": "0b4aba93fd22ba67d2d9ff2e97d04feed250d4e9987ff3cc198978f769a22d20"
+      "sha256": "9f347dd99f9a59e924a053bff09a38d8ae83e4c45e21e3f2ea8496f32cb58915"
     },
     {
       "path": "src/core.ts",
@@ -109,7 +109,7 @@
     },
     {
       "path": "dist/media.js",
-      "sha256": "e151150eecf2199b8070865b376f287d86b5cb3183e87fe1906472595eaf67bb"
+      "sha256": "34126544b439e7b1d3d259bee22960a8fa4cae465a0f68db84146ec189c9676d"
     },
     {
       "path": "dist/core.js",

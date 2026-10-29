@@ -1,14 +1,16 @@
 import { createHash } from 'node:crypto';
 import { digest, eligible, approver, type RequestEvent } from './domain.js';
 import type { Store } from './store.js';
+import type { AttachmentPayload, MediaNormalizer } from './media-codec.js';
 export type MediaPayload = { kind: 'voice' | 'image' | 'video'; mime: 'audio/wav' | 'image/png' | 'image/jpeg' | 'video/mp4'; bytes: Uint8Array; synthetic: boolean; durationMs?: number; audioMatters?: boolean };
 export type MediaResult = { text: string; model: string; mode: 'mock' | 'meta'; requestId: string | null };
 export interface MediaProvider { readonly mode: 'mock' | 'meta'; derive(payload: MediaPayload): Promise<MediaResult> }
 
 export function validateMedia(payload: MediaPayload): { durationMs: number | null } {
+  if (!['voice', 'image', 'video'].includes(payload.kind) || !(payload.bytes instanceof Uint8Array)) throw new Error('Invalid media payload');
   const bytes = Buffer.from(payload.bytes); if (!bytes.length || bytes.length > (payload.kind === 'image' ? 2_000_000 : payload.kind === 'video' ? 8_000_000 : 29_000_000)) throw new Error('Media exceeds local bounds');
   if (payload.kind === 'voice') {
-    // Deliberately bounded canonical PCM WAV. OGG/Opus conversion is a separate
+    // Deliberately bounded canonical PCM WAV. Optional attachment preparation is a separate
     // adapter concern; no shell or arbitrary codec process is exposed here.
     if (payload.mime !== 'audio/wav' || bytes.length < 46 || bytes.toString('ascii', 0, 4) !== 'RIFF' || bytes.readUInt32LE(4) !== bytes.length - 8 || bytes.toString('ascii', 8, 12) !== 'WAVE' || bytes.toString('ascii', 12, 16) !== 'fmt ' || bytes.readUInt32LE(16) !== 16 || bytes.readUInt16LE(20) !== 1 || bytes.readUInt16LE(22) !== 1 || ![16000, 24000].includes(bytes.readUInt32LE(24)) || bytes.readUInt32LE(28) !== bytes.readUInt32LE(24) * 2 || bytes.readUInt16LE(32) !== 2 || bytes.readUInt16LE(34) !== 16 || bytes.toString('ascii', 36, 40) !== 'data' || bytes.readUInt32LE(40) !== bytes.length - 44 || (bytes.length - 44) % 2) throw new Error('Supply canonical mono PCM16 WAV at 16/24 kHz');
     const durationMs = (bytes.length - 44) / bytes.readUInt32LE(28) * 1000; if (durationMs > 600_000) throw new Error('Audio exceeds ten minutes'); return { durationMs };
@@ -24,7 +26,21 @@ export function validateMedia(payload: MediaPayload): { durationMs: number | nul
 
 export class MediaPipeline {
   private active = false;
+  private preparing = false;
   constructor(readonly store: Store, readonly provider: MediaProvider, readonly now = () => Date.now()) {}
+  async ingestAttachment(e: RequestEvent, payload: AttachmentPayload, normalizer: MediaNormalizer, originCurrent: () => boolean, privateHandlingVerified = false, signal?: AbortSignal): Promise<string> {
+    const config = this.store.config(e.projectId);
+    if (e.invocation === 'bot' || !eligible(config, { ...e, invocation: 'action' }) || !config.selectedSnapshot || !originCurrent()) throw new Error('Media scope/source unavailable');
+    if (!payload.synthetic && !privateHandlingVerified) throw new Error('Private media handling must be verified first');
+    if (this.preparing || this.active || signal?.aborted) throw new Error('Media preparation busy or cancelled');
+    const identity = digest(config); this.preparing = true; let prepared: MediaPayload | undefined;
+    try {
+      prepared = await normalizer.normalize(payload, signal);
+      if (prepared.kind !== payload.kind || prepared.synthetic !== payload.synthetic) throw new Error('Media normalization changed source provenance');
+      if (signal?.aborted || digest(this.store.config(e.projectId)) !== identity || !originCurrent()) throw new Error('Media source/configuration changed before provider dispatch');
+      return await this.ingest(e, prepared, originCurrent, privateHandlingVerified);
+    } finally { prepared?.bytes.fill(0); this.preparing = false; }
+  }
   async ingest(e: RequestEvent, payload: MediaPayload, originCurrent: () => boolean, privateHandlingVerified = false): Promise<string> {
     const config = this.store.config(e.projectId);
     if (e.invocation === 'bot' || !eligible(config, { ...e, invocation: 'action' }) || !config.selectedSnapshot || !originCurrent()) throw new Error('Media scope/source unavailable');

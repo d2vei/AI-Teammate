@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-29T13:03:22.220Z",
+  "status": "PASS_CODEC_SOFTWARE_ONLY",
+  "kind": "actual verified FFmpeg/ffprobe over generated synthetic fixtures plus MOCK derivation",
+  "toolchain": {
+    "version": "9.0.2",
+    "source": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-9.0.2-essentials_build.zip",
+    "archiveSha256": "60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba",
+    "verified": true,
+    "license": "GPL-3.0",
+    "ffmpegSha256": "3256173f3f8bffd7df12227c68adf68025edb1832273a9530688a7bb1ed8edec",
+    "ffprobeSha256": "f0d36ecbbdd3bcfac3efa078c96c7271c2e68b3810595552ac3b7f17e9a65c52"
+  },
+  "files": [
+    {
+      "path": "src/media-codec.ts",
+      "sha256": "a351f576100f634e28b816a5421e8ae49237984aa46008d8030f1647879631cb"
+    },
+    {
+      "path": "src/media.ts",
+      "sha256": "9f347dd99f9a59e924a053bff09a38d8ae83e4c45e21e3f2ea8496f32cb58915"
+    },
+    {
+      "path": "scripts/check-codec.mjs",
+      "sha256": "4cb47ad772f248b4e662b9a496e2be27a4b34e546d19edb995479cfb0701d209"
+    },
+    {
+      "path": "dist/media-codec.js",
+      "sha256": "7c2ead6b65ddaa7a6dc2a69a37041a33aa8d1a97e965974de1020a6c78fd4e2a"
+    },
+    {
+      "path": "dist/media.js",
+      "sha256": "34126544b439e7b1d3d259bee22960a8fa4cae465a0f68db84146ec189c9676d"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6"
+    }
+  ],
+  "candidateBase": "6ad127427e28897faea7181a5165f85e2df61678",
+  "workingTreeDirty": true,
+  "cases": [
+    {
+      "case": "ogg-opus",
+      "status": "PASS_CODEC_ONLY",
+      "inputBytes": 15690,
+      "inputSha256": "ea66d81cd222ddfef5af1b157702079b35a6bbaf7da091905ca0f85f802e560a",
+      "normalizedBytes": 48044,
+      "normalizedMime": "audio/wav",
+      "durationMs": 1000,
+      "audioMetadataMarkerRemoved": true,
+      "sourceId": "media:codec-v1:b8e0776cfce9210108b8e0c4d135b1cd",
+      "originalBytesUnchanged": true,
+      "jobFilesDeleted": true,
+      "semanticResult": "NOT_RUN"
+    },
+    {
+      "case": "png",
+      "status": "PASS_CODEC_ONLY",
+      "inputBytes": 203,
+      "inputSha256": "e5c6ceaf74b436266a9b2731c113651cc3aa60ac87e4073e3b5ff30c756bf329",
+      "normalizedBytes": 203,
+      "normalizedMime": "image/png",
+      "durationMs": null,
+      "audioMetadataMarkerRemoved": null,
+      "sourceId": "media:codec-v1:c98f8f6a3920a870a2550f1d982162a9",
+      "originalBytesUnchanged": true,
+      "jobFilesDeleted": true,
+      "semanticResult": "NOT_RUN"
+    },
+    {
+      "case": "jpeg",
+      "status": "PASS_CODEC_ONLY",
+      "inputBytes": 247,
+      "inputSha256": "b11b1b20c057f5e6523365bba1262643ae1549f4eb1a4fc5d5bd5af05cfc2609",
+      "normalizedBytes": 247,
+      "normalizedMime": "image/jpeg",
+      "durationMs": null,
+      "audioMetadataMarkerRemoved": null,
+      "sourceId": "media:codec-v1:a6c5294713b3bee8233cb3dbe4a3d520",
+      "originalBytesUnchanged": true,
+      "jobFilesDeleted": true,
+      "semanticResult": "NOT_RUN"
+    },
+    {
+      "case": "mp4-with-audio",
+      "status": "PASS_CODEC_ONLY",
+      "inputBytes": 11397,
+      "inputSha256": "c1c8c142075af4b32db2be211730744c9f8ebeffa192441dd462931dc0d7e0e8",
+      "normalizedBytes": 11397,
+      "normalizedMime": "video/mp4",
+      "durationMs": 1000,
+      "audioMetadataMarkerRemoved": null,
+      "sourceId": "media:codec-v1:259c62eb51183577f5faa62763b63678",
+      "originalBytesUnchanged": true,
+      "jobFilesDeleted": true,
+      "semanticResult": "NOT_RUN"
+    }
+  ],
+  "invalidInputsRejected": 2,
+  "suppliedDerivations": 4,
+  "modelRequests": 0,
+  "externalPosts": 0,
+  "actualMediaUnderstanding": "NOT_RUN",
+  "costUsd": 0,
+  "rawTemporaryFixturesDeleted": true
+}

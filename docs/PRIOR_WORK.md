@@ -6,7 +6,7 @@ The reviewed plan, accepted addendum, prompt scaffolds and development cases pre
 
 New application code will be authored during this implementation. Dependencies and their licences will be recorded after installation. Commits made by the coding agent use the local author `Codex <codex@users.noreply.github.com>`; commit timestamps are ordinary Git timestamps, not evidence of the original authorship of referenced material.
 
-The proposed publication target is `d2vei/ai-teammate-hackathon`. The GitHub connection identifies `d2vei`, but searching the exact target returned HTTP 422 (missing or inaccessible). No remote has been configured or written. Indie prior-work eligibility remains an organizer question; no eligibility claim is made.
+The initial handoff proposed a different publication target, superseded by the owner's instruction below. The actual target is the existing `d2vei/AI-Teammate` repository. No substitute repository was created. Indie prior-work eligibility remains an organizer question; no eligibility claim is made.
 
 ## Implemented contributions
 
@@ -17,6 +17,8 @@ The later local error-watch implementation, media pipeline, prepared Meta partic
 The composed offline conversation and shared Meta transport extend those existing modules. The silent WAV and one-pixel image are technical plumbing fixtures with separately supplied descriptions, not newly measured model understanding. The built terminal check drives real local I/O using synthetic participants and preserves the existing approval/store logic; it is not an independent human pilot.
 
 The read-only watch scheduler, cancellation/source recheck logic and real-minute timer verification were authored as the next staged extension. Synthetic feed counts remain fixtures; observed Node timer/timeout behavior is software runtime evidence, not Roblox telemetry or Meta diagnosis. The existing watch/source modules were extended without adding a worker executor or a dependency.
+
+The optional fixed-argument codec normalizer, scoped preparation method and synthetic codec checks were authored next. FFmpeg primary documentation informed arguments; no external implementation source was imported. The actual native tool is the project-linked Gyan FFmpeg 9.0.2 Essentials Windows build (GPL-3.0), verified against its published archive hash and retained only in ignored local tooling, with its licence. It supplies decoding/conversion rather than newly authored codec functionality. Binaries, archives and raw generated media are not committed; no npm dependency was added. Four real codec cases with supplied descriptions are not Meta media-understanding results. See CODECS.md and the sanitized report for exact identities.
 
 The TypeScript core, SQLite state/approval logic, selected-source ingress, Meta HTTP adapter, Discord adapter, operator commands, synthetic party fixture and executable checks were authored in this implementation session on 2026-10-28. Runtime prompt wording adapts the supplied response scaffold; active development cases are copied from the handoff and remain development material, never held-out results. No old bot runtime code/assets or Git metadata were imported.
 
