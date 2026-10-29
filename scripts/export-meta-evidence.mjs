@@ -61,6 +61,12 @@ if (existsSync('evidence/live-conversation-v1.json')) {
   report.currentUsedOrReservedUsd = t.budgetAfterUsd;
   report.cumulativeRequestAttempts = 30 + report.participationPilot.modelHttpCalls + t.actualInferenceAttempts;
 }
+if (existsSync('evidence/participation-judge-v1.json')) {
+  const run = load('evidence/participation-judge-v1.json'); const j = run.data;
+  report.participationJudge = { at: j.at, candidate: j.candidate, status: j.status, kind: j.kind, model: j.model, promptIdentity: j.promptIdentity, modelHttpCalls: j.modelHttpCalls, validJudgments: j.validJudgments, invalidOutputs: j.invalidOutputs, correctness: j.correctness, helpfulness: j.helpfulness, budgetBeforeUsd: j.budgetBeforeUsd, budgetAfterUsd: j.budgetAfterUsd, humanRatings: j.humanRatings, manualDisagreements: j.manualDisagreements, artifact: 'evidence/participation-judge-v1.json', artifactSha256: run.sha256 };
+  report.currentUsedOrReservedUsd = j.budgetAfterUsd;
+  report.cumulativeRequestAttempts += j.modelHttpCalls;
+}
 mkdirSync('evidence', { recursive: true });
 writeFileSync('evidence/meta-live-v1.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ smoke: report.smoke.status, pairedEvaluation: report.pairedEvaluation.status, usedOrReservedUsd: report.currentUsedOrReservedUsd, rawResponsesExported: false, artifact: 'evidence/meta-live-v1.json' }));

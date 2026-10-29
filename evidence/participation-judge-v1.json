@@ -1,0 +1,545 @@
+{
+  "at": "2026-10-29T21:39:18.318Z",
+  "finishedAt": "2026-10-29T21:42:41.082Z",
+  "status": "COMPLETED_MODEL_JUDGMENTS",
+  "kind": "Meta automated correctness/helpfulness judgments, not human ratings; same-model evaluator over self-authored synthetic replay",
+  "candidate": "719b2a986f684978b0571cd839c1efc2d6547740",
+  "manifestSha256": "3850927c0f63809a4170aa3c573a67c311be9f609e8593c297db8cd39d5495a2",
+  "generatorCaptureSha256": "fd996495e80ba7540c806b371e554a6328d07f2a959268a1d3e8f559cc264a7b",
+  "model": "muse-spark-1.3",
+  "promptIdentity": "da344ce12d922a86408e1c6c1f96e2fdfcb5cbf6bec79f07ca83131a62a26cad",
+  "modelHttpCalls": 40,
+  "validJudgments": 39,
+  "invalidOutputs": 1,
+  "unavailable": 0,
+  "notRun": 0,
+  "correctness": {
+    "incorrect": 10,
+    "correct": 29
+  },
+  "helpfulness": {
+    "unhelpful": 10,
+    "helpful": 29
+  },
+  "agreementWithPredefinedActionGrades": {
+    "agrees": 35,
+    "disagrees": 4,
+    "uncertain": 0,
+    "disagreementCaseIds": [
+      "P06-open",
+      "P07-open",
+      "P09-open",
+      "P10-open"
+    ],
+    "limitation": "The labels and this same-model evaluator are not independent ground truth. This does not regrade or replace the original action metric."
+  },
+  "cases": [
+    {
+      "id": "P01-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 810,
+        "outputTokens": 764
+      },
+      "wallMs": 3875.9698000000003
+    },
+    {
+      "id": "P01-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 814,
+        "outputTokens": 1194
+      },
+      "wallMs": 5304.0017
+    },
+    {
+      "id": "P02-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 815,
+        "outputTokens": 659
+      },
+      "wallMs": 2924.0456999999988
+    },
+    {
+      "id": "P02-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 825,
+        "outputTokens": 1053
+      },
+      "wallMs": 4190.158900000002
+    },
+    {
+      "id": "P03-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 818,
+        "outputTokens": 824
+      },
+      "wallMs": 4285.8763
+    },
+    {
+      "id": "P03-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 822,
+        "outputTokens": 989
+      },
+      "wallMs": 4491.210199999998
+    },
+    {
+      "id": "P04-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 831,
+        "outputTokens": 631
+      },
+      "wallMs": 3575.6952999999994
+    },
+    {
+      "id": "P04-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 838,
+        "outputTokens": 1791
+      },
+      "wallMs": 8067.115199999997
+    },
+    {
+      "id": "P05-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 837,
+        "outputTokens": 703
+      },
+      "wallMs": 3091.6303999999946
+    },
+    {
+      "id": "P05-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 844,
+        "outputTokens": 1246
+      },
+      "wallMs": 5800.276600000005
+    },
+    {
+      "id": "P06-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 747,
+        "outputTokens": 1738
+      },
+      "wallMs": 8263.525800000003
+    },
+    {
+      "id": "P06-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 747,
+        "outputTokens": 1051
+      },
+      "wallMs": 4618.5947000000015
+    },
+    {
+      "id": "P07-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 754,
+        "outputTokens": 1093
+      },
+      "wallMs": 5545.930800000002
+    },
+    {
+      "id": "P07-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 757,
+        "outputTokens": 952
+      },
+      "wallMs": 4093.453699999998
+    },
+    {
+      "id": "P08-open",
+      "state": "INVALID_OUTPUT",
+      "correctness": null,
+      "helpfulness": null,
+      "citedSourceCount": null,
+      "usage": {
+        "inputTokens": 733,
+        "outputTokens": 2048
+      },
+      "wallMs": 9488.292399999991
+    },
+    {
+      "id": "P08-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 739,
+        "outputTokens": 1479
+      },
+      "wallMs": 6287.758199999997
+    },
+    {
+      "id": "P09-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 736,
+        "outputTokens": 1667
+      },
+      "wallMs": 7388.471099999995
+    },
+    {
+      "id": "P09-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 741,
+        "outputTokens": 1217
+      },
+      "wallMs": 6218.915699999998
+    },
+    {
+      "id": "P10-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 747,
+        "outputTokens": 1562
+      },
+      "wallMs": 6861.353000000003
+    },
+    {
+      "id": "P10-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 747,
+        "outputTokens": 1045
+      },
+      "wallMs": 4854.775999999998
+    },
+    {
+      "id": "P11-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 757,
+        "outputTokens": 1203
+      },
+      "wallMs": 4747.19709999999
+    },
+    {
+      "id": "P11-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 1,
+      "usage": {
+        "inputTokens": 757,
+        "outputTokens": 1162
+      },
+      "wallMs": 3955.356599999999
+    },
+    {
+      "id": "P12-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 764,
+        "outputTokens": 1557
+      },
+      "wallMs": 6005.382200000007
+    },
+    {
+      "id": "P12-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 764,
+        "outputTokens": 1181
+      },
+      "wallMs": 5043.699500000002
+    },
+    {
+      "id": "P13-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 748,
+        "outputTokens": 1451
+      },
+      "wallMs": 5515.25450000001
+    },
+    {
+      "id": "P13-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 757,
+        "outputTokens": 1111
+      },
+      "wallMs": 4718.137099999993
+    },
+    {
+      "id": "P14-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 743,
+        "outputTokens": 1130
+      },
+      "wallMs": 5280.28350000002
+    },
+    {
+      "id": "P14-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 751,
+        "outputTokens": 1105
+      },
+      "wallMs": 5082.823699999979
+    },
+    {
+      "id": "P15-open",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "incorrect",
+      "helpfulness": "unhelpful",
+      "citedSourceCount": 2,
+      "usage": {
+        "inputTokens": 755,
+        "outputTokens": 1694
+      },
+      "wallMs": 8529.065100000007
+    },
+    {
+      "id": "P15-repair",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 766,
+        "outputTokens": 1101
+      },
+      "wallMs": 4876.054699999979
+    },
+    {
+      "id": "Q01",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 6,
+      "usage": {
+        "inputTokens": 851,
+        "outputTokens": 584
+      },
+      "wallMs": 3039.51449999999
+    },
+    {
+      "id": "Q02",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 860,
+        "outputTokens": 654
+      },
+      "wallMs": 2910.9964000000036
+    },
+    {
+      "id": "Q03",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 867,
+        "outputTokens": 853
+      },
+      "wallMs": 3640.698800000013
+    },
+    {
+      "id": "Q04",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 866,
+        "outputTokens": 864
+      },
+      "wallMs": 3843.5230999999912
+    },
+    {
+      "id": "Q05",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 858,
+        "outputTokens": 872
+      },
+      "wallMs": 3254.3186999999743
+    },
+    {
+      "id": "Q06",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 870,
+        "outputTokens": 898
+      },
+      "wallMs": 4315.471699999995
+    },
+    {
+      "id": "Q07",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 880,
+        "outputTokens": 986
+      },
+      "wallMs": 4445.852600000013
+    },
+    {
+      "id": "Q08",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 846,
+        "outputTokens": 1250
+      },
+      "wallMs": 5063.080500000011
+    },
+    {
+      "id": "Q09",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 3,
+      "usage": {
+        "inputTokens": 856,
+        "outputTokens": 840
+      },
+      "wallMs": 4259.621199999994
+    },
+    {
+      "id": "Q10",
+      "state": "MODEL_JUDGMENT",
+      "correctness": "correct",
+      "helpfulness": "helpful",
+      "citedSourceCount": 4,
+      "usage": {
+        "inputTokens": 859,
+        "outputTokens": 942
+      },
+      "wallMs": 4855.693100000004
+    }
+  ],
+  "tokenUsage": {
+    "inputTokens": 31877,
+    "outputTokens": 45144
+  },
+  "budgetBeforeUsd": 2.125445,
+  "budgetAfterUsd": 2.357169,
+  "humanRatings": "NOT_RUN",
+  "manualDisagreements": "NOT_RUN",
+  "externalPosts": 0,
+  "rawJustificationsExported": false,
+  "privateArtifactSha256": "94de51217cd4d6848aeb9fc9b2dacd3e0842afd20cd5503a0a9fce14baa8febe",
+  "unchangedOriginalActionScore": {
+    "status": "FAIL",
+    "caught": 0,
+    "shouldSpeak": 15,
+    "falseInterruptions": 0,
+    "staySilent": 25
+  },
+  "limitations": "One same-model automated judge per self-authored replay. No human labels entered, no generator rerun, no quality certification or baseline superiority. Existing review form remains unchanged; actual 20 manual comparisons are pending.",
+  "invalidOutputsAtReportedOutputCap": 1,
+  "invalidInterpretation": "Failed raw envelopes are not retained; reaching the output allowance does not confirm truncation.",
+  "preparedManualSample": {
+    "requested": 20,
+    "validModelJudgments": 20,
+    "missingModelCaseIds": [],
+    "manualEntries": "NOT_RUN"
+  }
+}

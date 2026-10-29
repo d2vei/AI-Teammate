@@ -15,14 +15,14 @@ Audit started 29 October 2026 against published `fdad619d019fd319346e12000fa8b2c
 | Eight same-context answer comparisons, five preference dimensions | Actual paired answers and private unrated form | Human relevance/brevity/questions/tone/usefulness NOT_RUN. Ties/both-poor supported; no advantage claim. |
 | Complete task outcome comparison | Synthetic application checks only | Human corrections, context re-explanations, unwanted replies, elapsed live task time and accepted-brief quality NOT_RUN. |
 | Forty participation moments, 15 positive/25 negative, matched repairs | Frozen actual 360-call replay; source and labels separate | FAIL: 0/15 catches, 0/25 interruptions, 0/5 each move, all silent. Mention-only fallback retained without retuning. |
-| Automated correctness/helpfulness and 20 manual spot checks | Separate fixed evaluator prepared; same 20 outcome-independent review moments already available | Automated judge NOT_RUN at this entry; manual file absent. Model judgments cannot become human ratings or pass the failed action target. |
+| Automated correctness/helpfulness and 20 manual spot checks | Separate frozen same-model evaluator completed 40 calls, 39 structurally valid judgments/one invalid; all 20 prepared review moments have valid counterparts | Automated judgment step completed, manual file still absent. Model disputed four predefined positive labels; no human agreement/disagreement is inferred. Generator score remains FAIL. |
 | Five actual media cases, at least four correctly used | V1 3/5 FAIL; distinct diagnostic and V2 same-recipe regression 4/5 strict agent credit | PASS_SYNTHETIC_REGRESSION_ONLY, partial audio provenance uncredited. Human/live attachment interaction remains NOT_RUN. |
 | Mention-only fallback with memory, media and watch | Memory/direct Meta terminal exists; media API/codec and replay watch work separately; composed add-on terminal is MOCK | INCOMPLETE integration: real local interface currently lacks media/watch commands. This is available independent implementation work, not a reason to mark the entire goal blocked. |
 | Watch source, change detection, evidence and stopping | Native minute timers and replay/scheduler checks, selected synthetic source | PASS_REPLAY_SOFTWARE_ONLY. Replay fallback is allowed; live Roblox access is not configured. Automatic Meta diagnosis in the live interface is not implemented. |
 
 ## Deterministic safeguards
 
-These findings use the latest passing 177-test suite and the freshly executed eleven-command offline workflow at `fdad619`. The named test bodies were inspected. They are software evidence, not real-platform authorization or guarantees against arbitrary model hallucinations.
+These findings use inspected test bodies, the freshly executed eleven-command offline workflow at `fdad619` (177 tests) and the subsequent 182-test/25-file suite after adding evaluation tooling. They are software evidence, not real-platform authorization or guarantees against arbitrary model hallucinations.
 
 | Acceptance IDs | Inspected evidence | Scope/result |
 |---|---|---|
@@ -49,15 +49,15 @@ These findings use the latest passing 177-test suite and the freshly executed el
 |---|---|
 | Actual Meta/Standard integration | PASS provider access and synthetic generations, shared transport, bounded requests/store:false. Not a claim of zero provider operational retention. |
 | Native Infisical, no plaintext fallback/export/agent injection | Pinned CLI/backend metadata and synthetic native credential-store probe; actual injected provider use. Known plaintext credential filenames currently absent. Account creation/2FA are manual, not agent-certified. |
-| Budget | 393 request attempts/USD 2.125445 used or reserved at audit start, including USD 0.000550 uncertain; cumulative USD 5 ceiling under EUR 5 owner authorization. Unknown charges retained. New evaluator will share this ledger. |
+| Budget | At audit start: 393 attempts/USD 2.125445. After the 40-call evaluator: 433 attempts/USD 2.357169, including the same USD 0.000550 uncertain. Same cumulative USD 5 ceiling under EUR 5 owner authorization; unknown charges retained. |
 | Offline reproducibility | Fresh `fdad619` Windows install, official registry/pinned lock, disabled install scripts, empty configs/fresh cache/OS-only environment. All eleven committed offline commands pass (177 tests); no vault/real keys. Other OS/hosted Actions not certified. |
 | Remote/history/hygiene | Existing approved d2vei/AI-Teammate/main, normal pushes and redacted staged/history scans. No replacement repository or history rewrite. Raw responses/media/databases/reference library ignored. |
-| Anonymous reviewer access/hosted CI | Rechecked anonymously: repository and candidate Actions endpoints both return HTTP 404, no authorization header. This does not establish a particular visibility setting. Public access remains UNVERIFIED; owner check requested. |
+| Anonymous reviewer access/hosted CI | Rechecked anonymously: repository and candidate Actions endpoints both return HTTP 404, no authorization header. Dedicated authenticated connector metadata lookup also returned 404. This does not establish a particular visibility setting. Public access remains UNVERIFIED; owner check requested. |
 | README/provenance | Current public usage/architecture/limitations documented; actual reuse/dependencies separated in PRIOR_WORK.md. No novelty/superiority/eligibility certification. |
 | Final form/rules | Public event page confirms Nov 4, 21:00 ET deadline. The supplied guide specifies public code, accessible three-minute demo and new-work disclosure. Submission route rendered the landing page and waiver rendered Loading; final form fields, eligibility and rules acceptance remain UNVERIFIED. No form or agreement submitted. |
 | Deployment/video/tag/submission | NOT_RUN. No release tag or tracked final video/captions found. Local prototype, synthetic replay and storyboard do not pass the required live demonstration. |
-| Human review/page UI | Private 20-moment/eight-pair form exists, ratings file absent. Browser host recheck still unavailable; visual/download behavior NOT_RUN. Escaping/completion importer software checks pass. |
+| Human review/page UI | Private 20-moment/eight-pair form exists, ratings file absent. Browser host and native Computer Use pipe both unavailable (empty surface inventory); visual/download behavior NOT_RUN. Escaping/completion importer software checks pass. |
 
 Current public organizer source: [event page](https://cerebralvalley.ai/e/meta-ai-developer-hackathon). It supports the displayed deadline, not certification of the private submission form or participant eligibility.
 
-Next authorized independent slices are the automated semantic evaluation and real-local media/watch composition. Human judgments, public-access resolution and any later platform/hosting authorization remain external gates. The full goal must not be marked complete or narrowed to the already passing local subset.
+Next authorized independent slice is real-local media/watch composition; automated semantic evaluation is complete with its missing/invalid result preserved. Human judgments, public-access resolution and any later platform/hosting authorization remain external gates. The full goal must not be marked complete or narrowed to the already passing local subset.
