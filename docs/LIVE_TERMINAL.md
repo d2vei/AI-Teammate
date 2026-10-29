@@ -37,7 +37,7 @@ Derived text is unverified project evidence and cannot approve anything. The ret
 
 Proactive group participation remains disabled after its failed frozen pilot. Unknown slash commands do not dispatch. There is no shell, code-editing, Git or worker route. The separate [offline terminal](LOCAL_HARNESS.md) retains MOCK demonstrations.
 
-`npm run prepare:live-addons` prepares one synthetic card using verified local FFmpeg. `npm run test:live-addons` is a separate paid/native check: image, new decision/brief/follow-up, real-minute replay diagnosis, then saved-state restart/removal. It requires the native vault, an empty paused local scope and an unused capture path. It permits six response attempts at most, no upload/ASR, preserves its first result and cleans only its owned scope/fixture. It is not offline CI or a repeat of the failed direct-only trial. The new combined live result is NOT_RUN until recorded in evidence/work log.
+`npm run prepare:live-addons` prepares one synthetic card using verified local FFmpeg. `npm run test:live-addons` is a separate paid/native check: image, new decision/brief/follow-up, real-minute replay diagnosis, then saved-state restart/removal. It requires the native vault, an empty paused local scope and an unused capture path. It permits six response attempts at most, no upload/ASR, preserves its first result and cleans only its owned scope/fixture. It is not offline CI or a repeat of the failed direct-only trial. Its first combined run on `cc82f82` passed; [sanitized evidence](../evidence/live-addons-v1.json) records six reported charges, successful saved-state restart, and scoped cleanup. The image facts and structural checks are not a human quality assessment.
 
 ## What was verified
 

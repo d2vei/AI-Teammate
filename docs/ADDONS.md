@@ -75,3 +75,7 @@ Official [video/audio documentation](https://dev.meta.ai/docs/video-understandin
 Official [image](https://dev.meta.ai/docs/image-understanding), [file handling](https://dev.meta.ai/docs/file-handling), [models](https://dev.meta.ai/docs/models) and [pricing](https://dev.meta.ai/docs/pricing-rate-limits) docs were also checked. Uploads do not expire by default. Published Spark context capacity is 1,048,576 tokens and Standard input/output rates are $1.25/$4.25 per million tokens. These are documented limits/rates, not measured account charges.
 
 Official [Roblox error reporting](https://create.roblox.com/docs/cloud/guides/error-reporting) requires read analytics scope plus the key owner's analytics access. Discovery uses the ErrorCount metric by MessageHash; error details use the documented GET path. That is more than a single guessed polling URL. No rule writes, arbitrary URLs, production-key access or live collector has been added. A sanitized saved-JSON replay is the first useful local watch slice.
+
+## Real-local fallback integration
+
+The real Meta terminal now composes synthetic attachment ingestion/removal and owner-enabled saved-JSON replay diagnosis with the shared direct/approval core. The first combined check on cc82f82 passed six responses, unchanged-count silence, real-minute changes, saved-state restart and scoped cleanup. See [commands and boundaries](LIVE_TERMINAL.md) and [actual evidence](../evidence/live-addons-v1.json). General proactivity remains disabled; live Discord/Roblox and human ratings remain separate.

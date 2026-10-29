@@ -70,21 +70,28 @@ it.each(['pause', 'edit'])('blocks media dispatch if %s happens during normaliza
   expect((await pending).kind).toBe('error'); expect(derive).not.toHaveBeenCalled(); expect(prepared.bytes.every(b => b === 0)).toBe(true);
 });
 it('uses real scheduler intervals, diagnoses 2 then 5 and spends nothing for unchanged 2 (HTTP MOCK)', async () => {
-  vi.useFakeTimers(); const x = fixture(); await x.harness.line('/watch start'); await x.harness.line('/watch auto on');
+  vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-29T12:00:00Z')); const x = fixture(); await x.harness.line('/watch start'); await x.harness.line('/watch auto on');
   await vi.advanceTimersByTimeAsync(0); expect(x.inputs).toHaveLength(1); expect(x.emissions[0]?.text).toContain('HTTP-MOCK diagnosis');
   const firstCharge = x.store.budgetUsed(); await vi.advanceTimersByTimeAsync(60_000); expect(x.inputs).toHaveLength(1); expect(x.store.budgetUsed()).toBe(firstCharge);
   await vi.advanceTimersByTimeAsync(60_000); expect(x.inputs).toHaveLength(2); expect(x.emissions.at(-1)?.text).toContain('count 5'); expect(x.inputs[1]!.context.some(c => c.label.includes('count 5') && c.text.includes('"count":5'))).toBe(true);
   expect(x.store.db.prepare('SELECT count(*) AS n FROM proposals').get()?.n).toBe(0); await x.harness.line('/watch stop'); await vi.advanceTimersByTimeAsync(180_000); expect(x.inputs).toHaveLength(2);
 });
 it.each(['stop', 'auto off', 'pause', 'source removal'])('withholds a late diagnosis after %s, retaining reported usage (HTTP MOCK)', async control => {
-  vi.useFakeTimers(); let complete!: (value: Response) => void; const x = fixture({}, async () => new Promise(r => { complete = r; }));
+  vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-29T12:00:00Z')); let complete!: (value: Response) => void; const x = fixture({}, async () => new Promise(r => { complete = r; }));
   await x.harness.line('/watch start'); await x.harness.line('/watch auto on'); await vi.advanceTimersByTimeAsync(0); expect(x.inputs).toHaveLength(1);
   if (control === 'source removal') { const log = x.store.sources(x.harness.projectId).find(s => s.label.startsWith('REPLAY synthetic error'))!; x.store.sourceState(x.harness.projectId, log.id, 'deleted'); } else await x.harness.line(control === 'pause' ? '/pause' : `/watch ${control}`);
   complete(envelope({ answer: 'SYNTHETIC_LATE_DIAGNOSIS', citations: [] })); await vi.advanceTimersByTimeAsync(0); expect(x.emissions.map(r => r.text).join(' ')).not.toContain('SYNTHETIC_LATE_DIAGNOSIS'); expect(x.store.budgetUsed()).toBeGreaterThan(0);
 });
 it('requires the owner, shares the direct-request slot, and does not queue a skipped diagnosis (HTTP MOCK)', async () => {
-  vi.useFakeTimers(); let complete!: (value: Response) => void; const x = fixture({}, async () => new Promise(r => { complete = r; }));
+  vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-29T12:00:00Z')); let complete!: (value: Response) => void; const x = fixture({}, async () => new Promise(r => { complete = r; }));
   await x.harness.line('/as peer'); expect((await x.harness.line('/watch start')).kind).toBe('error'); await x.harness.line('/as owner'); expect((await x.harness.line('/watch start 61')).kind).toBe('error');
   const pending = x.harness.line('/ask Inspect party routing.'); await vi.advanceTimersByTimeAsync(0); await x.harness.line('/watch start'); await x.harness.line('/watch auto on'); await vi.advanceTimersByTimeAsync(0);
   expect(x.inputs).toHaveLength(1); expect(x.emissions[0]?.text).toContain('No retry or queued spending'); complete(envelope({ answer: 'Synthetic direct answer.', citations: [] })); await pending; await vi.advanceTimersByTimeAsync(60_000); expect(x.inputs).toHaveLength(1);
+});
+it('cannot create a proposal from an unsolicited model field in a watch diagnosis (HTTP MOCK)', async () => {
+  vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-29T12:00:00Z'));
+  const x = fixture({}, async input => envelope({ answer: 'Synthetic hypothesis, next check the selected line.', citations: input.context.map(c => c.id), proposal: { kind: 'decision', statement: 'Unrequested synthetic decision.', sourceIds: input.context.map(c => c.id) } }));
+  await x.harness.line('/watch start'); await x.harness.line('/watch auto on'); await vi.advanceTimersByTimeAsync(0);
+  expect(x.inputs).toHaveLength(1); expect(x.emissions[0]?.kind).toBe('response'); expect(x.emissions[0]?.text).toContain('Synthetic hypothesis');
+  expect(x.store.db.prepare('SELECT count(*) AS n FROM proposals').get()?.n).toBe(0); expect(x.store.decisions(x.harness.projectId)).toEqual([]);
 });

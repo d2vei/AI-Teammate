@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T21:47:40.094Z",
+  "exportedAt": "2026-10-29T22:43:35.651Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 2.357169,
+  "currentUsedOrReservedUsd": 2.407163,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -902,7 +902,7 @@
     "artifact": "evidence/participation-live-v1.json",
     "artifactSha256": "6353dd932506bec94a0e4703e8fa9a6f09c36fc715006c9072011858517ccfc6"
   },
-  "cumulativeRequestAttempts": 433,
+  "cumulativeRequestAttempts": 439,
   "uncertainReservedUsd": 0.00055,
   "interactiveTerminal": {
     "at": "2026-10-29T20:55:39.935Z",
@@ -977,5 +977,24 @@
     "manualDisagreements": "NOT_RUN",
     "artifact": "evidence/participation-judge-v1.json",
     "artifactSha256": "32c334a65d19f10ee150fd720dc055b6e2d9d610618253e394f9b3a592ebba2c"
+  },
+  "localMediaReplayIntegration": {
+    "at": "2026-10-29T22:40:23.508Z",
+    "candidate": "cc82f82f83d1a4509e4fdfb0c7407704d6cdaa26",
+    "status": "PASS_LOCAL_META_MEDIA_REPLAY_FLOW_ONLY",
+    "actualResponseAttempts": 6,
+    "imageFactsRecognized": true,
+    "newStatePersisted": true,
+    "restartVerified": true,
+    "ownContentPurged": true,
+    "fixturePurged": true,
+    "budgetBeforeUsd": 2.357169,
+    "budgetAfterUsd": 2.407163,
+    "humanRatings": "NOT_RUN",
+    "externalPosts": 0,
+    "liveRoblox": "NOT_RUN",
+    "liveDiscord": "NOT_RUN",
+    "artifact": "evidence/live-addons-v1.json",
+    "artifactSha256": "873d196de6cdd985d1217a22d87d4dff7b6281241163d2fe4f010ef7f60dbe4e"
   }
 }

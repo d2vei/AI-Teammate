@@ -22,7 +22,7 @@ Dependency installation needs the public npm registry; the offline workflow itse
 
 The supplied party-routing code and structured event are synthetic. Terminal role switching demonstrates software checks, not authenticated group identities. See [the local harness guide](docs/LOCAL_HARNESS.md) for pause/resume, source withdrawal, data deletion, shadow invitations and error-watch replay.
 
-For real model responses, build offline, configure the native Infisical session, then run `npm run conversation:live`. It uses a shared persistent spending cap and supports explicit questions, bound follow-ups, decision approval and saved briefs. See [the live terminal guide](docs/LIVE_TERMINAL.md) for setup, the explicit demo reset after test-data deletion and the preserved first integration failure/separate exit fix.
+For real model responses, build offline, configure the native Infisical session, then run `npm run conversation:live`. It supports explicit questions, bound follow-ups, decision approval, saved briefs, synthetic attachments and an owner-enabled saved-JSON error watch. These share a persistent spending cap; the watch is explicitly replay rather than live Roblox telemetry. See [the live terminal guide](docs/LIVE_TERMINAL.md) for setup, commands and limitations.
 
 ## Verify the software
 
@@ -46,7 +46,7 @@ The [local terminal](src/live-conversation.ts) normalizes requests for the [shar
 
 - The offline suite includes scope, confirmation binding, source access, persistence, budget reservation, live-terminal pause/follow-up and failure-handling checks. Exact current counts are in [STATUS.md](docs/STATUS.md).
 - Actual Meta tests generated a decision and brief saved through simulated bound confirmations. Eight same-context answer pairs remain inconclusive pending manual ratings.
-- The real terminal generated a decision, brief and bound follow-up. Its first integration check failed on process exit; the stdin fix passed separate zero-generation native lifecycle checks. The original failed attempt remains preserved.
+- The real terminal's combined media/replay check passed six Meta requests: a new decision, actual image interpretation, grounded brief/follow-up and two changed-count diagnoses. Unchanged replay was silent; saved state survived restart and owned test data was removed. Synthetic actors and replay remain distinct from real platform interaction. The earlier direct-only exit failure remains preserved.
 - The real participation shadow pilot **failed**: 0/15 intended interventions, 0/25 negative-case interruptions, all 180 turns silent. Mention-only remains the supported fallback; unsolicited participation is not enabled.
 - The five-case media regression met four strict synthetic cases. The audio-important clip still had inconsistent provenance wording and received no strict credit. The earlier failed media pilot is retained.
 - Real group interactions, human judgments, deployment and the final demonstration are incomplete.

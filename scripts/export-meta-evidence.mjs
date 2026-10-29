@@ -67,6 +67,13 @@ if (existsSync('evidence/participation-judge-v1.json')) {
   report.currentUsedOrReservedUsd = j.budgetAfterUsd;
   report.cumulativeRequestAttempts += j.modelHttpCalls;
 }
+if (existsSync('evidence/live-addons-v1.json')) {
+  const run = load('evidence/live-addons-v1.json'); const a = run.data;
+  report.localMediaReplayIntegration = { at: a.at, candidate: a.candidate, status: a.status, actualResponseAttempts: a.actualResponseAttempts, imageFactsRecognized: a.imageFactsRecognized, newStatePersisted: a.newStatePersisted, restartVerified: a.restartVerified, ownContentPurged: a.ownContentPurged, fixturePurged: a.fixturePurged, budgetBeforeUsd: a.budgetBeforeUsd, budgetAfterUsd: a.budgetAfterUsd, humanRatings: a.humanRatings, externalPosts: a.externalPosts, liveRoblox: a.liveRoblox, liveDiscord: a.liveDiscord, artifact: 'evidence/live-addons-v1.json', artifactSha256: run.sha256 };
+  report.currentUsedOrReservedUsd = a.budgetAfterUsd;
+  report.cumulativeRequestAttempts = a.chargeRowsAfter;
+  report.uncertainReservedUsd = a.totalUncertainReservations.usd;
+}
 mkdirSync('evidence', { recursive: true });
 writeFileSync('evidence/meta-live-v1.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ smoke: report.smoke.status, pairedEvaluation: report.pairedEvaluation.status, usedOrReservedUsd: report.currentUsedOrReservedUsd, rawResponsesExported: false, artifact: 'evidence/meta-live-v1.json' }));
