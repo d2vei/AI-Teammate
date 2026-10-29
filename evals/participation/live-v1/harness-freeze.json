@@ -1,0 +1,38 @@
+{
+  "frozenAt": "2026-10-29T19:55:19.272Z",
+  "status": "FROZEN_BEFORE_FIRST_PARTICIPATION_MODEL_CALL",
+  "files": [
+    {
+      "path": "scripts/participation-live.mjs",
+      "sha256": "38586b8d2eb441810694ce2401b9c8c95a2648e01a10ed98e6b3aa63cd715b61"
+    },
+    {
+      "path": "scripts/participation-pilot-lib.mjs",
+      "sha256": "71e5dc1ddd78b95c0dfe590d4d6dbc1d323ff979f7298503b61ed58d39dca9ad"
+    },
+    {
+      "path": "scripts/build-participation-live.mjs",
+      "sha256": "956767b03aaa3d4454e8ab1226aef8e969d109370b74143918db7c71e84cd6b0"
+    },
+    {
+      "path": "scripts/vault-lib.mjs",
+      "sha256": "4df51a5974ac0831c63e0fc73052ca0c9a1bacfb6199cf251cb9c28e79685e04"
+    },
+    {
+      "path": "scripts/vault-child.mjs",
+      "sha256": "f15fa20781a400f707bc0cacbb314b77c82cece7c2d5156cce236d6b96217e76"
+    },
+    {
+      "path": "evals/participation/live-v1/cases.jsonl",
+      "sha256": "c99555960c64ca0dbc49d42be6aa52d3095124bdfc3eb525819ab4976d5fc12d"
+    },
+    {
+      "path": "evals/participation/live-v1/labels.json",
+      "sha256": "092680d071e3471a28fd77000edc1c971f9e6a88e23d0350438f94f608606322"
+    },
+    {
+      "path": "evals/participation/live-v1/corpus.json",
+      "sha256": "63f842558905c2a84ae4a1cbc1554ac83e138f092cdb251fc26865920b87137c"
+    }
+  ]
+}

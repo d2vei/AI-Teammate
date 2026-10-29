@@ -1,0 +1,282 @@
+{
+  "P01-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P01-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P02-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P02-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P03-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P03-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P04-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P04-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P05-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P05-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "seeded approved rule plus supplied messages"
+  },
+  "P06-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P06-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P07-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P07-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P08-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P08-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P09-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P09-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P10-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P10-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P11-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P11-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P12-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P12-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P13-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P13-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P14-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P14-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P15-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "P15-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true,
+    "targetTurnId": "m3",
+    "evidence": "supplied recent messages"
+  },
+  "Q01": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q02": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q03": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q04": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q05": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q06": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q07": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q08": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q09": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  },
+  "Q10": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false,
+    "targetTurnId": "m5",
+    "evidence": "supplied recent messages"
+  }
+}

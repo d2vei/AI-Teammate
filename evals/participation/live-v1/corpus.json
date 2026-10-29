@@ -1,0 +1,13 @@
+{
+  "authoredAt": "2026-10-29T19:48:49.833Z",
+  "runtimeFreezeSha256": "6fb47c9bbcd7810f64ada61f22c109f0578dbbeb265ad4822722164b1af00e4f",
+  "casesSha256": "c99555960c64ca0dbc49d42be6aa52d3095124bdfc3eb525819ab4976d5fc12d",
+  "labelsSha256": "092680d071e3471a28fd77000edc1c971f9e6a88e23d0350438f94f608606322",
+  "cases": 40,
+  "turns": 180,
+  "shouldSpeak": 15,
+  "staySilent": 25,
+  "pairedRepairs": 15,
+  "positiveCasesPerMove": 5,
+  "kind": "self-authored synthetic pilot authored after runtime freeze; not an independent held-out benchmark"
+}
