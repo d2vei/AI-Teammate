@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-29T11:42:36.939Z",
+  "at": "2026-10-29T12:17:27.769Z",
   "status": "PASS_SOFTWARE_ONLY",
   "kind": "actual built terminal I/O with explicitly simulated participants and scripted providers",
   "decisionCount": 1,
@@ -13,18 +13,19 @@
     "SILENT",
     5
   ],
+  "automaticFirstReportDisplayed": true,
   "watchStopped": true,
   "metaRequests": 0,
   "externalPosts": 0,
   "humanRatings": "NOT_RUN",
   "mediaUnderstanding": "NOT_RUN",
   "budgetUsedOrReservedUsd": 0,
-  "candidateBase": "8ea45a5848b771cd3b93ffc02ed6383b6a11e1d3",
+  "candidateBase": "b3fbc0c70061c058a5fd7869eff04e9f1a8c7365",
   "workingTreeDirty": true,
   "files": [
     {
       "path": "src/local-conversation.ts",
-      "sha256": "45f91d76bf19f6cdc8d4eec944b3cfa125462f1a088dd3082f48f9a8428ccc4e"
+      "sha256": "6ebb61eb18de34793ec4967ad5d10464385727aa23db4edde2b21b55efe7670e"
     },
     {
       "path": "src/local-harness.ts",
@@ -35,12 +36,100 @@
       "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
     },
     {
+      "path": "src/error-watch.ts",
+      "sha256": "851b6501874e8cca965ba7a3c99491fea3f617b67b4d200d3cb86eb13ffe6a25"
+    },
+    {
+      "path": "src/watch-scheduler.ts",
+      "sha256": "1f668f0da1f410a6c9a118b5cd65e2b564bcdbccac5ed5bc47b10d2fb0d30bc4"
+    },
+    {
+      "path": "src/participation.ts",
+      "sha256": "700d8c600f962803e337809c7bd3ada34dd62c7cbb147fe123cf372bdddc8666"
+    },
+    {
+      "path": "src/media.ts",
+      "sha256": "0b4aba93fd22ba67d2d9ff2e97d04feed250d4e9987ff3cc198978f769a22d20"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+    },
+    {
+      "path": "src/domain.ts",
+      "sha256": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88"
+    },
+    {
+      "path": "src/sources.ts",
+      "sha256": "0197aee64c0aac3baada8cc0a33cb7b65c3071f73927ba045215af5e2bad13fd"
+    },
+    {
+      "path": "src/fakes.ts",
+      "sha256": "6bfa8c17ee5b7bb4a1f0ea18b28988b531c0fc6a1ea1f3c864b2f2c887e6bc81"
+    },
+    {
+      "path": "examples/party-queue.json",
+      "sha256": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d"
+    },
+    {
       "path": "scripts/conversation.mjs",
-      "sha256": "8245e51ab357c172abe5db5378f30d9f911fff61c5ca3b511b36afc490ff0dba"
+      "sha256": "68b1b82edc66c1b4cecb460bdafb29ec676aec9ad8738bdf82e461bc9ad860dc"
     },
     {
       "path": "scripts/check-conversation.mjs",
-      "sha256": "81503be1e05801c80025141eced97ea3828901985b84418fd8b29b63dd31dfff"
+      "sha256": "f99ba8b46c22aca86d17098cec3898b40249f92d590d92bbe2fc08e2d1a51422"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6"
+    },
+    {
+      "path": "dist/local-conversation.js",
+      "sha256": "cad642ded2f0ea0128805f5aac10494791648f88d30747ff6fecd6882f66e9e2"
+    },
+    {
+      "path": "dist/local-harness.js",
+      "sha256": "e8756fc41b7e72717550d9f0b46215a65654de125e7e6062537110aa11486faf"
+    },
+    {
+      "path": "dist/error-watch.js",
+      "sha256": "13d28c5ed75ff3d3a313f410718ed75deec92371db2dcf9094485df999f88272"
+    },
+    {
+      "path": "dist/watch-scheduler.js",
+      "sha256": "cac8efe5c77ab271331d4a12216c699cc6b5c7bfd65b8a688766f1dbcffd2e74"
+    },
+    {
+      "path": "dist/participation.js",
+      "sha256": "067eaa1eaffd5cbb6d1ce641a65c7f35bebfd2312678974e0804caeb0f45f03d"
+    },
+    {
+      "path": "dist/media.js",
+      "sha256": "e151150eecf2199b8070865b376f287d86b5cb3183e87fe1906472595eaf67bb"
+    },
+    {
+      "path": "dist/core.js",
+      "sha256": "c6dbc35e8f9de5ee67bfebcc75f3d5525b0b0dc4f68a0bfddb86f98beaadf1bd"
+    },
+    {
+      "path": "dist/store.js",
+      "sha256": "0ae81e9d31b7dbf5e3b7609d06732a03dd56c23202f1f0f13dfae4b5ad053e64"
+    },
+    {
+      "path": "dist/domain.js",
+      "sha256": "35f505cfb0e98582a262396d053265e0ceef78076d4872f183d4eb81ca846c21"
+    },
+    {
+      "path": "dist/sources.js",
+      "sha256": "e03523eec041640aa620668d3f8b3c47b1a630bcd9a7980375fe99b9da90b151"
+    },
+    {
+      "path": "dist/fakes.js",
+      "sha256": "9f11f1cc72b1d4162fd27cf266acc04dfae0448a6b8b8eee7239696640ecd861"
     }
   ],
   "temporarySessionDeleted": true

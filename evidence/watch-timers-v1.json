@@ -1,0 +1,104 @@
+{
+  "startedAt": "2026-10-29T12:06:10.696Z",
+  "status": "PASS_SOFTWARE_TIMERS_ONLY",
+  "kind": "actual Node timers over synthetic replay, not a live service or model test",
+  "node": "24.21.0",
+  "files": [
+    {
+      "path": "src/error-watch.ts",
+      "sha256": "851b6501874e8cca965ba7a3c99491fea3f617b67b4d200d3cb86eb13ffe6a25"
+    },
+    {
+      "path": "src/watch-scheduler.ts",
+      "sha256": "1f668f0da1f410a6c9a118b5cd65e2b564bcdbccac5ed5bc47b10d2fb0d30bc4"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+    },
+    {
+      "path": "src/domain.ts",
+      "sha256": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88"
+    },
+    {
+      "path": "src/sources.ts",
+      "sha256": "0197aee64c0aac3baada8cc0a33cb7b65c3071f73927ba045215af5e2bad13fd"
+    },
+    {
+      "path": "examples/party-queue.json",
+      "sha256": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d"
+    },
+    {
+      "path": "scripts/watch-timed-demo.mjs",
+      "sha256": "555fd05cee1e48e2c52cd5f7a833416531d10682ca1ec0579916d1a35aa06a5f"
+    },
+    {
+      "path": "dist/error-watch.js",
+      "sha256": "13d28c5ed75ff3d3a313f410718ed75deec92371db2dcf9094485df999f88272"
+    },
+    {
+      "path": "dist/watch-scheduler.js",
+      "sha256": "cac8efe5c77ab271331d4a12216c699cc6b5c7bfd65b8a688766f1dbcffd2e74"
+    },
+    {
+      "path": "dist/store.js",
+      "sha256": "0ae81e9d31b7dbf5e3b7609d06732a03dd56c23202f1f0f13dfae4b5ad053e64"
+    },
+    {
+      "path": "dist/domain.js",
+      "sha256": "35f505cfb0e98582a262396d053265e0ceef78076d4872f183d4eb81ca846c21"
+    },
+    {
+      "path": "dist/sources.js",
+      "sha256": "e03523eec041640aa620668d3f8b3c47b1a630bcd9a7980375fe99b9da90b151"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6"
+    }
+  ],
+  "metaRequests": 0,
+  "externalPosts": 0,
+  "observations": [
+    {
+      "elapsedMs": 13.8562,
+      "status": "REPLAY",
+      "reason": "new_or_increased_errors",
+      "counts": [
+        2
+      ],
+      "polls": 1
+    },
+    {
+      "elapsedMs": 60022.2334,
+      "status": "SILENT",
+      "reason": "no_comparable_increase",
+      "counts": [],
+      "polls": 1
+    },
+    {
+      "elapsedMs": 120031.1481,
+      "status": "REPLAY",
+      "reason": "new_or_increased_errors",
+      "counts": [
+        5
+      ],
+      "polls": 1
+    }
+  ],
+  "nativeTimeout": {
+    "elapsedMs": 30014.6969,
+    "status": "BLOCKED",
+    "reason": "poll_cancelled_or_timed_out",
+    "reports": 0
+  },
+  "timeoutReadCalls": 1,
+  "stopped": true,
+  "costUsd": 0,
+  "semanticDiagnosis": "NOT_RUN",
+  "liveRoblox": "NOT_RUN",
+  "liveMeta": "NOT_RUN",
+  "finishedAt": "2026-10-29T12:08:10.722Z",
+  "candidateBase": "b3fbc0c70061c058a5fd7869eff04e9f1a8c7365",
+  "workingTreeDirty": true
+}

@@ -27,7 +27,8 @@
     "conversation:offline": "npm run build && node scripts/conversation.mjs",
     "replay:offline": "npm run build && node scripts/participation-replay.mjs",
     "test:participation-mutation": "node scripts/participation-mutation.ts",
-    "test:conversation": "npm run build && node scripts/check-conversation.mjs"
+    "test:conversation": "npm run build && node scripts/check-conversation.mjs",
+    "watch:timed-demo": "npm run build && node scripts/watch-timed-demo.mjs"
   },
   "dependencies": {
     "discord.js": "14.27.0",

@@ -10,9 +10,9 @@ const ErrorGroupSchema = z.object({ id: z.string().regex(/^[\w-]{1,64}$/), count
 // intentionally accepts synthetic replay only, not an unreviewed live endpoint.
 export const ErrorFrameSchema = z.object({ synthetic: z.literal(true), universeId: z.string().regex(/^\d{1,20}$/), windowStart: z.iso.datetime({ offset: true }), groups: z.array(ErrorGroupSchema).max(20) }).strict();
 export type ErrorFrame = z.infer<typeof ErrorFrameSchema>;
-export type WatchTask = { id: string; projectId: string; platform: ProjectConfig['platform']; workspaceId: string; roomId: string; ownerId: string; universeId: string; snapshot: string; intervalMs: number; nextPollAt: number; configIdentity: string; active: boolean };
-export interface ErrorFeed { readonly mode: 'replay'; read(task: WatchTask, now: number): Promise<unknown> }
-export type WatchReport = { kind: 'new' | 'increased'; errorId: string; count: number; increase: number | null; sourceIds: string[]; text: string };
+export type WatchTask = { id: string; projectId: string; platform: ProjectConfig['platform']; workspaceId: string; roomId: string; ownerId: string; universeId: string; snapshot: string; intervalMs: number; nextPollAt: number; configIdentity: string; active: boolean; pollSequence?: number };
+export interface ErrorFeed { readonly mode: 'replay'; read(task: WatchTask, now: number, signal?: AbortSignal): Promise<unknown> }
+export type WatchReport = { kind: 'new' | 'increased'; errorId: string; count: number; increase: number | null; sourceIds: string[]; text: string; taskId: string; configIdentity: string; pollSequence: number; sourceBindings: Record<string, string> };
 export type WatchTick = { status: 'REPLAY' | 'SILENT' | 'BLOCKED'; reason: string; reports: WatchReport[]; polls: number; externalPosts: 0; modelCalls: 0 };
 const scopeMatches = (c: ProjectConfig | undefined, e: RequestEvent) => c && c.platform === e.platform && c.workspaceId === e.workspaceId && c.projectId === e.projectId && c.roomId === e.roomId;
 const sameTaskScope = (t: WatchTask, e: RequestEvent) => t.platform === e.platform && t.workspaceId === e.workspaceId && t.projectId === e.projectId && t.roomId === e.roomId;
@@ -34,6 +34,7 @@ export class ErrorWatchLedger {
 
 export class ErrorWatch {
   private active = false;
+  private reading: { projectId: string; controller: AbortController } | undefined;
   constructor(readonly store: Store, readonly ledger: ErrorWatchLedger, readonly now = () => Date.now()) {}
   start(e: RequestEvent, universeId: string, intervalMs = 60_000): WatchTask {
     const c = this.store.config(e.projectId);
@@ -42,14 +43,25 @@ export class ErrorWatch {
     const existing = this.ledger.tasks(e.projectId).find(t => t.active && sameTaskScope(t, e) && t.universeId === universeId);
     if (existing) { if (existing.configIdentity !== digest(c)) throw new Error('Stop the previous task before starting with changed settings'); return existing; }
     if (this.ledger.tasks(e.projectId).some(t => t.active)) throw new Error('Stop the existing project watch before selecting another target');
-    const task: WatchTask = { id: randomUUID(), projectId: e.projectId, platform: e.platform, workspaceId: e.workspaceId, roomId: e.roomId, ownerId: e.actor.id, universeId, snapshot: c.selectedSnapshot, intervalMs, nextPollAt: this.now(), configIdentity: digest(c), active: true };
+    const task: WatchTask = { id: randomUUID(), projectId: e.projectId, platform: e.platform, workspaceId: e.workspaceId, roomId: e.roomId, ownerId: e.actor.id, universeId, snapshot: c.selectedSnapshot, intervalMs, nextPollAt: this.now(), configIdentity: digest(c), active: true, pollSequence: 0 };
     this.ledger.put(task); return task;
   }
   stop(e: RequestEvent) {
     const c = this.store.config(e.projectId); if (!scopeMatches(c, e) || !c || !approver(c, e.actor)) throw new Error('Not authorized');
     for (const task of this.ledger.tasks(e.projectId).filter(t => sameTaskScope(t, e))) this.ledger.put({ ...task, active: false });
+    if (this.reading?.projectId === e.projectId) this.reading.controller.abort();
   }
-  async tick(e: RequestEvent, feed: ErrorFeed): Promise<WatchTick> {
+  activeTask(e: RequestEvent): WatchTask | undefined {
+    const c = this.store.config(e.projectId); if (!eligible(c, e)) return undefined;
+    return this.ledger.tasks(e.projectId).find(t => t.active && sameTaskScope(t, e) && t.configIdentity === digest(c) && t.snapshot === c.selectedSnapshot);
+  }
+  canPublish(e: RequestEvent, report: WatchReport): boolean {
+    const task = this.activeTask(e); if (!task || task.id !== report.taskId || task.configIdentity !== report.configIdentity || task.pollSequence !== report.pollSequence) return false;
+    const c = this.store.config(e.projectId)!;
+    const evidence = sourceContext(this.store.sources(e.projectId).filter(s => report.sourceIds.includes(s.id)), c, '', this.now(), report.sourceIds.length);
+    return report.sourceIds.length > 0 && report.sourceIds.every(id => evidence.some(s => s.id === id && s.kind !== 'missing_evidence' && s.identity === report.sourceBindings[id]));
+  }
+  async tick(e: RequestEvent, feed: ErrorFeed, callerSignal?: AbortSignal): Promise<WatchTick> {
     const result = (status: WatchTick['status'], reason: string, reports: WatchReport[] = [], polls = 0): WatchTick => ({ status, reason, reports, polls, externalPosts: 0, modelCalls: 0 });
     const c = this.store.config(e.projectId);
     if (!eligible(c, e)) return result('BLOCKED', 'scope_or_pause');
@@ -58,15 +70,27 @@ export class ErrorWatch {
     const tasks = this.ledger.tasks(e.projectId).filter(t => t.active && sameTaskScope(t, e) && t.nextPollAt <= this.now());
     if (!tasks.length) return result('SILENT', 'not_due_or_stopped');
     this.active = true; const reports: WatchReport[] = []; let polls = 0;
+    const controller = new AbortController(); this.reading = { projectId: e.projectId, controller };
+    const signal = AbortSignal.any([controller.signal, AbortSignal.timeout(30_000), ...(callerSignal ? [callerSignal] : [])]);
     try {
       for (const task of tasks) {
         if (task.configIdentity !== digest(c) || task.snapshot !== c.selectedSnapshot) return result('BLOCKED', 'configuration_changed');
         // Reserve this interval before reading; failures do not create tight retry
         // loops or duplicate reports. Single process only, no external delivery.
-        task.nextPollAt = this.now() + task.intervalMs; this.ledger.put(task); polls++;
-        const frame = ErrorFrameSchema.parse(await feed.read({ ...task }, this.now()));
+        if (signal.aborted) return result('SILENT', 'poll_cancelled', [], polls);
+        task.nextPollAt = this.now() + task.intervalMs; task.pollSequence = (task.pollSequence ?? 0) + 1; this.ledger.put(task); polls++;
+        const raw = await new Promise<unknown>((resolve, reject) => {
+          const abort = () => { signal.removeEventListener('abort', abort); reject(new Error('Read cancelled')); };
+          signal.addEventListener('abort', abort, { once: true });
+          if (signal.aborted) { abort(); return; }
+          try { Promise.resolve(feed.read({ ...task }, this.now(), signal)).then(value => { signal.removeEventListener('abort', abort); resolve(value); }, error => { signal.removeEventListener('abort', abort); reject(error); }); }
+          catch (error) { signal.removeEventListener('abort', abort); reject(error); }
+        });
+        const frame = ErrorFrameSchema.parse(raw);
         const current = this.store.config(e.projectId);
         if (!eligible(current, e) || digest(current) !== task.configIdentity) return result('BLOCKED', 'configuration_changed', [], polls);
+        const storedTask = this.ledger.tasks(e.projectId).find(t => t.id === task.id);
+        if (signal.aborted || !storedTask?.active || storedTask.pollSequence !== task.pollSequence) return result('SILENT', 'poll_cancelled', [], polls);
         if (frame.universeId !== task.universeId || Date.parse(frame.windowStart) > this.now() || new Set(frame.groups.map(g => g.id)).size !== frame.groups.length) return result('BLOCKED', 'invalid_error_window', [], polls);
         // Validate the whole frame before adding any selected source or baseline.
         if (frame.groups.some(g => g.scriptPath.includes('..') || !/^[\w./-]+$/.test(g.scriptPath) || /(?:api[_-]?key|password|secret|token)\s*[:=]|-----BEGIN .*PRIVATE KEY-----/i.test(g.message))) return result('BLOCKED', 'unsanitized_replay', [], polls);
@@ -84,20 +108,22 @@ export class ErrorWatch {
           this.store.addSource(source);
           this.ledger.baseline(task.id, group.id, frame.windowStart, group.count);
           const sourceIds = [source.id, ...(code ? [code.id] : [])];
-          reports.push({ kind, errorId: group.id, count: group.count, increase: previous && previous.window === frame.windowStart ? group.count - previous.count : null, sourceIds, text: `[REPLAY - synthetic saved errors] ${kind === 'new' ? 'New error group' : 'Increased error group'} ${group.id}: count ${group.count}.\n[${source.id}] ${source.label}\n${code ? `[${code.id}] ${group.scriptPath}@${task.snapshot}:L${group.line}\nReferenced line: ${code.text.split('\n').find(l => l.startsWith(`${group.line}: `))}` : 'Referenced source/line unavailable; no cause inferred.'}\nSource correlation only; cause unverified. No reproduction, code change or external action performed.` });
+          const sourceBindings = Object.fromEntries(sourceContext([source, ...this.store.sources(e.projectId).filter(s => s.id === code?.id)], current, '', this.now(), 2).map(s => [s.id, s.identity]));
+          reports.push({ kind, errorId: group.id, count: group.count, increase: previous && previous.window === frame.windowStart ? group.count - previous.count : null, sourceIds, taskId: task.id, configIdentity: task.configIdentity, pollSequence: task.pollSequence, sourceBindings, text: `[REPLAY - synthetic saved errors] ${kind === 'new' ? 'New error group' : 'Increased error group'} ${group.id}: count ${group.count}.\n[${source.id}] ${source.label}\n${code ? `[${code.id}] ${group.scriptPath}@${task.snapshot}:L${group.line}\nReferenced line: ${code.text.split('\n').find(l => l.startsWith(`${group.line}: `))}` : 'Referenced source/line unavailable; no cause inferred.'}\nSource correlation only; cause unverified. No reproduction, code change or external action performed.` });
         }
       }
       return result(reports.length ? 'REPLAY' : 'SILENT', reports.length ? 'new_or_increased_errors' : 'no_comparable_increase', reports, polls);
-    } catch { return result('BLOCKED', 'replay_unavailable_or_invalid', [], polls); }
-    finally { this.active = false; }
+    } catch { return result('BLOCKED', signal.aborted ? 'poll_cancelled_or_timed_out' : 'replay_unavailable_or_invalid', [], polls); }
+    finally { this.active = false; this.reading = undefined; }
   }
-  purge(e: RequestEvent) { const c = this.store.config(e.projectId); if (!scopeMatches(c, e) || !c || !approver(c, e.actor)) throw new Error('Not authorized'); this.ledger.purge(e.projectId); }
+  purge(e: RequestEvent) { const c = this.store.config(e.projectId); if (!scopeMatches(c, e) || !c || !approver(c, e.actor)) throw new Error('Not authorized'); if (this.reading?.projectId === e.projectId) this.reading.controller.abort(); this.ledger.purge(e.projectId); }
 }
 
 export class SyntheticErrorFeed implements ErrorFeed {
-  readonly mode = 'replay' as const; private index = 0;
-  async read(task: WatchTask, now: number): Promise<ErrorFrame> {
-    const frame = Math.min(this.index++, 2);
+  readonly mode = 'replay' as const;
+  async read(task: WatchTask, now: number, signal?: AbortSignal): Promise<ErrorFrame> {
+    if (signal?.aborted) throw new Error('Read cancelled');
+    const frame = Math.min(Math.max((task.pollSequence ?? 1) - 1, 0), 2);
     return { synthetic: true, universeId: task.universeId, windowStart: new Date(Math.floor(now / 86_400_000) * 86_400_000).toISOString(), groups: [{ id: 'synthetic-route-error', count: frame < 2 ? 2 : 5, message: 'Synthetic party-route failure observation.', scriptPath: 'party-route.ts', line: 3 }] };
   }
 }

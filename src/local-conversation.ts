@@ -2,7 +2,8 @@ import { approver, digest, eligible, type Provider, type RequestEvent } from './
 import { LocalHarness, type HarnessOutput } from './local-harness.js';
 import { MediaPipeline, type MediaPayload, type MediaProvider } from './media.js';
 import { ParticipationPolicy, type ParticipationDecision, type ParticipationInput, type ParticipationLedger, type ParticipationReasoner, type RecentMessage } from './participation.js';
-import type { ErrorWatch } from './error-watch.js';
+import { SyntheticErrorFeed, type ErrorWatch, type WatchTick } from './error-watch.js';
+import { WatchScheduler } from './watch-scheduler.js';
 import type { Store } from './store.js';
 
 export type ConversationOutput = HarnessOutput & { decision?: ParticipationDecision; sourceId?: string; originId?: string };
@@ -43,13 +44,14 @@ function sample(kind: 'voice' | 'image'): MediaPayload {
 }
 
 export class OfflineConversation extends LocalHarness {
-  readonly participation: ParticipationPolicy; readonly media: MediaPipeline;
+  readonly participation: ParticipationPolicy; readonly media: MediaPipeline; readonly scheduler: WatchScheduler;
   private messages: RecentMessage[] = [];
   private offers = new Map<string, { original: RequestEvent; expiresAt: number }>();
-  constructor(store: Store, provider: Provider, now: () => number, readonly services: { ledger: ParticipationLedger; watch: ErrorWatch; reasoner: ParticipationReasoner; media: MediaProvider }) {
+  constructor(store: Store, provider: Provider, now: () => number, readonly services: { ledger: ParticipationLedger; watch: ErrorWatch; reasoner: ParticipationReasoner; media: MediaProvider; onWatchTick?: (result: WatchTick) => void }) {
     if ([provider.mode, services.reasoner.mode, services.media.mode].some(mode => mode !== 'mock')) throw new Error('Offline conversation accepts MOCK providers only');
     super(store, provider, 0, now, services.watch);
     this.participation = new ParticipationPolicy(store, services.ledger, services.reasoner, now); this.media = new MediaPipeline(store, services.media, now);
+    this.scheduler = new WatchScheduler(services.watch, new SyntheticErrorFeed(), services.onWatchTick ?? (() => {}));
   }
   private scope(e: RequestEvent) { return digest([e.platform, e.workspaceId, e.projectId, e.roomId]); }
   private remember(e: RequestEvent) {
@@ -67,6 +69,13 @@ export class OfflineConversation extends LocalHarness {
   override async line(line: string): Promise<ConversationOutput> {
     const input = line.trim();
     try {
+      if (input === '/watch auto on') { await this.scheduler.enable(this.event('Enable automatic local replay watch')); return { kind: 'status', text: 'Automatic REPLAY watch on: real one-minute intervals, local display only. No Roblox, Meta or external post.' }; }
+      if (input === '/watch auto off') { await this.scheduler.disable(this.event('Disable automatic local replay watch')); return { kind: 'status', text: 'Automatic replay watch off; manual task retained.' }; }
+      if (input === '/watch auto status') return { kind: 'status', text: `Automatic local replay watch: ${this.scheduler.enabled ? 'on' : 'off'}.` };
+      if (input === '/watch tick' && this.scheduler.enabled) throw new Error('Disable automatic watch before advancing the simulated clock manually.');
+      if (input === '/watch stop' || input === '/pause') {
+        const result = await super.line(line); if (result.kind !== 'error') await this.scheduler.shutdown(); return result;
+      }
       if (input.startsWith('/shadow ') || input.startsWith('/steer ')) {
         const e = this.event('Set local shadow participation'); const settings = this.services.ledger.settings(this.scope(e));
         if (input === '/shadow on') settings.mode = 'shadow';
@@ -106,11 +115,14 @@ export class OfflineConversation extends LocalHarness {
       if (input === '/forget-local-data CONFIRM') {
         const e = this.event('Explicit local data deletion'); const c = this.store.config(this.projectId);
         if (!c || !eligible({ ...c, paused: false }, e) || !approver(c, e.actor)) throw new Error('Only the configured simulated approver can delete local project data.');
-        this.store.putConfig({ ...c, paused: true }); this.messages = []; this.offers.clear();
+        await this.scheduler.shutdown(); const current = this.store.config(this.projectId);
+        if (!current || !eligible({ ...current, paused: false }, e) || !approver(current, e.actor)) throw new Error('Local deletion authority changed.');
+        this.store.putConfig({ ...current, paused: true }); this.messages = []; this.offers.clear();
         this.services.watch.purge(e); this.services.ledger.purge(this.scope(e)); this.store.purgeProject(this.projectId);
         return { kind: 'status', text: 'Local project content, watch state and participation state deleted. Project paused; spending ledger retained. Deleted sources are not automatically restored.' };
       }
       return await super.line(line);
     } catch (error) { return { kind: 'error', text: error instanceof Error ? error.message : 'Local conversation action failed.' }; }
   }
+  async close() { await this.scheduler.shutdown(); }
 }

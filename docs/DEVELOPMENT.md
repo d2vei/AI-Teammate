@@ -53,3 +53,5 @@ Trace metadata records hashed event/config/prompt identity, source IDs, provider
 See `STATUS.md` and `WORKLOG.md` for checks actually run and remaining live gates.
 
 The local terminal composes read-only watch replay, supplied media fixtures, shadow participation, separate invitations and normal saved decisions/briefs. See LOCAL_HARNESS.md for the exact fixture commands and scoped deletion. Prepared participation/media Meta adapters are exercised by HTTP mocks only and have no live launcher action; createMetaRuntime provides their shared serialized transport. ADDONS.md records what remains disconnected, primary sources and separate model-quality gates. Key setup is on hold at the owner's request while the API key page is unavailable; offline development does not depend on it.
+
+Read-only local watch scheduling is opt-in with `/watch auto on`; one-minute minimum intervals use real timers. Stop/pause/exit cancel it, and stalled reads stop scheduling after 30 seconds. `npm run watch:timed-demo` is the optional two-minute native-timer check over synthetic data, separate from fast CI and from any live service test.
