@@ -35,6 +35,8 @@
     "dev": "npm run build && npm start",
     "demo:offline": "npm run build && node scripts/offline-demo.mjs",
     "conversation:offline": "npm run build && node scripts/conversation.mjs",
+    "conversation:live": "node scripts/infisical.mjs conversation-live",
+    "test:conversation-live": "node scripts/infisical.mjs conversation-live-check",
     "replay:offline": "npm run build && node scripts/participation-replay.mjs",
     "test:participation-mutation": "node scripts/participation-mutation.ts",
     "test:conversation": "npm run build && node scripts/check-conversation.mjs",

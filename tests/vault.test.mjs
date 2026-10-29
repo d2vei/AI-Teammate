@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildRunArgs, childEnvironment, appVariableNames, evaluationSettings } from '../scripts/vault-lib.mjs';
+import { buildRunArgs, childEnvironment, conversationEnvironment, appVariableNames, evaluationSettings } from '../scripts/vault-lib.mjs';
 describe('Infisical launcher - no vault access', () => {
   it('injects only into the fixed bot/live-check child, with no import/expansion/recursive fetch', () => {
     const args = buildRunArgs('smoke', '/synthetic/project', '/synthetic/node');
@@ -13,11 +13,17 @@ describe('Infisical launcher - no vault access', () => {
     expect(buildRunArgs('voice-diagnostic', '/synthetic/project', '/synthetic/node').at(-1)).toBe('voice-diagnostic');
     expect(buildRunArgs('media-live-v2', '/synthetic/project', '/synthetic/node').at(-1)).toBe('media-live-v2');
     expect(buildRunArgs('participation-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('participation-live');
+    expect(buildRunArgs('conversation-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live');
+    expect(buildRunArgs('conversation-live-check', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live-check');
   });
   it.each(['codex', 'shell', 'export', 'npm test', 'jev', 'openai'])('rejects arbitrary command %s', action => { expect(() => buildRunArgs(action)).toThrow(); });
   it('does not forward unrelated provider keys, vault tokens or Node preload options', () => {
     const env = childEnvironment({ META_API_KEY: 'SYNTHETIC_META', DISCORD_BOT_TOKEN: 'SYNTHETIC_DISCORD', OPENAI_API_KEY: 'SYNTHETIC_OPENAI', JEV_API_KEY: 'SYNTHETIC_JEV', INFISICAL_TOKEN: 'SYNTHETIC_VAULT', NODE_OPTIONS: 'SYNTHETIC_PRELOAD' });
     expect(Object.keys(env)).toEqual(['DISCORD_BOT_TOKEN', 'META_API_KEY']); expect(env).not.toHaveProperty('OPENAI_API_KEY'); expect(env).not.toHaveProperty('JEV_API_KEY');
+  });
+  it('strips Discord and private-source controls from the Meta local terminal child', () => {
+    const env = conversationEnvironment({ META_API_KEY: 'SYNTHETIC_META', META_MODEL_ID: 'muse-spark-1.3', META_PRIVATE_DATA_VERIFIED: 'true', DISCORD_BOT_TOKEN: 'SYNTHETIC_DISCORD', APP_PROJECT_ID: 'other-project', APP_MAX_SPEND_USD: '1', NODE_OPTIONS: 'SYNTHETIC_PRELOAD' });
+    expect(env).toEqual({ META_API_KEY: 'SYNTHETIC_META', META_MODEL_ID: 'muse-spark-1.3', APP_MAX_SPEND_USD: '1' });
   });
   it('keeps every .env.example value blank and matches the app variable-name allowlist', () => {
     const lines = readFileSync('.env.example', 'utf8').split(/\r?\n/).filter(s => s && !s.startsWith('#'));

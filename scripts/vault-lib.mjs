@@ -13,6 +13,11 @@ export function childEnvironment(env) {
   for (const name of ['PATH', 'Path', 'SystemRoot', 'WINDIR', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA', 'APPDATA', ...appVariableNames]) if (env[name] !== undefined) clean[name] = env[name];
   return clean;
 }
+export function conversationEnvironment(env) {
+  const clean = childEnvironment(env);
+  for (const name of ['DISCORD_BOT_TOKEN', 'DISCORD_APPLICATION_ID', 'DISCORD_GUILD_ID', 'DISCORD_CHANNEL_ID', 'DISCORD_MEMBER_IDS', 'DISCORD_APPROVER_IDS', 'DISCORD_APPROVER_ROLE_IDS', 'META_PRIVATE_DATA_VERIFIED', 'APP_PROJECT_ID']) delete clean[name];
+  return clean;
+}
 export function evaluationSettings(env) {
   // Owner-authorized EUR 5 total, conservatively USD 5. Non-secret defaults
   // belong to this fixed launcher, not the vault. Preserve a stricter cap.
@@ -26,7 +31,7 @@ export function evaluationSettings(env) {
 }
 export function buildRunArgs(action, root = resolve('.'), node = process.execPath) {
   if (['bot', 'init', 'seed', 'register'].includes(action)) throw new Error('Discord is deferred; use the platform-independent local harness');
-  const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate', 'core-live': 'core-live', 'media-live': 'media-live', 'media-live-v2': 'media-live-v2', 'voice-diagnostic': 'voice-diagnostic', 'participation-live': 'participation-live' };
+  const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate', 'core-live': 'core-live', 'media-live': 'media-live', 'media-live-v2': 'media-live-v2', 'voice-diagnostic': 'voice-diagnostic', 'participation-live': 'participation-live', 'conversation-live': 'conversation-live', 'conversation-live-check': 'conversation-live-check' };
   const command = commands[action]; if (!command) throw new Error('Only fixed bot/setup/live-check actions are allowed');
   return ['run', '--env=dev', '--path=/', '--include-imports=false', '--recursive=false', '--expand=false', '--secret-overriding=false', '--project-config-dir', root, '--telemetry=false', '--silent', '--profile=ai-teammate', '--domain=https://eu.infisical.com', '--', node, join(root, 'scripts/vault-child.mjs'), command];
 }
