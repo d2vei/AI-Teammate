@@ -1,0 +1,2900 @@
+{
+  "exportedAt": "2026-10-29T20:23:03.053Z",
+  "startedAt": "2026-10-29T19:55:58.284Z",
+  "captureLastWriteAt": "2026-10-29T20:22:06.510Z",
+  "status": "COMPLETED_MODEL_SHADOW_PILOT",
+  "kind": "real Meta shadow policy on self-authored synthetic replay; simulated participants/invitations and no delivery transport",
+  "candidate": "c4baab9496589b4ffdd16c266e67f73e2a02a947",
+  "runtimeFreezeSha256": "6fb47c9bbcd7810f64ada61f22c109f0578dbbeb265ad4822722164b1af00e4f",
+  "corpusIdentity": {
+    "authoredAt": "2026-10-29T19:48:49.833Z",
+    "runtimeFreezeSha256": "6fb47c9bbcd7810f64ada61f22c109f0578dbbeb265ad4822722164b1af00e4f",
+    "casesSha256": "c99555960c64ca0dbc49d42be6aa52d3095124bdfc3eb525819ab4976d5fc12d",
+    "labelsSha256": "092680d071e3471a28fd77000edc1c971f9e6a88e23d0350438f94f608606322",
+    "cases": 40,
+    "turns": 180,
+    "shouldSpeak": 15,
+    "staySilent": 25,
+    "pairedRepairs": 15,
+    "positiveCasesPerMove": 5,
+    "kind": "self-authored synthetic pilot authored after runtime freeze; not an independent held-out benchmark"
+  },
+  "harness": [
+    {
+      "path": "scripts/participation-live.mjs",
+      "sha256": "38586b8d2eb441810694ce2401b9c8c95a2648e01a10ed98e6b3aa63cd715b61"
+    },
+    {
+      "path": "scripts/participation-pilot-lib.mjs",
+      "sha256": "71e5dc1ddd78b95c0dfe590d4d6dbc1d323ff979f7298503b61ed58d39dca9ad"
+    },
+    {
+      "path": "scripts/build-participation-live.mjs",
+      "sha256": "956767b03aaa3d4454e8ab1226aef8e969d109370b74143918db7c71e84cd6b0"
+    }
+  ],
+  "model": "muse-spark-1.3",
+  "promptIdentity": "01ddedbe3f1f7bb1ff1af8487ebc0c9c487f61c0b090ab333dcf9bcf558ea4b8",
+  "settings": {
+    "mode": "shadow",
+    "delivery": "hand_raise",
+    "persistence": 3,
+    "confidence": 0.85,
+    "cooldownMs": 600000,
+    "invitationMs": 600000,
+    "blockedMoves": []
+  },
+  "sampling": "temperature and top_p unset; current Meta documentation recommends provider defaults",
+  "maxOutputTokens": 2048,
+  "actionMetrics": {
+    "status": "FAIL",
+    "caught": 0,
+    "shouldSpeak": 15,
+    "falseInterruptions": 0,
+    "staySilent": 25,
+    "observedSilent": 25,
+    "selfRepairSilent": 15,
+    "selfRepairPairs": 15,
+    "moves": {
+      "constraint_reminder": {
+        "caught": 0,
+        "total": 5
+      },
+      "clarification": {
+        "caught": 0,
+        "total": 5
+      },
+      "loop_breaking": {
+        "caught": 0,
+        "total": 5
+      }
+    },
+    "completeCases": 40,
+    "caseGrades": [
+      {
+        "id": "P01-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "constraint_reminder",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P01-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "constraint_reminder",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 3
+      },
+      {
+        "id": "P02-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "constraint_reminder",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P02-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "constraint_reminder",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P03-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "constraint_reminder",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P03-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "constraint_reminder",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P04-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "constraint_reminder",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P04-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "constraint_reminder",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P05-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "constraint_reminder",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P05-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "constraint_reminder",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "seeded approved rule plus supplied messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P06-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "clarification",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 3
+      },
+      {
+        "id": "P06-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "clarification",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P07-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "clarification",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P07-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "clarification",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P08-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "clarification",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P08-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "clarification",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P09-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "clarification",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 3
+      },
+      {
+        "id": "P09-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "clarification",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P10-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "clarification",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P10-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "clarification",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P11-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "loop_breaking",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P11-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "loop_breaking",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "P12-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "loop_breaking",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P12-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "loop_breaking",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P13-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "loop_breaking",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P13-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "loop_breaking",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P14-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "loop_breaking",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P14-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "loop_breaking",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "P15-open",
+        "expected": {
+          "expected": "should_speak",
+          "move": "loop_breaking",
+          "selfRepair": false,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "FAIL",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "P15-repair",
+        "expected": {
+          "expected": "stay_silent",
+          "move": "loop_breaking",
+          "selfRepair": true,
+          "targetTurnId": "m3",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 2
+      },
+      {
+        "id": "Q01",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q02",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "Q03",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q04",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 1
+      },
+      {
+        "id": "Q05",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q06",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q07",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q08",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q09",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      },
+      {
+        "id": "Q10",
+        "expected": {
+          "expected": "stay_silent",
+          "move": null,
+          "selfRepair": false,
+          "targetTurnId": "m5",
+          "evidence": "supplied recent messages"
+        },
+        "status": "PASS_ACTION_ONLY",
+        "actionCount": 0,
+        "invalidModelCalls": 0
+      }
+    ],
+    "semanticEvidenceSupport": "NOT_RATED",
+    "humanJudgments": "NOT_RUN",
+    "unsolicitedDeliveryEnabled": false,
+    "deploymentDecision": "mention_only_required"
+  },
+  "modelHttpCalls": 360,
+  "modelCallKinds": {
+    "monitor": 180,
+    "selfRepair": 180
+  },
+  "modelCallOutcomes": {
+    "VALID_JSON_SCHEMA": 321,
+    "INVALID_OUTPUT": 39
+  },
+  "invalidModelOutputs": 39,
+  "invalidByKind": {
+    "monitor": 36,
+    "selfRepair": 3
+  },
+  "invalidOutputsAtOutputCap": 39,
+  "chargeCallAssociationsComplete": true,
+  "interpretationOfInvalids": "Capture omits failed raw envelopes. Full token allowance is an observation, not a confirmed truncation diagnosis. Silence on invalid output is a software fallback, not semantic accuracy.",
+  "observedActions": {
+    "SILENT": 180
+  },
+  "silenceReasons": {
+    "on_track": 83,
+    "waiting_for_self_repair": 48,
+    "invalid_or_unavailable": 37,
+    "off_topic_social": 12
+  },
+  "messageProcessingWallMsIncludingQueue": {
+    "count": 180,
+    "min": 3964.775599999819,
+    "median": 8315.986499999999,
+    "p95": 12797.108499999973,
+    "max": 18519.937000000034
+  },
+  "firstConstraintCase": {
+    "case": "P01-open",
+    "validConstraintFindings": 3,
+    "stableClaimName": true,
+    "distinctCitedIdSets": 3,
+    "finalAction": "SILENT",
+    "limitation": "The policy requires unchanged evidence bindings for persistence. This case changes cited message IDs across successive findings. No claim that this is the only cause of all misses."
+  },
+  "cases": [
+    {
+      "id": "P01-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8457.6059,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10725.8273,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10335.054099999998,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 11384.851599999998,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 40915.038,
+      "chargeMicros": 47867
+    },
+    {
+      "id": "P01-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 3,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7537.473099999996,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10526.027800000003,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 11451.658599999995,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 17423.056899999996,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 46949.829300000005,
+      "chargeMicros": 55314
+    },
+    {
+      "id": "P02-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 6486.752899999992,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 7327.887499999997,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 14318.487599999993,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 10623.993500000011,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38764.23479999999,
+      "chargeMicros": 44724
+    },
+    {
+      "id": "P02-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8136.88949999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9514.837300000014,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10691.851599999995,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 13766.779999999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 42117.337400000004,
+      "chargeMicros": 47929
+    },
+    {
+      "id": "P03-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 12165.607400000008,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8067.01820000002,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8315.986499999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8313.540800000017,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36871.0594,
+      "chargeMicros": 45342
+    },
+    {
+      "id": "P03-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9364.346300000005,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 7481.496099999989,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8206.472899999993,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 15480.531000000017,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 40540.04250000001,
+      "chargeMicros": 49561
+    },
+    {
+      "id": "P04-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9921.955400000006,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9504.503899999982,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8842.41730000003,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 10669.775199999975,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38946.01039999997,
+      "chargeMicros": 43561
+    },
+    {
+      "id": "P04-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7714.3799,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10024.060999999987,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8437.895900000003,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 18519.937000000034,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 44706.20400000003,
+      "chargeMicros": 50132
+    },
+    {
+      "id": "P05-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 11636.269500000053,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9208.307099999976,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 11340.824100000027,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 12739.487199999974,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 44931.5588,
+      "chargeMicros": 50661
+    },
+    {
+      "id": "P05-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8165.239899999986,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8205.78409999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8050.657200000016,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 9614.059000000008,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 34043.23829999997,
+      "chargeMicros": 41662
+    },
+    {
+      "id": "P06-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 3,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 6683.579800000007,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10988.771200000017,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 12797.108499999973,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 12435.560400000017,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 42912.57059999998,
+      "chargeMicros": 45990
+    },
+    {
+      "id": "P06-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 10967.535800000012,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10294.78899999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10097.492200000037,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 9982.065999999992,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 41351.463699999964,
+      "chargeMicros": 48169
+    },
+    {
+      "id": "P07-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7074.9832999999635,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9246.554400000023,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10664.757299999997,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 10568.810499999963,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 37566.95750000002,
+      "chargeMicros": 44128
+    },
+    {
+      "id": "P07-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8569.8554,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8164.851199999917,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10807.473400000017,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 9095.254199999967,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36678.992499999935,
+      "chargeMicros": 45012
+    },
+    {
+      "id": "P08-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 6164.118499999982,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 6920.275199999916,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 9121.524800000014,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 9329.2831,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 31543.71849999996,
+      "chargeMicros": 41277
+    },
+    {
+      "id": "P08-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 10115.844099999988,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8761.895699999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10990.709199999925,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8366.135500000091,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38242.62699999998,
+      "chargeMicros": 45970
+    },
+    {
+      "id": "P09-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 3,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7058.007700000075,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10584.47100000002,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10575.444699999993,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 9687.667400000035,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 37914.10759999999,
+      "chargeMicros": 44896
+    },
+    {
+      "id": "P09-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7955.5131999999285,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10562.005600000033,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10459.251099999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8185.140800000052,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 37169.182099999976,
+      "chargeMicros": 44665
+    },
+    {
+      "id": "P10-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9461.08879999991,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 7544.40009999997,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 9438.003299999982,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 12059.915099999984,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38512.87239999999,
+      "chargeMicros": 45747
+    },
+    {
+      "id": "P10-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7585.746899999911,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10171.135499999975,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 12191.49979999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 6591.8599000000395,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36548.70200000005,
+      "chargeMicros": 42541
+    },
+    {
+      "id": "P11-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9903.714400000055,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 6890.159100000048,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7964.76099999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8432.593699999969,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 33199.875,
+      "chargeMicros": 44157
+    },
+    {
+      "id": "P11-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9981.642600000021,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 7438.4686999999685,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7456.802199999918,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 11251.34580000001,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36137.424,
+      "chargeMicros": 47014
+    },
+    {
+      "id": "P12-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8437.17539999995,
+          "citedIdsResolve": true,
+          "citedSourceCount": 1
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8156.798999999999,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7277.947700000019,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 12222.510800000047,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36103.9347000001,
+      "chargeMicros": 42791
+    },
+    {
+      "id": "P12-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 11064.772999999928,
+          "citedIdsResolve": true,
+          "citedSourceCount": 1
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 7164.129799999995,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6480.350800000015,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 14190.54330000002,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38909.026199999964,
+      "chargeMicros": 44193
+    },
+    {
+      "id": "P13-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 10691.580100000021,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8217.355200000107,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7046.060300000012,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5826.694400000037,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 31791.262299999944,
+      "chargeMicros": 40390
+    },
+    {
+      "id": "P13-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 11475.375400000019,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9168.313100000028,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6881.595399999991,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 10003.782600000035,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 37538.73569999996,
+      "chargeMicros": 46370
+    },
+    {
+      "id": "P14-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 10767.460900000064,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 6476.400900000008,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7741.779100000043,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 7953.95140000002,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 32948.25210000004,
+      "chargeMicros": 41489
+    },
+    {
+      "id": "P14-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9226.939000000013,
+          "citedIdsResolve": true,
+          "citedSourceCount": 1
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 16805.86659999995,
+          "citedIdsResolve": true,
+          "citedSourceCount": 2
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7715.118499999866,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 14722.03339999984,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 48478.55680000002,
+      "chargeMicros": 49917
+    },
+    {
+      "id": "P15-open",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9594.441100000171,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 11032.430300000124,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 8723.583300000057,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 6071.677600000054,
+          "citedIdsResolve": true,
+          "citedSourceCount": 4
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 35431.62679999997,
+      "chargeMicros": 44159
+    },
+    {
+      "id": "P15-repair",
+      "state": "OBSERVED",
+      "invalidModelCalls": 2,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 10033.85810000007,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 10221.140300000086,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 5845.272699999856,
+          "citedIdsResolve": true,
+          "citedSourceCount": 3
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 10588.735400000121,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 36698.78720000014,
+      "chargeMicros": 46471
+    },
+    {
+      "id": "Q01",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9349.063799999887,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 4363.7312999998685,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 5254.114400000079,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 6545.291800000006,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 8502.015200000023,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 7312.52789999987,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 41345.937799999956,
+      "chargeMicros": 56383
+    },
+    {
+      "id": "Q02",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7661.7643999999855,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 4511.824299999978,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6546.083199999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5472.860099999933,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 8970.69840000011,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 6350.283000000054,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 39532.538500000024,
+      "chargeMicros": 55698
+    },
+    {
+      "id": "Q03",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8580.139900000067,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 5367.007599999895,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6166.569799999939,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 4892.783899999922,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 5596.825499999803,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 7422.819800000172,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 38049.75859999983,
+      "chargeMicros": 52087
+    },
+    {
+      "id": "Q04",
+      "state": "OBSERVED",
+      "invalidModelCalls": 1,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "invalid_or_unavailable",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 9310.271100000013,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 8246.209799999837,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 10255.63220000011,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 7196.162500000093,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 6732.233800000045,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 6268.045700000133,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 48024.138099999866,
+      "chargeMicros": 61210
+    },
+    {
+      "id": "Q05",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8007.520699999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 5680.116299999878,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 5618.184899999993,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5414.311699999962,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 4902.8558999998495,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 5911.814299999969,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 35549.75810000021,
+      "chargeMicros": 50506
+    },
+    {
+      "id": "Q06",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 8385.284400000004,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 6526.510199999902,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 5373.383999999845,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5181.40699999989,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 6523.648599999957,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 3964.775599999819,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 35970.21340000001,
+      "chargeMicros": 51623
+    },
+    {
+      "id": "Q07",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7381.0421999997925,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 5578.0779999999795,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 5806.704900000012,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5757.2472000001,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 5435.06790000014,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 7162.601800000062,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 37137.184499999974,
+      "chargeMicros": 52002
+    },
+    {
+      "id": "Q08",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 6596.809299999848,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 5595.330599999987,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 7860.854599999962,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8292.161399999866,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 8915.657799999928,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 6790.606499999994,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 44067.30619999999,
+      "chargeMicros": 58585
+    },
+    {
+      "id": "Q09",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7351.6095000000205,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 15520.807400000049,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6950.506400000071,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 8544.090800000122,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 8613.5,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 5539.12900000019,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 52538.35269999993,
+      "chargeMicros": 55753
+    },
+    {
+      "id": "Q10",
+      "state": "OBSERVED",
+      "invalidModelCalls": 0,
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "syntheticOffsetMs": 0,
+          "wallMs": 7654.610499999952,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "syntheticOffsetMs": 1000,
+          "wallMs": 9277.162299999967,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "syntheticOffsetMs": 2000,
+          "wallMs": 6320.540200000163,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "syntheticOffsetMs": 3000,
+          "wallMs": 5350.197200000053,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "syntheticOffsetMs": 4000,
+          "wallMs": 6006.065100000007,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "syntheticOffsetMs": 5000,
+          "wallMs": 6796.30150000006,
+          "citedIdsResolve": true,
+          "citedSourceCount": 0
+        }
+      ],
+      "invitedShadowAction": "NOT_RUN",
+      "cleanup": "OWN_SYNTHETIC_CONTENT_PURGED_CHARGES_PRESERVED",
+      "wallMs": 41423.72350000008,
+      "chargeMicros": 55737
+    }
+  ],
+  "tokenUsage": {
+    "inputTokens": 292194,
+    "outputTokens": 366189
+  },
+  "chargeStates": {
+    "reported": 360
+  },
+  "budgetBeforeUsd": 0.181175,
+  "budgetAfterUsd": 2.102858,
+  "localUsdCap": 5,
+  "allCaseContentPurged": true,
+  "humanJudgments": "NOT_RUN",
+  "semanticEvidenceSupport": "NOT_RATED",
+  "externalPosts": 0,
+  "rawObservationsExported": false,
+  "privateArtifactSha256": "fd996495e80ba7540c806b371e554a6328d07f2a959268a1d3e8f559cc264a7b",
+  "limitations": "One self-authored synthetic frozen replay, no independent human validation of labels, no live room or timing study. Predefined action counts do not establish correctness/helpfulness, semantic source support or baseline superiority. Full product acceptance remains incomplete."
+}

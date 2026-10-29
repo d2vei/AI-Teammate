@@ -47,6 +47,14 @@ if (existsSync('.local/evidence/media-pilot-v2.json')) {
   report.mediaRegressionV2 = { at: m.at, commit: m.commit, status: m.status, kind: m.kind, files: m.files, manifestSha256: m.manifestSha256, cases: m.cases.map(c => ({ id: c.id, status: c.status, model: c.model ?? null, literalFactChecks: c.literalFactChecks, authorizedContextAvailable: c.authorizedContextAvailable ?? false, noAuthorityCreated: c.noAuthorityCreated ?? false, originRevocationVerified: c.originRevocationVerified ?? false, mediaInferenceAttempts: c.mediaInferenceAttempts ?? 0, charges: c.charges ?? [] })), mediaInferenceAttempts: m.mediaInferenceAttempts, literalFactCasesPassed: m.literalFactCasesPassed, uploadCleanupOutstanding: m.uploadCleanupOutstanding, rawFixturesDeleted: m.rawFixturesDeleted, ownProjectContentDeleted: m.ownProjectContentDeleted, chargeLedgerPreserved: m.chargeLedgerPreserved, budgetBeforeUsd: m.budgetBeforeUsd, budgetAfterUsd: m.budgetAfterUsd, humanRatings: m.humanRatings, discordSends: m.discordSends, semanticReview: { reviewedAt: review.reviewedAt, reviewer: review.reviewer, target: review.target, cases: review.cases, limitations: review.limitations }, privateArtifactSha256: run.sha256 };
   report.currentUsedOrReservedUsd = m.budgetAfterUsd;
 }
+if (existsSync('evidence/participation-live-v1.json')) {
+  const run = load('evidence/participation-live-v1.json'); const p = run.data;
+  if (p.status !== 'COMPLETED_MODEL_SHADOW_PILOT') throw new Error('Participation report is not a completed pilot');
+  report.participationPilot = { at: p.startedAt, commit: p.candidate, status: p.status, kind: p.kind, model: p.model, runtimeFreezeSha256: p.runtimeFreezeSha256, corpusIdentity: p.corpusIdentity, actionMetrics: { status: p.actionMetrics.status, caught: p.actionMetrics.caught, shouldSpeak: p.actionMetrics.shouldSpeak, falseInterruptions: p.actionMetrics.falseInterruptions, staySilent: p.actionMetrics.staySilent, moves: p.actionMetrics.moves }, modelHttpCalls: p.modelHttpCalls, observedActions: p.observedActions, invalidModelOutputs: p.invalidModelOutputs, tokenUsage: p.tokenUsage, budgetBeforeUsd: p.budgetBeforeUsd, budgetAfterUsd: p.budgetAfterUsd, allCaseContentPurged: p.allCaseContentPurged, humanJudgments: p.humanJudgments, externalPosts: p.externalPosts, artifact: 'evidence/participation-live-v1.json', artifactSha256: run.sha256 };
+  report.currentUsedOrReservedUsd = p.budgetAfterUsd;
+  report.cumulativeRequestAttempts = 30 + p.modelHttpCalls;
+  report.uncertainReservedUsd = 0.00055;
+}
 mkdirSync('evidence', { recursive: true });
 writeFileSync('evidence/meta-live-v1.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ smoke: report.smoke.status, pairedEvaluation: report.pairedEvaluation.status, usedOrReservedUsd: report.currentUsedOrReservedUsd, rawResponsesExported: false, artifact: 'evidence/meta-live-v1.json' }));

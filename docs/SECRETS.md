@@ -74,6 +74,8 @@ Media checks are separate fixed test routes: `test:media-live` (five-case v1), `
 
 Do not use `infisical export`, `secrets`, `printenv`, `process.env` dumps, `login --plain` or a coding-agent launch under the vault. Do not expose live keys to CI. All public/offline CI uses mock data only.
 
+`test:participation-live` is another fixed test-only route using the same ledger, native store and allowance. Its first frozen shadow pilot completed 360 requests and failed the participation target; do not rerun it or delete its capture/charges. Current cumulative accounting is USD 2.102858 across 390 request attempts, including USD 0.000550 uncertain. Keep mention-only. `review:prepare` and `review:check` operate on local captures without vault access, credentials or paid calls. See LIVE_TESTS.md and MANUAL_REVIEW.md.
+
 ## Migration and removal status
 
 The root and known legacy credential filenames were inspected by name only. No actual `.env`, `.env.local`, `bot.env` or `data/bot.env` was found in this workspace. No plaintext credential file has been created/exported or deleted. Session/native-store setup, dashboard entries, successful injection and live calls are separate checks in `STATUS.md`.

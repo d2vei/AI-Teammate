@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T19:31:42.577Z",
+  "exportedAt": "2026-10-29T20:30:33.050Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 0.181175,
+  "currentUsedOrReservedUsd": 2.102858,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -843,5 +843,65 @@
       "limitations": "Four strict credited cases satisfy the predefined four-of-five synthetic target. Keep the original 3/5 failure and one-case diagnostic. No independent human, live group, Discord or general media-quality claim; clip-audio provenance remains limited."
     },
     "privateArtifactSha256": "760224668c5245a325fe07013ca5596fe5834bded97fa0de87a24e27f719a533"
-  }
+  },
+  "participationPilot": {
+    "at": "2026-10-29T19:55:58.284Z",
+    "commit": "c4baab9496589b4ffdd16c266e67f73e2a02a947",
+    "status": "COMPLETED_MODEL_SHADOW_PILOT",
+    "kind": "real Meta shadow policy on self-authored synthetic replay; simulated participants/invitations and no delivery transport",
+    "model": "muse-spark-1.3",
+    "runtimeFreezeSha256": "6fb47c9bbcd7810f64ada61f22c109f0578dbbeb265ad4822722164b1af00e4f",
+    "corpusIdentity": {
+      "authoredAt": "2026-10-29T19:48:49.833Z",
+      "runtimeFreezeSha256": "6fb47c9bbcd7810f64ada61f22c109f0578dbbeb265ad4822722164b1af00e4f",
+      "casesSha256": "c99555960c64ca0dbc49d42be6aa52d3095124bdfc3eb525819ab4976d5fc12d",
+      "labelsSha256": "092680d071e3471a28fd77000edc1c971f9e6a88e23d0350438f94f608606322",
+      "cases": 40,
+      "turns": 180,
+      "shouldSpeak": 15,
+      "staySilent": 25,
+      "pairedRepairs": 15,
+      "positiveCasesPerMove": 5,
+      "kind": "self-authored synthetic pilot authored after runtime freeze; not an independent held-out benchmark"
+    },
+    "actionMetrics": {
+      "status": "FAIL",
+      "caught": 0,
+      "shouldSpeak": 15,
+      "falseInterruptions": 0,
+      "staySilent": 25,
+      "moves": {
+        "constraint_reminder": {
+          "caught": 0,
+          "total": 5
+        },
+        "clarification": {
+          "caught": 0,
+          "total": 5
+        },
+        "loop_breaking": {
+          "caught": 0,
+          "total": 5
+        }
+      }
+    },
+    "modelHttpCalls": 360,
+    "observedActions": {
+      "SILENT": 180
+    },
+    "invalidModelOutputs": 39,
+    "tokenUsage": {
+      "inputTokens": 292194,
+      "outputTokens": 366189
+    },
+    "budgetBeforeUsd": 0.181175,
+    "budgetAfterUsd": 2.102858,
+    "allCaseContentPurged": true,
+    "humanJudgments": "NOT_RUN",
+    "externalPosts": 0,
+    "artifact": "evidence/participation-live-v1.json",
+    "artifactSha256": "6353dd932506bec94a0e4703e8fa9a6f09c36fc715006c9072011858517ccfc6"
+  },
+  "cumulativeRequestAttempts": 390,
+  "uncertainReservedUsd": 0.00055
 }
