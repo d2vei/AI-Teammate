@@ -1,0 +1,16 @@
+import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { spawnSync } from 'node:child_process';
+const root = resolve('.'); const dir = join(root, '.local', `participation-mutation-${Date.now()}`);
+mkdirSync(join(dir, 'tests'), { recursive: true });
+cpSync(join(root, 'src'), join(dir, 'src'), { recursive: true });
+cpSync(join(root, 'tests/participation.test.ts'), join(dir, 'tests/participation.test.ts'));
+const file = join(dir, 'src/participation.ts'); const source = readFileSync(file, 'utf8');
+const gate = 'if (claim.count < settings.persistence)';
+if (source.split(gate).length !== 2) throw new Error('Expected exactly one persistence gate');
+writeFileSync(file, source.replace(gate, 'if (false)'));
+const reportPath = join(dir, 'mutation-result.json');
+const run = spawnSync(process.execPath, [join(root, 'node_modules/vitest/vitest.mjs'), 'run', '--root', dir, '--config', join(root, 'vitest.config.ts'), 'tests/participation.test.ts', '-t', 'waits for three distinct observations', '--reporter=json', '--outputFile', reportPath], { cwd: root, encoding: 'utf8' });
+const report = JSON.parse(readFileSync(reportPath, 'utf8')) as { numFailedTests: number; testResults: { assertionResults: { status: string; fullName: string }[] }[] };
+if (run.status !== 1 || report.numFailedTests !== 1 || !report.testResults.some(s => s.assertionResults.some(t => t.status === 'failed' && t.fullName.includes('waits for three distinct observations')))) throw new Error('Negative control failed to detect premature intervention');
+console.log(JSON.stringify({ status: 'PASS', experiment: 'Persistence gate removed in expendable copy', observedFailedTests: report.numFailedTests, authoritativeFilesModified: false, semanticTiming: 'NOT_TESTED' }));

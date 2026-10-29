@@ -1,0 +1,202 @@
+{
+  "pair-1-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false
+  },
+  "pair-1-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true
+  },
+  "pair-2-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false
+  },
+  "pair-2-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true
+  },
+  "pair-3-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false
+  },
+  "pair-3-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true
+  },
+  "pair-4-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false
+  },
+  "pair-4-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true
+  },
+  "pair-5-open": {
+    "expected": "should_speak",
+    "move": "constraint_reminder",
+    "selfRepair": false
+  },
+  "pair-5-repair": {
+    "expected": "stay_silent",
+    "move": "constraint_reminder",
+    "selfRepair": true
+  },
+  "pair-6-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false
+  },
+  "pair-6-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true
+  },
+  "pair-7-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false
+  },
+  "pair-7-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true
+  },
+  "pair-8-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false
+  },
+  "pair-8-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true
+  },
+  "pair-9-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false
+  },
+  "pair-9-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true
+  },
+  "pair-10-open": {
+    "expected": "should_speak",
+    "move": "clarification",
+    "selfRepair": false
+  },
+  "pair-10-repair": {
+    "expected": "stay_silent",
+    "move": "clarification",
+    "selfRepair": true
+  },
+  "pair-11-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false
+  },
+  "pair-11-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true
+  },
+  "pair-12-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false
+  },
+  "pair-12-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true
+  },
+  "pair-13-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false
+  },
+  "pair-13-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true
+  },
+  "pair-14-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false
+  },
+  "pair-14-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true
+  },
+  "pair-15-open": {
+    "expected": "should_speak",
+    "move": "loop_breaking",
+    "selfRepair": false
+  },
+  "pair-15-repair": {
+    "expected": "stay_silent",
+    "move": "loop_breaking",
+    "selfRepair": true
+  },
+  "quiet-1": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-2": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-3": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-4": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-5": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-6": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-7": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-8": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-9": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  },
+  "quiet-10": {
+    "expected": "stay_silent",
+    "move": null,
+    "selfRepair": false
+  }
+}

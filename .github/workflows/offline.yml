@@ -21,4 +21,6 @@ jobs:
       - run: npm run test:cli
       - run: npm run demo:offline
       - run: npm run eval:offline
+      - run: npm run replay:offline
+      - run: npm run test:participation-mutation
       # No vault login, runtime secret injection or paid provider call in CI.

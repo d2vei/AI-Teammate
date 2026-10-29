@@ -7,7 +7,8 @@ Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. Cur
 | Baseline/provenance | PASS: workspace held handoff only, no old Git/source imported; references/private context ignored. |
 | Local core and SQLite | Implemented: explicit invocation, scope/dedup/pause/budget, traces, immutable sources, approved decisions and transactionally saved briefs. No execution capability. |
 | Typecheck/build | PASS on Node 24.21.0/npm 11.19.0. |
-| Deterministic tests | PASS: 71 offline tests; includes HTTP mocks, fake adapters, real temporary SQLite, launcher and local-conversation checks. |
+| Deterministic tests | PASS: 97 offline tests; includes HTTP mocks, fake adapters, real temporary SQLite, launcher, local conversation and shadow participation checks. |
+| Participation add-on | Experimental shadow policy implemented; 40 self-made scripted moments across 180 turns PASS for code mechanics (15/15 fixture catches, 0/25 fixture interruptions, 15/15 fixture repairs silent). Actual model pilot NOT_RUN; no transport or live posts. See ADDONS.md. |
 | Approval negative control | PASS: removing the role gate in an expendable copy caused exactly the intended test failure. |
 | Offline complete flow/CLI | PASS: newly approved synthetic decision, source/log analysis with MOCK provider, confirmed saved brief, wrong actor, duplicate, restart, lock and temporary-data deletion checks. |
 | Discord adapter | Prior local code preserved, currently DEFERRED; fixed vault launch actions reject Discord. No live interactions. |
@@ -25,6 +26,6 @@ Commits so far: `ba85d6c` preparation; `fe6f30d` scoped core/Meta; `dd69f38` dec
 
 Meta testing allowance: EUR 5 total authorized by owner; USD 5 cumulative local ceiling with ECB FX headroom. No actual inference has run at this update. Ask before exceeding the authorized amount; unknown charges remain reserved.
 
-Next offline check: `npm.cmd run demo:offline`. Current live sequence: `npm.cmd run vault:status`, `npm.cmd run vault:link -- EXISTING-PROJECT-UUID`, `npm.cmd run vault:check`, `npm.cmd run smoke:live`. No .env file is needed or auto-loaded. See [SECRETS.md](SECRETS.md).
+Next offline checks: `npm.cmd run demo:offline` and `npm.cmd run replay:offline`. Owner reports the Meta API key page is down and directs local development before live tests; do not keep retrying credentials. When key creation becomes available, resume `npm.cmd run vault:check`, then the single `npm.cmd run smoke:live`. Project is already linked. No .env file is needed or auto-loaded. See [SECRETS.md](SECRETS.md).
 
 Interactive local workflow: `npm.cmd run conversation:offline`; see [LOCAL_HARNESS.md](LOCAL_HARNESS.md). The scripted harness is implemented and tested with exact-token approval, wrong actor, casual agreement, saved briefs and pause/resume. Real Meta remains BLOCKED because the declared vault key is empty; both shared-value and personal-override presence diagnostics returned empty. No Meta inference/charge occurred.

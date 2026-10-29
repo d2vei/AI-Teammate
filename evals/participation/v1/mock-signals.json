@@ -1,0 +1,417 @@
+{
+  "pair-1-open": {
+    "status": "forgotten_constraint",
+    "claim": "weekend availability",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Saturday conflicts with the earlier availability. Could we choose Sunday?"
+  },
+  "pair-1-repair": {
+    "status": "forgotten_constraint",
+    "claim": "weekend availability",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Saturday conflicts with the earlier availability. Could we choose Sunday?",
+    "repairFinalQuote": "We will schedule Sunday so everyone can attend."
+  },
+  "pair-2-open": {
+    "status": "forgotten_constraint",
+    "claim": "hosting ceiling",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "The proposed tier exceeds the recorded hosting ceiling. Could we compare plans under twenty euros?"
+  },
+  "pair-2-repair": {
+    "status": "forgotten_constraint",
+    "claim": "hosting ceiling",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "The proposed tier exceeds the recorded hosting ceiling. Could we compare plans under twenty euros?",
+    "repairFinalQuote": "We will choose the eighteen euro plan within the ceiling."
+  },
+  "pair-3-open": {
+    "status": "forgotten_constraint",
+    "claim": "private diagnostic data",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "The earlier constraint keeps diagnostics local. Could we share a synthetic example instead?"
+  },
+  "pair-3-repair": {
+    "status": "forgotten_constraint",
+    "claim": "private diagnostic data",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "The earlier constraint keeps diagnostics local. Could we share a synthetic example instead?",
+    "repairFinalQuote": "We will keep diagnostics local and share only synthetic examples."
+  },
+  "pair-4-open": {
+    "status": "forgotten_constraint",
+    "claim": "mobile review access",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "A mandatory desktop tool excludes the phone-only reviewer. Could we provide a browser option?"
+  },
+  "pair-4-repair": {
+    "status": "forgotten_constraint",
+    "claim": "mobile review access",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "A mandatory desktop tool excludes the phone-only reviewer. Could we provide a browser option?",
+    "repairFinalQuote": "We will provide a browser review that also works on a phone."
+  },
+  "pair-5-open": {
+    "status": "forgotten_constraint",
+    "claim": "Freitag Verfuegbarkeit",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Freitag widerspricht der vorher genannten Verfuegbarkeit. Passt Montag fuer alle?"
+  },
+  "pair-5-repair": {
+    "status": "forgotten_constraint",
+    "claim": "Freitag Verfuegbarkeit",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Freitag widerspricht der vorher genannten Verfuegbarkeit. Passt Montag fuer alle?",
+    "repairFinalQuote": "Wir nehmen Montag, damit alle teilnehmen koennen."
+  },
+  "pair-6-open": {
+    "status": "uncertainty",
+    "claim": "latency acceptance criterion",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "What response-time threshold should decide whether this work is accepted?"
+  },
+  "pair-6-repair": {
+    "status": "uncertainty",
+    "claim": "latency acceptance criterion",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "What response-time threshold should decide whether this work is accepted?",
+    "repairFinalQuote": "We agree on a ninety-fifth percentile below two seconds."
+  },
+  "pair-7-open": {
+    "status": "underspecified_plan",
+    "claim": "review handoff owner",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Who will review the handoff before it moves to approved?"
+  },
+  "pair-7-repair": {
+    "status": "underspecified_plan",
+    "claim": "review handoff owner",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Who will review the handoff before it moves to approved?",
+    "repairFinalQuote": "Mira will review the handoff before it can be approved."
+  },
+  "pair-8-open": {
+    "status": "uncertainty",
+    "claim": "rollout decision criterion",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Should rollback safety or deployment speed decide this rollout choice?"
+  },
+  "pair-8-repair": {
+    "status": "uncertainty",
+    "claim": "rollout decision criterion",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Should rollback safety or deployment speed decide this rollout choice?",
+    "repairFinalQuote": "Rollback safety is the agreed priority for this rollout."
+  },
+  "pair-9-open": {
+    "status": "underspecified_plan",
+    "claim": "translation release scope",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Which languages should be included in this release before translation starts?"
+  },
+  "pair-9-repair": {
+    "status": "underspecified_plan",
+    "claim": "translation release scope",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Which languages should be included in this release before translation starts?",
+    "repairFinalQuote": "This release includes German and English only."
+  },
+  "pair-10-open": {
+    "status": "uncertainty",
+    "claim": "definition of reproduced",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "What observed result should count as a reproduced failure?"
+  },
+  "pair-10-repair": {
+    "status": "uncertainty",
+    "claim": "definition of reproduced",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "What observed result should count as a reproduced failure?",
+    "repairFinalQuote": "We require the same failure in a fresh local run with a recorded trace."
+  },
+  "pair-11-open": {
+    "status": "discussion_loop",
+    "claim": "cache complexity tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could one uncached latency measurement give us a criterion for this trade-off?"
+  },
+  "pair-11-repair": {
+    "status": "discussion_loop",
+    "claim": "cache complexity tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could one uncached latency measurement give us a criterion for this trade-off?",
+    "repairFinalQuote": "We will measure uncached latency once before choosing."
+  },
+  "pair-12-open": {
+    "status": "discussion_loop",
+    "claim": "storage simplicity tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we compare both options against the queries the project actually needs?"
+  },
+  "pair-12-repair": {
+    "status": "discussion_loop",
+    "claim": "storage simplicity tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we compare both options against the queries the project actually needs?",
+    "repairFinalQuote": "We will list the three required queries and compare both options against them."
+  },
+  "pair-13-open": {
+    "status": "discussion_loop",
+    "claim": "review length tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we try a short review with evidence links and use reviewer feedback to decide?"
+  },
+  "pair-13-repair": {
+    "status": "discussion_loop",
+    "claim": "review length tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we try a short review with evidence links and use reviewer feedback to decide?",
+    "repairFinalQuote": "We will try a short review with linked evidence and ask the reviewer."
+  },
+  "pair-14-open": {
+    "status": "discussion_loop",
+    "claim": "release cadence tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we try one weekly release cadence and review the coordination effort?"
+  },
+  "pair-14-repair": {
+    "status": "discussion_loop",
+    "claim": "release cadence tradeoff",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Could we try one weekly release cadence and review the coordination effort?",
+    "repairFinalQuote": "We will choose a weekly cadence for the pilot and review the actual effort."
+  },
+  "pair-15-open": {
+    "status": "discussion_loop",
+    "claim": "Benachrichtigung Abwaegung",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Koennen wir nur neue Fehler melden und danach den Nutzen der Meldungen pruefen?"
+  },
+  "pair-15-repair": {
+    "status": "discussion_loop",
+    "claim": "Benachrichtigung Abwaegung",
+    "evidenceId": "message:m0",
+    "triggerIds": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "generated": "Koennen wir nur neue Fehler melden und danach den Nutzen der Meldungen pruefen?",
+    "repairFinalQuote": "Wir testen nur neue Fehler und vergleichen die Zahl hilfreicher Meldungen."
+  },
+  "quiet-1": {
+    "status": "off_topic_social",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-2": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-3": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-4": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-5": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-6": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-7": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-8": {
+    "status": "unanswerable",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-9": {
+    "status": "off_topic_social",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  },
+  "quiet-10": {
+    "status": "on_track",
+    "claim": "",
+    "evidenceId": "message:m0",
+    "triggerIds": [],
+    "generated": ""
+  }
+}

@@ -1,0 +1,2338 @@
+{
+  "at": "2026-10-29T11:07:43.802Z",
+  "candidateCommit": "dc9e81c01b90defe56893f5c8c56fc4837118965",
+  "workingTreeDirty": true,
+  "runtimeIdentity": "a37fda9650bb4c6d62e2db7bbb05e4943a1cd5080d378b58f61c69bb6f02a7c1",
+  "hashes": {
+    "src/participation.ts": "700d8c600f962803e337809c7bd3ada34dd62c7cbb147fe123cf372bdddc8666",
+    "src/store.ts": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67",
+    "src/domain.ts": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88",
+    "src/sources.ts": "0197aee64c0aac3baada8cc0a33cb7b65c3071f73927ba045215af5e2bad13fd",
+    "scripts/participation-replay.mjs": "7a0b93ea363e177ae0d13c491eea267d780f5f6a8747cdec8da421c3f4fcac78",
+    "scripts/participation-replay-lib.mjs": "0de1cbf70bf86324292eb4e4d72786c8d8abdc82f003de91dc7446ec25f4d1a3",
+    "evals/participation/v1/cases.jsonl": "68fc081304edb4d85d89bdf48580b989b479faed68c6cee9c6713ad61c90f1dc",
+    "evals/participation/v1/labels.json": "db02f82632507b42e3555d5aef4b4aaf8f7dc0f0c38a7120a97c17ec6ef308b9",
+    "evals/participation/v1/mock-signals.json": "4442224ae91b1a30209b89c624161e0528fc8f0d7a58d23dc3471c1d924c8971"
+  },
+  "kind": "MOCK shadow policy mechanics on self-made synthetic development cases",
+  "status": "PASS_MOCK_MECHANICS_ONLY",
+  "modelPilot": "NOT_RUN",
+  "semanticEvidenceSupport": "NOT_RATED",
+  "humanJudgments": "NOT_RUN",
+  "sameModelBaseline": "NOT_RUN",
+  "mediaUnderstanding": "NOT_RUN",
+  "metaCalls": 0,
+  "externalPosts": 0,
+  "costUsd": 0,
+  "results": [
+    {
+      "id": "pair-1-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "constraint_reminder",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 2.168599999999998
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 1.3074000000000012
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.9268999999999892
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 1.657699999999977
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-1-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "constraint_reminder",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.6073000000000093
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.6206999999999994
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.6903000000000077
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 1.1319000000000017
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-2-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "constraint_reminder",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.46479999999999677
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.5844000000000165
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.5752999999999986
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.8721000000000174
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-2-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "constraint_reminder",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5301000000000045
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.46700000000001296
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 1.7608000000000175
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.6927000000000021
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-3-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "constraint_reminder",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.42959999999999354
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.5386000000000024
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.6935000000000002
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.7621000000000038
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-3-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "constraint_reminder",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.30410000000000537
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.37870000000000914
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.43029999999998836
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.539999999999992
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-4-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "constraint_reminder",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.46550000000002
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4117999999999995
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.42679999999998586
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6680000000000064
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-4-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "constraint_reminder",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2956999999999823
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.41859999999999786
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4690999999999974
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4621000000000208
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-5-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "constraint_reminder",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2953000000000259
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.37299999999999045
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.42609999999999104
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6786999999999921
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-5-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "constraint_reminder",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2985999999999933
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3719999999999857
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.47159999999999513
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.533600000000007
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-6-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "clarification",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2915000000000134
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.48160000000001446
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.40790000000001214
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6782000000000039
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-6-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "clarification",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3183999999999969
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3675000000000068
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4052000000000362
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.46910000000002583
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-7-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "clarification",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.28019999999997935
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.41159999999996444
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.43889999999998963
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6308999999999969
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-7-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "clarification",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4130000000000109
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3942000000000121
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4344000000000392
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5122000000000071
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-8-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "clarification",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.33969999999999345
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4770000000000323
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.45350000000001955
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.7755000000000223
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-8-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "clarification",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2898999999999887
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.367999999999995
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4642999999999802
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5257000000000289
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-9-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "clarification",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.28729999999995925
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.39400000000000546
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.41629999999997835
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6770000000000209
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-9-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "clarification",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.28750000000002274
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3704000000000178
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.43830000000002656
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5008000000000266
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-10-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "clarification",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2857999999999947
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3716000000000008
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4939000000000533
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.8233999999999924
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-10-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "clarification",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.345299999999952
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3532999999999902
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.46460000000001855
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.7570999999999799
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-11-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "loop_breaking",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.31270000000000664
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3594999999999686
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.49279999999998836
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6236000000000104
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-11-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "loop_breaking",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3019999999999641
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.35679999999996426
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4163000000000352
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4655999999999949
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-12-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "loop_breaking",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2874999999999659
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3604000000000269
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.5781000000000063
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.7874999999999659
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-12-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "loop_breaking",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 1.722099999999955
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4187999999999761
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4531000000000063
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4115000000000464
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-13-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "loop_breaking",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2740000000000009
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.33330000000000837
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3783999999999992
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6490000000000009
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-13-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "loop_breaking",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.27719999999999345
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.36829999999997654
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.4043999999999528
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.435799999999972
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-14-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "loop_breaking",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.28750000000002274
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.37639999999998963
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.587099999999964
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.6050000000000182
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-14-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "loop_breaking",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.31349999999997635
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.3543000000000234
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.44659999999998945
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.45029999999997017
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-15-open",
+      "expected": {
+        "expected": "should_speak",
+        "move": "loop_breaking",
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2722999999999729
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.34430000000003247
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.41259999999999764
+        },
+        {
+          "action": "HAND_RAISE",
+          "reason": "evidenced_persistent_claim",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "expiresAt": 1603000,
+          "latencyMs": 0.5979000000000383
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "pair-15-repair",
+      "expected": {
+        "expected": "stay_silent",
+        "move": "loop_breaking",
+        "selfRepair": true
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2652999999999679
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.33890000000002374
+        },
+        {
+          "action": "SILENT",
+          "reason": "waiting_for_self_repair",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [
+            "message:m0"
+          ],
+          "latencyMs": 0.38409999999998945
+        },
+        {
+          "action": "SILENT",
+          "reason": "group_self_repaired",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5013999999999896
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 4,
+        "repair": 4,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-1",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.33969999999999345
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3457000000000221
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3240000000000123
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.33389999999997144
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.36070000000000846
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.39100000000001955
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-2",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.26319999999998345
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.29829999999998336
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3172999999999888
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3428000000000111
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3704999999999927
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.38250000000005
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-3",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2961999999999989
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3002999999999929
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.319500000000005
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.39879999999999427
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3564999999999827
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.38009999999997035
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-4",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2675000000000409
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.35009999999999764
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3686999999999898
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3464000000000169
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3926999999999907
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.43100000000004
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-5",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.29939999999999145
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.34679999999997335
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3643999999999892
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.38369999999997617
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.39690000000001646
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.41730000000001155
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-6",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.275799999999947
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3077999999999861
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3972999999999729
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.6765999999999508
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5065999999999917
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.7805999999999926
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-7",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2766000000000304
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.36240000000003647
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.394299999999987
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4467999999999961
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5431000000000381
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5789999999999509
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-8",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.27209999999996626
+        },
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3049000000000319
+        },
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.48919999999998254
+        },
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3996000000000208
+        },
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.463799999999992
+        },
+        {
+          "action": "SILENT",
+          "reason": "unanswerable",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4448000000000434
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-9",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2869000000000028
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.2992999999999597
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.3883000000000152
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4660000000000082
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.8568000000000211
+        },
+        {
+          "action": "SILENT",
+          "reason": "off_topic_social",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4649000000000001
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    },
+    {
+      "id": "quiet-10",
+      "expected": {
+        "expected": "stay_silent",
+        "move": null,
+        "selfRepair": false
+      },
+      "status": "PASS",
+      "decisions": [
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m0",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.5233000000000061
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m1",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.35300000000000864
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m2",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.34619999999995343
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m3",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.44589999999999463
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m4",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.6157000000000039
+        },
+        {
+          "action": "SILENT",
+          "reason": "on_track",
+          "eventId": "m5",
+          "shadow": true,
+          "evidenceIds": [],
+          "latencyMs": 0.4381999999999948
+        }
+      ],
+      "scriptedCalls": {
+        "monitor": 6,
+        "repair": 6,
+        "generate": 0
+      },
+      "interpretation": "fixture outputs exercise code gates; no semantic inference or real hand raising"
+    }
+  ],
+  "mechanics": {
+    "labelledMoments": 40,
+    "turns": 180,
+    "fixtureCatch": 15,
+    "shouldSpeak": 15,
+    "fixtureFalseInterruptions": 0,
+    "staySilent": 25,
+    "fixtureSelfRepairSilence": 15,
+    "selfRepairPairs": 15,
+    "moves": {
+      "constraint_reminder": {
+        "caught": 5,
+        "total": 5
+      },
+      "clarification": {
+        "caught": 5,
+        "total": 5
+      },
+      "loop_breaking": {
+        "caught": 5,
+        "total": 5
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # AI Teammate — master implementation plan
 
+Current extension (29 October 2026): the owner's new participation/media/watch proposal is incorporated in [ADDONS.md](ADDONS.md). Start with a platform-independent shadow replay; Discord remains deferred. Existing authority, privacy and saved-not-executed boundaries remain controlling. The historical deferred list below is superseded only for the specifically staged add-ons.
+
 Status: implementation handoff; product tests NOT RUN by this package. Consolidated 28 October 2026 from the original v0.6 plan, the independent document review and the accepted implementation addendum. This is not a new round of feature planning.
 
 ## 1. Product and boundaries

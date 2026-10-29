@@ -1,5 +1,7 @@
 # Acceptance and evaluation — planned, not passed
 
+29 October extension: [ADDONS.md](ADDONS.md) adds the 40-moment participation pilot and separate five-case media target. The offline fixture replay verifies gates only and cannot pass model quality, live participation or media gates. Existing direct-request/approval checks remain required. Live Discord remains deferred by the owner.
+
 The implementation addendum reduces the original v0.6 evaluation load. Do not reinstate 24×3 held-out trials or 12–20 preference pairs as mandatory gates. No results in this document are measurements.
 
 ## A. Complete user task

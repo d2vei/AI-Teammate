@@ -11,6 +11,8 @@ npm test
 npm run test:mutation
 npm run test:cli
 npm run demo:offline
+npm run replay:offline
+npm run test:participation-mutation
 ```
 
 The demo uses a scripted **MOCK** provider, fake participant IDs/adapters and temporary SQLite. It proposes and approves a new decision, cites the newly authored synthetic source/log fixture, rejects a peer's confirmation, saves one brief, checks duplicate confirmation and reopens the database. It sends no Discord messages and makes no Meta request. It is a software check, not model-quality or live-product evidence. Temporary fixture data is deleted after the check.

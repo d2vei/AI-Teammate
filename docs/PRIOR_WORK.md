@@ -10,6 +10,8 @@ The proposed publication target is `d2vei/ai-teammate-hackathon`. The GitHub con
 
 ## Implemented contributions
 
+On 29 October the owner supplied the participation/media/watch extension. The experimental shadow policy, separate SQLite claim ledger, local replay driver and 40 self-made development cases were authored in this implementation. Jarvis and ProACT informed the design (links and interpretation boundaries in ADDONS.md); no paper code, datasets or prompts were imported. Scripted findings are intentionally fixtures, not independent model judgments. Existing core and authorization components were reused rather than rewritten.
+
 The TypeScript core, SQLite state/approval logic, selected-source ingress, Meta HTTP adapter, Discord adapter, operator commands, synthetic party fixture and executable checks were authored in this implementation session on 2026-10-28. Runtime prompt wording adapts the supplied response scaffold; active development cases are copied from the handoff and remain development material, never held-out results. No old bot runtime code/assets or Git metadata were imported.
 
 Installed runtime dependencies: discord.js 14.27.0 (Apache-2.0) for Discord and zod 4.6.7 (MIT) for schemas. Development dependencies: TypeScript 7.0.2 (Apache-2.0), Vitest 5.0.5 (MIT) and Node types 24.19.2 (MIT). Node's SQLite module supplies persistence. Transitive dependency versions are in package-lock.json; no claim is made that dependencies were newly authored. tsx was briefly installed and then removed when no longer needed. No licence for private reference documents is inferred from dependency licences.
