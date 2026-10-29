@@ -60,12 +60,15 @@ npm run vault:check
 ```sh
 npm run smoke:live
 npm run eval:live
+npm run test:core-live
 node scripts/export-meta-evidence.mjs
 ```
 
 The frozen synthetic paired-response evaluation is a separate live command, `npm run eval:live`; it uses the same locked spending ledger and can make up to sixteen sequential Meta calls. Run only after the smoke gate and within the authorized allowance. See `evals/frozen/README.md`. Its local `npm run eval:offline` counterpart makes zero model calls. The exporter publishes selected metadata/counts only, without raw responses or credentials.
 
 `smoke:live` performs one budgeted synthetic Meta request without Discord delivery; an existing attempt is never overwritten or automatically retried. Each fixed live wrapper invokes `infisical run -- ... node scripts/vault-child.mjs FIXED-ACTION`; no arbitrary command, shell or coding agent is accepted. Discord command registration/startup actions remain rejected and are not exposed as npm commands. Keep the OS login and durable state on this host.
+
+`test:core-live` permits at most two real generations using simulated owner/peer identities: draft a new decision, exercise the existing confirmation gate, draft a source-grounded brief, save it only through authorized bound confirmation, check restart and purge only the newly created synthetic project. Charges remain in the shared ledger. Its own first-attempt artifact is preserved; no automatic repeat. These three initial live runs have now completed; see LIVE_TESTS.md before attempting any command again.
 
 Do not use `infisical export`, `secrets`, `printenv`, `process.env` dumps, `login --plain` or a coding-agent launch under the vault. Do not expose live keys to CI. All public/offline CI uses mock data only.
 

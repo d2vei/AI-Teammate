@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T18:52:51.728Z",
+  "exportedAt": "2026-10-29T19:00:36.335Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,5 +261,76 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 0.1212
+  "currentUsedOrReservedUsd": 0.139301,
+  "coreFlow": {
+    "at": "2026-10-29T18:54:23.230Z",
+    "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
+    "status": "PASS_APPLICATION_FLOW_ONLY",
+    "kind": "real Meta generation with simulated authenticated participants and fake local delivery; not Discord/human approval",
+    "files": [
+      {
+        "path": "scripts/core-live.mjs",
+        "sha256": "3f24fd6edf70bc9945b3e646b6ecf42b0e6434260709f41e742cd79f4e0b8c8d"
+      },
+      {
+        "path": "src/core.ts",
+        "sha256": "f62479ccb76570247389f44619be6d31a2b5245be9caed68da34ba75196a6e3c"
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "5578fac8585c057fa09ade3b973209c4693b482d3b22785f8f61166d4d562e67"
+      },
+      {
+        "path": "src/meta.ts",
+        "sha256": "47b0f35c74bbf09f127f76da924b726fec05353d4246f35e59a24420a8b95840"
+      },
+      {
+        "path": "src/meta-runtime.ts",
+        "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+      },
+      {
+        "path": "prompts/response.md",
+        "sha256": "75bb4b10c7618cef5fcc19a0c7b4f3cf544bf893f503516b9a0d1c1dcb7b028f"
+      }
+    ],
+    "model": "muse-spark-1.3",
+    "promptIdentity": "de4183408fa2b1000117d2fdf68dedae09ec898c3555965d7ddf84c218f1cc2d",
+    "fixtureHash": "5ae417488edcddee4c1275158d8abc7a364ffedb716658fceebbbaf9125c8fa7",
+    "inferenceAttempts": 2,
+    "stages": [
+      {
+        "name": "draft-decision",
+        "outcome": "response",
+        "delivery": "delivered",
+        "usage": {
+          "inputTokens": 821,
+          "outputTokens": 1696
+        }
+      },
+      {
+        "name": "draft-investigation-brief",
+        "outcome": "response",
+        "delivery": "delivered",
+        "usage": {
+          "inputTokens": 960,
+          "outputTokens": 2039
+        }
+      }
+    ],
+    "approvedDecisions": 1,
+    "savedBriefs": 1,
+    "casualAgreementDidNotApprove": true,
+    "wrongDecisionApproverRejected": true,
+    "wrongBriefActorAndRoomRejected": true,
+    "duplicateAcceptanceIdempotent": true,
+    "restartVerified": true,
+    "recallContextLabelsSavedNotExecuted": true,
+    "ownProjectContentDeleted": true,
+    "chargeLedgerPreserved": true,
+    "budgetBeforeUsd": 0.1212,
+    "budgetAfterUsd": 0.139301,
+    "discordSends": 0,
+    "humanRatings": "NOT_RUN",
+    "privateArtifactSha256": "e9dc0d5b588e8b2ffbf65f010e31ff130a20c698d7151b10f49eff85a7cbbd07"
+  }
 }
