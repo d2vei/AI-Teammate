@@ -16,6 +16,7 @@ describe('Infisical launcher - no vault access', () => {
     expect(buildRunArgs('participation-judge', '/synthetic/project', '/synthetic/node').at(-1)).toBe('participation-judge');
     expect(buildRunArgs('conversation-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live');
     expect(buildRunArgs('conversation-live-check', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live-check');
+    expect(buildRunArgs('conversation-addon-check', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-addon-check');
   });
   it.each(['codex', 'shell', 'export', 'npm test', 'jev', 'openai'])('rejects arbitrary command %s', action => { expect(() => buildRunArgs(action)).toThrow(); });
   it('does not forward unrelated provider keys, vault tokens or Node preload options', () => {

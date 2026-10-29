@@ -15,8 +15,8 @@ export async function runLiveTerminal(harness: LiveConversation, input: Readable
         // Pause/status must be handled while inference is pending. Other
         // input is refused instead of queued for later paid dispatch.
         if (pending) {
-          if (['/pause', '/status'].includes(line.trim())) void output(line).catch(reject);
-          else write('[status] A request is active. Use /pause, /status or /quit; other input was not queued.');
+          if (harness.immediateControl(line)) void output(line).catch(reject);
+          else write('[status] A request is active. Use /pause, /status, /watch stop, /watch auto off, /media remove ORIGIN or /quit; other input was not queued.');
           return;
         }
         pending = output(line).catch(reject).finally(() => { pending = null; });

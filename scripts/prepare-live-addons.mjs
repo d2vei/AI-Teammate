@@ -1,0 +1,14 @@
+import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { localCodecTools, codecProcessEnvironment } from '../dist/media-codec.js';
+const file = '.local/media-inbox/addon-check-v1.png';
+if (existsSync(file) || existsSync('.local/evidence/live-addons-v1.json')) throw new Error('Prior fixture/attempt preserved');
+mkdirSync('.local/media-inbox', { recursive: true });
+const tools = localCodecTools();
+const font = `${process.env.SystemRoot || 'C:/Windows'}/Fonts/arial.ttf`.replaceAll('\\', '/').replace(':', '\\:');
+if (!existsSync(font.replace('\\:', ':'))) throw new Error('Fixed test font unavailable');
+const lines = ['SYNTHETIC GROUP REVIEW', 'NEXT REVIEW - TUESDAY', 'NO FIX APPROVED', 'Investigation only'];
+const filter = lines.map((text, i) => `drawtext=fontfile='${font}':text='${text}':fontsize=45:fontcolor=black:x=35:y=${45 + i * 100}`).join(',');
+const r = spawnSync(tools.ffmpeg, ['-hide_banner', '-loglevel', 'error', '-nostdin', '-n', '-f', 'lavfi', '-i', 'color=c=white:s=960x540:d=1', '-vf', filter, '-frames:v', '1', file], { env: codecProcessEnvironment(process.env), windowsHide: true, timeout: 30000, maxBuffer: 32768, encoding: 'utf8' });
+if (r.status !== 0 || !existsSync(file) || readFileSync(file).length > 2_000_000) throw new Error('Synthetic card preparation failed; no model call');
+console.log(JSON.stringify({ status: 'PREPARED_SYNTHETIC_CARD_ONLY', modelCalls: 0, bytes: readFileSync(file).length }));

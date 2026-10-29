@@ -1,0 +1,5 @@
+[
+  { "synthetic": true, "universeId": "424242", "windowStart": "2026-10-29T00:00:00Z", "groups": [{ "id": "synthetic-route-error", "count": 2, "message": "Synthetic party-route failure observation.", "scriptPath": "party-route.ts", "line": 3 }] },
+  { "synthetic": true, "universeId": "424242", "windowStart": "2026-10-29T00:00:00Z", "groups": [{ "id": "synthetic-route-error", "count": 2, "message": "Synthetic party-route failure observation.", "scriptPath": "party-route.ts", "line": 3 }] },
+  { "synthetic": true, "universeId": "424242", "windowStart": "2026-10-29T00:00:00Z", "groups": [{ "id": "synthetic-route-error", "count": 5, "message": "Synthetic party-route failure observation.", "scriptPath": "party-route.ts", "line": 3 }] }
+]

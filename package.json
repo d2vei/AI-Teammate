@@ -38,6 +38,8 @@
     "conversation:offline": "npm run build && node scripts/conversation.mjs",
     "conversation:live": "node scripts/infisical.mjs conversation-live",
     "test:conversation-live": "node scripts/infisical.mjs conversation-live-check",
+    "prepare:live-addons": "npm run build && node scripts/prepare-live-addons.mjs",
+    "test:live-addons": "node scripts/infisical.mjs conversation-addon-check",
     "test:live-terminal": "npm run build && node scripts/check-live-terminal.mjs",
     "test:live-terminal-service": "node scripts/check-live-terminal-service.mjs",
     "replay:offline": "npm run build && node scripts/participation-replay.mjs",
