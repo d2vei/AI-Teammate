@@ -1,0 +1,9 @@
+# Automated semantic judgments v1
+
+This is a separate Meta evaluator for correctness/helpfulness of the final observed action in each of the 40 preserved synthetic participation cases. It is not a rerun of the generator or a human rating. The original 0/15 participation result remains FAIL regardless of these judgments.
+
+The fixed projection includes only the supplied conversation, an explicitly seeded rule where present, and the observed final action/any invited shadow contribution. It excludes expected labels, case/pair identities, monitor findings, internal gate excuses and proposed human scores. The prompt asks only for correctness/helpfulness, a bounded justification and existing context IDs. A valid source ID does not establish entailment. This same-model evaluator can share systematic biases with the generator; it is not independent ground truth.
+
+`manifest.json` freezes the evaluator/prompt/projection/native provider and source corpus identities before calls. The fixed `npm.cmd run eval:participation-judge` route permits at most 40 sequential requests in the same native Infisical session and locked cumulative USD 5 ledger. Every call reserves before dispatch, keeps unknown charges, and has no automatic retry. Invalid outputs remain invalid; provider/budget failure preserves a partial run with remaining cases NOT_RUN. The first local capture is not overwritten.
+
+The existing private review form selects the same 20 moments independently of outcomes. Human ratings remain blank. After a genuine manual file is supplied, the importer can compare those ratings against corresponding model judgments and report disagreements, uncertainty and missing model outputs. Neither automated judgments nor a form's existence passes the required manual check. The eight direct-answer comparisons remain separate.

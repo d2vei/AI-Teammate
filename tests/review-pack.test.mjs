@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { aggregateManualRatings, jsonForHtml, reviewOrder } from '../scripts/review-pack-lib.mjs';
+import { aggregateManualRatings, compareManualToJudge, jsonForHtml, reviewOrder } from '../scripts/review-pack-lib.mjs';
 it('keeps untrusted model text inside JSON rather than executable HTML', () => {
   const payload = { answer: '</script><script>BAD_SYNTHETIC_SCRIPT()</script>\u2028next' };
   const encoded = jsonForHtml(payload); expect(encoded).not.toContain('</script>'); expect(encoded).not.toContain('<script>'); expect(JSON.parse(encoded)).toEqual(payload);
@@ -25,4 +25,16 @@ it('uses preserved side assignments and retains uncertainty and absent contribut
   const result = aggregateManualRatings(pack, ratings);
   expect(result.preferences.usefulness).toEqual({ candidate: 0, baseline: 8, tie: 0, bothPoor: 0 });
   expect(result.decisionCorrectness.Unsure).toBe(20); expect(result.evidenceSupport['No generated contribution']).toBe(20);
+});
+it('compares independent manual entries with corresponding model judgments without altering either', () => {
+  const { pack, ratings } = fixture(); const judge = { generatorCaptureSha256: pack.sourceHashes.participation, status: 'COMPLETED_MODEL_JUDGMENTS', cases: pack.moments.map(m => ({ id: m.id, state: 'MODEL_JUDGMENT', privateJudgment: { correctness: 'uncertain', helpfulness: 'uncertain' } })) };
+  judge.cases[0].privateJudgment.correctness = 'correct';
+  const result = compareManualToJudge(pack, ratings, judge);
+  expect(result.compared).toBe(20); expect(result.dimensions.correctness.agreements).toBe(19); expect(result.dimensions.correctness.disagreementCaseIds).toEqual(['m0']); expect(result.dimensions.helpfulness.agreements).toBe(20);
+  expect(ratings.moments.m0.correctness).toBe('Unsure');
+});
+it('keeps invalid/missing model outputs uncounted and rejects stale or unfinished judge data', () => {
+  const { pack, ratings } = fixture(); const judge = { generatorCaptureSha256: pack.sourceHashes.participation, status: 'PARTIAL_MODEL_JUDGMENTS', cases: [{ id: 'm0', state: 'INVALID_OUTPUT' }] };
+  const result = compareManualToJudge(pack, ratings, judge); expect(result.compared).toBe(0); expect(result.missingModelCaseIds).toHaveLength(20);
+  expect(() => compareManualToJudge(pack, ratings, { ...judge, generatorCaptureSha256: 'stale' })).toThrow(); expect(() => compareManualToJudge(pack, ratings, { ...judge, status: 'RUNNING' })).toThrow();
 });

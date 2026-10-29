@@ -28,3 +28,23 @@ export function aggregateManualRatings(pack, r) {
   }
   return { decisionCorrectness, helpfulness, evidenceSupport, preferences };
 }
+
+export function compareManualToJudge(pack, ratings, judge) {
+  assert.equal(judge.generatorCaptureSha256, pack.sourceHashes.participation);
+  assert.ok(['COMPLETED_MODEL_JUDGMENTS', 'PARTIAL_MODEL_JUDGMENTS', 'FAILED_EVALUATOR'].includes(judge.status));
+  assert.equal(new Set(judge.cases.map(c => c.id)).size, judge.cases.length);
+  const rows = new Map(judge.cases.map(c => [c.id, c])); const missingModelCaseIds = [];
+  const dimensions = { correctness: { mapping: { Correct: 'correct', Incorrect: 'incorrect', Unsure: 'uncertain' }, agreements: 0, disagreements: 0, disagreementCaseIds: [] }, helpfulness: { mapping: { Helpful: 'helpful', Unhelpful: 'unhelpful', Unsure: 'uncertain' }, agreements: 0, disagreements: 0, disagreementCaseIds: [] } };
+  let compared = 0;
+  for (const m of pack.moments) {
+    const row = rows.get(m.id); const human = ratings.moments[m.id];
+    if (!row || row.state !== 'MODEL_JUDGMENT' || !row.privateJudgment) { missingModelCaseIds.push(m.id); continue; }
+    for (const [key, result] of Object.entries(dimensions)) {
+      assert.ok(Object.hasOwn(result.mapping, human[key])); assert.ok(Object.values(result.mapping).includes(row.privateJudgment[key]));
+      if (result.mapping[human[key]] === row.privateJudgment[key]) result.agreements++;
+      else { result.disagreements++; result.disagreementCaseIds.push(m.id); }
+    }
+    compared++;
+  }
+  return { status: missingModelCaseIds.length ? 'COMPARISON_WITH_MISSING_MODEL_OUTPUTS' : 'COMPLETE_MODEL_HUMAN_COMPARISON', compared, requested: pack.moments.length, missingModelCaseIds, dimensions: Object.fromEntries(Object.entries(dimensions).map(([key, { mapping: _mapping, ...result }]) => [key, result])), limitation: 'Agreement is not proof of correctness; human entry is self-declared and model judgment is not independent ground truth.' };
+}

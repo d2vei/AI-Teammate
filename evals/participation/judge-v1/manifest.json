@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "frozenAt": "2026-10-29T21:32:22.938Z",
+  "model": "muse-spark-1.3",
+  "mode": "standard",
+  "maxOutputTokens": 2048,
+  "maximumCalls": 40,
+  "generatorCaptureSha256": "fd996495e80ba7540c806b371e554a6328d07f2a959268a1d3e8f559cc264a7b",
+  "files": [
+    {
+      "path": "prompts/participation-judge.md",
+      "sha256": "a4291bc81865e452bcf82f8fdeb8201fce9204588dd59968fc70887ea3ca255d"
+    },
+    {
+      "path": "scripts/participation-judge.mjs",
+      "sha256": "22d42ca0a2f06fac62d632125798b9694de017148470207465a8e64a71dae2ef"
+    },
+    {
+      "path": "scripts/participation-judge-lib.mjs",
+      "sha256": "35c78d0ab82333321fcc1b6d570786f083bdb61f9fe2ae9c9487c23694b355a7"
+    },
+    {
+      "path": "src/meta.ts",
+      "sha256": "47b0f35c74bbf09f127f76da924b726fec05353d4246f35e59a24420a8b95840"
+    },
+    {
+      "path": "src/meta-runtime.ts",
+      "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+    },
+    {
+      "path": "dist/meta.js",
+      "sha256": "0fb2b45b578d0795669ad92a79d3c7e85b12b2c36c742fd02a9cd226c1d6095b"
+    },
+    {
+      "path": "dist/meta-runtime.js",
+      "sha256": "abacb47e8586b94e8774db0b0951299824f371ec74b7de852674524f20fdae50"
+    },
+    {
+      "path": "evals/participation/live-v1/cases.jsonl",
+      "sha256": "c99555960c64ca0dbc49d42be6aa52d3095124bdfc3eb525819ab4976d5fc12d"
+    },
+    {
+      "path": "evals/participation/live-v1/labels.json",
+      "sha256": "092680d071e3471a28fd77000edc1c971f9e6a88e23d0350438f94f608606322"
+    }
+  ],
+  "humanRatings": "NOT_RUN",
+  "changesToGenerator": false
+}

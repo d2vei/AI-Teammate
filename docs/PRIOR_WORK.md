@@ -4,11 +4,13 @@ Baseline inspected on 2026-10-28: this workspace held the supplied implementatio
 
 The reviewed plan, accepted addendum, prompt scaffolds and development cases predate this implementation. The reference library and personal project context remain local and ignored. Active technical documents and working agreement are adapted from that handoff. The earlier private bot was described in the handoff; its runtime source has not been copied or inspected here. Its credentials must not be reused without private rotation/review.
 
-New application code will be authored during this implementation. Dependencies and their licences will be recorded after installation. Commits made by the coding agent use the local author `Codex <codex@users.noreply.github.com>`; commit timestamps are ordinary Git timestamps, not evidence of the original authorship of referenced material.
+Application code was authored during this implementation; installed dependencies and their licences are recorded below. Commits made by the coding agent use the local author `Codex <codex@users.noreply.github.com>`; commit timestamps are ordinary Git timestamps, not evidence of the original authorship of referenced material.
 
 The initial handoff proposed a different publication target, superseded by the owner's instruction below. The actual target is the existing `d2vei/AI-Teammate` repository. No substitute repository was created. Indie prior-work eligibility remains an organizer question; no eligibility claim is made.
 
 ## Implemented contributions
+
+The later real-Meta local terminal, source-bound reply adapter and native stdin lifecycle correction were authored here using the existing core/store/provider. The first three-request integration failure and separate zero-generation lifecycle regression are retained. The automated participation evaluator is a separate same-model test tool, with a new bounded prompt/projection; it does not supply human ratings or retune the frozen generator. No external implementation or dataset was imported for these changes, and no dependency was added.
 
 On 29 October the owner supplied the participation/media/watch extension. The experimental shadow policy, separate SQLite claim ledger, local replay driver and 40 self-made development cases were authored in this implementation. Jarvis and ProACT informed the design (links and interpretation boundaries in ADDONS.md); no paper code, datasets or prompts were imported. Scripted findings are intentionally fixtures, not independent model judgments. Existing core and authorization components were reused rather than rewritten.
 

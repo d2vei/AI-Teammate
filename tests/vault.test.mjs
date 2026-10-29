@@ -13,6 +13,7 @@ describe('Infisical launcher - no vault access', () => {
     expect(buildRunArgs('voice-diagnostic', '/synthetic/project', '/synthetic/node').at(-1)).toBe('voice-diagnostic');
     expect(buildRunArgs('media-live-v2', '/synthetic/project', '/synthetic/node').at(-1)).toBe('media-live-v2');
     expect(buildRunArgs('participation-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('participation-live');
+    expect(buildRunArgs('participation-judge', '/synthetic/project', '/synthetic/node').at(-1)).toBe('participation-judge');
     expect(buildRunArgs('conversation-live', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live');
     expect(buildRunArgs('conversation-live-check', '/synthetic/project', '/synthetic/node').at(-1)).toBe('conversation-live-check');
   });

@@ -36,7 +36,11 @@ npm run demo:offline
 
 These checks use fake providers and temporary SQLite state. The complete offline workflow is defined in [the CI file](.github/workflows/offline.yml); [development commands](docs/DEVELOPMENT.md) include the separate mutation and replay checks. Native media-codec checks are optional and require the tools documented in [CODECS.md](docs/CODECS.md).
 
-A fresh Windows dependency installation and the commands above passed on candidate `47e6be3`, without vault access or credentials; see [the clean-install record](evidence/clean-install-v1.json). Other platforms and hosted CI are separate checks.
+A fresh Windows dependency installation and all eleven offline-workflow commands passed on candidate `fdad619` (177 tests), without vault access or credentials; see [the clean-install record](evidence/clean-install-fdad619.json). Other platforms and hosted CI are separate checks.
+
+## Architecture
+
+The [local terminal](src/live-conversation.ts) normalizes requests for the [shared core](src/core.ts). The core retrieves permitted [source excerpts](src/sources.ts) and approved/saved records from [SQLite](src/store.ts), calls [Meta](src/meta.ts) through a [serialized transport](src/meta-runtime.ts), validates response schemas/source IDs and rechecks access, pause and evidence before display. Proposal confirmation is a separate application transaction bound to the actor, scope, version, expiry and source identities. Schema validation does not prove an explanation is correct.
 
 ## Current evidence
 
