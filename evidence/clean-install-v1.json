@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-29T20:34:32.768Z",
+  "finishedAt": "2026-10-29T20:36:17.627Z",
+  "status": "PASS_OFFLINE_CLEAN_INSTALL_ONLY",
+  "kind": "Actual fresh dependency installation from pinned lockfile, then offline integration checks",
+  "candidate": "47e6be3b801f1af10c697122d0ce26a3d0417286",
+  "node": "v24.21.0",
+  "npm": "11.19.0",
+  "platform": "win32",
+  "arch": "x64",
+  "installKind": "fresh node_modules and fresh isolated npm cache in detached existing-repository worktree",
+  "lockSha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6",
+  "registry": "https://registry.npmjs.org",
+  "installLifecycleScripts": "DISABLED",
+  "configurationIsolation": "Empty owned npm user/global config files, fresh cache, OS-only child environment with process-scoped Git safe.directory; no credential/preload environment forwarded",
+  "vaultAccess": false,
+  "modelCalls": 0,
+  "externalPosts": 0,
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "exitCode": 0,
+      "durationMs": 9165,
+      "outputSha256": "acf3743ba9af07f412e9b045e0f81d4bcb6b85c593fcde3b9821d7a70b986e2a",
+      "timedOut": false
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationMs": 1412,
+      "outputSha256": "0cec275afa5d3eb02315e671a855e48d6aab2e2f207caaeb744a220edbd463e3",
+      "timedOut": false
+    },
+    {
+      "command": "npm test -- --reporter=dot",
+      "exitCode": 0,
+      "durationMs": 8502,
+      "outputSha256": "089edd0b0b97868a4dfb035c5ec8f62ba40177c982095ad2725e9f120cbdf035",
+      "timedOut": false
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "durationMs": 11817,
+      "outputSha256": "c99936fad6b0600e7d87525595d97b7bbf7161eef9d352a0e8c50b8d46224365",
+      "timedOut": false
+    },
+    {
+      "command": "npm run test:conversation",
+      "exitCode": 0,
+      "durationMs": 1799,
+      "outputSha256": "07b5af11b1f9a44cd484a67761e4c00e8f865c366597802ed09c120c144f3c73",
+      "timedOut": false
+    },
+    {
+      "command": "npm run demo:offline",
+      "exitCode": 0,
+      "durationMs": 1210,
+      "outputSha256": "eb4f66cdc0e6489f5258d87aa0938895641fbd01547e3eab8f9079f5dfd5af6c",
+      "timedOut": false
+    }
+  ],
+  "offlineTestsPassed": 167,
+  "offlineTestFilesPassed": 22,
+  "harnessCorrection": {
+    "priorArtifactSha256": "217cb1f801922e7a82598500a1be3e9567d853ce0587689bf7bbf3f87a918c1d",
+    "priorStatus": "FAIL",
+    "reason": "Initial output-count parser did not strip terminal color codes. All first three commands exited zero. Verified existing raw output after stripping ANSI controls, without rerunning install or tests."
+  },
+  "worktreeChanges": "M evidence/local-conversation-v1.json",
+  "composedConversation": {
+    "status": "PASS_SOFTWARE_ONLY",
+    "decisions": 1,
+    "savedBriefs": 1,
+    "temporarySessionDeleted": true
+  },
+  "missingCredentials": "PASS: built CLI rejects missing DISCORD_BOT_TOKEN before connection; no real Discord run",
+  "privateArtifactSha256": "9e439bf5fa1389d64883d362a6a0b43f66ef14858eb38add2e2bdf961d0dcb59",
+  "rawOutputsExported": false,
+  "limitations": "Single Windows host and fresh official-registry dependency installation, not another OS or hosted CI. No real Meta/Discord, human ratings, deployment or final submission certification. Only regenerated synthetic conversation metadata changed in the disposable worktree; active checkout and live charge ledger untouched."
+}

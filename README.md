@@ -1,0 +1,53 @@
+# AI Teammate
+
+A shared project assistant for direct questions, approved decisions, source-grounded answers and confirmed investigation briefs. The application checks who can see evidence and approve a proposal. A saved brief records a next step; it does not execute work.
+
+The current runnable interface is a platform-independent local terminal with **scripted MOCK responses and simulated participants**. Real Meta integration has separate, budgeted test routes. Discord connection and installation are deferred.
+
+## Try the local workflow
+
+Use Node **24.21.0** and npm **11.19.0**. On Windows PowerShell, use `npm.cmd` if the npm script shim is blocked.
+
+```sh
+npm ci --ignore-scripts
+npm run conversation:offline
+```
+
+Dependency installation needs the public npm registry; the offline workflow itself needs no vault, API key or network access. It stores local state under ignored `.local/`.
+
+1. Enter `/decision Party members must stay together.` to draft an unapproved decision.
+2. Copy the displayed `/accept EXACT-TOKEN` command to approve that exact proposal as the simulated owner. `/as peer` demonstrates rejection of an unauthorized confirmation. Ordinary “yes” does not approve anything.
+3. Enter `/brief Investigate the selected party split.` to draft a source-grounded investigation brief. Its separate confirmation saves it.
+4. Enter `/ask What is recorded?` to retrieve approved decisions and saved briefs. Use `/quit` to exit.
+
+The supplied party-routing code and structured event are synthetic. Terminal role switching demonstrates software checks, not authenticated group identities. See [the local harness guide](docs/LOCAL_HARNESS.md) for pause/resume, source withdrawal, data deletion, shadow invitations and error-watch replay.
+
+## Verify the software
+
+```sh
+npm run typecheck
+npm test
+npm run test:cli
+npm run test:conversation
+npm run demo:offline
+```
+
+These checks use fake providers and temporary SQLite state. The complete offline workflow is defined in [the CI file](.github/workflows/offline.yml); [development commands](docs/DEVELOPMENT.md) include the separate mutation and replay checks. Native media-codec checks are optional and require the tools documented in [CODECS.md](docs/CODECS.md).
+
+A fresh Windows dependency installation and the commands above passed on candidate `47e6be3`, without vault access or credentials; see [the clean-install record](evidence/clean-install-v1.json). Other platforms and hosted CI are separate checks.
+
+## Current evidence
+
+- The offline suite passes 167 tests across 22 files. Scope, confirmation binding, source access, persistence, budget reservation and failure handling have deterministic checks.
+- Actual Meta tests generated a decision and brief saved through simulated bound confirmations. Eight same-context answer pairs remain inconclusive pending manual ratings.
+- The real participation shadow pilot **failed**: 0/15 intended interventions, 0/25 negative-case interruptions, all 180 turns silent. Mention-only remains the supported fallback; unsolicited participation is not enabled.
+- The five-case media regression met four strict synthetic cases. The audio-important clip still had inconsistent provenance wording and received no strict credit. The earlier failed media pilot is retained.
+- Real group interactions, human judgments, deployment and the final demonstration are incomplete.
+
+Exact candidates, usage, failures and limitations are in [LIVE_TESTS.md](docs/LIVE_TESTS.md), [STATUS.md](docs/STATUS.md) and the sanitized [evidence](evidence/) files. Software tests, provider calls and human evaluation are separate evidence.
+
+## Credentials and live tests
+
+Follow [SECRETS.md](docs/SECRETS.md) for the official Windows Infisical CLI, interactive browser login and native credential store. Keep `.env.example` blank; never export vault values into `.env`, print them, commit them or launch a coding agent with them. Offline tests do not require vault access.
+
+Live commands are fixed test routes with bounded requests, a persistent shared spending ledger and no automatic retry. Preserve completed attempts and uncertain charges. Review [LIVE_TESTS.md](docs/LIVE_TESTS.md) and configure an authorized allowance before any additional trial. The app has no shell, code-editing, Git-writing, deployment or worker-execution capability. Jev and OpenAI integrations are disabled.
