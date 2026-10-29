@@ -1,0 +1,48 @@
+{
+  "atUtc": "2026-10-29T23:04:04.467Z",
+  "candidate": "0a3e11445d1334767d89fc05891d0a534e1058c5",
+  "kind": "Read-only public organizer source inspection, not eligibility verification, legal advice, acceptance or submission",
+  "waiver": {
+    "url": "https://cerebralvalley.ai/e/meta-ai-developer-hackathon/waiver",
+    "htmlStatus": 200,
+    "htmlSha256": "a8cae46bdbf7b2a370f6dc670765b3fda0303ae1d4ca3364bdf47ed6ad3089c0",
+    "renderedText": "Loading in web reader",
+    "publicEmbeddedDocument": {
+      "field": "event.waiver",
+      "record": "36",
+      "encoding": "UTF-8",
+      "bytes": 30422,
+      "sha256": "fc9583b7da796a21f55925a2c5ed9314819933c80d03ff9d881905ef0b56ff19",
+      "readSuccessfully": true
+    },
+    "extraction": "Parsed literal JSON arguments of public server-rendered page records; no downloaded JavaScript executed"
+  },
+  "submission": {
+    "url": "https://cerebralvalley.ai/e/meta-ai-developer-hackathon/hackathon/submit",
+    "htmlStatus": 200,
+    "htmlSha256": "e671a330f661e2f7a6623ae6d0279e5111d25851123df7a94e10ff9538eb1039",
+    "pageBehaviour": "Event landing content; actual client drawer not rendered",
+    "staticDrawerDefinitionLocated": true,
+    "eventSpecificDetails": {
+      "endpointTemplate": "https://api.cerebralvalley.ai/v1/event/{public-event-id}/hackathon",
+      "method": "GET",
+      "authorizationHeader": false,
+      "httpStatus": 403,
+      "fieldsVerified": false,
+      "retriedWithAuthentication": false
+    }
+  },
+  "linkedRulesPdf": {
+    "locatedInPublicWaiver": true,
+    "httpStatus": 403,
+    "readSuccessfully": false
+  },
+  "publicScriptAssetsReadAsInertText": 63,
+  "rawPageOrScriptsExported": false,
+  "ruleAcceptance": "NOT_RUN",
+  "participantEligibility": "UNVERIFIED",
+  "humanRatings": "NOT_RUN",
+  "formSubmission": "NOT_RUN",
+  "modelCalls": 0,
+  "externalPosts": 0
+}
