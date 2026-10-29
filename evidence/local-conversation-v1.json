@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-29T12:17:27.769Z",
+  "at": "2026-10-29T12:23:49.987Z",
   "status": "PASS_SOFTWARE_ONLY",
   "kind": "actual built terminal I/O with explicitly simulated participants and scripted providers",
   "decisionCount": 1,
@@ -20,7 +20,7 @@
   "humanRatings": "NOT_RUN",
   "mediaUnderstanding": "NOT_RUN",
   "budgetUsedOrReservedUsd": 0,
-  "candidateBase": "b3fbc0c70061c058a5fd7869eff04e9f1a8c7365",
+  "candidateBase": "c00f942eb949054fc4bb2163ee745fe2c4c24059",
   "workingTreeDirty": true,
   "files": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "path": "src/local-harness.ts",
-      "sha256": "2c89ab6dbd644adb26c202483d0547d02cc19505e0dfea51777a663e77bd432b"
+      "sha256": "c235b14e000a49b23d24bc7e52edd59c79351625f9e114316205a8a0187c9292"
     },
     {
       "path": "src/meta-runtime.ts",
@@ -93,7 +93,7 @@
     },
     {
       "path": "dist/local-harness.js",
-      "sha256": "e8756fc41b7e72717550d9f0b46215a65654de125e7e6062537110aa11486faf"
+      "sha256": "a95848a703b93390eb51e0e87be03f2b3a1e726c353b1c5e45cb46b40ced31de"
     },
     {
       "path": "dist/error-watch.js",

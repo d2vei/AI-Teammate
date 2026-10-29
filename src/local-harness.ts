@@ -62,7 +62,7 @@ export class LocalHarness {
       if (input.startsWith('/watch')) {
         if (!this.watch) throw new Error('Replay watch is not connected in this harness session.');
         const event = this.event('Synthetic local error watch');
-        if (input === '/watch start') { const task = this.watch.start(event, '424242'); return { kind: 'status', text: `REPLAY watch ${task.id}: synthetic game 424242, selected snapshot ${task.snapshot}, one-minute simulated interval. No Roblox API, scheduler or channel post.` }; }
+        if (input === '/watch start') { const task = this.watch.start(event, '424242'); return { kind: 'status', text: `REPLAY watch ${task.id}: synthetic game 424242, selected snapshot ${task.snapshot}. Use /watch tick for a simulated minute or /watch auto on for real one-minute intervals in the local terminal. No API request or external post.` }; }
         if (input === '/watch stop') { this.watch.stop(event); return { kind: 'status', text: 'Replay watch stopped.' }; }
         if (input === '/watch tick') { const result = await this.watch.tick(event, this.errorFeed); return { kind: result.status === 'BLOCKED' ? 'error' : result.reports.length ? 'response' : 'silent', text: result.reports.length ? result.reports.map(r => r.text).join('\n\n') : `Replay watch: ${result.reason}; no external posts or model calls.` }; }
         throw new Error('Use /watch start, /watch tick or /watch stop. The terminal advances a simulated minute for each tick.');
