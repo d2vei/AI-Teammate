@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-29T22:47:37.814Z",
+  "exportedAt": "2026-10-30T00:50:07.513Z",
   "evidenceKind": "actual Meta calls over seeded synthetic evidence with fake local delivery; not live Discord or a human study",
   "credentialValuesExported": false,
   "rawResponsesExported": false,
@@ -261,7 +261,7 @@
     "liveDiscord": "NOT_RUN",
     "privateArtifactSha256": "8269f35f4a96c1a4d5f13a8643ab126004ed43a0517662b0062514ed1e14c1d7"
   },
-  "currentUsedOrReservedUsd": 2.407163,
+  "currentUsedOrReservedUsd": 2.414114,
   "coreFlow": {
     "at": "2026-10-29T18:54:23.230Z",
     "commit": "ee8351e4e8c72d1a4c97ffebd93f6855320e54c5",
@@ -902,7 +902,7 @@
     "artifact": "evidence/participation-live-v1.json",
     "artifactSha256": "6353dd932506bec94a0e4703e8fa9a6f09c36fc715006c9072011858517ccfc6"
   },
-  "cumulativeRequestAttempts": 439,
+  "cumulativeRequestAttempts": 440,
   "uncertainReservedUsd": 0.00055,
   "interactiveTerminal": {
     "at": "2026-10-29T20:55:39.935Z",
@@ -996,5 +996,29 @@
     "liveDiscord": "NOT_RUN",
     "artifact": "evidence/live-addons-v1.json",
     "artifactSha256": "873d196de6cdd985d1217a22d87d4dff7b6281241163d2fe4f010ef7f60dbe4e"
+  },
+  "memoryRecall": {
+    "at": "2026-10-30T00:47:17.993Z",
+    "candidate": "997e7e94b2d8ba38c4157c14fe440b212423877b",
+    "status": "PASS_SINGLE_META_MEMORY_RECALL_ONLY",
+    "model": "muse-spark-1.3",
+    "actualInferenceAttempts": 1,
+    "seededDecisions": 26,
+    "oldDecisionRetrievedAfter25Newer": true,
+    "factChecks": {
+      "hostingAmount": true,
+      "currency": true,
+      "monthlyUnit": true,
+      "citesApprovedMemory": true,
+      "noUnrequestedProposal": true
+    },
+    "restartVerified": true,
+    "ownScopePurged": true,
+    "schemaBefore": 3,
+    "schemaAfter": 4,
+    "budgetBeforeUsd": 2.407163,
+    "budgetAfterUsd": 2.414114,
+    "artifact": "evidence/memory-live-v1.json",
+    "artifactSha256": "cacb09838c968f7f72a4b605b3f4ef914c91cdaacd6437a1e0c6e107f8e32951"
   }
 }

@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-30T00:47:16.093Z",
+  "status": "PASS_FULL_OFFLINE_WORKFLOW_WINDOWS_ONLY",
+  "candidate": "997e7e94b2d8ba38c4157c14fe440b212423877b",
+  "node": "v24.21.0",
+  "npm": "11.19.0",
+  "platform": "win32",
+  "arch": "x64",
+  "workflowSha256": "29959d385d2737515628136d3262ddbbe04192566adc621aab7669e129a1b9b9",
+  "lockSha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6",
+  "registry": "https://registry.npmjs.org",
+  "freshNodeModulesAndCache": true,
+  "installLifecycleScripts": "DISABLED",
+  "configurationIsolation": "Empty owned npm user/global configs, fresh isolated cache, OS-only child environment and process-scoped Git safe.directory. No credential or Node preload variables forwarded.",
+  "vaultAccess": false,
+  "modelCalls": 0,
+  "externalPosts": 0,
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "exitCode": 0,
+      "durationMs": 10183,
+      "timedOut": false,
+      "outputSha256": "76dfff9ffcc5f6031c5cfa40bc2432a523af0a4f7dde48cf6be4458e90a405af"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationMs": 2309,
+      "timedOut": false,
+      "outputSha256": "0cec275afa5d3eb02315e671a855e48d6aab2e2f207caaeb744a220edbd463e3"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "durationMs": 15324,
+      "timedOut": false,
+      "outputSha256": "307a83623d907e820f8b9064af928217ab578405d6c201a1c45eb0615ed6e9f0"
+    },
+    {
+      "command": "npm run test:mutation",
+      "exitCode": 0,
+      "durationMs": 2056,
+      "timedOut": false,
+      "outputSha256": "39ae73c89bca731a4373f6fb925cd0b79e2dea828ef793a1387ea803de47ddfa"
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "durationMs": 15399,
+      "timedOut": false,
+      "outputSha256": "efea3215b3f4cecca3519e2ca3626baa853ecf6eacd3dcd4094b5d05927357f1"
+    },
+    {
+      "command": "npm run demo:offline",
+      "exitCode": 0,
+      "durationMs": 1521,
+      "timedOut": false,
+      "outputSha256": "c03e14c81e919fec237966a72d8c3d00d61271b870120c3c0f600a6956ed3d91"
+    },
+    {
+      "command": "npm run eval:offline",
+      "exitCode": 0,
+      "durationMs": 1636,
+      "timedOut": false,
+      "outputSha256": "3fd662c9d2df7be0f9e0dcabc5ebfa2c5d334897fccc0838bb4a9900210f92ea"
+    },
+    {
+      "command": "npm run replay:offline",
+      "exitCode": 0,
+      "durationMs": 1827,
+      "timedOut": false,
+      "outputSha256": "1cd4011901a61503db7ae8724a296bf739751c6258330d4f4caa5fb7ba8fe1d9"
+    },
+    {
+      "command": "npm run test:participation-mutation",
+      "exitCode": 0,
+      "durationMs": 1902,
+      "timedOut": false,
+      "outputSha256": "f67b7c0db38e5b2e754adb06f03ae2e9be6b2a9c5012dab72a50264b3631d6c1"
+    },
+    {
+      "command": "npm run test:conversation",
+      "exitCode": 0,
+      "durationMs": 2517,
+      "timedOut": false,
+      "outputSha256": "53e2ca6ee15896371432e79e094028b077cf08cafa6aaaecd24b8a2800045a1c"
+    },
+    {
+      "command": "npm run test:live-terminal",
+      "exitCode": 0,
+      "durationMs": 1944,
+      "timedOut": false,
+      "outputSha256": "576376f66daf59fd99bca763125b040c2655af93a9f8c3c9a1cb01f796ced52a"
+    },
+    {
+      "command": "npm run test:memory-terminal",
+      "exitCode": 0,
+      "durationMs": 1779,
+      "timedOut": false,
+      "outputSha256": "f5c7ce6624a76705beecb98e8201219b5bf6837273b10768a008f52d2e5ab6e4"
+    }
+  ],
+  "offlineTestsPassed": 209,
+  "offlineTestFilesPassed": 27,
+  "changedTrackedFilesInDisposableWorktree": [
+    "evidence/invocation-current-v2.json",
+    "evidence/local-conversation-v1.json",
+    "evidence/participation-mock-v1.json"
+  ],
+  "limitations": "All twelve committed offline-CI commands on one Windows host, not hosted GitHub Actions or another OS. No vault, actual model/Discord, human evaluation, deployment or release certification. Active checkout and live charge ledger untouched; only three regenerated synthetic evidence records changed in the disposable worktree.",
+  "finishedAt": "2026-10-30T00:48:14.629Z",
+  "privateArtifactSha256": "4045a40843d38994de3e7a4fbc99b525893af65f4f5b0d0e60928b4985766356",
+  "rawOutputsExported": false
+}

@@ -1,0 +1,108 @@
+{
+  "at": "2026-10-30T00:47:17.993Z",
+  "status": "PASS_SINGLE_META_MEMORY_RECALL_ONLY",
+  "candidate": "997e7e94b2d8ba38c4157c14fe440b212423877b",
+  "files": [
+    {
+      "path": "src/memory.ts",
+      "sha256": "9ae88efab4d38b9bd4c9f77866350ac14703734759b82b9d54d8ee14056398e1"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "10429636d1130cd0fae154fcd0615058532941fb7f25891d0fcb62c60e6308f3"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "6999bb4d3322497abfefc60d7516f4b606e086fdff10ea67a85d800fa1ad64fb"
+    },
+    {
+      "path": "src/local-harness.ts",
+      "sha256": "11ae3951511bc817b2ee871afef42628c35a2915c1ff954cdfddaac6ecf2b3cc"
+    },
+    {
+      "path": "src/live-conversation.ts",
+      "sha256": "810c60a7c11c4c69a9b3576a39359f79746052e1dee6e78031ae8b2ded515930"
+    },
+    {
+      "path": "scripts/memory-live.mjs",
+      "sha256": "9db85da11a771f1f57c718e595b21309bf44c16ec0ab16126d206df7801906a8"
+    },
+    {
+      "path": "scripts/vault-child.mjs",
+      "sha256": "dd74bdc3ef4da2b653c702863e5a64279a88ed6841898317bea16bb7908fc6f6"
+    },
+    {
+      "path": "scripts/vault-lib.mjs",
+      "sha256": "80fdf38e8c956abae2cafda0698078324f824c75acea889f83ae1e5943d47774"
+    },
+    {
+      "path": "prompts/response.md",
+      "sha256": "75bb4b10c7618cef5fcc19a0c7b4f3cf544bf893f503516b9a0d1c1dcb7b028f"
+    },
+    {
+      "path": "dist/memory.js",
+      "sha256": "ac56f9dccc77732a61b894002d23a448437c61f6450c3f0c0fe2d8ccbd87a875"
+    },
+    {
+      "path": "dist/core.js",
+      "sha256": "05cc131d5111d5e835877745d7431e417efd3d4b975834f6ae390714f98335f5"
+    },
+    {
+      "path": "dist/store.js",
+      "sha256": "c85ca9ea7ef1fc83a7ebfd5a3ff3f94082f20f39a537e11ab5de0d5c8517471a"
+    }
+  ],
+  "kind": "One actual Meta recall over 26 explicitly seeded synthetic approved decisions and topic metadata; not human approval, new Meta-authored decisions or a repeated quality pilot",
+  "schemaBefore": 3,
+  "chargeRowsBefore": 439,
+  "budgetBeforeUsd": 2.407163,
+  "maximumInferenceAttempts": 1,
+  "seededDecisions": 26,
+  "ownScopePurged": true,
+  "humanRatings": "NOT_RUN",
+  "externalPosts": 0,
+  "schemaAfter": 4,
+  "oldDecisionRetrievedAfter25Newer": true,
+  "selectedDecisionCount": 8,
+  "generation": {
+    "outcome": "response",
+    "delivery": "delivered",
+    "usage": {
+      "inputTokens": 1443,
+      "outputTokens": 1211
+    }
+  },
+  "factChecks": {
+    "hostingAmount": true,
+    "currency": true,
+    "monthlyUnit": true,
+    "citesApprovedMemory": true,
+    "noUnrequestedProposal": true
+  },
+  "budgetAfterUsd": 2.414114,
+  "chargeRowsAfter": 440,
+  "restartVerified": true,
+  "uncertain": {
+    "rows": 2,
+    "usd": 0.00055
+  },
+  "actualInferenceAttempts": 1,
+  "finishedAt": "2026-10-30T00:47:27.302Z",
+  "model": "muse-spark-1.3",
+  "configuredDataMode": "standard",
+  "reconciliation": {
+    "traceEventMatched": true,
+    "model": "muse-spark-1.3",
+    "provider": "meta",
+    "configuredDataMode": "standard",
+    "chargeMicros": 6951,
+    "usage": {
+      "inputTokens": 1443,
+      "outputTokens": 1211
+    },
+    "reported": true
+  },
+  "privateArtifactSha256": "1f52a2e200cd764a8cc4a2c9e16de81413d233e06f7f821b1e0e33e43b18bd57",
+  "rawModelOutputExported": false,
+  "limitations": "One actual recall with seeded synthetic approvals. Literal facts, an approved citation and restart do not establish general semantic retrieval quality, human usefulness, private-source terms or real platform identity. Historical evaluations remain tied to their prior candidates."
+}

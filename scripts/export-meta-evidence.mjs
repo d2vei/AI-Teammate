@@ -74,6 +74,13 @@ if (existsSync('evidence/live-addons-v1.json')) {
   report.cumulativeRequestAttempts = a.chargeRowsAfter;
   report.uncertainReservedUsd = a.totalUncertainReservations.usd;
 }
+if (existsSync('evidence/memory-live-v1.json')) {
+  const run = load('evidence/memory-live-v1.json'); const m = run.data;
+  report.memoryRecall = { at: m.at, candidate: m.candidate, status: m.status, model: m.model, actualInferenceAttempts: m.actualInferenceAttempts, seededDecisions: m.seededDecisions, oldDecisionRetrievedAfter25Newer: m.oldDecisionRetrievedAfter25Newer, factChecks: m.factChecks, restartVerified: m.restartVerified, ownScopePurged: m.ownScopePurged, schemaBefore: m.schemaBefore, schemaAfter: m.schemaAfter, budgetBeforeUsd: m.budgetBeforeUsd, budgetAfterUsd: m.budgetAfterUsd, artifact: 'evidence/memory-live-v1.json', artifactSha256: run.sha256 };
+  report.currentUsedOrReservedUsd = m.budgetAfterUsd;
+  report.cumulativeRequestAttempts = m.chargeRowsAfter;
+  report.uncertainReservedUsd = m.uncertain.usd;
+}
 mkdirSync('evidence', { recursive: true });
 writeFileSync('evidence/meta-live-v1.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ smoke: report.smoke.status, pairedEvaluation: report.pairedEvaluation.status, usedOrReservedUsd: report.currentUsedOrReservedUsd, rawResponsesExported: false, artifact: 'evidence/meta-live-v1.json' }));
