@@ -1,0 +1,102 @@
+{
+  "observedAt": "2026-10-30T04:15:41.639Z",
+  "status": "PASS_PUBLICATION_AND_HOSTED_OFFLINE_ONLY",
+  "repository": "https://github.com/d2vei/AI-Teammate",
+  "branch": "main",
+  "publicationMethod": "Normal push preserving fetched main history; remote SHA matched and checkout clean.",
+  "commits": [
+    {
+      "sha": "c6089eceec5db395a4e00a012738216c86a369e0",
+      "authorLogin": "d2vei",
+      "committerLogin": "d2vei",
+      "authorName": "Davi",
+      "committerName": "Davi",
+      "url": "https://github.com/d2vei/AI-Teammate/commit/c6089eceec5db395a4e00a012738216c86a369e0"
+    },
+    {
+      "sha": "4126e9a21941ea69ce6b179a488639b42e045dec",
+      "authorLogin": "d2vei",
+      "committerLogin": "d2vei",
+      "authorName": "Davi",
+      "committerName": "Davi",
+      "url": "https://github.com/d2vei/AI-Teammate/commit/4126e9a21941ea69ce6b179a488639b42e045dec"
+    }
+  ],
+  "testedWindowsCandidate": "c6089eceec5db395a4e00a012738216c86a369e0",
+  "hostedCandidate": "4126e9a21941ea69ce6b179a488639b42e045dec",
+  "sourceTestsScriptsWorkflowPackageAndLockUnchangedBetweenCandidates": true,
+  "historyScan": {
+    "commits": 50,
+    "bytes": 1469690,
+    "result": "NO_LEAKS",
+    "redacted": true
+  },
+  "resultStageScan": {
+    "files": 6,
+    "bytes": 8033,
+    "result": "NO_LEAKS",
+    "redacted": true
+  },
+  "workflow": {
+    "id": 41001759669,
+    "url": "https://github.com/d2vei/AI-Teammate/actions/runs/41001759669",
+    "status": "completed",
+    "conclusion": "success",
+    "npmSteps": [
+      {
+        "name": "Run npm ci --ignore-scripts",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run typecheck",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm test",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:mutation",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:usefulness-mutation",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:cli",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run demo:offline",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run eval:offline",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run replay:offline",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:participation-mutation",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:conversation",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:live-terminal",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:memory-terminal",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "additionalMetaRequests": 0,
+  "limitations": "Hosted Ubuntu offline checks and fresh Windows synthetic/application contracts only. No new Meta response, real Discord interaction, human usefulness rating, group demonstration or release certification. Historical model captures and unrated manual form unchanged."
+}
