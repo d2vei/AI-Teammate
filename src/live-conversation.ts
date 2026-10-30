@@ -91,7 +91,7 @@ export class LiveConversation extends LocalHarness {
         if (input === '/watch poll') return await watch.poll(event);
         throw new Error('Use /watch start [1-60 minutes], auto on|off, status, poll or stop');
       }
-      if (input === '/sources') return { kind: 'status', text: JSON.stringify(this.core.context(this.event('Inspect local evidence')).map(({ id, kind, label, text }) => ({ id, kind, label, text })), null, 2) };
+      if (input === '/sources') return { kind: 'status', text: JSON.stringify(this.core.context(this.event('')).map(({ id, kind, label, text }) => ({ id, kind, label, text })), null, 2) };
       if (/^\/(?:as |accept |withdraw |memory(?: |$))/.test(input) || ['/status', '/pause', '/resume'].includes(input) || input.startsWith('/ambient ')) return await super.line(input);
       if (!input || input === '/help') return { kind: 'status', text: 'Use /ask TEXT, /reply TEXT, /decision TEXT, /brief TEXT, /accept EXACT-TOKEN, /as owner|peer, /status, /sources, /memory, /memory search QUERY, /memory topics, /memory topic NAME, /memory tag REF TOPIC, /memory untag REF TOPIC, /pause, /resume, /withdraw ID, /ambient TEXT, /forget-local-data CONFIRM, /reset-demo CONFIRM or /quit. Add-ons: /media voice|image|video FILENAME [--audio-important] --synthetic, /media remove ORIGIN, /watch start [MINUTES], /watch auto on|off, /watch status|poll|stop. Real requests consume the shared allowance. Proactive group participation stays disabled.' };
       if (input.startsWith('/') && !/^\/(?:ask|reply|decision|brief) .+/.test(input)) throw new Error('Unsupported local command; use /help. No provider call made');

@@ -18,6 +18,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run test:mutation
+      - run: npm run test:usefulness-mutation
       - run: npm run test:cli
       - run: npm run demo:offline
       - run: npm run eval:offline

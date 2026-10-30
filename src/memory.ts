@@ -45,7 +45,7 @@ export class MemoryVault {
       return Number(phrase.length > 2 && text.includes(phrase)) * 3 + Number(phrase === normalize(e.id)) * 20 + words.reduce((n, w) => n + Number(text.includes(w)) + Number(label.includes(w)) * 2 + Number(topics.includes(w)) * 4, 0);
     };
     const scores = new Map(entries.map(e => [e.id, score(e)]));
-    return entries.filter(e => !matchesOnly || !phrase || scores.get(e.id)! > 0).sort((a, b) => Number(b.available) - Number(a.available) || scores.get(b.id)! - scores.get(a.id)! || (b.recordedAt ?? 0) - (a.recordedAt ?? 0));
+    return entries.filter(e => !matchesOnly || !phrase || scores.get(e.id)! > 0).sort((a, b) => Number(phrase === normalize(b.id)) - Number(phrase === normalize(a.id)) || Number(b.available) - Number(a.available) || scores.get(b.id)! - scores.get(a.id)! || (b.recordedAt ?? 0) - (a.recordedAt ?? 0));
   }
   search(event: RequestEvent, query = '', options: { topic?: string; category?: MemoryCategory; limit?: number } = {}): MemoryEntry[] {
     const limit = options.limit ?? 10; if (!Number.isInteger(limit) || limit < 1 || limit > 20) throw new Error('Use a memory page size of 1-20');
@@ -54,7 +54,13 @@ export class MemoryVault {
   }
   context(event: RequestEvent, excludeRef?: string): ContextItem[] {
     const entries = this.entries(event).filter(e => e.id !== excludeRef); const limits: Record<MemoryCategory, number> = { decisions: 8, briefs: 3, proposals: 4, evidence: 6 };
-    return (Object.keys(limits) as MemoryCategory[]).flatMap(category => this.rank(entries.filter(e => e.category === category), event.text.slice(0, 240)).slice(0, limits[category])).map(({ id, kind, label, text, identity, topics }) => ({ id, kind, label: `${label}${topics.length ? `; topics: ${topics.join(', ')}` : ''}`, text, identity }));
+    return (Object.keys(limits) as MemoryCategory[]).flatMap(category => {
+      const group = entries.filter(e => e.category === category); const query = event.text.slice(0, 240);
+      // A precise source question should not be blocked by unrelated filler.
+      // Broad/no-match requests keep the normal fallback and byte-limit gate.
+      const matches = category === 'evidence' ? this.rank(group, query, true) : [];
+      return (matches.length ? matches : this.rank(group, query)).slice(0, limits[category]);
+    }).map(({ id, kind, label, text, identity, topics }) => ({ id, kind, label: `${label}${topics.length ? `; topics: ${topics.join(', ')}` : ''}`, text, identity }));
   }
   overview(event: RequestEvent) {
     if (!eligible(this.store.config(event.projectId), event)) throw new Error('Memory vault is paused or unavailable in this scope');

@@ -98,7 +98,8 @@ export class OfflineConversation extends LocalHarness {
         return { kind: 'status', text: last ? JSON.stringify(last) : 'No available scoped shadow explanation.' };
       }
       if (input === '/sources') {
-        const context = this.core.context(this.event('Inspect selected local source context'));
+        // Browse without treating the command's own wording as a search query.
+        const context = this.core.context(this.event(''));
         return { kind: 'status', text: JSON.stringify(context.map(c => ({ id: c.id, kind: c.kind, label: c.label, text: c.text })), null, 2) };
       }
       if (input === '/media voice' || input === '/media image') {

@@ -31,7 +31,11 @@ export class Teammate {
       const result = await this.provider.generate(input); this.store.settle(reservation, result.usage); trace.usage = result.usage; trace.requestId = result.requestId;
       const reply = ReplySchema.parse(result.output);
       trace.outcome = 'response';
-      if (reply.citations.some(id => !context.some(c => c.id === id)) || /\bI (?:ran|executed|fixed|deployed|implemented|tested|pushed)\b/i.test(reply.answer)) throw new Error('invalid response');
+      const invalidCitation = reply.citations.some(id => {
+        const item = context.find(c => c.id === id);
+        return !item || item.kind === 'missing_evidence' || !this.store.bindingsValid(e.projectId, { [id]: item.identity }, this.now());
+      });
+      if (invalidCitation || /\bI (?:ran|executed|fixed|deployed|implemented|tested|pushed)\b/i.test(reply.answer)) throw new Error('invalid response');
       const citations = reply.citations.map(id => { const c = context.find(c => c.id === id)!; return `[${c.id}] ${c.label}`; }).join('\n');
       if (!await current()) { trace.result = 'suppressed'; return; }
       const card = reply.proposal ? this.store.propose(e, reply.proposal, context, this.now()) : undefined;

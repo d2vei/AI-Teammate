@@ -64,6 +64,7 @@ export class Store {
     if (parsed.kind === 'brief' && parsed.decisionIds.some(id => !context.some(c => c.id === id && c.kind === 'approved_decision'))) throw new Error('Brief decisions must be approved');
     const ids = [...new Set([...parsed.sourceIds, ...(parsed.kind === 'brief' ? parsed.decisionIds : [])])];
     const sourceBindings = Object.fromEntries(ids.map(id => [id, context.find(c => c.id === id)!.identity]));
+    if (!this.bindingsValid(e.projectId, sourceBindings, now)) throw new Error('A proposal source is unavailable; select current evidence');
     const p: Proposal = { id: randomUUID(), projectId: e.projectId, platform: e.platform, workspaceId: e.workspaceId, roomId: e.roomId, proposerId: e.actor.id, approverIds: config.approverIds, origin: { id: e.id, version: e.version, messageId: e.sourceMessageId ?? null }, body: parsed, version: 1, createdAt: now, expiresAt: now + 15 * 60_000, state: 'awaiting_approval', configIdentity: digest(config), targetSnapshot: config.selectedSnapshot, sourceBindings };
     this.putProposal(p); return this.card(p);
   }
@@ -141,14 +142,15 @@ export class Store {
   bindingsValid(projectId: string, bindings: Record<string, string>, now: number, visiting: string[] = []): boolean {
     const config = this.config(projectId); if (!config) return false;
     return Object.entries(bindings).every(([id, identity]) => {
-      if (id.startsWith('decision:')) {
-        const target = id.slice('decision:'.length); if (visiting.includes(target)) return false;
-        const row = this.db.prepare("SELECT json FROM decisions WHERE id=? AND project=? AND status='approved'").get(target, projectId);
-        if (!row) return false; const d = JSON.parse(row.json as string) as SavedDecision;
-        return digest(d) === identity && this.bindingsValid(projectId, d.sourceBindings, now, [...visiting, target]);
+      if (id.startsWith('decision:') || id.startsWith('brief:')) {
+        const decision = id.startsWith('decision:'); const target = id.slice(decision ? 'decision:'.length : 'brief:'.length); if (visiting.includes(id)) return false;
+        const row = decision ? this.db.prepare("SELECT json FROM decisions WHERE id=? AND project=? AND status='approved'").get(target, projectId) : this.db.prepare('SELECT json FROM briefs WHERE id=? AND project=?').get(target, projectId);
+        if (!row) return false; const saved = JSON.parse(row.json as string) as SavedRecord;
+        return digest(saved) === identity && this.bindingsValid(projectId, saved.sourceBindings, now, [...visiting, id]);
       }
-      if (id.startsWith('proposal:')) { const p = this.proposal(id.slice('proposal:'.length)); return !!p && p.projectId === projectId && p.state === 'awaiting_approval' && p.expiresAt > now && digest(p) === identity; }
-      return sourceContext(this.sources(projectId), config, '', now, 100).some(c => c.kind !== 'missing_evidence' && c.id === id && c.identity === identity);
+      if (id.startsWith('proposal:')) { const p = this.proposal(id.slice('proposal:'.length)); return !visiting.includes(id) && !!p && p.projectId === projectId && p.state === 'awaiting_approval' && p.expiresAt > now && digest(p) === identity && this.bindingsValid(projectId, p.sourceBindings, now, [...visiting, id]); }
+      const row = this.db.prepare('SELECT json FROM sources WHERE project=? AND id=?').get(projectId, id); if (!row) return false;
+      return sourceContext([JSON.parse(row.json as string) as Source], config, '', now, 1).some(c => c.kind !== 'missing_evidence' && c.id === id && c.identity === identity);
     });
   }
   invalidateOrigin(projectId: string, roomId: string, messageId: string) {

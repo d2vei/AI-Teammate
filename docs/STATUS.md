@@ -1,13 +1,13 @@
 # Implementation status
 
-Updated 2026-10-29. Evidence is software/mock unless explicitly marked live. The owner saved the key; names-only Infisical injection and the first real Meta smoke now PASS. Continue local model validation within the existing allowance. Discord remains deferred.
+Updated 2026-10-30. Evidence is software/mock unless explicitly marked live. The owner saved the key; names-only Infisical injection and the first real Meta smoke now PASS. Current documentation/usefulness checks are offline with no additional paid request. Discord remains deferred.
 
 | Area | Observed status |
 |---|---|
 | Baseline/provenance | PASS: workspace held handoff only, no old Git/source imported; references/private context ignored. |
 | Local core and SQLite | Implemented: explicit invocation, scope/dedup/pause/budget, traces, immutable sources, approved decisions and transactionally saved briefs. No execution capability. |
 | Typecheck/build | PASS on Node 24.21.0/npm 11.19.0. |
-| Deterministic tests | PASS: 209 tests/27 files, fifteen focused memory tests and nine native memory commands. Fresh Windows install and hosted Ubuntu workflow both completed all twelve offline commands. Model/human/platform evidence remains separate. |
+| Deterministic tests | PASS: current suite 222 tests/28 files, including thirteen new documentation/usefulness cases and fifteen focused memory tests. Three new targeted mutation controls pass. Previous fresh Windows/hosted Ubuntu memory candidates passed twelve commands/209 tests; current full-workflow verification follows separately. Model/human/platform evidence remains separate. |
 | Composed local conversation | PASS: actual built terminal completed media → shadow hand raise → invited local display → newly approved decision → saved brief → watch replay, rejected the wrong approver, checked durable state and deleted only its new temporary session. Scripted/synthetic only; no model-quality or human-study claim. |
 | Shared Meta runtime | Implemented: direct/participation/media share one transport held through the response body, common budget and no automatic retry. Real direct, media and 360 participation requests completed over synthetic evidence. This does not establish semantic quality. |
 | Live-local media/watch | PASS_LOCAL_META_MEDIA_REPLAY_FLOW_ONLY on cc82f82: six actual response requests, image bytes to grounded brief/follow-up, newly approved decision, two source-bound watch diagnoses and unchanged-count silence at real minute intervals. Saved state survived native restart; own scope/fixture removed, charges retained. Twelve focused mock checks cover cancellation, removal, slot, bounds and unsolicited proposal rejection. No real Roblox/Discord or human-quality claim. |

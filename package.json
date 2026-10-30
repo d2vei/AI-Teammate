@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:mutation": "node scripts/mutation-check.ts",
+    "test:usefulness-mutation": "node scripts/usefulness-mutation.ts",
     "test:cli": "npm run build && node scripts/check-cli.mjs",
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/main.js",
