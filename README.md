@@ -24,6 +24,8 @@ The supplied party-routing code and structured event are synthetic. Terminal rol
 
 For real model responses, build offline, configure the native Infisical session, then run `npm run conversation:live`. It supports explicit questions, bound follow-ups, decision approval, saved briefs, synthetic attachments and an owner-enabled saved-JSON error watch. These share a persistent spending cap; the watch is explicitly replay rather than live Roblox telemetry. See [the live terminal guide](docs/LIVE_TERMINAL.md) for setup, commands and limitations.
 
+Each project has a [searchable memory vault](docs/MEMORY.md). Use `/memory search QUERY` to inspect retained decisions, briefs and evidence, and organize them into topics with `/memory tag REF TOPIC`. Older relevant knowledge is ranked before the model's context limit. Proposal, approval and evidence status remain visible.
+
 ## Verify the software
 
 ```sh

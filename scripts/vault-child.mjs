@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { childEnvironment, conversationEnvironment, evaluationSettings, findCli, requireNativeVault } from './vault-lib.mjs';
 const action = process.argv[2];
-const allowed = new Set(['meta-smoke', 'meta-check', 'evaluate', 'core-live', 'media-live', 'media-live-v2', 'voice-diagnostic', 'participation-live', 'participation-judge', 'conversation-live', 'conversation-live-check', 'conversation-addon-check']);
+const allowed = new Set(['meta-smoke', 'meta-check', 'evaluate', 'core-live', 'media-live', 'media-live-v2', 'voice-diagnostic', 'participation-live', 'participation-judge', 'conversation-live', 'conversation-live-check', 'conversation-addon-check', 'memory-live']);
 if (!allowed.has(action)) { console.error('BLOCKED: only fixed bot/live-check commands are allowed'); process.exit(1); }
 const env = childEnvironment(process.env);
 // Infisical may write its encrypted cache during run. Recheck here, before any
@@ -20,9 +20,9 @@ if (action === 'meta-check') {
   }
   console.log(JSON.stringify({ status: 'PASS', gate: 'Vault-injected META_API_KEY presence only', allowedVariableNames: ['META_API_KEY'], valuesDisplayed: false, providerCalls: 0, discordSends: 0, Jev: 'disabled', OpenAI: 'disabled' }));
 } else {
-  if (['evaluate', 'media-live', 'media-live-v2', 'voice-diagnostic', 'participation-live', 'participation-judge', 'conversation-live', 'conversation-live-check', 'conversation-addon-check'].includes(action)) Object.assign(env, evaluationSettings(env));
-  const appEnv = action.startsWith('conversation-') || action === 'participation-judge' ? conversationEnvironment(env) : env;
+  if (['evaluate', 'media-live', 'media-live-v2', 'voice-diagnostic', 'participation-live', 'participation-judge', 'conversation-live', 'conversation-live-check', 'conversation-addon-check', 'memory-live'].includes(action)) Object.assign(env, evaluationSettings(env));
+  const appEnv = action.startsWith('conversation-') || ['participation-judge', 'memory-live'].includes(action) ? conversationEnvironment(env) : env;
   // Only the application process receives the allowlisted injected values; no shell or agent.
-  const args = action === 'conversation-addon-check' ? ['scripts/check-live-addons.mjs'] : action === 'participation-judge' ? ['scripts/participation-judge.mjs'] : action === 'conversation-live-check' ? ['scripts/check-live-conversation.mjs'] : action === 'conversation-live' ? ['scripts/conversation-live.mjs'] : action === 'participation-live' ? ['scripts/participation-live.mjs'] : action === 'voice-diagnostic' ? ['scripts/media-live.mjs', 'voice-diagnostic-v1'] : action === 'media-live-v2' ? ['scripts/media-live.mjs', 'media-pilot-v2'] : [action === 'evaluate' ? 'scripts/evaluate.mjs' : action === 'core-live' ? 'scripts/core-live.mjs' : action === 'media-live' ? 'scripts/media-live.mjs' : 'scripts/meta-smoke.mjs'];
+  const args = action === 'memory-live' ? ['scripts/memory-live.mjs'] : action === 'conversation-addon-check' ? ['scripts/check-live-addons.mjs'] : action === 'participation-judge' ? ['scripts/participation-judge.mjs'] : action === 'conversation-live-check' ? ['scripts/check-live-conversation.mjs'] : action === 'conversation-live' ? ['scripts/conversation-live.mjs'] : action === 'participation-live' ? ['scripts/participation-live.mjs'] : action === 'voice-diagnostic' ? ['scripts/media-live.mjs', 'voice-diagnostic-v1'] : action === 'media-live-v2' ? ['scripts/media-live.mjs', 'media-pilot-v2'] : [action === 'evaluate' ? 'scripts/evaluate.mjs' : action === 'core-live' ? 'scripts/core-live.mjs' : action === 'media-live' ? 'scripts/media-live.mjs' : 'scripts/meta-smoke.mjs'];
   const result = spawnSync(process.execPath, args, { env: appEnv, stdio: 'inherit', windowsHide: true }); process.exitCode = result.status ?? 1;
 }

@@ -1,0 +1,111 @@
+{
+  "atUtc": "2026-10-30T00:41:44.495Z",
+  "repository": "d2vei/AI-Teammate",
+  "visibility": "public",
+  "anonymousMetadataHttpStatus": 200,
+  "authorizationHeader": false,
+  "anonymousPageHttpStatusObservedEarlierThisTurn": 200,
+  "priorHostedRun": {
+    "id": 40970921474,
+    "headSha": "42bf935b60502e1464e4d63b1f7c3003c39eab85",
+    "url": "https://github.com/d2vei/AI-Teammate/actions/runs/40970921474",
+    "jobs": [
+      {
+        "name": "verify",
+        "status": "completed",
+        "conclusion": "success",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci --ignore-scripts",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run typecheck",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm test",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:mutation",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:cli",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run demo:offline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run eval:offline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run replay:offline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:participation-mutation",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:conversation",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:live-terminal",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": "Public access and prior published-candidate hosted workflow only. New memory-candidate CI and user attribution are verified separately. No human/model/platform quality inferred."
+}

@@ -1,11 +1,12 @@
 import { randomUUID } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { approver, digest, type ModelInput, type ProposalCard, type Provider, type ProviderResult, type RequestEvent } from './domain.js';
+import { approver, digest, eligible, type ModelInput, type ProposalCard, type Provider, type ProviderResult, type RequestEvent } from './domain.js';
 import { Store } from './store.js';
 import { Teammate } from './core.js';
 import { FakeAdapter } from './fakes.js';
 import { BundleSchema, ingestBundle } from './sources.js';
 import { SyntheticErrorFeed, type ErrorWatch } from './error-watch.js';
+import { MemoryVault } from './memory.js';
 export type HarnessOutput = { kind: 'status' | 'response' | 'silent' | 'proposal' | 'confirmation' | 'error'; text: string; card?: ProposalCard };
 
 // A deterministic fixture responder for offline mechanics. It is not model output.
@@ -49,7 +50,7 @@ export class LocalHarness {
         this.actor = choice === 'owner' ? { id: 'synthetic-owner', roleIds: ['reviewer'] } : { id: 'synthetic-peer', roleIds: [] };
         return { kind: 'status', text: `Simulated local actor: ${this.actor.id}. This does not establish real-platform identity.` };
       }
-      if (input === '/status') return { kind: 'status', text: JSON.stringify({ provider: this.provider.mode, actor: this.actor.id, paused: this.store.config(this.projectId)?.paused, decisions: this.store.decisions(this.projectId).length, briefs: this.store.briefs(this.projectId).length, budgetUsedOrReservedUsd: this.store.budgetUsed(), execution: 'unavailable' }) };
+      if (input === '/status') return { kind: 'status', text: JSON.stringify({ provider: this.provider.mode, actor: this.actor.id, paused: this.store.config(this.projectId)?.paused, decisions: this.store.memoryDecisions(this.projectId).length, briefs: this.store.memoryBriefs(this.projectId).length, budgetUsedOrReservedUsd: this.store.budgetUsed(), execution: 'unavailable' }) };
       if (input === '/pause' || input === '/resume') {
         const c = this.store.config(this.projectId)!; if (input === '/resume' && !approver(c, this.actor)) throw new Error('Only the simulated approver may resume.');
         this.store.putConfig({ ...c, paused: input === '/pause' }); return { kind: 'status', text: input === '/pause' ? 'Paused.' : 'Resumed.' };
@@ -59,6 +60,20 @@ export class LocalHarness {
         return { kind: 'confirmation', text: `${saved.kind === 'decision' ? 'Approved decision' : 'Saved brief; not executed'}: ${saved.id} (approver ${saved.approverId}).` };
       }
       if (input.startsWith('/withdraw ')) { this.store.withdraw(this.event('Withdraw local decision'), input.slice(10)); return { kind: 'status', text: 'Decision withdrawn; statement removed.' }; }
+      if (input === '/memory' || input.startsWith('/memory ')) {
+        const e = this.event('Inspect or organize this project memory vault'); if (!eligible(this.store.config(this.projectId), e)) throw new Error('Memory vault is paused or unavailable in this scope');
+        const vault = new MemoryVault(this.store, this.now); let result: unknown;
+        if (input === '/memory') result = vault.overview(e);
+        else if (input === '/memory topics') result = vault.topics(e);
+        else if (input.startsWith('/memory search ')) result = vault.search(e, input.slice(15));
+        else if (input.startsWith('/memory topic ')) result = vault.search(e, '', { topic: input.slice(14) });
+        else {
+          const match = /^\/memory (tag|untag) (\S+) (.+)$/.exec(input); if (!match) throw new Error('Use /memory, topics, search QUERY, topic NAME, tag REF TOPIC or untag REF TOPIC');
+          if (match[1] === 'tag') { vault.tag(e, match[2]!, match[3]!); result = { organized: true, authorityChanged: false }; }
+          else result = { removed: vault.untag(e, match[2]!, match[3]!), authorityChanged: false };
+        }
+        return { kind: 'status', text: JSON.stringify(result, null, 2) };
+      }
       if (input.startsWith('/watch')) {
         if (!this.watch) throw new Error('Replay watch is not connected in this harness session.');
         const event = this.event('Synthetic local error watch');
@@ -68,7 +83,7 @@ export class LocalHarness {
         throw new Error('Use /watch start, /watch tick or /watch stop. The terminal advances a simulated minute for each tick.');
       }
       const question = input.startsWith('/decision ') ? `Draft a decision: ${input.slice(10)}` : input.startsWith('/brief ') ? `Draft a brief: ${input.slice(7)}` : input.startsWith('/ask ') ? input.slice(5) : input.startsWith('/ambient ') ? input.slice(9) : input;
-      if (!question) return { kind: 'status', text: 'Enter /ask, /decision, /brief, /accept, /as, /status, /pause, /resume, /withdraw, /ambient or /watch.' };
+      if (!question) return { kind: 'status', text: 'Enter /ask, /decision, /brief, /accept, /as, /status, /pause, /resume, /withdraw, /memory, /ambient or /watch.' };
       const adapter = new FakeAdapter(); await this.core.handle(this.event(question, input.startsWith('/ambient ') ? 'ambient' : 'mention'), adapter);
       const delivery = adapter.deliveries[0]; if (!delivery) return { kind: 'silent', text: 'No reply: invocation/pause/scope boundary. This is configuration, not measured social judgment.' };
       if (delivery.proposal) return { kind: 'proposal', text: `${delivery.text}\n\nExact proposal v${delivery.proposal.proposal.version}:\n${JSON.stringify(delivery.proposal.proposal.body, null, 2)}\n\n/accept ${delivery.proposal.buttonId}`, card: delivery.proposal };

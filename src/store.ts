@@ -8,7 +8,7 @@ export class Store {
   readonly db: DatabaseSync;
   constructor(path: string) {
     this.db = new DatabaseSync(path);
-    if (Number(this.db.prepare('PRAGMA user_version').get()!.user_version) > 3) { this.db.close(); throw new Error('Database version is newer than this app'); }
+    if (Number(this.db.prepare('PRAGMA user_version').get()!.user_version) > 4) { this.db.close(); throw new Error('Database version is newer than this app'); }
     this.db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; PRAGMA busy_timeout=3000;
       CREATE TABLE IF NOT EXISTS configs (id TEXT PRIMARY KEY, json TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS events (id TEXT PRIMARY KEY, at INTEGER NOT NULL);
@@ -18,7 +18,8 @@ export class Store {
       CREATE TABLE IF NOT EXISTS decisions (id TEXT PRIMARY KEY, project TEXT NOT NULL, status TEXT NOT NULL, json TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS briefs (id TEXT PRIMARY KEY, project TEXT NOT NULL, json TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS sources (id TEXT NOT NULL, project TEXT NOT NULL, json TEXT NOT NULL, PRIMARY KEY (id, project));
-      PRAGMA user_version=3;`);
+      CREATE TABLE IF NOT EXISTS memory_topics (project TEXT NOT NULL, ref TEXT NOT NULL, identity TEXT NOT NULL, topic TEXT NOT NULL, PRIMARY KEY(project,ref,topic));
+      PRAGMA user_version=4;`);
   }
   close() { this.db.close(); }
   transaction<T>(fn: () => T): T {
@@ -86,6 +87,8 @@ export class Store {
       const record: SavedRecord = p.body.kind === 'decision' ? { ...p.body, ...metadata, status: 'approved' } : { ...p.body, ...metadata, status: 'saved' };
       if (record.kind === 'decision') this.db.prepare('INSERT INTO decisions VALUES (?, ?, ?, ?)').run(record.id, record.projectId, 'approved', JSON.stringify(record));
       else this.db.prepare('INSERT INTO briefs VALUES (?, ?, ?)').run(record.id, record.projectId, JSON.stringify(record));
+      this.db.prepare('INSERT OR IGNORE INTO memory_topics SELECT project, ?, ?, topic FROM memory_topics WHERE project=? AND ref=? AND identity=?').run(`${record.kind}:${record.id}`, digest(record), p.projectId, `proposal:${p.id}`, digest(p));
+      this.forgetMemoryTopics(p.projectId, `proposal:${p.id}`);
       p.state = 'accepted'; this.putProposal(p); return record;
     });
   }
@@ -93,15 +96,24 @@ export class Store {
     const p = this.proposal(id); const c = this.config(e.projectId);
     if (!p || !eligible(c, e) || p.projectId !== e.projectId || (p.proposerId !== e.actor.id && !approver(c, e.actor)) || p.state !== 'awaiting_approval') throw new Error('Not authorized');
     if (body.sourceIds.length > 0 || (body.kind === 'brief' && body.decisionIds.length > 0)) throw new Error('Source revision requires a new proposal');
-    p.body = ProposalBodySchema.parse(body); p.version++; p.expiresAt = now + 15 * 60_000; p.configIdentity = digest(c); p.targetSnapshot = c.selectedSnapshot; p.sourceBindings = {}; this.putProposal(p); return this.card(p);
+    p.body = ProposalBodySchema.parse(body); p.version++; p.expiresAt = now + 15 * 60_000; p.configIdentity = digest(c); p.targetSnapshot = c.selectedSnapshot; p.sourceBindings = {}; this.forgetMemoryTopics(p.projectId, `proposal:${p.id}`); this.putProposal(p); return this.card(p);
   }
   cancel(e: RequestEvent, id: string) {
     const p = this.proposal(id); const c = this.config(e.projectId);
     if (!p || !eligible(c, e) || p.projectId !== e.projectId || (p.proposerId !== e.actor.id && !approver(c, e.actor)) || p.state !== 'awaiting_approval') throw new Error('Not authorized');
-    p.state = 'cancelled'; this.putProposal(p);
+    p.state = 'cancelled'; this.forgetMemoryTopics(p.projectId, `proposal:${p.id}`); this.putProposal(p);
   }
   decisions(projectId: string): SavedDecision[] { return this.db.prepare("SELECT json FROM decisions WHERE project=? AND status='approved' ORDER BY rowid DESC LIMIT 20").all(projectId).map(row => JSON.parse(row.json as string) as SavedDecision); }
   briefs(projectId: string): SavedBrief[] { return this.db.prepare('SELECT json FROM briefs WHERE project=? ORDER BY rowid DESC LIMIT 10').all(projectId).map(row => JSON.parse(row.json as string) as SavedBrief); }
+  memoryDecisions(projectId: string): SavedDecision[] { return this.db.prepare("SELECT json FROM decisions WHERE project=? AND status='approved' ORDER BY rowid DESC").all(projectId).map(row => JSON.parse(row.json as string) as SavedDecision); }
+  memoryBriefs(projectId: string): SavedBrief[] { return this.db.prepare('SELECT json FROM briefs WHERE project=? ORDER BY rowid DESC').all(projectId).map(row => JSON.parse(row.json as string) as SavedBrief); }
+  memoryTopics(projectId: string): { ref: string; identity: string; topic: string }[] { return this.db.prepare('SELECT ref,identity,topic FROM memory_topics WHERE project=? ORDER BY topic,ref').all(projectId) as { ref: string; identity: string; topic: string }[]; }
+  putMemoryTopic(projectId: string, ref: string, identity: string, topic: string) {
+    this.db.prepare('DELETE FROM memory_topics WHERE project=? AND ref=? AND identity<>?').run(projectId, ref, identity);
+    this.db.prepare('INSERT OR IGNORE INTO memory_topics VALUES (?,?,?,?)').run(projectId, ref, identity, topic);
+  }
+  removeMemoryTopic(projectId: string, ref: string, topic: string): boolean { return this.db.prepare('DELETE FROM memory_topics WHERE project=? AND ref=? AND topic=?').run(projectId, ref, topic).changes > 0; }
+  private forgetMemoryTopics(projectId: string, ref: string) { this.db.prepare('DELETE FROM memory_topics WHERE project=? AND ref=?').run(projectId, ref); }
   tombstones(projectId: string): { id: string; statement?: string }[] { return this.db.prepare("SELECT json FROM decisions WHERE project=? AND status='withdrawn'").all(projectId).map(row => JSON.parse(row.json as string)); }
   withdraw(e: RequestEvent, id: string) {
     const c = this.config(e.projectId); if (!eligible(c, e) || !approver(c, e.actor)) throw new Error('Not authorized');
@@ -112,6 +124,7 @@ export class Store {
       this.db.prepare('UPDATE decisions SET status=?, json=? WHERE id=?').run('withdrawn', JSON.stringify(tombstone), id);
       // Erase duplicate retained proposal text along with the authoritative record.
       this.db.prepare('DELETE FROM proposals WHERE id=?').run(id);
+      this.forgetMemoryTopics(e.projectId, `decision:${id}`); this.forgetMemoryTopics(e.projectId, `proposal:${id}`);
     });
   }
   sources(projectId: string): Source[] { return this.db.prepare('SELECT json FROM sources WHERE project=?').all(projectId).map(row => JSON.parse(row.json as string) as Source); }
@@ -123,6 +136,7 @@ export class Store {
   sourceState(projectId: string, id: string, state: 'stale' | 'deleted') {
     const source = this.sources(projectId).find(s => s.id === id); if (!source) throw new Error('Source unavailable');
     source.state = state; source.text = ''; this.db.prepare('UPDATE sources SET json=? WHERE project=? AND id=?').run(JSON.stringify(source), projectId, id);
+    this.forgetMemoryTopics(projectId, id);
   }
   bindingsValid(projectId: string, bindings: Record<string, string>, now: number, visiting: string[] = []): boolean {
     const config = this.config(projectId); if (!config) return false;
@@ -148,12 +162,13 @@ export class Store {
           this.db.prepare('UPDATE decisions SET status=?, json=? WHERE id=? AND project=?').run('withdrawn', JSON.stringify(tombstone), p.id, projectId);
         } else this.db.prepare('DELETE FROM briefs WHERE id=? AND project=?').run(p.id, projectId);
         this.db.prepare('DELETE FROM proposals WHERE id=? AND project=?').run(p.id, projectId);
+        this.forgetMemoryTopics(projectId, `${p.body.kind}:${p.id}`); this.forgetMemoryTopics(projectId, `proposal:${p.id}`);
       }
     });
   }
   purgeProject(projectId: string) {
     this.transaction(() => {
-      for (const table of ['sources', 'proposals', 'decisions', 'briefs']) this.db.prepare(`DELETE FROM ${table} WHERE project=?`).run(projectId);
+      for (const table of ['sources', 'proposals', 'decisions', 'briefs', 'memory_topics']) this.db.prepare(`DELETE FROM ${table} WHERE project=?`).run(projectId);
       const config = this.config(projectId); if (config) this.putConfig({ ...config, paused: true, selectedSnapshot: null });
     });
     // Keep the content-free charge ledger so data deletion never resets the spending cap.

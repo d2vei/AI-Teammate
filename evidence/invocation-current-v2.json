@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-30T00:46:08.679Z",
+  "status": "PASS_CURRENT_SOFTWARE_GATE_ONLY",
+  "candidate": "42bf935b60502e1464e4d63b1f7c3003c39eab85",
+  "workingTreeDirty": true,
+  "files": [
+    {
+      "path": "src/core.ts",
+      "sha256": "10429636d1130cd0fae154fcd0615058532941fb7f25891d0fcb62c60e6308f3"
+    },
+    {
+      "path": "src/memory.ts",
+      "sha256": "9ae88efab4d38b9bd4c9f77866350ac14703734759b82b9d54d8ee14056398e1"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "6999bb4d3322497abfefc60d7516f4b606e086fdff10ea67a85d800fa1ad64fb"
+    },
+    {
+      "path": "src/domain.ts",
+      "sha256": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88"
+    },
+    {
+      "path": "scripts/check-invocation-current.mjs",
+      "sha256": "547fc7e8e2f98d772513f72169ece825276de267840dc17d098225e0ddbeafd4"
+    }
+  ],
+  "casesSha256": "6eb2478b59f3e57d6c7db6163f963b33dfbfa6a9b3098c80695eae35b2c0a551",
+  "casesSource": "Original eight quiet fixture inputs reused as software regressions, not new held-out evaluation",
+  "checks": [
+    {
+      "id": "F-Q1",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q2",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q3",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q4",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q5",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q6",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q7",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    },
+    {
+      "id": "F-Q8",
+      "status": "PASS",
+      "meaning": "Actual ambient invocation/access gate; no model, delivery, memory context, proposal or charge"
+    }
+  ],
+  "modelCalls": 0,
+  "humanRatings": "NOT_RUN",
+  "livePlatform": "NOT_RUN",
+  "limitations": "Current configuration/access behavior only. Does not update the original frozen runtime, paid answer pairs, human ratings or participation quality."
+}

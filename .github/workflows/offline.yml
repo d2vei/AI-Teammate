@@ -25,4 +25,5 @@ jobs:
       - run: npm run test:participation-mutation
       - run: npm run test:conversation
       - run: npm run test:live-terminal
+      - run: npm run test:memory-terminal
       # No vault login, runtime secret injection or paid provider call in CI.

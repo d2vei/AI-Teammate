@@ -31,7 +31,7 @@ export function evaluationSettings(env) {
 }
 export function buildRunArgs(action, root = resolve('.'), node = process.execPath) {
   if (['bot', 'init', 'seed', 'register'].includes(action)) throw new Error('Discord is deferred; use the platform-independent local harness');
-  const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate', 'core-live': 'core-live', 'media-live': 'media-live', 'media-live-v2': 'media-live-v2', 'voice-diagnostic': 'voice-diagnostic', 'participation-live': 'participation-live', 'participation-judge': 'participation-judge', 'conversation-live': 'conversation-live', 'conversation-live-check': 'conversation-live-check', 'conversation-addon-check': 'conversation-addon-check' };
+  const commands = { smoke: 'meta-smoke', check: 'meta-check', eval: 'evaluate', 'core-live': 'core-live', 'media-live': 'media-live', 'media-live-v2': 'media-live-v2', 'voice-diagnostic': 'voice-diagnostic', 'participation-live': 'participation-live', 'participation-judge': 'participation-judge', 'conversation-live': 'conversation-live', 'conversation-live-check': 'conversation-live-check', 'conversation-addon-check': 'conversation-addon-check', 'memory-live': 'memory-live' };
   const command = commands[action]; if (!command) throw new Error('Only fixed bot/setup/live-check actions are allowed');
   return ['run', '--env=dev', '--path=/', '--include-imports=false', '--recursive=false', '--expand=false', '--secret-overriding=false', '--project-config-dir', root, '--telemetry=false', '--silent', '--profile=ai-teammate', '--domain=https://eu.infisical.com', '--', node, join(root, 'scripts/vault-child.mjs'), command];
 }

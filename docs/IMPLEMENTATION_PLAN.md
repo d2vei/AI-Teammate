@@ -2,6 +2,8 @@
 
 Current extension (29 October 2026): the owner's new participation/media/watch proposal is incorporated in [ADDONS.md](ADDONS.md). Start with a platform-independent shadow replay; Discord remains deferred. Existing authority, privacy and saved-not-executed boundaries remain controlling. The historical deferred list below is superseded only for the specifically staged add-ons.
 
+30 October owner extension: improve memory organization and project vaults. The first implemented slice is searchable retained project knowledge with persistent topic metadata and provenance, described in [MEMORY.md](MEMORY.md). It preserves existing approval/source/access rules and bounded model context; organization does not create authority. Discord remains deferred.
+
 Status: implementation handoff; product tests NOT RUN by this package. Consolidated 28 October 2026 from the original v0.6 plan, the independent document review and the accepted implementation addendum. This is not a new round of feature planning.
 
 ## 1. Product and boundaries

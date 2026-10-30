@@ -47,3 +47,7 @@ Proactive group participation remains disabled after its failed frozen pilot. Un
 - Two real Infisical launch/status/quit cycles passed after the fix, with no generation command and unchanged charge rows/use. This checks restart of the already-purged scope only, and does not replace the failed full first attempt.
 
 See [failed actual terminal evidence](../evidence/live-conversation-v1.json), [separate corrected lifecycle evidence](../evidence/live-terminal-lifecycle-v1.json) and [LIVE_TESTS.md](LIVE_TESTS.md). `npm run test:live-terminal` is offline and included in CI. `npm run test:live-terminal-service` is a separate native/vault check that preserves its attempt. The three-request `test:conversation-live` trial is already preserved and refuses rerun or an existing local scope. Human ratings, actual platform interactions and final product acceptance remain separate.
+
+## Project knowledge vault
+
+Use `/memory`, `/memory search QUERY`, `/memory topics` and `/memory topic NAME` to inspect scoped knowledge without a model call. The simulated owner can organize references using `/memory tag REF TOPIC` and `/memory untag REF TOPIC`. Ordinary questions retrieve relevant retained knowledge before the context limit. See [MEMORY.md](MEMORY.md) for authority, availability and persistence details.

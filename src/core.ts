@@ -1,27 +1,19 @@
 import { ReplySchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
 import { promptVersion, instructions } from './prompt.js';
 import { Store, type Trace } from './store.js';
-import { sourceContext } from './sources.js';
+import { MemoryVault } from './memory.js';
 
 export class Teammate {
   private active = false;
   constructor(readonly store: Store, readonly provider: Provider, readonly capUsd: number, readonly now = () => Date.now()) {}
-  context(event: RequestEvent): ContextItem[] {
-    const config = this.store.config(event.projectId); if (!eligible(config, event)) return [];
-    return [
-      ...this.store.decisions(event.projectId).slice(0, 8).map(d => ({ id: `decision:${d.id}`, kind: this.store.bindingsValid(event.projectId, d.sourceBindings, this.now()) ? 'approved_decision' : 'missing_evidence', label: `Approved v${d.version} by ${d.approverId}; source event ${d.origin.id}; snapshot ${d.snapshot ?? 'none'}`, text: this.store.bindingsValid(event.projectId, d.sourceBindings, this.now()) ? d.statement : 'Decision evidence unavailable; statement withheld.', identity: digest(d) })),
-      ...this.store.briefs(event.projectId).slice(0, 3).map(b => ({ id: `brief:${b.id}`, kind: 'saved_brief', label: `Brief saved, not executed; approved by ${b.approverId}; snapshot ${b.snapshot ?? 'none'} (may be older than selection)`, text: this.store.bindingsValid(event.projectId, b.sourceBindings, this.now()) ? JSON.stringify({ objective: b.objective, decisionIds: b.decisionIds, sourceIds: b.sourceIds, hypothesis: b.hypothesis, nextCheck: b.nextCheck, exclusions: b.exclusions }) : 'Brief evidence unavailable; contents withheld.', identity: digest(b) })),
-      ...this.store.pending(event.projectId).filter(p => p.expiresAt > this.now()).slice(0, 4).map(p => ({ id: `proposal:${p.id}`, kind: `proposed_${p.body.kind}`, label: `Unapproved v${p.version}; proposer ${p.proposerId}`, text: this.store.bindingsValid(event.projectId, p.sourceBindings, this.now()) ? (p.body.kind === 'decision' ? p.body.statement : p.body.objective) : 'Proposal evidence unavailable; contents withheld.', identity: digest(p) })),
-      ...sourceContext(this.store.sources(event.projectId), config, event.text, this.now()),
-    ];
-  }
+  context(event: RequestEvent, excludeRef?: string): ContextItem[] { return new MemoryVault(this.store, this.now).context(event, excludeRef); }
   async handle(e: RequestEvent, adapter: Adapter): Promise<void> {
     const config = this.store.config(e.projectId);
     if (!eligible(config, e) || !await adapter.canDeliver(e) || !this.store.claim(e, this.now())) return;
     const context = this.context(e); const configIdentity = digest(config); const contextIdentity = digest(context);
     let ownProposalId: string | undefined;
     const trace: Trace = { eventKey: this.store.eventKey(e), at: this.now(), result: 'started', mode: this.provider.mode, model: this.provider.model, prompt: this.provider.promptVersion ?? promptVersion, config: configIdentity, sources: context.map(x => x.id) };
-    const current = async () => eligible(this.store.config(e.projectId), e) && digest(this.store.config(e.projectId)) === configIdentity && digest(this.context(e).filter(c => c.id !== ownProposalId)) === contextIdentity && await adapter.canDeliver(e);
+    const current = async () => eligible(this.store.config(e.projectId), e) && digest(this.store.config(e.projectId)) === configIdentity && digest(this.context(e, ownProposalId)) === contextIdentity && await adapter.canDeliver(e);
     const send = async (text: string, proposal?: import('./domain.js').ProposalCard) => {
       if (!await current()) { trace.result = 'suppressed'; return; }
       try { await adapter.send(e, proposal ? { text, proposal } : { text }); trace.result = 'delivered'; }
