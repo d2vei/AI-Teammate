@@ -40,7 +40,7 @@ These checks use fake providers and temporary SQLite state. The complete offline
 
 The [documented usefulness cases](docs/USEFULNESS_TESTS.md) check focused source questions, correction recall, confirmed saved next steps and unavailable evidence. The current unit suite passes 222 cases; three targeted negative controls verify those tests reject removed fixes. Controlled replies check application behavior, not actual model quality or human usefulness.
 
-A fresh Windows dependency installation and all twelve offline-workflow commands passed on candidate `997e7e9` (209 tests), without vault access or credentials; see [the clean-install record](evidence/clean-install-997e7e9.json). The [hosted Ubuntu workflow](https://github.com/d2vei/AI-Teammate/actions/runs/40982673686) also passed its twelve offline commands on `53c594b`. Live interfaces and human evaluation remain separate checks.
+A fresh Windows dependency installation and all thirteen offline-workflow commands passed on candidate `c6089ec` (222 tests), without vault access or credentials; see [the clean-install record](evidence/clean-install-c6089ec.json). The earlier [hosted Ubuntu workflow](https://github.com/d2vei/AI-Teammate/actions/runs/40982673686) passed its twelve offline commands on `53c594b`; the current hosted result is separate. Live interfaces and human evaluation remain separate checks.
 
 ## Architecture
 

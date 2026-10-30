@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-30T04:12:03.424Z",
+  "status": "PASS_FULL_OFFLINE_WORKFLOW_WINDOWS_ONLY",
+  "candidate": "c6089eceec5db395a4e00a012738216c86a369e0",
+  "node": "v24.21.0",
+  "npm": "11.19.0",
+  "platform": "win32",
+  "arch": "x64",
+  "workflowSha256": "dc0bcb7f0810053d1a47eeaab5e1858a5a7e0a328611244ac4724888674f7bb8",
+  "lockSha256": "e205bca7c0eafca1a2bdfe325a4030a1d3475dd8d0ca16545b99889fecfc17d6",
+  "registry": "https://registry.npmjs.org",
+  "freshNodeModulesAndCache": true,
+  "installLifecycleScripts": "DISABLED",
+  "configurationIsolation": "Empty owned npm user/global configs, fresh isolated cache, OS-only child environment and process-scoped Git safe.directory. No credential or Node preload variables forwarded.",
+  "vaultAccess": false,
+  "modelCalls": 0,
+  "externalPosts": 0,
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "exitCode": 0,
+      "durationMs": 5799,
+      "timedOut": false,
+      "outputSha256": "f4d78074dbae9b75db657db5125d799e91cbf6a5e5fb2f4ae6a1305af9585b05"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationMs": 1288,
+      "timedOut": false,
+      "outputSha256": "0cec275afa5d3eb02315e671a855e48d6aab2e2f207caaeb744a220edbd463e3"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "durationMs": 9432,
+      "timedOut": false,
+      "outputSha256": "9625505ad3345ccd9ba7a9b403ce083bd1d7aeb48c951e4f9ed8a0a0c125fbc6"
+    },
+    {
+      "command": "npm run test:mutation",
+      "exitCode": 0,
+      "durationMs": 1142,
+      "timedOut": false,
+      "outputSha256": "39ae73c89bca731a4373f6fb925cd0b79e2dea828ef793a1387ea803de47ddfa"
+    },
+    {
+      "command": "npm run test:usefulness-mutation",
+      "exitCode": 0,
+      "durationMs": 2906,
+      "timedOut": false,
+      "outputSha256": "a490aa4a8efca7354a5f27504f086b28b203926d9f63accb4949e281323dec76"
+    },
+    {
+      "command": "npm run test:cli",
+      "exitCode": 0,
+      "durationMs": 9806,
+      "timedOut": false,
+      "outputSha256": "e3ead625423c8db8c518f17e3ebf1aef5c42a218ea0434352b0021f6a443ae00"
+    },
+    {
+      "command": "npm run demo:offline",
+      "exitCode": 0,
+      "durationMs": 1179,
+      "timedOut": false,
+      "outputSha256": "88804afe9b7e672ce100e3834fc141e8840c7c5df2cb57d5a1f8ec6b9c8ec943"
+    },
+    {
+      "command": "npm run eval:offline",
+      "exitCode": 0,
+      "durationMs": 1127,
+      "timedOut": false,
+      "outputSha256": "3fd662c9d2df7be0f9e0dcabc5ebfa2c5d334897fccc0838bb4a9900210f92ea"
+    },
+    {
+      "command": "npm run replay:offline",
+      "exitCode": 0,
+      "durationMs": 1250,
+      "timedOut": false,
+      "outputSha256": "1cd4011901a61503db7ae8724a296bf739751c6258330d4f4caa5fb7ba8fe1d9"
+    },
+    {
+      "command": "npm run test:participation-mutation",
+      "exitCode": 0,
+      "durationMs": 1115,
+      "timedOut": false,
+      "outputSha256": "f67b7c0db38e5b2e754adb06f03ae2e9be6b2a9c5012dab72a50264b3631d6c1"
+    },
+    {
+      "command": "npm run test:conversation",
+      "exitCode": 0,
+      "durationMs": 1622,
+      "timedOut": false,
+      "outputSha256": "6c7599181cac2a97ad56a4721ac13b0c86f77107235d205c3c67ec8467946141"
+    },
+    {
+      "command": "npm run test:live-terminal",
+      "exitCode": 0,
+      "durationMs": 1323,
+      "timedOut": false,
+      "outputSha256": "6174ebeb45a187daf9f8a0e6d9ca18c09197fbefb262d00d5f84766fe2a5020a"
+    },
+    {
+      "command": "npm run test:memory-terminal",
+      "exitCode": 0,
+      "durationMs": 1207,
+      "timedOut": false,
+      "outputSha256": "f5c7ce6624a76705beecb98e8201219b5bf6837273b10768a008f52d2e5ab6e4"
+    }
+  ],
+  "offlineTestsPassed": 222,
+  "offlineTestFilesPassed": 28,
+  "changedTrackedFilesInDisposableWorktree": [
+    "evidence/invocation-current-v2.json",
+    "evidence/local-conversation-v1.json",
+    "evidence/participation-mock-v1.json"
+  ],
+  "limitations": "All thirteen committed offline-CI commands on one Windows host, not hosted GitHub Actions or another OS. No vault, actual model/Discord, human evaluation, deployment or release certification. Active checkout and live charge ledger untouched; only three regenerated synthetic evidence records changed in the disposable worktree.",
+  "finishedAt": "2026-10-30T04:12:42.718Z",
+  "sourceReportSha256": "1923206ec6394b6483801b5ab9925348118695bff95ddfbb266d1449f2a56249"
+}

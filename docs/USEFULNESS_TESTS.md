@@ -30,3 +30,5 @@ Source selection remains lexical, with the existing category caps and a fallback
 The [negative controls](../scripts/usefulness-mutation.ts) remove focused source selection, citation availability validation, and recursive proposal provenance in three expendable copies. Each must fail its specific U01, U06 or U08 assertion. Parse errors or missing test reports do not count. Authoritative source and tests remain intact.
 
 The existing composed conversation test also verifies `/sources` includes the supplied media transcript. Both local wrappers deliberately browse with an empty retrieval query so their command wording does not hide evidence. These command checks remain simulated; Discord is deferred.
+
+Observed candidate `c6089ec`: 222 unit tests/28 files and all thirteen committed offline workflow commands pass from a fresh Windows dependency installation with no vault or credential environment. The three new negative controls each fail their intended assertion in an expendable copy. See [the exact command record](../evidence/clean-install-c6089ec.json). No additional Meta call or human rating was made.
