@@ -38,7 +38,7 @@ npm run demo:offline
 
 These checks use fake providers and temporary SQLite state. The complete offline workflow is defined in [the CI file](.github/workflows/offline.yml); [development commands](docs/DEVELOPMENT.md) include the separate mutation and replay checks. Native media-codec checks are optional and require the tools documented in [CODECS.md](docs/CODECS.md).
 
-A fresh Windows dependency installation and all twelve offline-workflow commands passed on candidate `997e7e9` (209 tests), without vault access or credentials; see [the clean-install record](evidence/clean-install-997e7e9.json). Other platforms and hosted CI are separate checks.
+A fresh Windows dependency installation and all twelve offline-workflow commands passed on candidate `997e7e9` (209 tests), without vault access or credentials; see [the clean-install record](evidence/clean-install-997e7e9.json). The [hosted Ubuntu workflow](https://github.com/d2vei/AI-Teammate/actions/runs/40982673686) also passed its twelve offline commands on `53c594b`. Live interfaces and human evaluation remain separate checks.
 
 ## Architecture
 

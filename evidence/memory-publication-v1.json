@@ -1,0 +1,134 @@
+{
+  "atUtc": "2026-10-30T00:55:43.081Z",
+  "commits": [
+    {
+      "sha": "997e7e94b2d8ba38c4157c14fe440b212423877b",
+      "gitAuthorName": "Davi",
+      "authorLogin": "d2vei",
+      "committerLogin": "d2vei",
+      "noreplyAddress": true
+    },
+    {
+      "sha": "53c594ba26086aaf90cc45ffebdd1e72668347a7",
+      "gitAuthorName": "Davi",
+      "authorLogin": "d2vei",
+      "committerLogin": "d2vei",
+      "noreplyAddress": true
+    }
+  ],
+  "workflow": {
+    "id": 40982673686,
+    "headSha": "53c594ba26086aaf90cc45ffebdd1e72668347a7",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/d2vei/AI-Teammate/actions/runs/40982673686"
+  },
+  "verifiedAtUtc": "2026-10-30T00:59:29.473Z",
+  "status": "PASS_PUBLIC_AUTHOR_AND_HOSTED_OFFLINE_WORKFLOW",
+  "anonymous": true,
+  "jobs": [
+    {
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run typecheck",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mutation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:cli",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run demo:offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run eval:offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run replay:offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:participation-mutation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:conversation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:live-terminal",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:memory-terminal",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "npmStepsPassed": 12,
+  "rawLogsExported": false,
+  "limitations": "GitHub associates these commits with d2vei; this is not a cryptographic signing claim. Hosted offline CI only, no human/group/Meta quality inference."
+}
