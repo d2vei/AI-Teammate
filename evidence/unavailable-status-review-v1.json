@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-31T02:08:03.921998+00:00",
+  "candidate": "4c5e19121f59bc3bb1bb1a8585f89bc90e1c89e3",
+  "status": "COMPLETED_AGENT_REVIEW",
+  "reviewer": "Coding agent, not human participants or independent evaluator",
+  "privateCaptureSha256": "dc6763e40e8235e2712d419a051b7159f6f3e51ec9967c26a2437c1a55b7ff1d",
+  "preRunCriteriaSha256": "0dea79ad979265d89461331428d1b59607a7ca0eba255d4d9d1c04d75350f490",
+  "counts": {
+    "USEFUL": 3,
+    "PARTIAL": 0,
+    "FAIL": 0
+  },
+  "results": [
+    {
+      "id": "R1",
+      "judgment": "USEFUL",
+      "reason": "Declines to confirm completion, distinguishes saving from execution and states that investigation contents are unavailable; no unavailable citation."
+    },
+    {
+      "id": "R2",
+      "judgment": "USEFUL",
+      "reason": "Explains acceptance as saving only and makes the execution limitation specific to this app; no unavailable citation."
+    },
+    {
+      "id": "R3",
+      "judgment": "USEFUL",
+      "reason": "Recalls the approved 8 MB ceiling with its available decision citation, states source and completion uncertainty and suggests checking current upload handling against that ceiling."
+    }
+  ],
+  "limitations": [
+    "Three fresh synthetic cases only; not a rerun or regrade of the original ninety-turn scenario.",
+    "Agent assessment is not independent or human evaluation.",
+    "R3 next step is practical but remains broad; no claim of a completed repair."
+  ],
+  "incrementUsd": 0.020845,
+  "cumulativeUsedOrReservedUsd": 2.541132,
+  "humanRatings": "NOT_RUN",
+  "rawAnswersOrInputsExported": false
+}

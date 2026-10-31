@@ -89,3 +89,9 @@ Thirteen actual answers were delivered. One response had null output at 2048 rep
 Cost USD 0.106173; cumulative 457 attempts/USD 2.520287, including unchanged two uncertain rows/USD 0.000550. See [run metadata](../evidence/long-conversation-live-v1.json) and [agent review](../evidence/long-conversation-review-v1.json). Raw answers and a readable private report remain ignored. The original manual review page is untouched.
 
 A bounded prompt/context-label correction follows the observed unavailable-citation failures, with a separately defined three-question upload-source regression. The old run is preserved; a later regression result cannot replace it. The [video plan](VIDEO_PLAN.md) uses the actual results and labels local simulation explicitly.
+
+## 31 October: distinct unavailable-status regression
+
+On exact clean candidate `4c5e19121f59bc3bb1bb1a8585f89bc90e1c89e3`, `npm.cmd run test:unavailable-status-live` made three real Meta requests through the fixed native-vault child, without retries. All three delivered; agent review against the prewritten criteria judged all three useful: completion unverified, save-only capabilities, and the available approved 8 MB limit plus missing-source uncertainty. No unavailable citation or repair claim appeared. This does not regrade the original 90-turn failures. Seeded actors/approvals and evidence are synthetic; human ratings NOT_RUN.
+
+Cost USD 0.020845; combined new long/regression trials USD 0.127018. Shared ledger: 460 attempts, USD 2.541132 used/reserved, including two prior uncertain reservations/USD 0.000550. Owned test scope purged, charges retained. Public [run](../evidence/unavailable-status-live-v1.json) and [review](../evidence/unavailable-status-review-v1.json) contain metadata/reasons only; actual answers remain in ignored local storage.
