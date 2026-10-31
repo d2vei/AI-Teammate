@@ -44,6 +44,7 @@
     "test:live-terminal": "npm run build && node scripts/check-live-terminal.mjs",
     "test:memory-terminal": "npm run build && node scripts/check-memory-terminal.mjs",
     "test:memory-live": "node scripts/infisical.mjs memory-live",
+    "test:long-conversation-live": "node scripts/infisical.mjs long-conversation-live",
     "test:live-terminal-service": "node scripts/check-live-terminal-service.mjs",
     "replay:offline": "npm run build && node scripts/participation-replay.mjs",
     "test:participation-mutation": "node scripts/participation-mutation.ts",

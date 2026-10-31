@@ -1,5 +1,14 @@
 # Work log
 
+## 2026-10-31 - longer conversation checks and video planning
+
+- Owner requested video planning and longer multi-person tests of answer quality. Base 54ec1a8, clean checkout. Discord remains deferred; asked whether simulated roles or real volunteers are intended, while preparing a clearly labelled four-role synthetic run. Existing human review is still in progress and is not replaced by agent judgments.
+- Added a three-minute capture/shot/caption plan in VIDEO_PLAN.md using the real local Meta terminal, a newly approved decision, source-grounded investigation, saved brief and later recall. Results-card values must come from actual reports; no fabricated UI/response, real-user claim or recorded-video claim.
+- Authored a separate ninety-turn conversation: seventy-two ambient messages, eighteen explicit requests, four normalized simulated actors, seven approval/withdrawal/reopen/removal controls and final outsider/room/pause probes. Prewritten rubric is a separate file, never provider input. Actual ambient-message memory is absent by current design; one case explicitly tests honest missing recall and will not be counted as a completed user task merely for being safe.
+- Read-only shared-ledger metadata before dispatch: 440 attempts, USD 2.414114 used/reserved, two uncertain rows/USD 0.000550. Current official Meta model/pricing pages confirm the unchanged Standard Muse Spark 1.3 accounting rates. New fixed live route allows at most eighteen response attempts and USD 0.50 additional reservations within the existing cumulative USD 5 cap, with no retries, plaintext export or agent injection. Only its owned synthetic project is purged; existing captures/state/charges preserved.
+- npm.cmd run typecheck PASS; npm.cmd test -- tests/long-conversation.test.mjs tests/vault.test.mjs --reporter=dot PASS, eighteen tests across two files. Three new offline checks cover ninety-turn state/role behavior, grader/chatter exclusion and failure preservation without fabricated approvals. Real model run and answer quality remain NOT_RUN at this preparation stage.
+- npm.cmd run build and node --check scripts/long-conversation-live.mjs PASS. Full npm.cmd test run PASS: 225 tests/29 files. No product runtime/prompt change, dependency change or original evaluation rerun. The new fixed runner and corpus will be committed before dispatch; full candidate/file identities are captured with the first live attempt.
+
 Record actual work in the target repository. Preparation of this packet is not a run of the application. Preserve prior truthful entries; do not fabricate commit dates.
 
 ## Entry template

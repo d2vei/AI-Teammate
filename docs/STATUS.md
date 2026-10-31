@@ -1,5 +1,7 @@
 # Implementation status
 
+31 October work in progress: owner requested a showcase-video plan and longer multi-person answer checks. [VIDEO_PLAN.md](VIDEO_PLAN.md) is prepared; the new [ninety-turn synthetic group check](../evals/long-conversation-v1/README.md) has four simulated roles and eighteen explicit requests. Its paid run/agent answer review are NOT_RUN until recorded. Human review remains in progress; its existing form is untouched.
+
 Updated 2026-10-30. Evidence is software/mock unless explicitly marked live. The owner saved the key; names-only Infisical injection and the first real Meta smoke now PASS. Current documentation/usefulness checks are offline with no additional paid request. Discord remains deferred.
 
 | Area | Observed status |

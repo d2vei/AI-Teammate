@@ -1,5 +1,7 @@
 # Three-minute demo and release
 
+31 October owner request: the current shot list, captions, capture order and results-card rules are in [VIDEO_PLAN.md](VIDEO_PLAN.md). This is preparation for a local prototype showcase; it does not claim the required real group demonstration or final recording has happened.
+
 This storyboard reflects the reduced addendum scope. No autonomous testing or repair is implied. Record the actual candidate and label seeded cases and time cuts.
 
 | Time | Show |
