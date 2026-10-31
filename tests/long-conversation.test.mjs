@@ -41,7 +41,7 @@ it('replays 90 turns across four roles, 18 explicit requests, correction, actual
   const afterRestart = x.inputs[10].context.filter(c => c.kind === 'approved_decision');
   expect(afterRestart.some(c => c.text.includes('eighty'))).toBe(true); expect(afterRestart.some(c => c.text.includes('sixty'))).toBe(false);
   expect(x.inputs[13].context.some(c => c.kind === 'missing_evidence')).toBe(true); expect(JSON.stringify(x.inputs[13])).not.toContain('members.map');
-  expect(x.inputs[14].context.find(c => c.kind === 'saved_brief').text).toContain('withheld');
+  expect(x.inputs[14].context.find(c => c.id.startsWith('brief:')).text).toContain('withheld');
   expect(x.state.store.config(longProject).paused).toBe(true); expect(x.state.store.budgetUsed()).toBe(0);
 });
 it('never supplies ambient chatter, actor display names, rubric or expected answers as model context', async () => {

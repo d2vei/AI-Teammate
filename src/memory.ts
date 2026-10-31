@@ -25,11 +25,11 @@ export class MemoryVault {
     }
     for (const b of this.store.memoryBriefs(event.projectId)) {
       const available = valid(b.sourceBindings);
-      entries.push({ id: `brief:${b.id}`, kind: 'saved_brief', label: `Brief saved, not executed; approved by ${b.approverId}; snapshot ${b.snapshot ?? 'none'} (may be older than selection)`, text: available ? JSON.stringify({ objective: b.objective, decisionIds: b.decisionIds, sourceIds: b.sourceIds, hypothesis: b.hypothesis, nextCheck: b.nextCheck, exclusions: b.exclusions }) : 'Brief evidence unavailable; contents withheld.', identity: digest(b), category: 'briefs', available, recordedAt: b.savedAt, topics: [] });
+      entries.push({ id: `brief:${b.id}`, kind: available ? 'saved_brief' : 'missing_evidence', label: `Brief saved, not executed by this app; approved by ${b.approverId}; snapshot ${b.snapshot ?? 'none'} (may be older than selection)`, text: available ? JSON.stringify({ objective: b.objective, decisionIds: b.decisionIds, sourceIds: b.sourceIds, hypothesis: b.hypothesis, nextCheck: b.nextCheck, exclusions: b.exclusions }) : 'Brief evidence unavailable; contents withheld.', identity: digest(b), category: 'briefs', available, recordedAt: b.savedAt, topics: [] });
     }
     for (const p of this.store.pending(event.projectId).filter(p => p.expiresAt > now)) {
       const available = valid(p.sourceBindings);
-      entries.push({ id: `proposal:${p.id}`, kind: `proposed_${p.body.kind}`, label: `Unapproved v${p.version}; proposer ${p.proposerId}`, text: available ? (p.body.kind === 'decision' ? p.body.statement : p.body.objective) : 'Proposal evidence unavailable; contents withheld.', identity: digest(p), category: 'proposals', available, recordedAt: p.createdAt, topics: [] });
+      entries.push({ id: `proposal:${p.id}`, kind: available ? `proposed_${p.body.kind}` : 'missing_evidence', label: `Unapproved v${p.version}; proposer ${p.proposerId}`, text: available ? (p.body.kind === 'decision' ? p.body.statement : p.body.objective) : 'Proposal evidence unavailable; contents withheld.', identity: digest(p), category: 'proposals', available, recordedAt: p.createdAt, topics: [] });
     }
     const sources = this.store.sources(event.projectId);
     for (const c of sourceContext(sources, config, '', now, sources.length || 1)) entries.push({ ...c, category: 'evidence', available: c.kind !== 'missing_evidence', recordedAt: sources.find(s => s.id === c.id)?.observedAt ?? null, topics: [] });

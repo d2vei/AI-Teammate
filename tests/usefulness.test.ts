@@ -99,4 +99,12 @@ describe('documented useful teammate journeys (OFFLINE, controlled model)', () =
     ingestBundle(store, 'p', { snapshot: 'usefulness-v1', synthetic: true, files, logs: [] }, clock); const adapter = new FakeAdapter(); await core.handle({ ...owner, text: 'Compare the synthetic files.' }, adapter);
     expect(provider.calls).toEqual([]); expect(adapter.deliveries[0]?.text).toContain('Narrow the question'); expect(store.traces().at(-1)?.outcome).toBe('context_too_large'); expect(store.budgetUsed()).toBe(0);
   });
+  it('U12 labels withheld saved and pending records as missing evidence while allowing an uncited limitation answer', async () => {
+    const ids = evidence(); const card = store.propose(owner, brief(ids), core.context(owner), clock); const saved = store.accept(owner, card.buttonId, clock);
+    const pending = store.propose(owner, { kind: 'decision', statement: 'A source-dependent suggestion.', sourceIds: ids }, core.context(owner), clock);
+    store.sourceState('p', ids[0]!, 'deleted'); const context = core.context(owner);
+    for (const id of [`brief:${saved.id}`, `proposal:${pending.proposal.id}`]) expect(context.find(c => c.id === id)?.kind).toBe('missing_evidence');
+    provider.output = { answer: 'The supporting evidence is unavailable. Completion outside this app cannot be verified.', citations: [] };
+    const adapter = new FakeAdapter(); await core.handle(owner, adapter); expect(store.traces().at(-1)?.outcome).toBe('response'); expect(adapter.deliveries[0]?.text).toContain('cannot be verified');
+  });
 });

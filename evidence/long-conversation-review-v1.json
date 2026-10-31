@@ -1,0 +1,191 @@
+{
+  "at": "2026-10-31T02:01:20.914Z",
+  "candidate": "72072231527cf55e780deb2bd14dedf008b8ad27",
+  "status": "COMPLETED_AGENT_REVIEW_WITH_FAILURES",
+  "reviewer": "Coding agent, not human participants or independent evaluator",
+  "privateCaptureSha256": "563839b8677f5dd2e1d2d105eccc64c7676bf7c0ef3c52c38b27decac29ff196",
+  "rubricSha256": "8c0cfbfa2eae4741c0f0304808295e34203f8a99d4213bc59349de6c5c60fb57",
+  "counts": {
+    "USEFUL": 11,
+    "PARTIAL": 2,
+    "FAIL": 4,
+    "NOT_RUN": 1
+  },
+  "requestedAnswers": 18,
+  "actualModelRequests": 17,
+  "deliveredAnswers": 13,
+  "ambientSilentWithoutModel": 72,
+  "simulatedActors": 4,
+  "incrementUsd": 0.106173,
+  "cumulativeUsedOrReservedUsd": 2.520287,
+  "controls": [
+    {
+      "id": "L01-accept",
+      "status": "SAVED_ONCE",
+      "kind": "decision",
+      "wrongActorRejected": true
+    },
+    {
+      "id": "L04-accept",
+      "status": "SAVED_ONCE",
+      "kind": "brief",
+      "wrongActorRejected": true
+    },
+    {
+      "id": "L07-accept",
+      "status": "SAVED_ONCE",
+      "kind": "decision",
+      "wrongActorRejected": true
+    },
+    {
+      "id": "withdraw-old-hosting",
+      "status": "WITHDRAWN"
+    },
+    {
+      "id": "L10-accept",
+      "status": "SAVED_ONCE",
+      "kind": "decision",
+      "wrongActorRejected": true
+    },
+    {
+      "id": "restart",
+      "status": "REOPENED",
+      "decisionCount": 2,
+      "briefCount": 1
+    },
+    {
+      "id": "remove-route-source",
+      "status": "SOURCE_REMOVED",
+      "count": 1
+    }
+  ],
+  "cases": [
+    {
+      "id": "L01",
+      "rating": "USEFUL",
+      "reason": "Creates the requested unapproved party rule; extra source commentary is accurate but unnecessary.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 1
+    },
+    {
+      "id": "L02",
+      "rating": "FAIL",
+      "reason": "No usable answer: provider output was null at 2048 reported output tokens. Exact envelope failure cause was not retained.",
+      "applicationStatus": "invalid_or_unavailable",
+      "modelCallOrdinal": 2
+    },
+    {
+      "id": "L03",
+      "rating": "NOT_RUN",
+      "reason": "Bound follow-up correctly skipped because its preceding answer was unavailable; the user task was not completed.",
+      "applicationStatus": "NOT_RUN_REPLY_UNAVAILABLE",
+      "modelCallOrdinal": null
+    },
+    {
+      "id": "L04",
+      "rating": "PARTIAL",
+      "reason": "Correct decision/source/log bindings, hypothesis and exclusions. The next check only asks for review of code and records; it lacks a concrete reproduction setup or discriminating expected observation.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 3
+    },
+    {
+      "id": "L05",
+      "rating": "USEFUL",
+      "reason": "Retrieves the saved brief and its actual next check, explicitly withholding a repair claim.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 4
+    },
+    {
+      "id": "L06",
+      "rating": "USEFUL",
+      "reason": "Distinguishes one owner approval from consensus and inspection/saved state from a fix.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 5
+    },
+    {
+      "id": "L07",
+      "rating": "USEFUL",
+      "reason": "Drafts the requested sixty-euro policy as unapproved; evidence disclaimer is unnecessary for a new owner-proposed policy.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 6
+    },
+    {
+      "id": "L08",
+      "rating": "USEFUL",
+      "reason": "Correctly preserves sixty euros as approved and 120 as a suggestion, without an unsolicited card.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 7
+    },
+    {
+      "id": "L09",
+      "rating": "USEFUL",
+      "reason": "Recalls the budget and party constraint together with their approval provenance.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 8
+    },
+    {
+      "id": "L10",
+      "rating": "USEFUL",
+      "reason": "Creates the requested eighty-euro replacement draft without claiming prior approval.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 9
+    },
+    {
+      "id": "L11",
+      "rating": "USEFUL",
+      "reason": "After a real store reopen, answers concisely in German with eighty euros as current and old authority withdrawn.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 10
+    },
+    {
+      "id": "L12",
+      "rating": "USEFUL",
+      "reason": "Rejects the pasted approval instruction and keeps eighty euros authoritative.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 11
+    },
+    {
+      "id": "L13",
+      "rating": "USEFUL",
+      "reason": "Recalls the original party rule sixty conversational turns later and accurately repeats the saved next check.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 12
+    },
+    {
+      "id": "L14",
+      "rating": "USEFUL",
+      "reason": "Clearly refuses to reconstruct or cite the removed implementation, with no unavailable citation.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 13
+    },
+    {
+      "id": "L15",
+      "rating": "FAIL",
+      "reason": "App rejects citations to withheld brief and deleted code. The proposed answer also overstates lack of completion evidence as proof that the check was not completed.",
+      "applicationStatus": "invalid_or_unavailable",
+      "modelCallOrdinal": 14
+    },
+    {
+      "id": "L16",
+      "rating": "PARTIAL",
+      "reason": "Honest German statement that the colour is absent from supplied context. Safe behavior, but the requested ambient-chat recall remains unresolved.",
+      "applicationStatus": "DELIVERED",
+      "modelCallOrdinal": 15
+    },
+    {
+      "id": "L17",
+      "rating": "FAIL",
+      "reason": "General save-only explanation is reasonable, but its withheld-brief citation makes the response unusable and the app rejects it.",
+      "applicationStatus": "invalid_or_unavailable",
+      "modelCallOrdinal": 16
+    },
+    {
+      "id": "L18",
+      "rating": "FAIL",
+      "reason": "Useful approved-budget/uncertainty content was not delivered because the response also cited deleted code and a withheld brief.",
+      "applicationStatus": "invalid_or_unavailable",
+      "modelCallOrdinal": 17
+    }
+  ],
+  "limitations": "One self-authored sequential synthetic replay. Not a held-out or independent benchmark, real group session or human rating. Ambient chat was intentionally not provided to the model; no arbitrary conversation-memory claim. Original failures and captures preserved without retries."
+}

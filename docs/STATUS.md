@@ -1,6 +1,6 @@
 # Implementation status
 
-31 October work in progress: owner requested a showcase-video plan and longer multi-person answer checks. [VIDEO_PLAN.md](VIDEO_PLAN.md) is prepared; the new [ninety-turn synthetic group check](../evals/long-conversation-v1/README.md) has four simulated roles and eighteen explicit requests. Its paid run/agent answer review are NOT_RUN until recorded. Human review remains in progress; its existing form is untouched.
+31 October: [VIDEO_PLAN.md](VIDEO_PLAN.md) is prepared. The [ninety-turn synthetic group check](../evals/long-conversation-v1/README.md) ran with four simulated roles and seventeen actual Meta calls: thirteen answers delivered, four rejected, one dependent question skipped. Agent review: eleven useful, two partial, four failed, one not run; not human feedback. Cost USD 0.106173; cumulative 457 attempts/USD 2.520287. A scoped prompt/context-label correction and three fresh unavailable-status regression questions are prepared; that new live regression is NOT_RUN until recorded. Existing human review/form stays untouched.
 
 Updated 2026-10-30. Evidence is software/mock unless explicitly marked live. The owner saved the key; names-only Infisical injection and the first real Meta smoke now PASS. Current documentation/usefulness checks are offline with no additional paid request. Discord remains deferred.
 

@@ -9,7 +9,7 @@ npm test -- tests/usefulness.test.ts
 npm run test:usefulness-mutation
 ```
 
-The [test bodies](../tests/usefulness.test.ts) exercise the shared core and actual temporary SQLite state, with a fake adapter and controlled model. U05 has three variants, making thirteen added test cases. Existing tests still cover access, pause, budget, restart and other boundaries.
+The [test bodies](../tests/usefulness.test.ts) exercise the shared core and actual temporary SQLite state, with a fake adapter and controlled model. U05 has three variants; the later U12 regression brings this file to fourteen cases. Existing tests still cover access, pause, budget, restart and other boundaries.
 
 | Case | Documented contract | Useful observable outcome / rejected failure |
 |---|---|---|
@@ -24,6 +24,7 @@ The [test bodies](../tests/usefulness.test.ts) exercise the shared core and actu
 | U09 | Memory guide: exact references and unavailable status | Looking up an exact removed ID returns that reference before unrelated available hits, with unavailable status and without its removed text. |
 | U10 | Plan section 6: current selected source IDs | A legitimate newest log remains citable after 120 retained source rows. Validation does not incorrectly inspect only the first 100 rows. |
 | U11 | Plan section 6: bounded context; API-02 | A genuinely oversized relevant selection still asks the member to narrow it, with no provider dispatch or charge. U01 does not relax the 24 KB limit. |
+| U12 | SOURCE-01; uncertainty after source removal | Withheld brief/proposal context is typed missing evidence, while an honest uncited limitation answer remains deliverable. No citation gate is relaxed. |
 
 Source selection remains lexical, with the existing category caps and a fallback when nothing matches. It is not embedding search, summarization, or an assurance that every important source is found. An exact unavailable lookup reports status, not current factual support. Citation availability checks do not establish entailment or catch every unsupported claim in citation-free prose.
 

@@ -1,0 +1,1102 @@
+{
+  "at": "2026-10-31T01:55:05.626Z",
+  "status": "COMPLETED_WITH_FAILURES_QUALITY_UNRATED",
+  "candidate": "72072231527cf55e780deb2bd14dedf008b8ad27",
+  "files": [
+    {
+      "path": "src/core.ts",
+      "sha256": "6f938bb774aaa2b116065deec2dc8c3e0d783a7051bf20bff1529c87c70aece3"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "714014fbd66eba51ad1c22da305de599de2535c0726cb0db12da6896eb5619d3"
+    },
+    {
+      "path": "src/memory.ts",
+      "sha256": "3457bb15cb450013e2c91310ba77a9b32a240cc1954aec297d1bd2a3549044aa"
+    },
+    {
+      "path": "src/domain.ts",
+      "sha256": "b2dac65da9c599fccdbc8e8165c5606ef5f5a06356e1d46914bfd8a90e05ef88"
+    },
+    {
+      "path": "src/meta.ts",
+      "sha256": "47b0f35c74bbf09f127f76da924b726fec05353d4246f35e59a24420a8b95840"
+    },
+    {
+      "path": "src/meta-runtime.ts",
+      "sha256": "e17aec736e03cda00053ad1adb05493f090ae8dbfc3b98edff6f95d3ab51b430"
+    },
+    {
+      "path": "src/sources.ts",
+      "sha256": "0197aee64c0aac3baada8cc0a33cb7b65c3071f73927ba045215af5e2bad13fd"
+    },
+    {
+      "path": "prompts/response.md",
+      "sha256": "75bb4b10c7618cef5fcc19a0c7b4f3cf544bf893f503516b9a0d1c1dcb7b028f"
+    },
+    {
+      "path": "scripts/long-conversation-lib.mjs",
+      "sha256": "472bef82bf3756c200b9dea119dd933cb81df83a9d389dcd3fb9794802cc34d3"
+    },
+    {
+      "path": "scripts/long-conversation-live.mjs",
+      "sha256": "55a107c3c4eb6e7544e0c250fab1b8c70740eecc977316f39b7452261d8b44bd"
+    },
+    {
+      "path": "scripts/vault-child.mjs",
+      "sha256": "8053e91d8d4b2741d9abd71cc51409e374b4d89ad3e5c56bc30c552c3ce0da1e"
+    },
+    {
+      "path": "scripts/vault-lib.mjs",
+      "sha256": "1bb3ebe8fcc91e5cc878ace77e0a72481bafca59ed6ed44d380bc936c452a603"
+    },
+    {
+      "path": "evals/long-conversation-v1/conversation.json",
+      "sha256": "88d4d5e9182d980f09d4522a84a8e0ad658413ee30b10b61c8306639c556cfc5"
+    },
+    {
+      "path": "evals/long-conversation-v1/rubric.json",
+      "sha256": "8c0cfbfa2eae4741c0f0304808295e34203f8a99d4213bc59349de6c5c60fb57"
+    },
+    {
+      "path": "dist/core.js",
+      "sha256": "3f50a9fbd3dd3a66bcb95ea9880dfb006c95afa8f062f6c2d2045f3255008dda"
+    },
+    {
+      "path": "dist/store.js",
+      "sha256": "60e95de436c25fdcb5a9c42913f9acc095430e38e62ddda6b8d2f4cd9baeb853"
+    },
+    {
+      "path": "dist/memory.js",
+      "sha256": "a4bd19d2051dd295d13df29893f6afe47d66a6a159d0fa90f531aeee685369fa"
+    },
+    {
+      "path": "dist/meta.js",
+      "sha256": "0fb2b45b578d0795669ad92a79d3c7e85b12b2c36c742fd02a9cd226c1d6095b"
+    }
+  ],
+  "corpusSha256": "88d4d5e9182d980f09d4522a84a8e0ad658413ee30b10b61c8306639c556cfc5",
+  "budgetBeforeUsd": 2.414114,
+  "runCeilingUsd": 2.914114,
+  "maximumAdditionalUsd": 0.5,
+  "maximumInferenceAttempts": 18,
+  "chargeRowsBefore": 440,
+  "ownScopePurged": true,
+  "humanRatings": "NOT_RUN",
+  "externalPosts": 0,
+  "result": {
+    "turns": [
+      {
+        "id": "chat-1",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-2",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-3",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-4",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L01",
+        "actor": "owner",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 7923,
+        "proposalKind": "decision",
+        "usage": {
+          "inputTokens": 771,
+          "outputTokens": 1319
+        }
+      },
+      {
+        "id": "chat-5",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-6",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-7",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-8",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L02",
+        "actor": "qa",
+        "type": "ask",
+        "status": "invalid_or_unavailable",
+        "modelCalls": 1,
+        "latencyMs": 13076,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 882,
+          "outputTokens": 2048
+        }
+      },
+      {
+        "id": "chat-9",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-10",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-11",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-12",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L03",
+        "actor": "developer",
+        "type": "reply",
+        "status": "NOT_RUN_REPLY_UNAVAILABLE",
+        "modelCalls": 0
+      },
+      {
+        "id": "chat-13",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-14",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-15",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-16",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L04",
+        "actor": "designer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 8920,
+        "proposalKind": "brief",
+        "usage": {
+          "inputTokens": 885,
+          "outputTokens": 1713
+        }
+      },
+      {
+        "id": "chat-17",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-18",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-19",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-20",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L05",
+        "actor": "qa",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 8708,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1123,
+          "outputTokens": 1599
+        }
+      },
+      {
+        "id": "chat-21",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-22",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-23",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-24",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L06",
+        "actor": "designer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 5644,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1114,
+          "outputTokens": 1240
+        }
+      },
+      {
+        "id": "chat-25",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-26",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-27",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-28",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L07",
+        "actor": "owner",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 5975,
+        "proposalKind": "decision",
+        "usage": {
+          "inputTokens": 1114,
+          "outputTokens": 892
+        }
+      },
+      {
+        "id": "chat-29",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-30",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-31",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-32",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L08",
+        "actor": "designer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 4377,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1229,
+          "outputTokens": 546
+        }
+      },
+      {
+        "id": "chat-33",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-34",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-35",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-36",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L09",
+        "actor": "developer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 4589,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1215,
+          "outputTokens": 847
+        }
+      },
+      {
+        "id": "chat-37",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-38",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-39",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-40",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L10",
+        "actor": "owner",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 4452,
+        "proposalKind": "decision",
+        "usage": {
+          "inputTokens": 1115,
+          "outputTokens": 1160
+        }
+      },
+      {
+        "id": "chat-41",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-42",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-43",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-44",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L11",
+        "actor": "qa",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 5256,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1230,
+          "outputTokens": 691
+        }
+      },
+      {
+        "id": "chat-45",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-46",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-47",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-48",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L12",
+        "actor": "designer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 4334,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1234,
+          "outputTokens": 860
+        }
+      },
+      {
+        "id": "chat-49",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-50",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-51",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-52",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L13",
+        "actor": "developer",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 3784,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1227,
+          "outputTokens": 711
+        }
+      },
+      {
+        "id": "chat-53",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-54",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-55",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-56",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L14",
+        "actor": "qa",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 5867,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1059,
+          "outputTokens": 981
+        }
+      },
+      {
+        "id": "chat-57",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-58",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-59",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-60",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L15",
+        "actor": "designer",
+        "type": "ask",
+        "status": "invalid_or_unavailable",
+        "modelCalls": 1,
+        "latencyMs": 6261,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 910,
+          "outputTokens": 1276
+        }
+      },
+      {
+        "id": "chat-61",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-62",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-63",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-64",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 1,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L16",
+        "actor": "qa",
+        "type": "ask",
+        "status": "DELIVERED",
+        "modelCalls": 1,
+        "latencyMs": 4970,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1047,
+          "outputTokens": 872
+        }
+      },
+      {
+        "id": "chat-65",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-66",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-67",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-68",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L17",
+        "actor": "owner",
+        "type": "ask",
+        "status": "invalid_or_unavailable",
+        "modelCalls": 1,
+        "latencyMs": 6045,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 953,
+          "outputTokens": 992
+        }
+      },
+      {
+        "id": "chat-69",
+        "actor": "qa",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-70",
+        "actor": "designer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-71",
+        "actor": "owner",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "chat-72",
+        "actor": "developer",
+        "type": "ambient",
+        "status": "SILENT",
+        "modelCalls": 0,
+        "latencyMs": 0,
+        "proposalKind": null,
+        "usage": null
+      },
+      {
+        "id": "L18",
+        "actor": "developer",
+        "type": "ask",
+        "status": "invalid_or_unavailable",
+        "modelCalls": 1,
+        "latencyMs": 9811,
+        "proposalKind": null,
+        "usage": {
+          "inputTokens": 1065,
+          "outputTokens": 1888
+        }
+      }
+    ],
+    "controls": [
+      {
+        "id": "L01-accept",
+        "status": "SAVED_ONCE",
+        "kind": "decision",
+        "wrongActorRejected": true
+      },
+      {
+        "id": "L04-accept",
+        "status": "SAVED_ONCE",
+        "kind": "brief",
+        "wrongActorRejected": true
+      },
+      {
+        "id": "L07-accept",
+        "status": "SAVED_ONCE",
+        "kind": "decision",
+        "wrongActorRejected": true
+      },
+      {
+        "id": "withdraw-old-hosting",
+        "status": "WITHDRAWN"
+      },
+      {
+        "id": "L10-accept",
+        "status": "SAVED_ONCE",
+        "kind": "decision",
+        "wrongActorRejected": true
+      },
+      {
+        "id": "restart",
+        "status": "REOPENED",
+        "decisionCount": 2,
+        "briefCount": 1
+      },
+      {
+        "id": "remove-route-source",
+        "status": "SOURCE_REMOVED",
+        "count": 1
+      }
+    ],
+    "actorCount": 4,
+    "conversationalTurns": 90,
+    "ambientTurns": 72,
+    "explicitRequests": 18,
+    "scopeAndPauseProbes": 3,
+    "finalDecisionCount": 2,
+    "finalBriefCount": 1,
+    "identityKind": "Simulated normalized actors; no platform authentication",
+    "conversationHistoryPolicy": "Ambient chat is neither stored nor supplied; approved/saved records and selected bound reply only"
+  },
+  "budgetAfterUsd": 2.520287,
+  "incrementUsd": 0.106173,
+  "chargeRowsAfter": 457,
+  "uncertain": {
+    "rows": 2,
+    "usd": 0.00055
+  },
+  "actualInferenceAttempts": 17,
+  "finishedAt": "2026-10-31T01:56:56.770Z",
+  "privateArtifactSha256": "563839b8677f5dd2e1d2d105eccc64c7676bf7c0ef3c52c38b27decac29ff196",
+  "rawAnswersOrInputsExported": false,
+  "limitations": "Four simulated participants, 90 authored conversational turns, sequential replay and local SQLite. Ambient messages do not enter model context. Schema/citation validity and gate checks are not answer-quality or real-human evidence. Original frozen studies/manual form unchanged."
+}
