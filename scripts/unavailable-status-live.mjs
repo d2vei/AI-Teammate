@@ -37,7 +37,7 @@ async function run() {
     store.sourceState(project, ids[0], 'deleted');
     for (let i = 0; i < questions.length; i++) {
       const e = { ...event, id: `regression-question-${i + 1}`, actor: { id: 'synthetic-peer', roleIds: [] }, text: questions[i] }; const adapter = new FakeAdapter(); const started = Date.now();
-      await core.handle(e, adapter); const trace = store.traces().at(-1); record.results.push({ id: `R${i + 1}`, outcome: trace?.outcome, delivery: trace?.result, usage: trace?.usage ?? null, latencyMs: Date.now() - started });
+      await core.handle(e, adapter); const trace = store.traces().at(-1); record.results.push({ id: `R${i + 1}`, outcome: trace?.outcome, delivery: trace?.result, usage: trace?.usage ?? null, providerDiagnostics: trace?.providerDiagnostics ?? null, latencyMs: Date.now() - started });
       writeFileSync(path, JSON.stringify(record, null, 2) + '\n'); console.log(JSON.stringify(record.results.at(-1)));
     }
     record.status = record.results.every(r => r.outcome === 'response' && r.delivery === 'delivered') ? 'COMPLETED_DELIVERY_CHECKS_QUALITY_UNRATED' : 'COMPLETED_WITH_FAILURES_QUALITY_UNRATED';

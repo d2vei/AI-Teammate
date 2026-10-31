@@ -1,9 +1,9 @@
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
-import { ProjectConfigSchema, ProposalBodySchema, approver, eligible, digest, type ContextItem, type ProjectConfig, type Proposal, type ProposalBody, type ProposalCard, type RequestEvent, type SavedDecision, type SavedBrief, type SavedRecord, type Usage } from './domain.js';
+import { ProjectConfigSchema, ProposalBodySchema, approver, eligible, digest, type ContextItem, type ProjectConfig, type Proposal, type ProposalBody, type ProposalCard, type RequestEvent, type SavedDecision, type SavedBrief, type SavedRecord, type Usage, type ProviderDiagnostics } from './domain.js';
 import { sourceContext, type Source } from './sources.js';
 
-export type Trace = { eventKey: string; at: number; result: string; model: string; mode: string; prompt: string; config: string; sources: string[]; requestId?: string | null; usage?: Usage | null; reservationId?: string; outcome?: 'response' | 'busy' | 'context_too_large' | 'budget_blocked' | 'invalid_or_unavailable' };
+export type Trace = { eventKey: string; at: number; result: string; model: string; mode: string; prompt: string; config: string; sources: string[]; requestId?: string | null; usage?: Usage | null; reservationId?: string; providerDiagnostics?: ProviderDiagnostics; outcome?: 'response' | 'busy' | 'context_too_large' | 'budget_blocked' | 'invalid_or_unavailable' };
 export class Store {
   readonly db: DatabaseSync;
   constructor(path: string) {

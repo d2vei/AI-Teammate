@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { digest, type ModelInput, type Provider, type ProviderResult } from './domain.js';
+import { digest, ProviderDiagnosticsSchema, type ModelInput, type Provider, type ProviderDiagnostics, type ProviderResult } from './domain.js';
 import { instructions } from './prompt.js';
 
 const UsageSchema = z.object({ input_tokens: z.number().int().nonnegative().max(2_000_000), output_tokens: z.number().int().nonnegative().max(200_000) });
@@ -24,14 +24,23 @@ export class MetaProvider implements Provider {
     const reader = response.body.getReader(); const parts: Uint8Array[] = []; let size = 0;
     try { while (true) { const part = await reader.read(); if (part.done) break; size += part.value.length; if (size > 131072) throw new Error('Meta response too large'); parts.push(part.value); } }
     finally { await reader.cancel(); }
-    const raw = JSON.parse(Buffer.concat(parts).toString('utf8')) as Record<string, unknown>;
+    const parsed: unknown = JSON.parse(Buffer.concat(parts).toString('utf8'));
+    const raw = (parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}) as Record<string, unknown>;
     const usage = UsageSchema.safeParse(raw.usage);
+    const status = ProviderDiagnosticsSchema.shape.status.safeParse(raw.status);
+    // Fixed labels only: never retain provider error/details, output text or reasoning here.
+    const diagnostics: ProviderDiagnostics = { status: status.success ? status.data : 'unknown', parsing: 'invalid_envelope', outputTokensAtLimit: usage.success ? usage.data.output_tokens >= 2048 : null };
+    if (diagnostics.status !== 'completed' && diagnostics.status !== 'unknown') diagnostics.parsing = 'not_completed';
     const envelope = z.object({ id: z.string(), status: z.literal('completed'), model: z.literal(this.model), output: z.array(z.object({ type: z.string(), content: z.array(z.object({ type: z.string(), text: z.string().optional() })).optional() })) }).safeParse(raw);
     let output: unknown = null;
     if (envelope.success) {
       const text = envelope.data.output.filter(x => x.type === 'message').flatMap(x => x.content ?? []).filter(x => x.type === 'output_text').map(x => x.text ?? '').join('');
-      try { output = JSON.parse(text); } catch { /* Caller rejects invalid text while retaining usage. */ }
+      if (!text.trim()) diagnostics.parsing = 'no_output_text';
+      else {
+        try { output = JSON.parse(text); diagnostics.parsing = 'json'; }
+        catch { diagnostics.parsing = 'invalid_json'; }
+      }
     }
-    return { output, usage: usage.success ? { inputTokens: usage.data.input_tokens, outputTokens: usage.data.output_tokens } : null, requestId: typeof raw.id === 'string' ? raw.id : null };
+    return { output, usage: usage.success ? { inputTokens: usage.data.input_tokens, outputTokens: usage.data.output_tokens } : null, requestId: typeof raw.id === 'string' ? raw.id : null, diagnostics };
   }
 }

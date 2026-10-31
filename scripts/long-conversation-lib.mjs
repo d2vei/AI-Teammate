@@ -30,7 +30,7 @@ export async function runLongConversation({ state, corpus, adapterFactory, calls
       await state.core.handle(e, adapter);
       const trace = state.store.traces().length > beforeTraces ? state.store.traces().at(-1) : null;
       const delivery = adapter.deliveries[0];
-      const item = { id: step.id, actor: step.actor, type: step.type, status: step.type === 'ambient' ? 'SILENT' : trace?.outcome === 'response' && trace.result === 'delivered' ? 'DELIVERED' : trace?.outcome ?? 'NOT_DELIVERED', modelCalls: calls() - beforeCalls, latencyMs: Date.now() - started, proposalKind: delivery?.proposal?.proposal.body.kind ?? null, usage: trace?.usage ?? null };
+      const item = { id: step.id, actor: step.actor, type: step.type, status: step.type === 'ambient' ? 'SILENT' : trace?.outcome === 'response' && trace.result === 'delivered' ? 'DELIVERED' : trace?.outcome ?? 'NOT_DELIVERED', modelCalls: calls() - beforeCalls, latencyMs: Date.now() - started, proposalKind: delivery?.proposal?.proposal.body.kind ?? null, usage: trace?.usage ?? null, providerDiagnostics: trace?.providerDiagnostics ?? null };
       if (step.type === 'ambient') { assert.equal(item.modelCalls, 0); assert.equal(adapter.deliveries.length, 0); assert.deepEqual(counts(), beforeCounts); }
       else { assert.ok(item.modelCalls <= 1); prior.set(step.id, { event: e, id: `answer-${e.id}`, text: (delivery?.text ?? '').slice(0, 3000), delivered: item.status === 'DELIVERED', card: delivery?.proposal, binding: binding(e) }); }
       results.push(item); recordTurn(item);

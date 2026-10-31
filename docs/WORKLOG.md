@@ -1,5 +1,12 @@
 # Work log
 
+## 2026-10-31 - preserve response failure diagnostics
+
+- Owner confirmed simulated roles for now; Discord remains deferred. Resumed from clean published d3bb62cc6d154a9da4dc1f4a0137eaba714b3bbc. Investigated preserved L02 null output/2048 reported output tokens and its skipped L03 follow-up. The original adapter discarded the envelope status and parse failure category, so this capture cannot establish truncation or another exact cause. No original score or capture was changed.
+- Checked the current official Meta Responses schema: generation status and output items are available; max_output_tokens counts both visible and reasoning tokens. Added only fixed status/parse labels and a usage-derived at-limit flag (null when usage is unknown). The at-limit flag is not a causal diagnosis. No provider error/details, reasoning or answer text is copied into diagnostics. Core validates/strips the optional diagnostic before storing it; completed-envelope, reply, citation and authority checks remain in force.
+- Added eight HTTP-mock tests before implementation: all eight failed because diagnostics were missing. After implementation, `npm.cmd test -- tests/meta-diagnostics.test.ts tests/meta.test.ts --reporter=dot` passed 12 cases. Tests distinguish incomplete versus malformed JSON at the same output count, empty text, wrong model and unknown status; a core integration case proves parseable partial output stays rejected, usage settles, only one request occurs and raw content is absent from traces.
+- `npm.cmd run typecheck` and `npm.cmd run build` PASS. `npm.cmd test -- --reporter=json --outputFile=.local/evidence/meta-diagnostics-unit-suite.json` PASS: 234 tests/30 files. Existing long-conversation and unavailable-status report paths now retain the sanitized trace diagnostic before scoped cleanup; completed artifacts remain untouched. No live dispatch, budget change, human rating or Discord interaction. This is an observability fix, not evidence that L02 now succeeds.
+
 ## 2026-10-31 - longer conversation checks and video planning
 
 - Owner requested video planning and longer multi-person tests of answer quality. Base 54ec1a8, clean checkout. Discord remains deferred; asked whether simulated roles or real volunteers are intended, while preparing a clearly labelled four-role synthetic run. Existing human review is still in progress and is not replaced by agent judgments.

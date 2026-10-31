@@ -36,7 +36,13 @@ export type ProposalCard = { proposal: Proposal; buttonId: string };
 export const ReplySchema = z.object({ answer: z.string().min(1).max(1100), citations: z.array(id).max(12), proposal: ProposalBodySchema.optional() }).strict();
 export type Reply = z.infer<typeof ReplySchema>;
 export type Usage = { inputTokens: number; outputTokens: number };
-export type ProviderResult = { output: unknown; usage: Usage | null; requestId: string | null };
+export const ProviderDiagnosticsSchema = z.object({
+  status: z.enum(['completed', 'failed', 'in_progress', 'cancelled', 'queued', 'incomplete', 'unknown']),
+  parsing: z.enum(['json', 'invalid_json', 'no_output_text', 'invalid_envelope', 'not_completed']),
+  outputTokensAtLimit: z.boolean().nullable(),
+});
+export type ProviderDiagnostics = z.infer<typeof ProviderDiagnosticsSchema>;
+export type ProviderResult = { output: unknown; usage: Usage | null; requestId: string | null; diagnostics?: ProviderDiagnostics };
 export interface Provider { readonly mode: 'mock' | 'meta'; readonly model: string; readonly promptVersion?: string; generate(input: ModelInput): Promise<ProviderResult> }
 export type Delivery = { text: string; proposal?: ProposalCard };
 export interface Adapter {

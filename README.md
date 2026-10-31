@@ -38,7 +38,7 @@ npm run demo:offline
 
 These checks use fake providers and temporary SQLite state. The complete offline workflow is defined in [the CI file](.github/workflows/offline.yml); [development commands](docs/DEVELOPMENT.md) include the separate mutation and replay checks. Native media-codec checks are optional and require the tools documented in [CODECS.md](docs/CODECS.md).
 
-The [documented usefulness cases](docs/USEFULNESS_TESTS.md) check focused source questions, correction recall, confirmed saved next steps and unavailable evidence. The current unit suite passes 226 cases; three targeted negative controls verify those tests reject removed fixes. Controlled replies check application behavior, not actual model quality or human usefulness.
+The [documented usefulness cases](docs/USEFULNESS_TESTS.md) check focused source questions, correction recall, confirmed saved next steps and unavailable evidence. The current unit suite passes 234 cases; three targeted negative controls verify those tests reject removed fixes. Controlled replies check application behavior, not actual model quality or human usefulness.
 
 A [90-turn replay with four simulated roles](evals/long-conversation-v1/README.md) made 17 real Meta calls: agent review found 11 useful answers, two partial, four failures and one skipped follow-up. Three fresh questions passed after a scoped unavailable-evidence correction; the original failures remain recorded. Real participants and human ratings are still pending. The [three-minute showcase plan](docs/VIDEO_PLAN.md) is ready; no video has been recorded.
 

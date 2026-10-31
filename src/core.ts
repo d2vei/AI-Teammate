@@ -1,4 +1,4 @@
-import { ReplySchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
+import { ReplySchema, ProviderDiagnosticsSchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
 import { promptVersion, instructions } from './prompt.js';
 import { Store, type Trace } from './store.js';
 import { MemoryVault } from './memory.js';
@@ -29,6 +29,8 @@ export class Teammate {
     this.active = true;
     try {
       const result = await this.provider.generate(input); this.store.settle(reservation, result.usage); trace.usage = result.usage; trace.requestId = result.requestId;
+      const diagnostics = ProviderDiagnosticsSchema.safeParse(result.diagnostics);
+      if (diagnostics.success) trace.providerDiagnostics = diagnostics.data;
       const reply = ReplySchema.parse(result.output);
       trace.outcome = 'response';
       const invalidCitation = reply.citations.some(id => {
