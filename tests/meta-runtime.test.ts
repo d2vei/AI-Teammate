@@ -5,6 +5,22 @@ import { Teammate } from '../src/core.js';
 import { FakeAdapter } from '../src/fakes.js';
 import type { RequestEvent } from '../src/domain.js';
 
+it.each(['direct', 'monitor'] as const)('reserves the full 4096-token allowance before %s dispatch', async kind => {
+  const store = new Store(':memory:'); let calls = 0;
+  // This can pay for 4096 output tokens alone, but not their input. It must block.
+  const cap = 0.017408;
+  const runtime = createMetaRuntime('SYNTHETIC-HTTP-ONLY', store, cap, async () => { calls++; throw new Error('Unexpected dispatch'); });
+  try {
+    if (kind === 'direct') {
+      store.putConfig({ projectId: 'p', platform: 'fake', workspaceId: 'w', roomId: 'r', memberIds: ['owner'], approverIds: ['owner'], approverRoleIds: [], selectedSnapshot: null, paused: false, revision: 1 });
+      const e: RequestEvent = { id: 'direct-cap', platform: 'fake', workspaceId: 'w', projectId: 'p', roomId: 'r', actor: { id: 'owner', roleIds: [] }, invocation: 'mention', text: 'Synthetic question.', replyTo: null, replyContext: null, version: '1' };
+      await new Teammate(store, runtime.provider, cap).handle(e, new FakeAdapter());
+      expect(store.traces().at(-1)?.outcome).toBe('budget_blocked');
+    } else await expect(runtime.participation.monitor({ messages: [], evidence: [], openClaims: [] })).rejects.toThrow('budget unavailable');
+    expect(calls).toBe(0); expect(store.budgetUsed()).toBe(0);
+  } finally { store.close(); }
+});
+
 it('holds the shared slot through a streamed body and advances after a failed body without retry', async () => {
   let calls = 0; let release!: () => void;
   const gate = new Promise<void>(resolve => { release = resolve; });

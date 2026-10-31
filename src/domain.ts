@@ -35,6 +35,8 @@ export type SavedRecord = SavedDecision | SavedBrief;
 export type ProposalCard = { proposal: Proposal; buttonId: string };
 export const ReplySchema = z.object({ answer: z.string().min(1).max(1100), citations: z.array(id).max(12), proposal: ProposalBodySchema.optional() }).strict();
 export type Reply = z.infer<typeof ReplySchema>;
+// Shared text-generation bound: includes reasoning and visible output.
+export const RESPONSE_OUTPUT_TOKEN_LIMIT = 4096;
 export type Usage = { inputTokens: number; outputTokens: number };
 export const ProviderDiagnosticsSchema = z.object({
   status: z.enum(['completed', 'failed', 'in_progress', 'cancelled', 'queued', 'incomplete', 'unknown']),

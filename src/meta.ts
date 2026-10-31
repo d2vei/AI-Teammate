@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { digest, ProviderDiagnosticsSchema, type ModelInput, type Provider, type ProviderDiagnostics, type ProviderResult } from './domain.js';
+import { RESPONSE_OUTPUT_TOKEN_LIMIT, digest, ProviderDiagnosticsSchema, type ModelInput, type Provider, type ProviderDiagnostics, type ProviderResult } from './domain.js';
 import { instructions } from './prompt.js';
 
 const UsageSchema = z.object({ input_tokens: z.number().int().nonnegative().max(2_000_000), output_tokens: z.number().int().nonnegative().max(200_000) });
@@ -17,7 +17,7 @@ export class MetaProvider implements Provider {
   async generate(input: ModelInput): Promise<ProviderResult> {
     const response = await this.http('https://api.meta.ai/v1/responses', {
       method: 'POST', headers: { Authorization: `Bearer ${this.key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: this.model, instructions: this.prompt, input: JSON.stringify(input), store: false, max_output_tokens: 2048 }),
+      body: JSON.stringify({ model: this.model, instructions: this.prompt, input: JSON.stringify(input), store: false, max_output_tokens: RESPONSE_OUTPUT_TOKEN_LIMIT }),
       signal: AbortSignal.timeout(45000), redirect: 'error',
     });
     if (!response.ok || !response.body) throw new Error('Meta request failed; charge unknown');
@@ -29,7 +29,7 @@ export class MetaProvider implements Provider {
     const usage = UsageSchema.safeParse(raw.usage);
     const status = ProviderDiagnosticsSchema.shape.status.safeParse(raw.status);
     // Fixed labels only: never retain provider error/details, output text or reasoning here.
-    const diagnostics: ProviderDiagnostics = { status: status.success ? status.data : 'unknown', parsing: 'invalid_envelope', outputTokensAtLimit: usage.success ? usage.data.output_tokens >= 2048 : null };
+    const diagnostics: ProviderDiagnostics = { status: status.success ? status.data : 'unknown', parsing: 'invalid_envelope', outputTokensAtLimit: usage.success ? usage.data.output_tokens >= RESPONSE_OUTPUT_TOKEN_LIMIT : null };
     if (diagnostics.status !== 'completed' && diagnostics.status !== 'unknown') diagnostics.parsing = 'not_completed';
     const envelope = z.object({ id: z.string(), status: z.literal('completed'), model: z.literal(this.model), output: z.array(z.object({ type: z.string(), content: z.array(z.object({ type: z.string(), text: z.string().optional() })).optional() })) }).safeParse(raw);
     let output: unknown = null;

@@ -8,7 +8,7 @@ describe('Meta documented Responses protocol - HTTP MOCKS ONLY', () => {
     const result = await new MetaProvider('synthetic-not-a-real-key', http).generate(input);
     expect(http.mock.calls[0]?.[0]).toBe('https://api.meta.ai/v1/responses');
     const body = JSON.parse(http.mock.calls[0]![1]!.body as string);
-    expect(body).toMatchObject({ model: 'muse-spark-1.3', store: false, max_output_tokens: 2048 });
+    expect(body).toMatchObject({ model: 'muse-spark-1.3', store: false, max_output_tokens: 4096 });
     expect(body.tools).toBeUndefined(); expect(result.usage).toEqual({ inputTokens: 20, outputTokens: 30 });
   });
   it('retains reported usage even if visible JSON is invalid', async () => {

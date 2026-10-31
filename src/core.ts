@@ -1,4 +1,4 @@
-import { ReplySchema, ProviderDiagnosticsSchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
+import { RESPONSE_OUTPUT_TOKEN_LIMIT, ReplySchema, ProviderDiagnosticsSchema, digest, eligible, type Adapter, type ContextItem, type ModelInput, type Provider, type RequestEvent } from './domain.js';
 import { promptVersion, instructions } from './prompt.js';
 import { Store, type Trace } from './store.js';
 import { MemoryVault } from './memory.js';
@@ -23,7 +23,7 @@ export class Teammate {
     const input: ModelInput = { event: { id: e.id, version: e.version, actor: e.actor, replyTo: e.replyTo }, question: e.text.slice(0, 3000), reply: e.replyContext, context };
     const bytes = Buffer.byteLength(JSON.stringify(input));
     if (bytes > 24000) { trace.outcome = 'context_too_large'; await send('Selected context is too large. Narrow the question or source selection.'); this.store.trace(trace); return; }
-    const reservation = this.store.reserve(this.capUsd, Math.ceil((bytes + Buffer.byteLength(instructions) + 1000) * 1.25 + 2048 * 4.25));
+    const reservation = this.store.reserve(this.capUsd, Math.ceil((bytes + Buffer.byteLength(instructions) + 1000) * 1.25 + RESPONSE_OUTPUT_TOKEN_LIMIT * 4.25));
     if (!reservation) { trace.outcome = 'budget_blocked'; await send('No authorized budget is available for this request.'); this.store.trace(trace); return; }
     trace.reservationId = reservation;
     this.active = true;

@@ -1,0 +1,116 @@
+{
+  "at": "2026-10-31T12:08:12.258499+00:00",
+  "finishedAt": "2026-10-31T12:12:53.990Z",
+  "candidate": "620059eb2b59aef9a3084e556f57c480d549edc6",
+  "status": "COMPLETED_WITH_FAILURES",
+  "kind": "Fresh three-request native terminal scenario on existing synthetic fixture, not held-out evaluation or rerun",
+  "maximumRequests": 3,
+  "actualRequests": 3,
+  "results": [
+    {
+      "id": "S1",
+      "outcome": "response",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 1016,
+        "outputTokens": 1809
+      },
+      "diagnostics": {
+        "status": "completed",
+        "parsing": "json",
+        "outputTokensAtLimit": false
+      },
+      "agentRating": "USEFUL",
+      "reason": "Code and log cited separately; two members alternate across two rooms, observed destinations stated, causal linkage unverified.",
+      "answerAccepted": true
+    },
+    {
+      "id": "S2",
+      "outcome": "invalid_or_unavailable",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 1356,
+        "outputTokens": 2048
+      },
+      "diagnostics": {
+        "status": "incomplete",
+        "parsing": "not_completed",
+        "outputTokensAtLimit": true
+      },
+      "agentRating": "FAIL",
+      "reason": "No answer accepted. Provider status incomplete, at the 2048 output-token limit; no retry.",
+      "answerAccepted": false
+    },
+    {
+      "id": "S3",
+      "outcome": "response",
+      "delivery": "delivered",
+      "usage": {
+        "inputTokens": 1020,
+        "outputTokens": 1671
+      },
+      "diagnostics": {
+        "status": "completed",
+        "parsing": "json",
+        "outputTokensAtLimit": false
+      },
+      "agentRating": "USEFUL",
+      "reason": "Source-bound brief gives a two-member/two-room check and expected split; hypothesis remains uncertain and execution excluded. Owner saved only after peer rejection.",
+      "answerAccepted": true
+    }
+  ],
+  "controls": {
+    "peerAcceptanceRejected": true,
+    "ownerSavedBrief": true
+  },
+  "ownScopePurged": true,
+  "terminalExitCode": 0,
+  "budgetBeforeUsd": 2.541132,
+  "budgetAfterUsd": 2.568867,
+  "incrementUsd": 0.027735,
+  "chargeRowsBefore": 460,
+  "chargeRowsAfter": 463,
+  "uncertain": {
+    "rows": 2,
+    "usd": 0.00055
+  },
+  "files": [
+    {
+      "path": "src/meta.ts",
+      "sha256": "ae390557c5748f09354b8100ad4243ee28fd722305a74c9af475be87530b3db5"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "0d8becf08b24ecb7a7d7de0c909bf4a531677800ca16bde3a6b0fc6d58097ec0"
+    },
+    {
+      "path": "src/live-conversation.ts",
+      "sha256": "13edbb92e19b2fb9e91444698a4b9e5de7e44056b88458bbe3b44399f0e25d0b"
+    },
+    {
+      "path": "prompts/response.md",
+      "sha256": "5441a995907c271d9d2cb8f99a27617d491f9cb240613e147df4105941b21197"
+    },
+    {
+      "path": "examples/party-queue.json",
+      "sha256": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d"
+    },
+    {
+      "path": "dist/meta.js",
+      "sha256": "946ec6e088a73aafd722c79e5917f7fafe3c80362ccc9735b96836367e58c7fd"
+    },
+    {
+      "path": "dist/core.js",
+      "sha256": "d65d2ecfbf8be6391791a48e85d531c184df19b0e1fe33a0f25b1370f09bf1c4"
+    }
+  ],
+  "privateCaptureSha256": "90addc95bed3a97fe3c38ff669e2bbec4a77a827cfbfccfa058ff5ccb1be833e",
+  "humanRatings": "NOT_RUN",
+  "externalPosts": 0,
+  "limitations": [
+    "Two simulated roles; coding-agent review, not independent human evaluation.",
+    "Existing synthetic fixture, fresh questions; not held-out evaluation.",
+    "Incomplete status at output cap observed; exact incomplete_details reason not retained.",
+    "Earlier long-conversation failure cannot be retrospectively diagnosed from this new result."
+  ]
+}

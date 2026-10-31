@@ -7,7 +7,7 @@ import type { ModelInput, RequestEvent } from '../src/domain.js';
 
 const input: ModelInput = { event: { id: 'diagnostic', version: '1', actor: { id: 'owner', roleIds: [] }, replyTo: null }, question: 'Compare the selected source and log.', reply: null, context: [] };
 const answer = { answer: 'Synthetic partial answer that must not be delivered.', citations: [] };
-const envelope = { id: 'synthetic-response', model: 'muse-spark-1.3', status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: JSON.stringify(answer) }] }], usage: { input_tokens: 40, output_tokens: 2048 } };
+const envelope = { id: 'synthetic-response', model: 'muse-spark-1.3', status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: JSON.stringify(answer) }] }], usage: { input_tokens: 40, output_tokens: 4096 } };
 const transport = (raw: unknown) => vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify(raw)));
 
 describe('content-free Meta diagnostics - HTTP MOCKS ONLY', () => {
@@ -22,7 +22,7 @@ describe('content-free Meta diagnostics - HTTP MOCKS ONLY', () => {
     const http = transport({ ...envelope, ...patch, error: { message: 'private error text' }, incomplete_details: { reason: 'private provider detail' } });
     const result = await new MetaProvider('synthetic', http).generate(input);
     expect(result.output).toBeNull();
-    expect(result.usage).toEqual({ inputTokens: 40, outputTokens: 2048 });
+    expect(result.usage).toEqual({ inputTokens: 40, outputTokens: 4096 });
     expect(result).toHaveProperty('diagnostics', { status, parsing, outputTokensAtLimit: true });
     expect(JSON.stringify(result)).not.toContain('private');
     expect(http).toHaveBeenCalledTimes(1);
@@ -50,7 +50,7 @@ describe('content-free Meta diagnostics - HTTP MOCKS ONLY', () => {
       expect(trace).toMatchObject({ outcome: 'invalid_or_unavailable', providerDiagnostics: { status: 'incomplete', parsing: 'not_completed', outputTokensAtLimit: true } });
       expect(JSON.stringify(trace)).not.toContain('private');
       expect(JSON.stringify(trace)).not.toContain(answer.answer);
-      expect(store.db.prepare('SELECT state,micros FROM charges').get()).toEqual({ state: 'reported', micros: 8754 });
+      expect(store.db.prepare('SELECT state,micros FROM charges').get()).toEqual({ state: 'reported', micros: 17458 });
     } finally { store.close(); }
   });
 });
