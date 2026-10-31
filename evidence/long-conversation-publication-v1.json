@@ -1,0 +1,84 @@
+{
+  "candidate": "8c3c60e76440c5d19bda2c51cf34afbfa36618f2",
+  "repository": "https://github.com/d2vei/AI-Teammate",
+  "branch": "main",
+  "authorLogin": "d2vei",
+  "committerLogin": "d2vei",
+  "push": "normal fast-forward from 54ec1a8; remote SHA matched; clean checkout",
+  "workflowRunId": 41158662306,
+  "workflowUrl": "https://github.com/d2vei/AI-Teammate/actions/runs/41158662306",
+  "conclusion": "success",
+  "steps": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run typecheck",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm test",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:mutation",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:usefulness-mutation",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:cli",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run demo:offline",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run eval:offline",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run replay:offline",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:participation-mutation",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:conversation",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:live-terminal",
+      "conclusion": "success"
+    },
+    {
+      "command": "npm run test:memory-terminal",
+      "conclusion": "success"
+    }
+  ],
+  "localTests": {
+    "tests": 226,
+    "files": 29,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "usefulnessMutationControls": 3
+  },
+  "secretChecks": {
+    "stagedBytes": 10567,
+    "historyCommits": 53,
+    "historyBytes": 1585733,
+    "redacted": true,
+    "leaks": 0
+  },
+  "limits": [
+    "Offline CI does not establish model or human quality.",
+    "Live Meta outcomes and original failures remain in their separate candidate-bound reports.",
+    "No real participants, Discord session or recorded video."
+  ]
+}
