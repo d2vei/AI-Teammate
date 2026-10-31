@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-31T12:14:41.369046+00:00",
+  "finishedAt": "2026-10-31T12:17:20.846Z",
+  "candidate": "1d71a3662085b0a76bb3e10814c7fc294a9f1de3",
+  "status": "COMPLETED_DELIVERY_CHECKS_WITH_QUALITY_LIMITATIONS",
+  "kind": "Distinct two-request same-recipe regression after output-bound change; not held-out evaluation or regrade",
+  "maximumRequests": 2,
+  "actualRequests": 2,
+  "outputTokenLimit": 4096,
+  "results": [
+    {
+      "id": "R1",
+      "outcome": "response",
+      "delivery": "delivered",
+      "answerAccepted": true,
+      "usage": {
+        "inputTokens": 1037,
+        "outputTokens": 1483
+      },
+      "diagnostics": {
+        "status": "completed",
+        "parsing": "json",
+        "outputTokensAtLimit": false
+      },
+      "agentRating": "USEFUL",
+      "reason": "Separates per-member modulo routing from supplied log destinations and explicitly withholds a causal or execution claim."
+    },
+    {
+      "id": "R2",
+      "outcome": "response",
+      "delivery": "delivered",
+      "answerAccepted": true,
+      "usage": {
+        "inputTokens": 1427,
+        "outputTokens": 2028
+      },
+      "diagnostics": {
+        "status": "completed",
+        "parsing": "json",
+        "outputTokensAtLimit": false
+      },
+      "agentRating": "PARTIAL",
+      "reason": "Answers with two test members, rooms room-a/room-b and expected member-to-room mapping, disclaiming execution. Also adds an unrequested brief card, making the answer more intrusive and repetitive."
+    }
+  ],
+  "unrequestedDraftSaved": false,
+  "ownScopePurged": true,
+  "terminalExitCode": 0,
+  "budgetBeforeUsd": 2.568867,
+  "budgetAfterUsd": 2.586869,
+  "incrementUsd": 0.018002,
+  "chargeRowsBefore": 463,
+  "chargeRowsAfter": 465,
+  "uncertain": {
+    "rows": 2,
+    "usd": 0.00055
+  },
+  "files": [
+    {
+      "path": "src/meta.ts",
+      "sha256": "ded722c26172e2223040ebebb39f78918e37cf86e98765b1c2ce526765d57619"
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "69a6e139091e4fd96f119ace9ad3cf2b2994ee0b488785ca7635f1a066335b52"
+    },
+    {
+      "path": "src/domain.ts",
+      "sha256": "30f8cbd5a76a7ddd198aca2fe5503247624456c9d7632d501c6c4a1ec876c66d"
+    },
+    {
+      "path": "src/live-conversation.ts",
+      "sha256": "13edbb92e19b2fb9e91444698a4b9e5de7e44056b88458bbe3b44399f0e25d0b"
+    },
+    {
+      "path": "prompts/response.md",
+      "sha256": "5441a995907c271d9d2cb8f99a27617d491f9cb240613e147df4105941b21197"
+    },
+    {
+      "path": "examples/party-queue.json",
+      "sha256": "a0c0d94c2f77b394ef699286a23200d4d7c84d7cf5787c307d8aba152be5186d"
+    },
+    {
+      "path": "dist/meta.js",
+      "sha256": "105f193d498d716ff70fb8e39f31dc0161cf1c22ef413cb591251a8264d14f89"
+    },
+    {
+      "path": "dist/core.js",
+      "sha256": "e856670e0915e2529d24baa039952d6d617117cb41dc433f4adcd12bd1b4d515"
+    },
+    {
+      "path": "dist/domain.js",
+      "sha256": "06af9c1c3651f14465f853131d1f1ea56e4a6f8866acca53f0629b9b04e13277"
+    }
+  ],
+  "privateCaptureSha256": "4dca8b0c34c3c7aaeb454f5974bbb4ae9cce560209fed4efc9e4bc9ad9c060e3",
+  "humanRatings": "NOT_RUN",
+  "externalPosts": 0,
+  "limitations": [
+    "Same-recipe two-request regression on existing fixture, not independent or held-out evaluation.",
+    "Coding-agent ratings, not human review.",
+    "Successful follow-up used 2028 output tokens, below the former limit; stochastic variation prevents causal attribution of success to the larger limit.",
+    "Prior failures remain failures. Unrequested draft was not accepted."
+  ]
+}
